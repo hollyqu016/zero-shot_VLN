@@ -1,0 +1,1650 @@
+{
+  "metrics": {
+    "distance_to_goal": 7.509,
+    "spl": 0.0,
+    "goal_reached": 0,
+    "finish_status": "fp",
+    "traveled_distance": 2.304,
+    "done": 1,
+    "oracle_navigation_error": 5.891,
+    "oracle_success": 0,
+    "oracle_spl": 0.0,
+    "ndtw": 0.543,
+    "sdtw": 0.0
+  },
+  "episode": {
+    "instruction": "Walk up the stairs. Go up a few stairs across from the open door. ",
+    "shortest_path": 5.891,
+    "goal_position": [
+      -1.997,
+      2.3,
+      0.761
+    ],
+    "reference_path": [
+      [
+        -1.927,
+        -0.082,
+        0.601
+      ],
+      [
+        -0.944,
+        0.093,
+        0.641
+      ],
+      [
+        0.119,
+        0.058,
+        0.175
+      ],
+      [
+        -0.851,
+        0.611,
+        -0.229
+      ],
+      [
+        -2.802,
+        1.812,
+        -0.25
+      ],
+      [
+        -2.9,
+        1.81,
+        0.565
+      ],
+      [
+        -1.997,
+        2.3,
+        0.761
+      ]
+    ]
+  },
+  "vlm_responses": [
+    "```json\n{\n    \"movement\": \"I am standing at the bottom of a staircase looking up towards an open doorway with greenery outside. To my left is a wall with hieroglyphics.\",\n    \"observation\": {\n        \"front view\": \"Stairs going up towards an exit/doorway (labeled 1 and 2).\",\n        \"left view\": \"Wall with hieroglyphics.\",\n        \"right view\": \"Wall of the stairwell.\",\n        \"map\": \"Path leads straight ahead towards '1' and '2'.\"\n    },\n    \"thought\": \"The instruction is to 'Walk up the stairs'. I am currently at the bottom facing up the stairs. The destination for P1 is the top of these stairs, which corresponds to the area near waypoints 1 and 2. I need to move forward to climb them.\",\n    \"stuck\": false,\n    \"plan\": \"Move forward up the stairs towards the doorway at the top.\",\n    \"curr_step\": \"Move forward towards waypoint 1.\",\n    \"action\": 1\n}\n```",
+    "```json\n{\n    \"movement\": \"I have climbed the stairs and reached the landing at the top, which features a metal grate on the floor and an opening leading to an outdoor area with greenery.\",\n    \"observation\": {\n        \"front view\": \"A narrow passage with a metal grate on the floor leading towards an open doorway. To the left is a ruined wall with vegetation. To the right is a white wall. Waypoint '1' is visible on the ground near the grate.\",\n        \"left view\": \"A ruined wall with vegetation and debris.\",\n        \"right view\": \"A white wall of the stairwell/structure.\",\n        \"map\": \"I am at waypoint '1' (labeled 'carpet'), which is the top of the stairs shown in the map. The path continues forward towards '2'.\"\n    },\n    \"thought\": \"I have successfully walked up the stairs and reached the top platform (waypoint 1) as indicated by the map and visual landmarks. The instruction for P1 is complete. I am now positioned to look for the next subtask, which involves going up stairs across from an open door.\",\n    \"stuck\": false,\n    \"plan\": \"Complete subtask P1. Then proceed towards the open door ahead to find the stairs mentioned in P2.\",\n    \"curr_step\": \"P1 is completed as I have reached the top platform (waypoint 1).\",\n    \"action\": -1\n}\n```",
+    "```json\n{\n    \"movement\": \"I have reached the top of the first set of stairs (waypoint 1) and am standing on a landing with a metal grate on the floor. To my right is a dark doorway/opening. Straight ahead is an opening (labeled B) leading to an outdoor area with greenery.\",\n    \"observation\": {\n        \"front view\": \"A path leading through an opening (B) towards greenery. There is a metal grate on the floor in front of me. To the right is a dark door frame.\",\n        \"left view\": \"A wall with hieroglyphics and vegetation.\",\n        \"right view\": \"A dark doorway/opening and wooden floorboards.\",\n        \"map\": \"I am at waypoint '1' (labeled 'carpet'). The path continues forward towards waypoint '2'.\"\n    },\n    \"thought\": \"I have completed P1. Now I need to do P2: 'Go up a few stairs across from the open door.' The dark doorway is to my right. Across from it is the path leading straight ahead through opening B. I can see what looks like stone steps or a path going up in the distance through that opening. I should move forward towards that area.\",\n    \"stuck\": false,\n    \"plan\": \"Move forward through the opening B towards the stairs visible in the distance.\",\n    \"curr_step\": \"Move forward towards the opening B.\",\n    \"action\": 1\n}\n```",
+    "```json\n{\n    \"movement\": \"I have reached the top of the first set of stairs (waypoint 1) and am standing on a landing with a metal grate on the floor. To my right is a dark doorway/opening. Straight ahead is an opening (labeled B) leading to an outdoor area with greenery.\",\n    \"observation\": {\n        \"front view\": \"A path leading through an opening (B) towards greenery. There is a metal grate on the floor in front of me. To the right is a dark door frame.\",\n        \"left view\": \"A wall with hieroglyphics and vegetation.\",\n        \"right view\": \"A dark doorway/opening and wooden floorboards.\",\n        \"map\": \"I am at waypoint '1' (labeled 'carpet'). The path continues forward towards waypoint 'B'.\"\n    },\n    \"thought\": \"I have completed P1. Now I need to do P2: 'Go up a few stairs across from the open door.' The dark doorway is to my right. Across from it is the path leading straight ahead through opening B. I can see what looks like stone steps or a path going up in the distance through that opening. I should move forward towards that area.\",\n    \"stuck\": false,\n    \"plan\": \"Move forward through the opening B towards the stairs visible in the distance.\",\n    \"curr_step\": \"Move forward towards the opening B.\",\n    \"action\": \"B\"\n}\n```",
+    "```json\n{\n    \"movement\": \"I have moved from the landing with the metal grate towards the base of the next set of stairs.\",\n    \"observation\": {\n        \"front view\": \"A narrow passage leading to a short flight of stairs labeled '2'. Above the stairs is a hallway/landing labeled 'B'. To the right is a wall with hieroglyphics.\",\n        \"left view\": \"A wall and the side of the stairwell.\",\n        \"right view\": \"A wall with hieroglyphics and an open doorway leading outside (visible in previous frames).\",\n        \"map\": \"I am near waypoint 'carpet' and '1'. The path leads up towards waypoint '2'.\"\n    },\n    \"thought\": \"The instruction is to 'Go up a few stairs across from the open door.' I see a set of stairs labeled '2' directly ahead. This matches the description of going up stairs. I need to climb these stairs.\",\n    \"stuck\": false,\n    \"plan\": \"Move forward and up the stairs labeled '2'.\",\n    \"curr_step\": \"Move towards waypoint 2.\",\n    \"action\": 2\n}\n```",
+    "(Auto)Global-stuck detected: stopping."
+  ],
+  "agent_trajectory": [
+    [
+      -1.927,
+      -0.082,
+      0.601
+    ],
+    [
+      -2.685,
+      -0.59,
+      0.335
+    ],
+    [
+      -3.471,
+      -0.59,
+      0.282
+    ],
+    [
+      -3.471,
+      -0.59,
+      0.849
+    ]
+  ],
+  "step_metrics": [
+    {
+      "step": 0,
+      "distance_to_goal": 5.891,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.0,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.581,
+      "sdtw": 0.0
+    },
+    {
+      "step": 1,
+      "distance_to_goal": 6.729,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.0,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.565,
+      "sdtw": 0.0
+    },
+    {
+      "step": 2,
+      "distance_to_goal": 6.729,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.95,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.565,
+      "sdtw": 0.0
+    },
+    {
+      "step": 3,
+      "distance_to_goal": 7.517,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.95,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.55,
+      "sdtw": 0.0
+    },
+    {
+      "step": 4,
+      "distance_to_goal": 7.517,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.738,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.55,
+      "sdtw": 0.0
+    },
+    {
+      "step": 5,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.738,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 6,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 7,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 8,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 9,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 10,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 11,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 12,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 13,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 14,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 15,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 16,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 17,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 18,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 19,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 20,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 21,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 22,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 23,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    },
+    {
+      "step": 24,
+      "distance_to_goal": 7.509,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "fp",
+      "traveled_distance": 2.304,
+      "done": 1,
+      "oracle_navigation_error": 5.891,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.543,
+      "sdtw": 0.0
+    }
+  ],
+  "diagnostic_trace": [
+    {
+      "step": 0,
+      "start_position": [
+        -1.927,
+        -0.082,
+        0.601
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "1",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I am standing at the bottom of a staircase looking up towards an open doorway with greenery outside. To my left is a wall with hieroglyphics.",
+          "observation": {
+            "front view": "Stairs going up towards an exit/doorway (labeled 1 and 2).",
+            "left view": "Wall with hieroglyphics.",
+            "right view": "Wall of the stairwell.",
+            "map": "Path leads straight ahead towards '1' and '2'."
+          },
+          "thought": "The instruction is to 'Walk up the stairs'. I am currently at the bottom facing up the stairs. The destination for P1 is the top of these stairs, which corresponds to the area near waypoints 1 and 2. I need to move forward to climb them.",
+          "stuck": 0,
+          "plan": "Move forward up the stairs towards the doorway at the top.",
+          "curr_step": "Move forward towards waypoint 1.",
+          "action": 1
+        },
+        "valid": 1,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.301
+      },
+      "target_world_position": [
+        -2.517,
+        0.402,
+        -1.353
+      ],
+      "planned_path": [
+        [
+          0.0,
+          0.0,
+          -1.2
+        ],
+        [
+          -0.758,
+          -0.266,
+          -1.35
+        ],
+        [
+          -1.75,
+          -0.319,
+          -1.306
+        ],
+        [
+          -2.242,
+          0.278,
+          -1.295
+        ],
+        [
+          -2.517,
+          0.402,
+          -1.353
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "agent_yaw": -1.535,
+        "num_waypoints_raw": 2,
+        "num_waypoints_near": 2,
+        "num_waypoints_far": 0,
+        "num_projected": 2,
+        "num_actions": 5,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 0,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              445,
+              264
+            ],
+            "camera_depth": 2.843,
+            "target_point_world": [
+              -2.517,
+              0.402,
+              -1.353
+            ],
+            "target_point_relative": [
+              -2.517,
+              -1.353,
+              0.402
+            ],
+            "distance": 2.554,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 2.872,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              499,
+              265
+            ],
+            "camera_depth": 2.842,
+            "target_point_world": [
+              -2.485,
+              -0.363,
+              -1.361
+            ],
+            "target_point_relative": [
+              -2.485,
+              -1.361,
+              -0.363
+            ],
+            "distance": 2.516,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.538,
+            "path_waypoint_count": 5
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n    \"movement\": \"I am standing at the bottom of a staircase looking up towards an open doorway with greenery outside. To my left is a wall with hieroglyphics.\",\n    \"observation\": {\n        \"front view\": \"Stairs going up towards an exit/doorway (labeled 1 and 2).\",\n        \"left view\": \"Wall with hieroglyphics.\",\n        \"right view\": \"Wall of the stairwell.\",\n        \"map\": \"Path leads straight ahead towards '1' and '2'.\"\n    },\n    \"thought\": \"The instruction is to 'Walk up the stairs'. I am currently at the bottom facing up the stairs. The destination for P1 is the top of these stairs, which corresponds to the area near waypoints 1 and 2. I need to move forward to climb them.\",\n    \"stuck\": false,\n    \"plan\": \"Move forward up the stairs towards the doorway at the top.\",\n    \"curr_step\": \"Move forward towards waypoint 1.\",\n    \"action\": 1\n}\n```",
+      "end_position": [
+        -1.927,
+        -0.082,
+        0.601
+      ]
+    },
+    {
+      "step": 1,
+      "start_position": [
+        -1.927,
+        -0.082,
+        0.601
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.803,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -2.685,
+        -0.59,
+        0.335
+      ]
+    },
+    {
+      "step": 2,
+      "start_position": [
+        -2.685,
+        -0.59,
+        0.335
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.283
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -2.685,
+        -0.59,
+        0.335
+      ]
+    },
+    {
+      "step": 3,
+      "start_position": [
+        -2.685,
+        -0.59,
+        0.335
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.993,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.282
+      ]
+    },
+    {
+      "step": 4,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.282
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.761
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.282
+      ]
+    },
+    {
+      "step": 5,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.282
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.918,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 6,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.664
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 7,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.698,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 8,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.698,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 9,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.698,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 10,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.698,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 11,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.698,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 12,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.698,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 13,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.698,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 14,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 1,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "-1",
+        "selected_action_type": "stop",
+        "parsed_json": {
+          "movement": "I have climbed the stairs and reached the landing at the top, which features a metal grate on the floor and an opening leading to an outdoor area with greenery.",
+          "observation": {
+            "front view": "A narrow passage with a metal grate on the floor leading towards an open doorway. To the left is a ruined wall with vegetation. To the right is a white wall. Waypoint '1' is visible on the ground near the grate.",
+            "left view": "A ruined wall with vegetation and debris.",
+            "right view": "A white wall of the stairwell/structure.",
+            "map": "I am at waypoint '1' (labeled 'carpet'), which is the top of the stairs shown in the map. The path continues forward towards '2'."
+          },
+          "thought": "I have successfully walked up the stairs and reached the top platform (waypoint 1) as indicated by the map and visual landmarks. The instruction for P1 is complete. I am now positioned to look for the next subtask, which involves going up stairs across from an open door.",
+          "stuck": 0,
+          "plan": "Complete subtask P1. Then proceed towards the open door ahead to find the stairs mentioned in P2.",
+          "curr_step": "P1 is completed as I have reached the top platform (waypoint 1).",
+          "action": -1
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "pause",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "stop_or_pause",
+      "preprocess": {
+        "agent_position": [
+          -1.544,
+          0.248,
+          -0.508
+        ],
+        "agent_yaw": -1.614,
+        "num_waypoints_raw": 1,
+        "num_waypoints_near": 1,
+        "num_waypoints_far": 0,
+        "num_projected": 1,
+        "num_actions": 4,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 0,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              466,
+              343
+            ],
+            "camera_depth": 1.411,
+            "target_point_world": [
+              -2.501,
+              0.388,
+              -1.664
+            ],
+            "target_point_relative": [
+              -0.957,
+              -1.156,
+              0.141
+            ],
+            "distance": 0.968,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 0.967,
+            "path_waypoint_count": 2
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n    \"movement\": \"I have climbed the stairs and reached the landing at the top, which features a metal grate on the floor and an opening leading to an outdoor area with greenery.\",\n    \"observation\": {\n        \"front view\": \"A narrow passage with a metal grate on the floor leading towards an open doorway. To the left is a ruined wall with vegetation. To the right is a white wall. Waypoint '1' is visible on the ground near the grate.\",\n        \"left view\": \"A ruined wall with vegetation and debris.\",\n        \"right view\": \"A white wall of the stairwell/structure.\",\n        \"map\": \"I am at waypoint '1' (labeled 'carpet'), which is the top of the stairs shown in the map. The path continues forward towards '2'.\"\n    },\n    \"thought\": \"I have successfully walked up the stairs and reached the top platform (waypoint 1) as indicated by the map and visual landmarks. The instruction for P1 is complete. I am now positioned to look for the next subtask, which involves going up stairs across from an open door.\",\n    \"stuck\": false,\n    \"plan\": \"Complete subtask P1. Then proceed towards the open door ahead to find the stairs mentioned in P2.\",\n    \"curr_step\": \"P1 is completed as I have reached the top platform (waypoint 1).\",\n    \"action\": -1\n}\n```",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 15,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "1",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I have reached the top of the first set of stairs (waypoint 1) and am standing on a landing with a metal grate on the floor. To my right is a dark doorway/opening. Straight ahead is an opening (labeled B) leading to an outdoor area with greenery.",
+          "observation": {
+            "front view": "A path leading through an opening (B) towards greenery. There is a metal grate on the floor in front of me. To the right is a dark door frame.",
+            "left view": "A wall with hieroglyphics and vegetation.",
+            "right view": "A dark doorway/opening and wooden floorboards.",
+            "map": "I am at waypoint '1' (labeled 'carpet'). The path continues forward towards waypoint '2'."
+          },
+          "thought": "I have completed P1. Now I need to do P2: 'Go up a few stairs across from the open door.' The dark doorway is to my right. Across from it is the path leading straight ahead through opening B. I can see what looks like stone steps or a path going up in the distance through that opening. I should move forward towards that area.",
+          "stuck": 0,
+          "plan": "Move forward through the opening B towards the stairs visible in the distance.",
+          "curr_step": "Move forward towards the opening B.",
+          "action": 1
+        },
+        "valid": 1,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.102
+      },
+      "target_world_position": [
+        -2.501,
+        0.388,
+        -1.664
+      ],
+      "planned_path": [
+        [
+          -1.544,
+          0.248,
+          -1.708
+        ],
+        [
+          -2.501,
+          0.388,
+          -1.664
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          -1.544,
+          0.248,
+          -0.508
+        ],
+        "agent_yaw": -1.614,
+        "num_waypoints_raw": 1,
+        "num_waypoints_near": 1,
+        "num_waypoints_far": 0,
+        "num_projected": 1,
+        "num_actions": 4,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 0,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              466,
+              343
+            ],
+            "camera_depth": 1.411,
+            "target_point_world": [
+              -2.501,
+              0.388,
+              -1.664
+            ],
+            "target_point_relative": [
+              -0.957,
+              -1.156,
+              0.141
+            ],
+            "distance": 0.968,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 0.967,
+            "path_waypoint_count": 2
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n    \"movement\": \"I have reached the top of the first set of stairs (waypoint 1) and am standing on a landing with a metal grate on the floor. To my right is a dark doorway/opening. Straight ahead is an opening (labeled B) leading to an outdoor area with greenery.\",\n    \"observation\": {\n        \"front view\": \"A path leading through an opening (B) towards greenery. There is a metal grate on the floor in front of me. To the right is a dark door frame.\",\n        \"left view\": \"A wall with hieroglyphics and vegetation.\",\n        \"right view\": \"A dark doorway/opening and wooden floorboards.\",\n        \"map\": \"I am at waypoint '1' (labeled 'carpet'). The path continues forward towards waypoint '2'.\"\n    },\n    \"thought\": \"I have completed P1. Now I need to do P2: 'Go up a few stairs across from the open door.' The dark doorway is to my right. Across from it is the path leading straight ahead through opening B. I can see what looks like stone steps or a path going up in the distance through that opening. I should move forward towards that area.\",\n    \"stuck\": false,\n    \"plan\": \"Move forward through the opening B towards the stairs visible in the distance.\",\n    \"curr_step\": \"Move forward towards the opening B.\",\n    \"action\": 1\n}\n```",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 16,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.967,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 17,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.967,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 18,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.967,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 19,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.967,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 20,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.967,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 21,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.967,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 22,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 1,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "B",
+        "selected_action_type": "turn",
+        "parsed_json": {
+          "movement": "I have reached the top of the first set of stairs (waypoint 1) and am standing on a landing with a metal grate on the floor. To my right is a dark doorway/opening. Straight ahead is an opening (labeled B) leading to an outdoor area with greenery.",
+          "observation": {
+            "front view": "A path leading through an opening (B) towards greenery. There is a metal grate on the floor in front of me. To the right is a dark door frame.",
+            "left view": "A wall with hieroglyphics and vegetation.",
+            "right view": "A dark doorway/opening and wooden floorboards.",
+            "map": "I am at waypoint '1' (labeled 'carpet'). The path continues forward towards waypoint 'B'."
+          },
+          "thought": "I have completed P1. Now I need to do P2: 'Go up a few stairs across from the open door.' The dark doorway is to my right. Across from it is the path leading straight ahead through opening B. I can see what looks like stone steps or a path going up in the distance through that opening. I should move forward towards that area.",
+          "stuck": 0,
+          "plan": "Move forward through the opening B towards the stairs visible in the distance.",
+          "curr_step": "Move forward towards the opening B.",
+          "action": "B"
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 3.142
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "turn",
+      "preprocess": {
+        "agent_position": [
+          -1.544,
+          0.248,
+          -0.508
+        ],
+        "agent_yaw": -1.717,
+        "num_waypoints_raw": 1,
+        "num_waypoints_near": 1,
+        "num_waypoints_far": 0,
+        "num_projected": 1,
+        "num_actions": 4,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 0,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              480,
+              342
+            ],
+            "camera_depth": 1.416,
+            "target_point_world": [
+              -2.501,
+              0.387,
+              -1.665
+            ],
+            "target_point_relative": [
+              -0.957,
+              -1.157,
+              0.14
+            ],
+            "distance": 0.968,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 0.967,
+            "path_waypoint_count": 2
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n    \"movement\": \"I have reached the top of the first set of stairs (waypoint 1) and am standing on a landing with a metal grate on the floor. To my right is a dark doorway/opening. Straight ahead is an opening (labeled B) leading to an outdoor area with greenery.\",\n    \"observation\": {\n        \"front view\": \"A path leading through an opening (B) towards greenery. There is a metal grate on the floor in front of me. To the right is a dark door frame.\",\n        \"left view\": \"A wall with hieroglyphics and vegetation.\",\n        \"right view\": \"A dark doorway/opening and wooden floorboards.\",\n        \"map\": \"I am at waypoint '1' (labeled 'carpet'). The path continues forward towards waypoint 'B'.\"\n    },\n    \"thought\": \"I have completed P1. Now I need to do P2: 'Go up a few stairs across from the open door.' The dark doorway is to my right. Across from it is the path leading straight ahead through opening B. I can see what looks like stone steps or a path going up in the distance through that opening. I should move forward towards that area.\",\n    \"stuck\": false,\n    \"plan\": \"Move forward through the opening B towards the stairs visible in the distance.\",\n    \"curr_step\": \"Move forward towards the opening B.\",\n    \"action\": \"B\"\n}\n```",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 23,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "2",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I have moved from the landing with the metal grate towards the base of the next set of stairs.",
+          "observation": {
+            "front view": "A narrow passage leading to a short flight of stairs labeled '2'. Above the stairs is a hallway/landing labeled 'B'. To the right is a wall with hieroglyphics.",
+            "left view": "A wall and the side of the stairwell.",
+            "right view": "A wall with hieroglyphics and an open doorway leading outside (visible in previous frames).",
+            "map": "I am near waypoint 'carpet' and '1'. The path leads up towards waypoint '2'."
+          },
+          "thought": "The instruction is to 'Go up a few stairs across from the open door.' I see a set of stairs labeled '2' directly ahead. This matches the description of going up stairs. I need to climb these stairs.",
+          "stuck": 0,
+          "plan": "Move forward and up the stairs labeled '2'.",
+          "curr_step": "Move towards waypoint 2.",
+          "action": 2
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.139
+      },
+      "target_world_position": [
+        0.109,
+        0.286,
+        -1.415
+      ],
+      "planned_path": [
+        [
+          -1.544,
+          0.248,
+          -1.708
+        ],
+        [
+          -0.759,
+          0.243,
+          -1.664
+        ],
+        [
+          0.109,
+          0.286,
+          -1.415
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          -1.544,
+          0.248,
+          -0.508
+        ],
+        "agent_yaw": 1.425,
+        "num_waypoints_raw": 5,
+        "num_waypoints_near": 5,
+        "num_waypoints_far": 0,
+        "num_projected": 5,
+        "num_actions": 5,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 0,
+          "no_path": 1,
+          "occlusion": 2
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              504,
+              333
+            ],
+            "camera_depth": 1.395,
+            "target_point_world": [
+              -0.542,
+              0.277,
+              -1.588
+            ],
+            "target_point_relative": [
+              1.002,
+              -1.08,
+              0.03
+            ],
+            "distance": 1.009,
+            "visited": 1,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.003,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              404,
+              220
+            ],
+            "camera_depth": 2.958,
+            "target_point_world": [
+              1.192,
+              -1.286,
+              -1.35
+            ],
+            "target_point_relative": [
+              2.736,
+              -0.842,
+              -1.533
+            ],
+            "distance": 3.156,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.302
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              426,
+              214
+            ],
+            "camera_depth": 2.829,
+            "target_point_world": [
+              1.163,
+              -0.92,
+              -1.234
+            ],
+            "target_point_relative": [
+              2.707,
+              -0.726,
+              -1.168
+            ],
+            "distance": 2.986,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.627
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              348,
+              164
+            ],
+            "camera_depth": 1.945,
+            "target_point_world": [
+              0.448,
+              -1.348,
+              -0.583
+            ],
+            "target_point_relative": [
+              1.992,
+              -0.075,
+              -1.596
+            ],
+            "distance": 2.789,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              509,
+              266
+            ],
+            "camera_depth": 1.865,
+            "target_point_world": [
+              0.109,
+              0.286,
+              -1.415
+            ],
+            "target_point_relative": [
+              1.653,
+              -0.907,
+              0.038
+            ],
+            "distance": 1.679,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 1.654,
+            "path_waypoint_count": 3
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n    \"movement\": \"I have moved from the landing with the metal grate towards the base of the next set of stairs.\",\n    \"observation\": {\n        \"front view\": \"A narrow passage leading to a short flight of stairs labeled '2'. Above the stairs is a hallway/landing labeled 'B'. To the right is a wall with hieroglyphics.\",\n        \"left view\": \"A wall and the side of the stairwell.\",\n        \"right view\": \"A wall with hieroglyphics and an open doorway leading outside (visible in previous frames).\",\n        \"map\": \"I am near waypoint 'carpet' and '1'. The path leads up towards waypoint '2'.\"\n    },\n    \"thought\": \"The instruction is to 'Go up a few stairs across from the open door.' I see a set of stairs labeled '2' directly ahead. This matches the description of going up stairs. I need to climb these stairs.\",\n    \"stuck\": false,\n    \"plan\": \"Move forward and up the stairs labeled '2'.\",\n    \"curr_step\": \"Move towards waypoint 2.\",\n    \"action\": 2\n}\n```",
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    },
+    {
+      "step": 24,
+      "start_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "stop",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": null,
+      "end_position": [
+        -3.471,
+        -0.59,
+        0.849
+      ]
+    }
+  ],
+  "subtask": {
+    "P1": {
+      "instruction": "Walk up the stairs.",
+      "completed": 1,
+      "plan": "Complete subtask P1. Then proceed towards the open door ahead to find the stairs mentioned in P2.",
+      "record": [
+        {
+          "movement": "I am standing at the bottom of a staircase looking up towards an open doorway with greenery outside. To my left is a wall with hieroglyphics."
+        },
+        {
+          "movement": "I have climbed the stairs and reached the landing at the top, which features a metal grate on the floor and an opening leading to an outdoor area with greenery."
+        }
+      ],
+      "final_coord": [
+        -1.544,
+        0.248,
+        -1.708
+      ],
+      "final_rotation": [
+        [
+          -0.043,
+          -0.5,
+          0.865
+        ],
+        [
+          -0.999,
+          0.022,
+          -0.038
+        ],
+        [
+          -0.0,
+          0.866,
+          0.5
+        ]
+      ]
+    },
+    "P2": {
+      "instruction": "Go up a few stairs across from the open door.",
+      "completed": 0,
+      "plan": "Move forward and up the stairs labeled '2'.",
+      "record": [
+        {
+          "movement": "I have reached the top of the first set of stairs (waypoint 1) and am standing on a landing with a metal grate on the floor. To my right is a dark doorway/opening. Straight ahead is an opening (labeled B) leading to an outdoor area with greenery."
+        },
+        {
+          "movement": "I have reached the top of the first set of stairs (waypoint 1) and am standing on a landing with a metal grate on the floor. To my right is a dark doorway/opening. Straight ahead is an opening (labeled B) leading to an outdoor area with greenery."
+        },
+        {
+          "movement": "I have moved from the landing with the metal grate towards the base of the next set of stairs."
+        }
+      ],
+      "final_coord": null
+    }
+  }
+}

@@ -1,0 +1,6250 @@
+{
+  "metrics": {
+    "distance_to_goal": 4.565,
+    "spl": 0.0,
+    "goal_reached": 0,
+    "finish_status": "error",
+    "traveled_distance": 7.891,
+    "done": 1,
+    "oracle_navigation_error": 2.879,
+    "oracle_success": 1,
+    "oracle_spl": 1.0,
+    "ndtw": 0.382,
+    "sdtw": 0.0
+  },
+  "episode": {
+    "instruction": "Go through the single door on the right.Turn left and go through the door on the left.  Stand by the bottom right side of the massage table. ",
+    "shortest_path": 6.362,
+    "goal_position": [
+      -3.514,
+      1.046,
+      -1.937
+    ],
+    "reference_path": [
+      [
+        -7.15,
+        1.153,
+        -4.945
+      ],
+      [
+        -6.597,
+        1.046,
+        -2.976
+      ],
+      [
+        -6.052,
+        1.046,
+        -0.692
+      ],
+      [
+        -4.62,
+        1.046,
+        -1.408
+      ],
+      [
+        -3.514,
+        1.046,
+        -1.937
+      ]
+    ]
+  },
+  "vlm_responses": [
+    "```json\n{\n\"movement\": \"I am currently standing at the bottom of a landing area facing a wall with a large poster. To my left are stairs going up. To my right is a hallway leading towards a wooden door frame.\",\n\"observation\": {\n    \"front view\": \"A peach-colored wall with a large vertical poster advertising 'Turkish Bath, Sauna, Jacuzzi Pool, Massage'.\",\n    \"left view\": \"A staircase going upwards with wooden steps and a railing.\",\n    \"right view\": \"A hallway extending forward. On the left wall of this hallway is the edge of the poster seen in the front view. On the right wall further down, there is a wooden door frame/opening leading into a room with tiled walls.\",\n    \"map\": \"The map shows my current position at 'START'. To the right (relative to the start orientation), there is a corridor path marked with waypoint 1. To the left is the area near the stairs marked with waypoint 2.\"\n},\n\"thought\": \"The instruction is to 'Go through the single door on the right.' Looking at the Right View, there is a hallway and a wooden door frame/opening on the right side further down. I need to orient myself towards this hallway and move towards that door. Waypoint 1 is located in the direction of this hallway, just past the start point. Moving to waypoint 1 will put me on the path towards the door.\",\n\"stuck\": false,\n\"plan\": \"Turn right to face the hallway seen in the Right View. Move forward through the hallway towards the wooden door frame on the right side. This corresponds to moving towards waypoint 1 and then further into that room.\",\n\"curr_step\": \"I need to move towards the hallway on the right. Waypoint 1 is located in that direction, just past the start point. I will move to waypoint 1 to enter the hallway.\",\n\"action\": 1\n}\n```",
+    "```json\n{\n\"movement\": \"I moved forward slightly and turned left, which brought me closer to the wall with the poster but angled me away from the hallway on the right.\",\n\"observation\": {\n    \"front view\": \"A peach-colored wall with a black rectangular object (possibly a switch or vent) and the edge of a large poster advertising 'Turkish Bath'.\",\n    \"left view\": \"A staircase going upwards.\",\n    \"right view\": \"A hallway extending forward with a wooden door frame/opening at the end. There is a small plant in a pot near the corner.\",\n    \"map\": \"The map shows my current position near 'START'. The path to the right leads into a corridor towards a door.\"\n},\n\"thought\": \"The instruction is to 'Go through the single door on the right.' Currently, I am facing a wall. The hallway containing the target door is visible in my Right View. I need to turn right to face this hallway and proceed towards the door.\",\n\"stuck\": false,\n\"plan\": \"Turn right to face the hallway seen in the Right View. Then move forward through the hallway to reach the single door on the right side of that hallway (or at the end of it, depending on interpretation, but 'single door on the right' usually implies a door situated on the right wall or just generally to the right). Looking at the Right View, there is an opening/doorway straight ahead/slightly right. I will turn right and move forward.\",\n\"curr_step\": \"I need to orient myself towards the hallway. Turning Right (R) is necessary to face the path leading to the door.\",\n\"action\": \"R\"\n}\n```",
+    "```json\n{\n\"movement\": \"I have moved from the start position near the poster and stairs towards the hallway area. I am currently facing a wall with a large poster on my left and a hallway leading to an open doorway straight ahead/slightly right.\",\n\"observation\": {\n    \"front view\": \"A peach-colored wall with a large poster advertising 'Turkish Bath' on the left. Straight ahead is a hallway leading to an open doorway with tiled walls visible inside. There is a small plant in a pot near the corner.\",\n    \"left view\": \"The staircase going upwards and the edge of the poster.\",\n    \"right view\": \"A wall and the continuation of the hallway area.\",\n    \"map\": \"The map shows my current position near waypoint 3 (visited). Waypoint 1 is located in the hallway area ahead, leading towards the doorway.\"\n},\n\"thought\": \"The instruction is to 'Go through the single door on the right.' Based on the Front View, there is a doorway straight ahead/slightly right that leads into a room. This doorway is situated on the right side of the current area (relative to the stairs). I need to proceed down this hallway towards that doorway. Waypoint 1 is located in the path towards this doorway.\",\n\"stuck\": false,\n\"plan\": \"Move forward through the hallway towards the open doorway visible in the Front View. This corresponds to moving towards waypoint 1 and then continuing towards the door.\",\n\"curr_step\": \"I need to move towards the hallway entrance. Waypoint 1 is directly in front of me in the direction of the target doorway.\",\n\"action\": 1\n}\n```",
+    "```json\n{\n\"movement\": \"I have moved down the hallway and am now facing an open doorway leading into a room with tiled walls (likely the Turkish Bath area mentioned on the poster). To my left is a closed wooden door. To my right are large double doors and stairs.\",\n\"observation\": {\n    \"front view\": \"An open doorway straight ahead leading into a room with beige tiled walls. To the left of this opening is a closed wooden door.\",\n    \"left view\": \"A wall with a poster and a potted plant.\",\n    \"right view\": \"Large wooden double doors and a staircase going up.\",\n    \"map\": \"The map shows my current position near waypoint 5. The path leads forward towards the opening at the top of the map.\"\n},\n\"thought\": \"The instruction is 'Go through the single door on the right.' Based on the layout, I have walked down a hallway. The open doorway straight ahead leads into a tiled room (Turkish Bath). This seems to be the intended path. The wooden door is on my left, so it's not the target for P1. The double doors are on my right but they are double doors, not single. The opening ahead looks like a single entrance. I will proceed through this opening.\",\n\"stuck\": false,\n\"plan\": \"Move forward through the open doorway straight ahead into the tiled room.\",\n\"curr_step\": \"I am facing the target doorway. I need to move forward to go through it.\",\n\"action\": 1\n}\n```",
+    "```json\n{\n\"movement\": \"I have moved forward and turned slightly left, now facing a wall with 'ART' written on the floor. To my right is an open doorway leading into a room with a massage table.\",\n\"observation\": {\n    \"front view\": \"A wall with 'ART' written on the floor in white powder/petals. To the right edge of the view is a wooden door frame leading into a room.\",\n    \"left view\": \"A hallway extending to the left with blue light visible at the end.\",\n    \"right view\": \"Looking through the doorway into a massage room with a massage table and tiled walls.\",\n    \"map\": \"The map shows my current position near waypoint 3. The path leads towards the top right area (massage room) where waypoints 6 and 7 are located.\"\n},\n\"thought\": \"The instruction is to 'Go through the single door on the right.' I am currently facing a wall, and the doorway to the massage room is to my right. I need to turn right to face this door and then move forward to enter it.\",\n\"stuck\": false,\n\"plan\": \"Turn right to face the doorway into the massage room. Then move forward through the door.\",\n\"curr_step\": \"I am facing the wall. The target door is to my right. I need to turn right to align with it.\",\n\"action\": \"R\"\n}\n```",
+    "```json\n{\n\"movement\": \"I have moved from the hallway area and am now standing at the threshold of a room containing a large stone massage table. The wooden door frame is visible on both sides of my current view.\",\n\"observation\": {\n    \"front view\": \"Looking directly into a hammam/turkish bath room. There is a large rectangular stone table covered with a white cloth in the center. To the right, there is a sink. The floor is tiled.\",\n    \"left view\": \"A wooden door frame and wall.\",\n    \"right view\": \"A wooden door frame and wall.\",\n    \"map\": \"The map shows my current position (red triangle) just outside the square room containing the table (labeled with waypoints 1, 3, 4, 5, 6). The path leads directly into this room.\"\n},\n\"thought\": \"I am currently at the entrance of the massage room. The instruction 'Go through the single door on the right' corresponds to entering this room. To complete this subtask, I need to move forward into the room towards the massage table.\",\n\"stuck\": false,\n\"plan\": \"Move forward into the massage room towards the stone table. This will complete the first subtask. After entering, I will look for a door on the left as per the next instruction.\",\n\"curr_step\": \"I am at the doorway. Moving forward will take me through it. Waypoint 4 is inside the room near the table.\",\n\"action\": 4\n}\n```",
+    "None",
+    "None"
+  ],
+  "agent_trajectory": [
+    [
+      -7.15,
+      1.153,
+      -4.945
+    ],
+    [
+      -6.622,
+      1.093,
+      -5.325
+    ],
+    [
+      -6.897,
+      1.129,
+      -4.69
+    ],
+    [
+      -6.895,
+      1.113,
+      -4.198
+    ],
+    [
+      -6.685,
+      1.046,
+      -3.445
+    ],
+    [
+      -6.384,
+      1.046,
+      -2.714
+    ],
+    [
+      -6.415,
+      1.046,
+      -2.193
+    ],
+    [
+      -5.879,
+      1.046,
+      -1.701
+    ],
+    [
+      -6.187,
+      1.046,
+      -0.755
+    ],
+    [
+      -6.886,
+      1.046,
+      -0.672
+    ],
+    [
+      -7.4,
+      1.046,
+      -1.187
+    ],
+    [
+      -7.613,
+      1.046,
+      -0.736
+    ],
+    [
+      -7.775,
+      1.046,
+      -0.478
+    ]
+  ],
+  "step_metrics": [
+    {
+      "step": 0,
+      "distance_to_goal": 6.362,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.0,
+      "done": 1,
+      "oracle_navigation_error": 6.362,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.356,
+      "sdtw": 0.0
+    },
+    {
+      "step": 1,
+      "distance_to_goal": 6.561,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.0,
+      "done": 1,
+      "oracle_navigation_error": 6.362,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.358,
+      "sdtw": 0.0
+    },
+    {
+      "step": 2,
+      "distance_to_goal": 6.561,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.653,
+      "done": 1,
+      "oracle_navigation_error": 6.362,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.358,
+      "sdtw": 0.0
+    },
+    {
+      "step": 3,
+      "distance_to_goal": 6.561,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.653,
+      "done": 1,
+      "oracle_navigation_error": 6.362,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.358,
+      "sdtw": 0.0
+    },
+    {
+      "step": 4,
+      "distance_to_goal": 6.561,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.653,
+      "done": 1,
+      "oracle_navigation_error": 6.362,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.358,
+      "sdtw": 0.0
+    },
+    {
+      "step": 5,
+      "distance_to_goal": 6.561,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.653,
+      "done": 1,
+      "oracle_navigation_error": 6.362,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.358,
+      "sdtw": 0.0
+    },
+    {
+      "step": 6,
+      "distance_to_goal": 6.032,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.653,
+      "done": 1,
+      "oracle_navigation_error": 6.032,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.373,
+      "sdtw": 0.0
+    },
+    {
+      "step": 7,
+      "distance_to_goal": 6.032,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.345,
+      "done": 1,
+      "oracle_navigation_error": 6.032,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.373,
+      "sdtw": 0.0
+    },
+    {
+      "step": 8,
+      "distance_to_goal": 5.574,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.345,
+      "done": 1,
+      "oracle_navigation_error": 5.574,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.405,
+      "sdtw": 0.0
+    },
+    {
+      "step": 9,
+      "distance_to_goal": 5.574,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.837,
+      "done": 1,
+      "oracle_navigation_error": 5.574,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.405,
+      "sdtw": 0.0
+    },
+    {
+      "step": 10,
+      "distance_to_goal": 4.8,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.837,
+      "done": 1,
+      "oracle_navigation_error": 4.8,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.464,
+      "sdtw": 0.0
+    },
+    {
+      "step": 11,
+      "distance_to_goal": 4.8,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.622,
+      "done": 1,
+      "oracle_navigation_error": 4.8,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.464,
+      "sdtw": 0.0
+    },
+    {
+      "step": 12,
+      "distance_to_goal": 4.8,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.622,
+      "done": 1,
+      "oracle_navigation_error": 4.8,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.464,
+      "sdtw": 0.0
+    },
+    {
+      "step": 13,
+      "distance_to_goal": 4.011,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.622,
+      "done": 1,
+      "oracle_navigation_error": 4.011,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.531,
+      "sdtw": 0.0
+    },
+    {
+      "step": 14,
+      "distance_to_goal": 4.011,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 3.412,
+      "done": 1,
+      "oracle_navigation_error": 4.011,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.531,
+      "sdtw": 0.0
+    },
+    {
+      "step": 15,
+      "distance_to_goal": 3.587,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 3.412,
+      "done": 1,
+      "oracle_navigation_error": 3.587,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.548,
+      "sdtw": 0.0
+    },
+    {
+      "step": 16,
+      "distance_to_goal": 3.587,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 3.935,
+      "done": 1,
+      "oracle_navigation_error": 3.587,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.548,
+      "sdtw": 0.0
+    },
+    {
+      "step": 17,
+      "distance_to_goal": 2.879,
+      "spl": 1.0,
+      "goal_reached": 1,
+      "finish_status": "success",
+      "traveled_distance": 3.935,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.593,
+      "sdtw": 0.593
+    },
+    {
+      "step": 18,
+      "distance_to_goal": 2.879,
+      "spl": 1.0,
+      "goal_reached": 1,
+      "finish_status": "success",
+      "traveled_distance": 4.662,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.593,
+      "sdtw": 0.593
+    },
+    {
+      "step": 19,
+      "distance_to_goal": 2.965,
+      "spl": 1.0,
+      "goal_reached": 1,
+      "finish_status": "success",
+      "traveled_distance": 4.662,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.572,
+      "sdtw": 0.572
+    },
+    {
+      "step": 20,
+      "distance_to_goal": 2.965,
+      "spl": 1.0,
+      "goal_reached": 1,
+      "finish_status": "success",
+      "traveled_distance": 5.657,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.572,
+      "sdtw": 0.572
+    },
+    {
+      "step": 21,
+      "distance_to_goal": 2.965,
+      "spl": 1.0,
+      "goal_reached": 1,
+      "finish_status": "success",
+      "traveled_distance": 5.657,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.572,
+      "sdtw": 0.572
+    },
+    {
+      "step": 22,
+      "distance_to_goal": 2.965,
+      "spl": 1.0,
+      "goal_reached": 1,
+      "finish_status": "success",
+      "traveled_distance": 5.657,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.572,
+      "sdtw": 0.572
+    },
+    {
+      "step": 23,
+      "distance_to_goal": 2.965,
+      "spl": 1.0,
+      "goal_reached": 1,
+      "finish_status": "success",
+      "traveled_distance": 5.657,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.572,
+      "sdtw": 0.572
+    },
+    {
+      "step": 24,
+      "distance_to_goal": 3.656,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 5.657,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.522,
+      "sdtw": 0.0
+    },
+    {
+      "step": 25,
+      "distance_to_goal": 3.656,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 6.361,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.522,
+      "sdtw": 0.0
+    },
+    {
+      "step": 26,
+      "distance_to_goal": 4.137,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 6.361,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.482,
+      "sdtw": 0.0
+    },
+    {
+      "step": 27,
+      "distance_to_goal": 4.137,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 7.088,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.482,
+      "sdtw": 0.0
+    },
+    {
+      "step": 28,
+      "distance_to_goal": 4.352,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 7.088,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.435,
+      "sdtw": 0.0
+    },
+    {
+      "step": 29,
+      "distance_to_goal": 4.352,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 7.586,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.435,
+      "sdtw": 0.0
+    },
+    {
+      "step": 30,
+      "distance_to_goal": 4.565,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 7.586,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.382,
+      "sdtw": 0.0
+    },
+    {
+      "step": 31,
+      "distance_to_goal": 4.565,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 7.891,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.382,
+      "sdtw": 0.0
+    },
+    {
+      "step": 32,
+      "distance_to_goal": 4.565,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 7.891,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.382,
+      "sdtw": 0.0
+    },
+    {
+      "step": 33,
+      "distance_to_goal": 4.565,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "fp",
+      "traveled_distance": 7.891,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.382,
+      "sdtw": 0.0
+    },
+    {
+      "step": 34,
+      "distance_to_goal": 4.565,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "fp",
+      "traveled_distance": 7.891,
+      "done": 1,
+      "oracle_navigation_error": 2.879,
+      "oracle_success": 1,
+      "oracle_spl": 1.0,
+      "ndtw": 0.382,
+      "sdtw": 0.0
+    }
+  ],
+  "diagnostic_trace": [
+    {
+      "step": 0,
+      "start_position": [
+        -7.149,
+        1.153,
+        -4.945
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "1",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I am currently standing at the bottom of a landing area facing a wall with a large poster. To my left are stairs going up. To my right is a hallway leading towards a wooden door frame.",
+          "observation": {
+            "front view": "A peach-colored wall with a large vertical poster advertising 'Turkish Bath, Sauna, Jacuzzi Pool, Massage'.",
+            "left view": "A staircase going upwards with wooden steps and a railing.",
+            "right view": "A hallway extending forward. On the left wall of this hallway is the edge of the poster seen in the front view. On the right wall further down, there is a wooden door frame/opening leading into a room with tiled walls.",
+            "map": "The map shows my current position at 'START'. To the right (relative to the start orientation), there is a corridor path marked with waypoint 1. To the left is the area near the stairs marked with waypoint 2."
+          },
+          "thought": "The instruction is to 'Go through the single door on the right.' Looking at the Right View, there is a hallway and a wooden door frame/opening on the right side further down. I need to orient myself towards this hallway and move towards that door. Waypoint 1 is located in the direction of this hallway, just past the start point. Moving to waypoint 1 will put me on the path towards the door.",
+          "stuck": 0,
+          "plan": "Turn right to face the hallway seen in the Right View. Move forward through the hallway towards the wooden door frame on the right side. This corresponds to moving towards waypoint 1 and then further into that room.",
+          "curr_step": "I need to move towards the hallway on the right. Waypoint 1 is located in that direction, just past the start point. I will move to waypoint 1 to enter the hallway.",
+          "action": 1
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.814
+      },
+      "target_world_position": [
+        0.528,
+        -0.379,
+        -1.248
+      ],
+      "planned_path": [
+        [
+          0.0,
+          0.0,
+          -1.2
+        ],
+        [
+          0.528,
+          -0.379,
+          -1.248
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "agent_yaw": 0.133,
+        "num_waypoints_raw": 5,
+        "num_waypoints_near": 5,
+        "num_waypoints_far": 0,
+        "num_projected": 5,
+        "num_actions": 5,
+        "skip_counts": {
+          "edge": 3,
+          "distance": 0,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "pso_rank": {
+          "enabled": 1,
+          "num_candidates": 5,
+          "gbest_position_xy": [
+            0.528,
+            -0.379
+          ],
+          "gbest_score": 0.466,
+          "order": [
+            1,
+            2,
+            4,
+            0,
+            3
+          ],
+          "top_candidates": [
+            {
+              "rank": 0,
+              "source_index": 1,
+              "target_point_world": [
+                0.528,
+                -0.379,
+                -1.248
+              ],
+              "heading_score": 0.843,
+              "distance_score": 0.402,
+              "novelty_score": 0.325,
+              "clearance_score": 0.026,
+              "base_score": 0.466,
+              "pso_affinity": 1.0,
+              "final_score": 0.599,
+              "visited": 0
+            },
+            {
+              "rank": 1,
+              "source_index": 2,
+              "target_point_world": [
+                -0.491,
+                -0.371,
+                -1.214
+              ],
+              "heading_score": 0.746,
+              "distance_score": 0.383,
+              "novelty_score": 0.308,
+              "clearance_score": 0.047,
+              "base_score": 0.428,
+              "pso_affinity": 0.878,
+              "final_score": 0.541,
+              "visited": 0
+            },
+            {
+              "rank": 2,
+              "source_index": 4,
+              "target_point_world": [
+                0.538,
+                0.494,
+                -1.304
+              ],
+              "heading_score": 0.214,
+              "distance_score": 0.447,
+              "novelty_score": 0.365,
+              "clearance_score": 0.566,
+              "base_score": 0.373,
+              "pso_affinity": 0.909,
+              "final_score": 0.507,
+              "visited": 0
+            },
+            {
+              "rank": 3,
+              "source_index": 0,
+              "target_point_world": [
+                -0.841,
+                -0.038,
+                -0.924
+              ],
+              "heading_score": 0.456,
+              "distance_score": 0.511,
+              "novelty_score": 0.421,
+              "clearance_score": 0.195,
+              "base_score": 0.411,
+              "pso_affinity": 0.78,
+              "final_score": 0.503,
+              "visited": 0
+            },
+            {
+              "rank": 4,
+              "source_index": 3,
+              "target_point_world": [
+                -0.527,
+                0.497,
+                -1.259
+              ],
+              "heading_score": 0.111,
+              "distance_score": 0.443,
+              "novelty_score": 0.362,
+              "clearance_score": 0.102,
+              "base_score": 0.243,
+              "pso_affinity": 0.79,
+              "final_score": 0.38,
+              "visited": 0
+            }
+          ]
+        },
+        "path_rerank": {
+          "enabled": 1,
+          "num_candidates": 5,
+          "top_k": 5,
+          "weights": {
+            "prior": 0.35,
+            "path_length": 0.35,
+            "detour": 0.2,
+            "revisit": 0.1
+          },
+          "order": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "candidates": [
+            {
+              "local_rank_before": 0,
+              "source_index": 0,
+              "target_point_world": [
+                0.528,
+                -0.379,
+                -1.248
+              ],
+              "valid_path": 1,
+              "path_length": 0.65,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 1.0,
+              "path_norm": 0.772,
+              "detour_norm": 0.0,
+              "rerank_score": -0.02
+            },
+            {
+              "local_rank_before": 1,
+              "source_index": 1,
+              "target_point_world": [
+                -0.491,
+                -0.371,
+                -1.214
+              ],
+              "valid_path": 1,
+              "path_length": 0.615,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.75,
+              "path_norm": 0.731,
+              "detour_norm": 0.0,
+              "rerank_score": -0.093
+            },
+            {
+              "local_rank_before": 2,
+              "source_index": 2,
+              "target_point_world": [
+                0.538,
+                0.494,
+                -1.304
+              ],
+              "valid_path": 1,
+              "path_length": 0.731,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.5,
+              "path_norm": 0.868,
+              "detour_norm": 0.0,
+              "rerank_score": -0.229
+            },
+            {
+              "local_rank_before": 3,
+              "source_index": 3,
+              "target_point_world": [
+                -0.841,
+                -0.038,
+                -0.924
+              ],
+              "valid_path": 1,
+              "path_length": 0.842,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 0.75,
+              "pso_prior": 0.25,
+              "path_norm": 1.0,
+              "detour_norm": 0.0,
+              "rerank_score": -0.337
+            },
+            {
+              "local_rank_before": 4,
+              "source_index": 4,
+              "target_point_world": [
+                -0.527,
+                0.497,
+                -1.259
+              ],
+              "valid_path": 1,
+              "path_length": 0.725,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.0,
+              "path_norm": 0.861,
+              "detour_norm": 0.0,
+              "rerank_score": -0.401
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "rank_after_rerank": 0,
+            "pixel": [
+              573,
+              438
+            ],
+            "camera_depth": 1.01,
+            "target_point_world": [
+              0.528,
+              -0.379,
+              -1.248
+            ],
+            "target_point_relative": [
+              0.528,
+              -1.248,
+              -0.379
+            ],
+            "distance": 0.652,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 0.65,
+            "path_waypoint_count": 2
+          },
+          {
+            "rank_after_rerank": 1,
+            "pixel": [
+              357,
+              475
+            ],
+            "camera_depth": 0.869,
+            "target_point_world": [
+              -0.491,
+              -0.371,
+              -1.214
+            ],
+            "target_point_relative": [
+              -0.491,
+              -1.214,
+              -0.371
+            ],
+            "distance": 0.616,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 0.615,
+            "path_waypoint_count": 2
+          },
+          {
+            "rank_after_rerank": 2,
+            "pixel": [
+              891,
+              1188
+            ],
+            "camera_depth": 0.29,
+            "target_point_world": [
+              0.538,
+              0.494,
+              -1.304
+            ],
+            "target_point_relative": [
+              0.538,
+              -1.304,
+              0.494
+            ],
+            "distance": 0.738,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 3,
+            "pixel": [
+              61,
+              688
+            ],
+            "camera_depth": 0.398,
+            "target_point_world": [
+              -0.841,
+              -0.038,
+              -0.924
+            ],
+            "target_point_relative": [
+              -0.841,
+              -0.924,
+              -0.038
+            ],
+            "distance": 0.886,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 4,
+            "pixel": [
+              -158,
+              2191
+            ],
+            "camera_depth": 0.142,
+            "target_point_world": [
+              -0.527,
+              0.497,
+              -1.259
+            ],
+            "target_point_relative": [
+              -0.527,
+              -1.259,
+              0.497
+            ],
+            "distance": 0.727,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I am currently standing at the bottom of a landing area facing a wall with a large poster. To my left are stairs going up. To my right is a hallway leading towards a wooden door frame.\",\n\"observation\": {\n    \"front view\": \"A peach-colored wall with a large vertical poster advertising 'Turkish Bath, Sauna, Jacuzzi Pool, Massage'.\",\n    \"left view\": \"A staircase going upwards with wooden steps and a railing.\",\n    \"right view\": \"A hallway extending forward. On the left wall of this hallway is the edge of the poster seen in the front view. On the right wall further down, there is a wooden door frame/opening leading into a room with tiled walls.\",\n    \"map\": \"The map shows my current position at 'START'. To the right (relative to the start orientation), there is a corridor path marked with waypoint 1. To the left is the area near the stairs marked with waypoint 2.\"\n},\n\"thought\": \"The instruction is to 'Go through the single door on the right.' Looking at the Right View, there is a hallway and a wooden door frame/opening on the right side further down. I need to orient myself towards this hallway and move towards that door. Waypoint 1 is located in the direction of this hallway, just past the start point. Moving to waypoint 1 will put me on the path towards the door.\",\n\"stuck\": false,\n\"plan\": \"Turn right to face the hallway seen in the Right View. Move forward through the hallway towards the wooden door frame on the right side. This corresponds to moving towards waypoint 1 and then further into that room.\",\n\"curr_step\": \"I need to move towards the hallway on the right. Waypoint 1 is located in that direction, just past the start point. I will move to waypoint 1 to enter the hallway.\",\n\"action\": 1\n}\n```",
+      "end_position": [
+        -7.149,
+        1.153,
+        -4.945
+      ]
+    },
+    {
+      "step": 1,
+      "start_position": [
+        -7.149,
+        1.153,
+        -4.945
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.65,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.622,
+        1.093,
+        -5.325
+      ]
+    },
+    {
+      "step": 2,
+      "start_position": [
+        -6.622,
+        1.093,
+        -5.325
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        -6.622,
+        1.093,
+        -5.325
+      ]
+    },
+    {
+      "step": 3,
+      "start_position": [
+        -6.622,
+        1.093,
+        -5.325
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.291
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": null,
+      "end_position": [
+        -6.622,
+        1.093,
+        -5.325
+      ]
+    },
+    {
+      "step": 4,
+      "start_position": [
+        -6.622,
+        1.093,
+        -5.325
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "R",
+        "selected_action_type": "turn",
+        "parsed_json": {
+          "movement": "I moved forward slightly and turned left, which brought me closer to the wall with the poster but angled me away from the hallway on the right.",
+          "observation": {
+            "front view": "A peach-colored wall with a black rectangular object (possibly a switch or vent) and the edge of a large poster advertising 'Turkish Bath'.",
+            "left view": "A staircase going upwards.",
+            "right view": "A hallway extending forward with a wooden door frame/opening at the end. There is a small plant in a pot near the corner.",
+            "map": "The map shows my current position near 'START'. The path to the right leads into a corridor towards a door."
+          },
+          "thought": "The instruction is to 'Go through the single door on the right.' Currently, I am facing a wall. The hallway containing the target door is visible in my Right View. I need to turn right to face this hallway and proceed towards the door.",
+          "stuck": 0,
+          "plan": "Turn right to face the hallway seen in the Right View. Then move forward through the hallway to reach the single door on the right side of that hallway (or at the end of it, depending on interpretation, but 'single door on the right' usually implies a door situated on the right wall or just generally to the right). Looking at the Right View, there is an opening/doorway straight ahead/slightly right. I will turn right and move forward.",
+          "curr_step": "I need to orient myself towards the hallway. Turning Right (R) is necessary to face the path leading to the door.",
+          "action": "R"
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -1.571
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "turn",
+      "preprocess": {
+        "agent_position": [
+          0.528,
+          -0.379,
+          -0.06
+        ],
+        "agent_yaw": 0.657,
+        "num_waypoints_raw": 2,
+        "num_waypoints_near": 2,
+        "num_waypoints_far": 0,
+        "num_projected": 1,
+        "num_actions": 3,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 0,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "pso_rank": {
+          "enabled": 1,
+          "num_candidates": 2,
+          "gbest_position_xy": [
+            0.542,
+            -0.393
+          ],
+          "gbest_score": 0.387,
+          "order": [
+            0,
+            1
+          ],
+          "top_candidates": [
+            {
+              "rank": 0,
+              "source_index": 0,
+              "target_point_world": [
+                0.542,
+                -0.393,
+                -1.249
+              ],
+              "heading_score": 0.995,
+              "distance_score": 0.141,
+              "novelty_score": 0.003,
+              "clearance_score": 0.013,
+              "base_score": 0.387,
+              "pso_affinity": 1.0,
+              "final_score": 0.54,
+              "visited": 1
+            },
+            {
+              "rank": 1,
+              "source_index": 1,
+              "target_point_world": [
+                0.531,
+                0.503,
+                -1.312
+              ],
+              "heading_score": 0.105,
+              "distance_score": 0.535,
+              "novelty_score": 0.128,
+              "clearance_score": 0.568,
+              "base_score": 0.31,
+              "pso_affinity": 0.905,
+              "final_score": 0.459,
+              "visited": 1
+            }
+          ]
+        },
+        "path_rerank": {
+          "enabled": 1,
+          "num_candidates": 2,
+          "top_k": 2,
+          "weights": {
+            "prior": 0.35,
+            "path_length": 0.35,
+            "detour": 0.2,
+            "revisit": 0.1
+          },
+          "order": [
+            0,
+            1
+          ],
+          "candidates": [
+            {
+              "local_rank_before": 0,
+              "source_index": 0,
+              "target_point_world": [
+                0.542,
+                -0.393,
+                -1.249
+              ],
+              "valid_path": 1,
+              "path_length": 0.019,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 1.0,
+              "path_norm": 0.022,
+              "detour_norm": 0.0,
+              "rerank_score": 0.242
+            },
+            {
+              "local_rank_before": 1,
+              "source_index": 1,
+              "target_point_world": [
+                0.531,
+                0.503,
+                -1.312
+              ],
+              "valid_path": 1,
+              "path_length": 0.882,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.0,
+              "path_norm": 1.0,
+              "detour_norm": 0.0,
+              "rerank_score": -0.45
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "rank_after_rerank": 0,
+            "pixel": [
+              480,
+              601
+            ],
+            "camera_depth": 0.611,
+            "target_point_world": [
+              0.542,
+              -0.393,
+              -1.249
+            ],
+            "target_point_relative": [
+              0.014,
+              -1.189,
+              -0.013
+            ],
+            "distance": 0.022,
+            "visited": 1,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I moved forward slightly and turned left, which brought me closer to the wall with the poster but angled me away from the hallway on the right.\",\n\"observation\": {\n    \"front view\": \"A peach-colored wall with a black rectangular object (possibly a switch or vent) and the edge of a large poster advertising 'Turkish Bath'.\",\n    \"left view\": \"A staircase going upwards.\",\n    \"right view\": \"A hallway extending forward with a wooden door frame/opening at the end. There is a small plant in a pot near the corner.\",\n    \"map\": \"The map shows my current position near 'START'. The path to the right leads into a corridor towards a door.\"\n},\n\"thought\": \"The instruction is to 'Go through the single door on the right.' Currently, I am facing a wall. The hallway containing the target door is visible in my Right View. I need to turn right to face this hallway and proceed towards the door.\",\n\"stuck\": false,\n\"plan\": \"Turn right to face the hallway seen in the Right View. Then move forward through the hallway to reach the single door on the right side of that hallway (or at the end of it, depending on interpretation, but 'single door on the right' usually implies a door situated on the right wall or just generally to the right). Looking at the Right View, there is an opening/doorway straight ahead/slightly right. I will turn right and move forward.\",\n\"curr_step\": \"I need to orient myself towards the hallway. Turning Right (R) is necessary to face the path leading to the door.\",\n\"action\": \"R\"\n}\n```",
+      "end_position": [
+        -6.622,
+        1.093,
+        -5.325
+      ]
+    },
+    {
+      "step": 5,
+      "start_position": [
+        -6.622,
+        1.093,
+        -5.325
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "1",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I have moved from the start position near the poster and stairs towards the hallway area. I am currently facing a wall with a large poster on my left and a hallway leading to an open doorway straight ahead/slightly right.",
+          "observation": {
+            "front view": "A peach-colored wall with a large poster advertising 'Turkish Bath' on the left. Straight ahead is a hallway leading to an open doorway with tiled walls visible inside. There is a small plant in a pot near the corner.",
+            "left view": "The staircase going upwards and the edge of the poster.",
+            "right view": "A wall and the continuation of the hallway area.",
+            "map": "The map shows my current position near waypoint 3 (visited). Waypoint 1 is located in the hallway area ahead, leading towards the doorway."
+          },
+          "thought": "The instruction is to 'Go through the single door on the right.' Based on the Front View, there is a doorway straight ahead/slightly right that leads into a room. This doorway is situated on the right side of the current area (relative to the stairs). I need to proceed down this hallway towards that doorway. Waypoint 1 is located in the path towards this doorway.",
+          "stuck": 0,
+          "plan": "Move forward through the hallway towards the open doorway visible in the Front View. This corresponds to moving towards waypoint 1 and then continuing towards the door.",
+          "curr_step": "I need to move towards the hallway entrance. Waypoint 1 is directly in front of me in the direction of the target doorway.",
+          "action": 1
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -1.323
+      },
+      "target_world_position": [
+        0.465,
+        1.5,
+        -1.294
+      ],
+      "planned_path": [
+        [
+          0.528,
+          -0.379,
+          -1.26
+        ],
+        [
+          0.253,
+          0.255,
+          -1.311
+        ],
+        [
+          0.255,
+          0.747,
+          -1.321
+        ],
+        [
+          0.465,
+          1.5,
+          -1.294
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          0.528,
+          -0.379,
+          -0.06
+        ],
+        "agent_yaw": 2.228,
+        "num_waypoints_raw": 19,
+        "num_waypoints_near": 19,
+        "num_waypoints_far": 0,
+        "num_projected": 19,
+        "num_actions": 8,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 11,
+          "no_path": 0,
+          "occlusion": 2
+        },
+        "pso_rank": {
+          "enabled": 1,
+          "num_candidates": 19,
+          "gbest_position_xy": [
+            0.464,
+            1.5
+          ],
+          "gbest_score": 0.785,
+          "order": [
+            10,
+            18,
+            13,
+            3,
+            4,
+            12,
+            8,
+            2,
+            1,
+            7,
+            15,
+            14,
+            17,
+            9,
+            5,
+            0,
+            6,
+            16,
+            11
+          ],
+          "top_candidates": [
+            {
+              "rank": 0,
+              "source_index": 10,
+              "target_point_world": [
+                0.465,
+                1.5,
+                -1.294
+              ],
+              "heading_score": 0.792,
+              "distance_score": 0.993,
+              "novelty_score": 0.785,
+              "clearance_score": 0.513,
+              "base_score": 0.785,
+              "pso_affinity": 1.0,
+              "final_score": 0.839,
+              "visited": 0
+            },
+            {
+              "rank": 1,
+              "source_index": 18,
+              "target_point_world": [
+                0.077,
+                1.91,
+                -0.983
+              ],
+              "heading_score": 0.723,
+              "distance_score": 0.946,
+              "novelty_score": 0.956,
+              "clearance_score": 0.439,
+              "base_score": 0.768,
+              "pso_affinity": 0.961,
+              "final_score": 0.817,
+              "visited": 0
+            },
+            {
+              "rank": 2,
+              "source_index": 13,
+              "target_point_world": [
+                0.473,
+                2.492,
+                -1.28
+              ],
+              "heading_score": 0.798,
+              "distance_score": 0.684,
+              "novelty_score": 1.0,
+              "clearance_score": 0.289,
+              "base_score": 0.708,
+              "pso_affinity": 0.884,
+              "final_score": 0.752,
+              "visited": 0
+            },
+            {
+              "rank": 3,
+              "source_index": 3,
+              "target_point_world": [
+                0.277,
+                2.619,
+                -0.955
+              ],
+              "heading_score": 0.771,
+              "distance_score": 0.601,
+              "novelty_score": 1.0,
+              "clearance_score": 0.056,
+              "base_score": 0.631,
+              "pso_affinity": 0.851,
+              "final_score": 0.686,
+              "visited": 0
+            },
+            {
+              "rank": 4,
+              "source_index": 4,
+              "target_point_world": [
+                -0.474,
+                2.336,
+                -1.26
+              ],
+              "heading_score": 0.649,
+              "distance_score": 0.671,
+              "novelty_score": 1.0,
+              "clearance_score": 0.0,
+              "base_score": 0.595,
+              "pso_affinity": 0.821,
+              "final_score": 0.651,
+              "visited": 0
+            },
+            {
+              "rank": 5,
+              "source_index": 12,
+              "target_point_world": [
+                0.531,
+                0.503,
+                -1.312
+              ],
+              "heading_score": 0.807,
+              "distance_score": 0.535,
+              "novelty_score": 0.128,
+              "clearance_score": 0.568,
+              "base_score": 0.555,
+              "pso_affinity": 0.883,
+              "final_score": 0.637,
+              "visited": 1
+            },
+            {
+              "rank": 6,
+              "source_index": 8,
+              "target_point_world": [
+                2.253,
+                4.629,
+                -1.352
+              ],
+              "heading_score": 0.918,
+              "distance_score": 0.004,
+              "novelty_score": 1.0,
+              "clearance_score": 0.958,
+              "base_score": 0.714,
+              "pso_affinity": 0.197,
+              "final_score": 0.585,
+              "visited": 0
+            },
+            {
+              "rank": 7,
+              "source_index": 2,
+              "target_point_world": [
+                1.471,
+                4.796,
+                -0.967
+              ],
+              "heading_score": 0.871,
+              "distance_score": 0.005,
+              "novelty_score": 1.0,
+              "clearance_score": 0.886,
+              "base_score": 0.683,
+              "pso_affinity": 0.227,
+              "final_score": 0.569,
+              "visited": 0
+            },
+            {
+              "rank": 8,
+              "source_index": 1,
+              "target_point_world": [
+                0.952,
+                4.74,
+                -0.97
+              ],
+              "heading_score": 0.837,
+              "distance_score": 0.007,
+              "novelty_score": 1.0,
+              "clearance_score": 0.883,
+              "base_score": 0.671,
+              "pso_affinity": 0.261,
+              "final_score": 0.569,
+              "visited": 0
+            },
+            {
+              "rank": 9,
+              "source_index": 7,
+              "target_point_world": [
+                1.458,
+                4.587,
+                -1.308
+              ],
+              "heading_score": 0.873,
+              "distance_score": 0.009,
+              "novelty_score": 1.0,
+              "clearance_score": 0.747,
+              "base_score": 0.657,
+              "pso_affinity": 0.269,
+              "final_score": 0.56,
+              "visited": 0
+            },
+            {
+              "rank": 10,
+              "source_index": 15,
+              "target_point_world": [
+                0.937,
+                4.493,
+                -1.324
+              ],
+              "heading_score": 0.837,
+              "distance_score": 0.015,
+              "novelty_score": 1.0,
+              "clearance_score": 0.637,
+              "base_score": 0.624,
+              "pso_affinity": 0.317,
+              "final_score": 0.548,
+              "visited": 0
+            },
+            {
+              "rank": 11,
+              "source_index": 14,
+              "target_point_world": [
+                1.36,
+                3.542,
+                -1.296
+              ],
+              "heading_score": 0.881,
+              "distance_score": 0.133,
+              "novelty_score": 1.0,
+              "clearance_score": 0.0,
+              "base_score": 0.542,
+              "pso_affinity": 0.537,
+              "final_score": 0.54,
+              "visited": 0
+            },
+            {
+              "rank": 12,
+              "source_index": 17,
+              "target_point_world": [
+                2.001,
+                4.965,
+                -0.944
+              ],
+              "heading_score": 0.9,
+              "distance_score": 0.002,
+              "novelty_score": 1.0,
+              "clearance_score": 0.721,
+              "base_score": 0.66,
+              "pso_affinity": 0.166,
+              "final_score": 0.536,
+              "visited": 0
+            },
+            {
+              "rank": 13,
+              "source_index": 9,
+              "target_point_world": [
+                2.073,
+                3.831,
+                -1.34
+              ],
+              "heading_score": 0.923,
+              "distance_score": 0.046,
+              "novelty_score": 1.0,
+              "clearance_score": 0.253,
+              "base_score": 0.585,
+              "pso_affinity": 0.367,
+              "final_score": 0.53,
+              "visited": 0
+            },
+            {
+              "rank": 14,
+              "source_index": 5,
+              "target_point_world": [
+                0.972,
+                5.37,
+                -1.333
+              ],
+              "heading_score": 0.835,
+              "distance_score": 0.001,
+              "novelty_score": 1.0,
+              "clearance_score": 0.318,
+              "base_score": 0.556,
+              "pso_affinity": 0.149,
+              "final_score": 0.454,
+              "visited": 0
+            },
+            {
+              "rank": 15,
+              "source_index": 0,
+              "target_point_world": [
+                0.981,
+                5.508,
+                -0.939
+              ],
+              "heading_score": 0.835,
+              "distance_score": 0.0,
+              "novelty_score": 1.0,
+              "clearance_score": 0.179,
+              "base_score": 0.528,
+              "pso_affinity": 0.13,
+              "final_score": 0.429,
+              "visited": 0
+            },
+            {
+              "rank": 16,
+              "source_index": 6,
+              "target_point_world": [
+                1.492,
+                5.559,
+                -1.298
+              ],
+              "heading_score": 0.865,
+              "distance_score": 0.0,
+              "novelty_score": 1.0,
+              "clearance_score": 0.123,
+              "base_score": 0.527,
+              "pso_affinity": 0.112,
+              "final_score": 0.423,
+              "visited": 0
+            },
+            {
+              "rank": 17,
+              "source_index": 16,
+              "target_point_world": [
+                2.174,
+                5.642,
+                -1.303
+              ],
+              "heading_score": 0.899,
+              "distance_score": 0.0,
+              "novelty_score": 1.0,
+              "clearance_score": 0.046,
+              "base_score": 0.524,
+              "pso_affinity": 0.081,
+              "final_score": 0.413,
+              "visited": 0
+            },
+            {
+              "rank": 18,
+              "source_index": 11,
+              "target_point_world": [
+                0.542,
+                -0.393,
+                -1.249
+              ],
+              "heading_score": 0.572,
+              "distance_score": 0.141,
+              "novelty_score": 0.003,
+              "clearance_score": 0.013,
+              "base_score": 0.239,
+              "pso_affinity": 0.638,
+              "final_score": 0.339,
+              "visited": 1
+            }
+          ]
+        },
+        "path_rerank": {
+          "enabled": 1,
+          "num_candidates": 19,
+          "top_k": 12,
+          "weights": {
+            "prior": 0.35,
+            "path_length": 0.35,
+            "detour": 0.2,
+            "revisit": 0.1
+          },
+          "order": [
+            0,
+            2,
+            5,
+            4,
+            3,
+            1,
+            6,
+            9,
+            11,
+            10,
+            7,
+            8,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "candidates": [
+            {
+              "local_rank_before": 0,
+              "source_index": 0,
+              "target_point_world": [
+                0.465,
+                1.5,
+                -1.294
+              ],
+              "valid_path": 1,
+              "path_length": 1.965,
+              "detour_ratio": 1.045,
+              "revisit_ratio": 0.556,
+              "pso_prior": 1.0,
+              "path_norm": 0.343,
+              "detour_norm": 0.143,
+              "rerank_score": 0.146
+            },
+            {
+              "local_rank_before": 1,
+              "source_index": 1,
+              "target_point_world": [
+                0.077,
+                1.91,
+                -0.983
+              ],
+              "valid_path": 1,
+              "path_length": 3.067,
+              "detour_ratio": 1.315,
+              "revisit_ratio": 0.357,
+              "pso_prior": 0.909,
+              "path_norm": 0.535,
+              "detour_norm": 1.0,
+              "rerank_score": -0.105
+            },
+            {
+              "local_rank_before": 2,
+              "source_index": 2,
+              "target_point_world": [
+                0.473,
+                2.492,
+                -1.28
+              ],
+              "valid_path": 1,
+              "path_length": 2.963,
+              "detour_ratio": 1.032,
+              "revisit_ratio": 0.357,
+              "pso_prior": 0.818,
+              "path_norm": 0.517,
+              "detour_norm": 0.101,
+              "rerank_score": 0.05
+            },
+            {
+              "local_rank_before": 3,
+              "source_index": 3,
+              "target_point_world": [
+                0.277,
+                2.619,
+                -0.955
+              ],
+              "valid_path": 1,
+              "path_length": 3.399,
+              "detour_ratio": 1.13,
+              "revisit_ratio": 0.312,
+              "pso_prior": 0.727,
+              "path_norm": 0.593,
+              "detour_norm": 0.412,
+              "rerank_score": -0.066
+            },
+            {
+              "local_rank_before": 4,
+              "source_index": 4,
+              "target_point_world": [
+                -0.474,
+                2.336,
+                -1.26
+              ],
+              "valid_path": 1,
+              "path_length": 3.014,
+              "detour_ratio": 1.041,
+              "revisit_ratio": 0.357,
+              "pso_prior": 0.636,
+              "path_norm": 0.525,
+              "detour_norm": 0.131,
+              "rerank_score": -0.023
+            },
+            {
+              "local_rank_before": 5,
+              "source_index": 5,
+              "target_point_world": [
+                0.531,
+                0.503,
+                -1.312
+              ],
+              "valid_path": 1,
+              "path_length": 0.882,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.545,
+              "path_norm": 0.154,
+              "detour_norm": 0.0,
+              "rerank_score": 0.037
+            },
+            {
+              "local_rank_before": 6,
+              "source_index": 6,
+              "target_point_world": [
+                2.253,
+                4.629,
+                -1.352
+              ],
+              "valid_path": 1,
+              "path_length": 5.736,
+              "detour_ratio": 1.083,
+              "revisit_ratio": 0.111,
+              "pso_prior": 0.455,
+              "path_norm": 1.0,
+              "detour_norm": 0.263,
+              "rerank_score": -0.255
+            },
+            {
+              "local_rank_before": 7,
+              "source_index": 7,
+              "target_point_world": [
+                1.471,
+                4.796,
+                -0.967
+              ],
+              "valid_path": 0,
+              "path_length": null,
+              "detour_ratio": null,
+              "revisit_ratio": 0.0,
+              "pso_prior": 0.364,
+              "path_norm": null,
+              "detour_norm": 1.0,
+              "rerank_score": null
+            },
+            {
+              "local_rank_before": 8,
+              "source_index": 8,
+              "target_point_world": [
+                0.952,
+                4.74,
+                -0.97
+              ],
+              "valid_path": 0,
+              "path_length": null,
+              "detour_ratio": null,
+              "revisit_ratio": 0.0,
+              "pso_prior": 0.273,
+              "path_norm": null,
+              "detour_norm": 1.0,
+              "rerank_score": null
+            },
+            {
+              "local_rank_before": 9,
+              "source_index": 9,
+              "target_point_world": [
+                1.458,
+                4.587,
+                -1.308
+              ],
+              "valid_path": 1,
+              "path_length": 5.25,
+              "detour_ratio": 1.039,
+              "revisit_ratio": 0.12,
+              "pso_prior": 0.182,
+              "path_norm": 0.915,
+              "detour_norm": 0.124,
+              "rerank_score": -0.294
+            },
+            {
+              "local_rank_before": 10,
+              "source_index": 10,
+              "target_point_world": [
+                0.937,
+                4.493,
+                -1.324
+              ],
+              "valid_path": 1,
+              "path_length": 5.193,
+              "detour_ratio": 1.062,
+              "revisit_ratio": 0.12,
+              "pso_prior": 0.091,
+              "path_norm": 0.905,
+              "detour_norm": 0.197,
+              "rerank_score": -0.336
+            },
+            {
+              "local_rank_before": 11,
+              "source_index": 11,
+              "target_point_world": [
+                1.36,
+                3.542,
+                -1.296
+              ],
+              "valid_path": 1,
+              "path_length": 4.183,
+              "detour_ratio": 1.044,
+              "revisit_ratio": 0.158,
+              "pso_prior": 0.0,
+              "path_norm": 0.729,
+              "detour_norm": 0.138,
+              "rerank_score": -0.299
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "rank_after_rerank": 0,
+            "pixel": [
+              673,
+              335
+            ],
+            "camera_depth": 1.567,
+            "target_point_world": [
+              0.465,
+              1.5,
+              -1.294
+            ],
+            "target_point_relative": [
+              -0.063,
+              -1.233,
+              1.879
+            ],
+            "distance": 1.881,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.965,
+            "path_waypoint_count": 4
+          },
+          {
+            "rank_after_rerank": 1,
+            "pixel": [
+              699,
+              289
+            ],
+            "camera_depth": 2.091,
+            "target_point_world": [
+              0.473,
+              2.492,
+              -1.28
+            ],
+            "target_point_relative": [
+              -0.054,
+              -1.22,
+              2.871
+            ],
+            "distance": 2.872,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.963,
+            "path_waypoint_count": 6
+          },
+          {
+            "rank_after_rerank": 2,
+            "pixel": [
+              606,
+              417
+            ],
+            "camera_depth": 1.094,
+            "target_point_world": [
+              0.531,
+              0.503,
+              -1.312
+            ],
+            "target_point_relative": [
+              0.003,
+              -1.251,
+              0.882
+            ],
+            "distance": 0.884,
+            "visited": 1,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 0.882,
+            "path_waypoint_count": 2
+          },
+          {
+            "rank_after_rerank": 3,
+            "pixel": [
+              887,
+              359
+            ],
+            "camera_depth": 1.348,
+            "target_point_world": [
+              -0.474,
+              2.336,
+              -1.26
+            ],
+            "target_point_relative": [
+              -1.002,
+              -1.199,
+              2.715
+            ],
+            "distance": 2.894,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 3.014,
+            "path_waypoint_count": 6
+          },
+          {
+            "rank_after_rerank": 4,
+            "pixel": [
+              750,
+              265
+            ],
+            "camera_depth": 1.861,
+            "target_point_world": [
+              0.277,
+              2.619,
+              -0.955
+            ],
+            "target_point_relative": [
+              -0.251,
+              -0.894,
+              2.999
+            ],
+            "distance": 3.025,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 5,
+            "pixel": [
+              784,
+              310
+            ],
+            "camera_depth": 1.362,
+            "target_point_world": [
+              0.077,
+              1.91,
+              -0.983
+            ],
+            "target_point_relative": [
+              -0.451,
+              -0.922,
+              2.289
+            ],
+            "distance": 2.349,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 3.067,
+            "path_waypoint_count": 6
+          },
+          {
+            "rank_after_rerank": 6,
+            "pixel": [
+              609,
+              221
+            ],
+            "camera_depth": 4.478,
+            "target_point_world": [
+              2.253,
+              4.629,
+              -1.352
+            ],
+            "target_point_relative": [
+              1.726,
+              -1.291,
+              5.008
+            ],
+            "distance": 5.298,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 2.755
+          },
+          {
+            "rank_after_rerank": 7,
+            "pixel": [
+              652,
+              228
+            ],
+            "camera_depth": 3.888,
+            "target_point_world": [
+              1.458,
+              4.587,
+              -1.308
+            ],
+            "target_point_relative": [
+              0.93,
+              -1.248,
+              4.966
+            ],
+            "distance": 5.052,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 8,
+            "pixel": [
+              638,
+              242
+            ],
+            "camera_depth": 3.263,
+            "target_point_world": [
+              1.36,
+              3.542,
+              -1.296
+            ],
+            "target_point_relative": [
+              0.833,
+              -1.236,
+              3.921
+            ],
+            "distance": 4.009,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 9,
+            "pixel": [
+              685,
+              238
+            ],
+            "camera_depth": 3.489,
+            "target_point_world": [
+              0.937,
+              4.493,
+              -1.324
+            ],
+            "target_point_relative": [
+              0.409,
+              -1.263,
+              4.873
+            ],
+            "distance": 4.89,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 10,
+            "pixel": [
+              662,
+              209
+            ],
+            "camera_depth": 3.836,
+            "target_point_world": [
+              1.471,
+              4.796,
+              -0.967
+            ],
+            "target_point_relative": [
+              0.943,
+              -0.906,
+              5.175
+            ],
+            "distance": 5.268,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 11,
+            "pixel": [
+              698,
+              215
+            ],
+            "camera_depth": 3.452,
+            "target_point_world": [
+              0.952,
+              4.74,
+              -0.97
+            ],
+            "target_point_relative": [
+              0.424,
+              -0.909,
+              5.119
+            ],
+            "distance": 5.145,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 12,
+            "pixel": [
+              634,
+              202
+            ],
+            "camera_depth": 4.278,
+            "target_point_world": [
+              2.001,
+              4.965,
+              -0.944
+            ],
+            "target_point_relative": [
+              1.473,
+              -0.883,
+              5.344
+            ],
+            "distance": 5.553,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 13,
+            "pixel": [
+              601,
+              230
+            ],
+            "camera_depth": 3.926,
+            "target_point_world": [
+              2.073,
+              3.831,
+              -1.34
+            ],
+            "target_point_relative": [
+              1.545,
+              -1.28,
+              4.21
+            ],
+            "distance": 4.485,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 2.768
+          },
+          {
+            "rank_after_rerank": 14,
+            "pixel": [
+              693,
+              228
+            ],
+            "camera_depth": 3.98,
+            "target_point_world": [
+              0.972,
+              5.37,
+              -1.333
+            ],
+            "target_point_relative": [
+              0.444,
+              -1.272,
+              5.749
+            ],
+            "distance": 5.767,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 15,
+            "pixel": [
+              705,
+              207
+            ],
+            "camera_depth": 3.863,
+            "target_point_world": [
+              0.981,
+              5.508,
+              -0.939
+            ],
+            "target_point_relative": [
+              0.453,
+              -0.878,
+              5.887
+            ],
+            "distance": 5.913,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 16,
+            "pixel": [
+              665,
+              219
+            ],
+            "camera_depth": 4.42,
+            "target_point_world": [
+              1.492,
+              5.559,
+              -1.298
+            ],
+            "target_point_relative": [
+              0.964,
+              -1.238,
+              5.938
+            ],
+            "distance": 6.016,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 17,
+            "pixel": [
+              631,
+              213
+            ],
+            "camera_depth": 4.934,
+            "target_point_world": [
+              2.174,
+              5.642,
+              -1.303
+            ],
+            "target_point_relative": [
+              1.646,
+              -1.242,
+              6.021
+            ],
+            "distance": 6.242,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 18,
+            "pixel": [
+              473,
+              612
+            ],
+            "camera_depth": 0.597,
+            "target_point_world": [
+              0.542,
+              -0.393,
+              -1.249
+            ],
+            "target_point_relative": [
+              0.014,
+              -1.189,
+              -0.013
+            ],
+            "distance": 0.022,
+            "visited": 1,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I have moved from the start position near the poster and stairs towards the hallway area. I am currently facing a wall with a large poster on my left and a hallway leading to an open doorway straight ahead/slightly right.\",\n\"observation\": {\n    \"front view\": \"A peach-colored wall with a large poster advertising 'Turkish Bath' on the left. Straight ahead is a hallway leading to an open doorway with tiled walls visible inside. There is a small plant in a pot near the corner.\",\n    \"left view\": \"The staircase going upwards and the edge of the poster.\",\n    \"right view\": \"A wall and the continuation of the hallway area.\",\n    \"map\": \"The map shows my current position near waypoint 3 (visited). Waypoint 1 is located in the hallway area ahead, leading towards the doorway.\"\n},\n\"thought\": \"The instruction is to 'Go through the single door on the right.' Based on the Front View, there is a doorway straight ahead/slightly right that leads into a room. This doorway is situated on the right side of the current area (relative to the stairs). I need to proceed down this hallway towards that doorway. Waypoint 1 is located in the path towards this doorway.\",\n\"stuck\": false,\n\"plan\": \"Move forward through the hallway towards the open doorway visible in the Front View. This corresponds to moving towards waypoint 1 and then continuing towards the door.\",\n\"curr_step\": \"I need to move towards the hallway entrance. Waypoint 1 is directly in front of me in the direction of the target doorway.\",\n\"action\": 1\n}\n```",
+      "end_position": [
+        -6.622,
+        1.093,
+        -5.325
+      ]
+    },
+    {
+      "step": 6,
+      "start_position": [
+        -6.622,
+        1.093,
+        -5.325
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.692,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.897,
+        1.129,
+        -4.69
+      ]
+    },
+    {
+      "step": 7,
+      "start_position": [
+        -6.897,
+        1.129,
+        -4.69
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.413
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.897,
+        1.129,
+        -4.69
+      ]
+    },
+    {
+      "step": 8,
+      "start_position": [
+        -6.897,
+        1.129,
+        -4.69
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.492,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.895,
+        1.113,
+        -4.198
+      ]
+    },
+    {
+      "step": 9,
+      "start_position": [
+        -6.895,
+        1.113,
+        -4.198
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.267
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.895,
+        1.113,
+        -4.198
+      ]
+    },
+    {
+      "step": 10,
+      "start_position": [
+        -6.895,
+        1.113,
+        -4.198
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.782,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.685,
+        1.046,
+        -3.445
+      ]
+    },
+    {
+      "step": 11,
+      "start_position": [
+        -6.685,
+        1.046,
+        -3.445
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        -6.685,
+        1.046,
+        -3.445
+      ]
+    },
+    {
+      "step": 12,
+      "start_position": [
+        -6.685,
+        1.046,
+        -3.445
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.119
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": null,
+      "end_position": [
+        -6.685,
+        1.046,
+        -3.445
+      ]
+    },
+    {
+      "step": 13,
+      "start_position": [
+        -6.685,
+        1.046,
+        -3.445
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "1",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I have moved down the hallway and am now facing an open doorway leading into a room with tiled walls (likely the Turkish Bath area mentioned on the poster). To my left is a closed wooden door. To my right are large double doors and stairs.",
+          "observation": {
+            "front view": "An open doorway straight ahead leading into a room with beige tiled walls. To the left of this opening is a closed wooden door.",
+            "left view": "A wall with a poster and a potted plant.",
+            "right view": "Large wooden double doors and a staircase going up.",
+            "map": "The map shows my current position near waypoint 5. The path leads forward towards the opening at the top of the map."
+          },
+          "thought": "The instruction is 'Go through the single door on the right.' Based on the layout, I have walked down a hallway. The open doorway straight ahead leads into a tiled room (Turkish Bath). This seems to be the intended path. The wooden door is on my left, so it's not the target for P1. The double doors are on my right but they are double doors, not single. The opening ahead looks like a single entrance. I will proceed through this opening.",
+          "stuck": 0,
+          "plan": "Move forward through the open doorway straight ahead into the tiled room.",
+          "curr_step": "I am facing the target doorway. I need to move forward to go through it.",
+          "action": 1
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.79,
+        "theta": 0.0
+      },
+      "target_world_position": [
+        0.962,
+        4.191,
+        -1.317
+      ],
+      "planned_path": [
+        [
+          0.465,
+          1.5,
+          -1.307
+        ],
+        [
+          0.742,
+          2.24,
+          -1.301
+        ],
+        [
+          0.735,
+          2.752,
+          -1.294
+        ],
+        [
+          1.27,
+          3.244,
+          -1.311
+        ],
+        [
+          0.962,
+          4.191,
+          -1.317
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          0.465,
+          1.5,
+          -0.107
+        ],
+        "agent_yaw": 2.751,
+        "num_waypoints_raw": 15,
+        "num_waypoints_near": 15,
+        "num_waypoints_far": 0,
+        "num_projected": 15,
+        "num_actions": 8,
+        "skip_counts": {
+          "edge": 2,
+          "distance": 8,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "pso_rank": {
+          "enabled": 1,
+          "num_candidates": 15,
+          "gbest_position_xy": [
+            1.528,
+            4.769
+          ],
+          "gbest_score": 0.821,
+          "order": [
+            5,
+            12,
+            2,
+            1,
+            14,
+            6,
+            0,
+            3,
+            4,
+            8,
+            13,
+            11,
+            10,
+            7,
+            9
+          ],
+          "top_candidates": [
+            {
+              "rank": 0,
+              "source_index": 5,
+              "target_point_world": [
+                1.529,
+                4.768,
+                -0.987
+              ],
+              "heading_score": 0.999,
+              "distance_score": 0.356,
+              "novelty_score": 1.0,
+              "clearance_score": 0.912,
+              "base_score": 0.821,
+              "pso_affinity": 1.0,
+              "final_score": 0.866,
+              "visited": 0
+            },
+            {
+              "rank": 1,
+              "source_index": 12,
+              "target_point_world": [
+                1.496,
+                4.478,
+                -1.306
+              ],
+              "heading_score": 0.999,
+              "distance_score": 0.516,
+              "novelty_score": 1.0,
+              "clearance_score": 0.636,
+              "base_score": 0.806,
+              "pso_affinity": 0.989,
+              "final_score": 0.852,
+              "visited": 0
+            },
+            {
+              "rank": 2,
+              "source_index": 2,
+              "target_point_world": [
+                2.142,
+                4.721,
+                -1.325
+              ],
+              "heading_score": 0.998,
+              "distance_score": 0.264,
+              "novelty_score": 1.0,
+              "clearance_score": 0.966,
+              "base_score": 0.809,
+              "pso_affinity": 0.954,
+              "final_score": 0.845,
+              "visited": 0
+            },
+            {
+              "rank": 3,
+              "source_index": 1,
+              "target_point_world": [
+                0.962,
+                4.191,
+                -1.317
+              ],
+              "heading_score": 0.989,
+              "distance_score": 0.763,
+              "novelty_score": 1.0,
+              "clearance_score": 0.336,
+              "base_score": 0.804,
+              "pso_affinity": 0.921,
+              "final_score": 0.833,
+              "visited": 0
+            },
+            {
+              "rank": 4,
+              "source_index": 14,
+              "target_point_world": [
+                2.15,
+                4.791,
+                -0.986
+              ],
+              "heading_score": 0.998,
+              "distance_score": 0.237,
+              "novelty_score": 1.0,
+              "clearance_score": 0.895,
+              "base_score": 0.788,
+              "pso_affinity": 0.953,
+              "final_score": 0.829,
+              "visited": 0
+            },
+            {
+              "rank": 5,
+              "source_index": 6,
+              "target_point_world": [
+                1.361,
+                3.475,
+                -1.304
+              ],
+              "heading_score": 1.0,
+              "distance_score": 0.986,
+              "novelty_score": 1.0,
+              "clearance_score": 0.0,
+              "base_score": 0.796,
+              "pso_affinity": 0.808,
+              "final_score": 0.799,
+              "visited": 0
+            },
+            {
+              "rank": 6,
+              "source_index": 0,
+              "target_point_world": [
+                1.571,
+                5.441,
+                -1.28
+              ],
+              "heading_score": 0.997,
+              "distance_score": 0.112,
+              "novelty_score": 1.0,
+              "clearance_score": 0.24,
+              "base_score": 0.625,
+              "pso_affinity": 0.945,
+              "final_score": 0.705,
+              "visited": 0
+            },
+            {
+              "rank": 7,
+              "source_index": 3,
+              "target_point_world": [
+                1.581,
+                5.568,
+                -0.947
+              ],
+              "heading_score": 0.996,
+              "distance_score": 0.085,
+              "novelty_score": 1.0,
+              "clearance_score": 0.112,
+              "base_score": 0.592,
+              "pso_affinity": 0.923,
+              "final_score": 0.675,
+              "visited": 0
+            },
+            {
+              "rank": 8,
+              "source_index": 4,
+              "target_point_world": [
+                2.321,
+                5.534,
+                -1.263
+              ],
+              "heading_score": 1.0,
+              "distance_score": 0.051,
+              "novelty_score": 1.0,
+              "clearance_score": 0.155,
+              "base_score": 0.594,
+              "pso_affinity": 0.859,
+              "final_score": 0.66,
+              "visited": 0
+            },
+            {
+              "rank": 9,
+              "source_index": 8,
+              "target_point_world": [
+                1.39,
+                2.461,
+                -1.24
+              ],
+              "heading_score": 0.965,
+              "distance_score": 0.801,
+              "novelty_score": 0.667,
+              "clearance_score": 0.0,
+              "base_score": 0.671,
+              "pso_affinity": 0.513,
+              "final_score": 0.632,
+              "visited": 0
+            },
+            {
+              "rank": 10,
+              "source_index": 13,
+              "target_point_world": [
+                2.41,
+                5.671,
+                -0.942
+              ],
+              "heading_score": 0.999,
+              "distance_score": 0.034,
+              "novelty_score": 1.0,
+              "clearance_score": 0.019,
+              "base_score": 0.562,
+              "pso_affinity": 0.82,
+              "final_score": 0.626,
+              "visited": 0
+            },
+            {
+              "rank": 11,
+              "source_index": 11,
+              "target_point_world": [
+                0.43,
+                2.496,
+                -1.262
+              ],
+              "heading_score": 0.955,
+              "distance_score": 0.604,
+              "novelty_score": 0.498,
+              "clearance_score": 0.252,
+              "base_score": 0.636,
+              "pso_affinity": 0.451,
+              "final_score": 0.589,
+              "visited": 0
+            },
+            {
+              "rank": 12,
+              "source_index": 10,
+              "target_point_world": [
+                -0.454,
+                2.328,
+                -1.233
+              ],
+              "heading_score": 0.668,
+              "distance_score": 0.747,
+              "novelty_score": 0.618,
+              "clearance_score": 0.0,
+              "base_score": 0.544,
+              "pso_affinity": 0.291,
+              "final_score": 0.481,
+              "visited": 0
+            },
+            {
+              "rank": 13,
+              "source_index": 7,
+              "target_point_world": [
+                0.517,
+                1.5,
+                -1.306
+              ],
+              "heading_score": 0.689,
+              "distance_score": 0.15,
+              "novelty_score": 0.009,
+              "clearance_score": 0.46,
+              "base_score": 0.372,
+              "pso_affinity": 0.231,
+              "final_score": 0.337,
+              "visited": 1
+            },
+            {
+              "rank": 14,
+              "source_index": 9,
+              "target_point_world": [
+                -0.512,
+                1.494,
+                -1.254
+              ],
+              "heading_score": 0.307,
+              "distance_score": 0.592,
+              "novelty_score": 0.488,
+              "clearance_score": 0.091,
+              "base_score": 0.371,
+              "pso_affinity": 0.156,
+              "final_score": 0.317,
+              "visited": 0
+            }
+          ]
+        },
+        "path_rerank": {
+          "enabled": 1,
+          "num_candidates": 15,
+          "top_k": 12,
+          "weights": {
+            "prior": 0.35,
+            "path_length": 0.35,
+            "detour": 0.2,
+            "revisit": 0.1
+          },
+          "order": [
+            1,
+            2,
+            3,
+            5,
+            9,
+            11,
+            6,
+            0,
+            4,
+            8,
+            7,
+            10,
+            12,
+            13,
+            14
+          ],
+          "candidates": [
+            {
+              "local_rank_before": 0,
+              "source_index": 0,
+              "target_point_world": [
+                1.529,
+                4.768,
+                -0.987
+              ],
+              "valid_path": 1,
+              "path_length": 5.222,
+              "detour_ratio": 1.52,
+              "revisit_ratio": 0.16,
+              "pso_prior": 1.0,
+              "path_norm": 0.898,
+              "detour_norm": 1.0,
+              "rerank_score": -0.18
+            },
+            {
+              "local_rank_before": 1,
+              "source_index": 1,
+              "target_point_world": [
+                1.496,
+                4.478,
+                -1.306
+              ],
+              "valid_path": 1,
+              "path_length": 3.302,
+              "detour_ratio": 1.048,
+              "revisit_ratio": 0.235,
+              "pso_prior": 0.909,
+              "path_norm": 0.568,
+              "detour_norm": 0.092,
+              "rerank_score": 0.078
+            },
+            {
+              "local_rank_before": 2,
+              "source_index": 2,
+              "target_point_world": [
+                2.142,
+                4.721,
+                -1.325
+              ],
+              "valid_path": 1,
+              "path_length": 3.85,
+              "detour_ratio": 1.06,
+              "revisit_ratio": 0.211,
+              "pso_prior": 0.818,
+              "path_norm": 0.662,
+              "detour_norm": 0.116,
+              "rerank_score": 0.01
+            },
+            {
+              "local_rank_before": 3,
+              "source_index": 3,
+              "target_point_world": [
+                0.962,
+                4.191,
+                -1.317
+              ],
+              "valid_path": 1,
+              "path_length": 3.025,
+              "detour_ratio": 1.106,
+              "revisit_ratio": 0.286,
+              "pso_prior": 0.727,
+              "path_norm": 0.52,
+              "detour_norm": 0.203,
+              "rerank_score": 0.003
+            },
+            {
+              "local_rank_before": 4,
+              "source_index": 4,
+              "target_point_world": [
+                2.15,
+                4.791,
+                -0.986
+              ],
+              "valid_path": 1,
+              "path_length": 4.857,
+              "detour_ratio": 1.314,
+              "revisit_ratio": 0.174,
+              "pso_prior": 0.636,
+              "path_norm": 0.835,
+              "detour_norm": 0.604,
+              "rerank_score": -0.208
+            },
+            {
+              "local_rank_before": 5,
+              "source_index": 5,
+              "target_point_world": [
+                1.361,
+                3.475,
+                -1.304
+              ],
+              "valid_path": 1,
+              "path_length": 2.259,
+              "detour_ratio": 1.042,
+              "revisit_ratio": 0.364,
+              "pso_prior": 0.545,
+              "path_norm": 0.388,
+              "detour_norm": 0.08,
+              "rerank_score": 0.003
+            },
+            {
+              "local_rank_before": 6,
+              "source_index": 6,
+              "target_point_world": [
+                1.571,
+                5.441,
+                -1.28
+              ],
+              "valid_path": 1,
+              "path_length": 4.293,
+              "detour_ratio": 1.049,
+              "revisit_ratio": 0.19,
+              "pso_prior": 0.455,
+              "path_norm": 0.738,
+              "detour_norm": 0.094,
+              "rerank_score": -0.137
+            },
+            {
+              "local_rank_before": 7,
+              "source_index": 7,
+              "target_point_world": [
+                1.581,
+                5.568,
+                -0.947
+              ],
+              "valid_path": 1,
+              "path_length": 5.818,
+              "detour_ratio": 1.379,
+              "revisit_ratio": 0.148,
+              "pso_prior": 0.364,
+              "path_norm": 1.0,
+              "detour_norm": 0.73,
+              "rerank_score": -0.384
+            },
+            {
+              "local_rank_before": 8,
+              "source_index": 8,
+              "target_point_world": [
+                2.321,
+                5.534,
+                -1.263
+              ],
+              "valid_path": 1,
+              "path_length": 4.671,
+              "detour_ratio": 1.052,
+              "revisit_ratio": 0.174,
+              "pso_prior": 0.273,
+              "path_norm": 0.803,
+              "detour_norm": 0.1,
+              "rerank_score": -0.223
+            },
+            {
+              "local_rank_before": 9,
+              "source_index": 9,
+              "target_point_world": [
+                1.39,
+                2.461,
+                -1.24
+              ],
+              "valid_path": 1,
+              "path_length": 1.337,
+              "detour_ratio": 1.003,
+              "revisit_ratio": 0.5,
+              "pso_prior": 0.182,
+              "path_norm": 0.23,
+              "detour_norm": 0.005,
+              "rerank_score": -0.068
+            },
+            {
+              "local_rank_before": 10,
+              "source_index": 10,
+              "target_point_world": [
+                2.41,
+                5.671,
+                -0.942
+              ],
+              "valid_path": 1,
+              "path_length": 5.799,
+              "detour_ratio": 1.26,
+              "revisit_ratio": 0.148,
+              "pso_prior": 0.091,
+              "path_norm": 0.997,
+              "detour_norm": 0.5,
+              "rerank_score": -0.432
+            },
+            {
+              "local_rank_before": 11,
+              "source_index": 11,
+              "target_point_world": [
+                0.43,
+                2.496,
+                -1.262
+              ],
+              "valid_path": 1,
+              "path_length": 0.996,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 0.75,
+              "pso_prior": 0.0,
+              "path_norm": 0.171,
+              "detour_norm": 0.0,
+              "rerank_score": -0.135
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "rank_after_rerank": 0,
+            "pixel": [
+              490,
+              238
+            ],
+            "camera_depth": 3.324,
+            "target_point_world": [
+              1.496,
+              4.478,
+              -1.306
+            ],
+            "target_point_relative": [
+              1.031,
+              -1.199,
+              2.978
+            ],
+            "distance": 3.151,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 1,
+            "pixel": [
+              462,
+              229
+            ],
+            "camera_depth": 3.741,
+            "target_point_world": [
+              2.142,
+              4.721,
+              -1.325
+            ],
+            "target_point_relative": [
+              1.677,
+              -1.218,
+              3.221
+            ],
+            "distance": 3.631,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 2,
+            "pixel": [
+              518,
+              250
+            ],
+            "camera_depth": 2.923,
+            "target_point_world": [
+              0.962,
+              4.191,
+              -1.317
+            ],
+            "target_point_relative": [
+              0.497,
+              -1.21,
+              2.69
+            ],
+            "distance": 2.736,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 3.025,
+            "path_waypoint_count": 5
+          },
+          {
+            "rank_after_rerank": 3,
+            "pixel": [
+              473,
+              266
+            ],
+            "camera_depth": 2.475,
+            "target_point_world": [
+              1.361,
+              3.475,
+              -1.304
+            ],
+            "target_point_relative": [
+              0.897,
+              -1.196,
+              1.974
+            ],
+            "distance": 2.169,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.259,
+            "path_waypoint_count": 4
+          },
+          {
+            "rank_after_rerank": 4,
+            "pixel": [
+              420,
+              313
+            ],
+            "camera_depth": 1.641,
+            "target_point_world": [
+              1.39,
+              2.461,
+              -1.24
+            ],
+            "target_point_relative": [
+              0.925,
+              -1.133,
+              0.961
+            ],
+            "distance": 1.336,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 1.337,
+            "path_waypoint_count": 3
+          },
+          {
+            "rank_after_rerank": 5,
+            "pixel": [
+              539,
+              349
+            ],
+            "camera_depth": 1.363,
+            "target_point_world": [
+              0.43,
+              2.496,
+              -1.262
+            ],
+            "target_point_relative": [
+              -0.035,
+              -1.155,
+              0.996
+            ],
+            "distance": 0.997,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 0.996,
+            "path_waypoint_count": 2
+          },
+          {
+            "rank_after_rerank": 6,
+            "pixel": [
+              503,
+              220
+            ],
+            "camera_depth": 4.106,
+            "target_point_world": [
+              1.571,
+              5.441,
+              -1.28
+            ],
+            "target_point_relative": [
+              1.107,
+              -1.172,
+              3.94
+            ],
+            "distance": 4.093,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 7,
+            "pixel": [
+              495,
+              214
+            ],
+            "camera_depth": 3.407,
+            "target_point_world": [
+              1.529,
+              4.768,
+              -0.987
+            ],
+            "target_point_relative": [
+              1.064,
+              -0.879,
+              3.268
+            ],
+            "distance": 3.451,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 8,
+            "pixel": [
+              463,
+              210
+            ],
+            "camera_depth": 3.63,
+            "target_point_world": [
+              2.15,
+              4.791,
+              -0.986
+            ],
+            "target_point_relative": [
+              1.685,
+              -0.879,
+              3.291
+            ],
+            "distance": 3.711,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 9,
+            "pixel": [
+              471,
+              215
+            ],
+            "camera_depth": 4.42,
+            "target_point_world": [
+              2.321,
+              5.534,
+              -1.263
+            ],
+            "target_point_relative": [
+              1.857,
+              -1.155,
+              4.034
+            ],
+            "distance": 4.441,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 10,
+            "pixel": [
+              505,
+              202
+            ],
+            "camera_depth": 4.046,
+            "target_point_world": [
+              1.581,
+              5.568,
+              -0.947
+            ],
+            "target_point_relative": [
+              1.117,
+              -0.84,
+              4.068
+            ],
+            "distance": 4.234,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 11,
+            "pixel": [
+              470,
+              198
+            ],
+            "camera_depth": 4.399,
+            "target_point_world": [
+              2.41,
+              5.671,
+              -0.942
+            ],
+            "target_point_relative": [
+              1.945,
+              -0.835,
+              4.171
+            ],
+            "distance": 4.617,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 12,
+            "pixel": [
+              730,
+              435
+            ],
+            "camera_depth": 0.923,
+            "target_point_world": [
+              -0.454,
+              2.328,
+              -1.233
+            ],
+            "target_point_relative": [
+              -0.919,
+              -1.126,
+              0.828
+            ],
+            "distance": 1.239,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 1.24,
+            "path_waypoint_count": 3
+          },
+          {
+            "rank_after_rerank": 13,
+            "pixel": [
+              464,
+              601
+            ],
+            "camera_depth": 0.617,
+            "target_point_world": [
+              0.517,
+              1.5,
+              -1.306
+            ],
+            "target_point_relative": [
+              0.053,
+              -1.199,
+              -0.0
+            ],
+            "distance": 0.053,
+            "visited": 1,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 14,
+            "pixel": [
+              1206,
+              1223
+            ],
+            "camera_depth": 0.246,
+            "target_point_world": [
+              -0.512,
+              1.494,
+              -1.254
+            ],
+            "target_point_relative": [
+              -0.977,
+              -1.147,
+              -0.006
+            ],
+            "distance": 0.978,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I have moved down the hallway and am now facing an open doorway leading into a room with tiled walls (likely the Turkish Bath area mentioned on the poster). To my left is a closed wooden door. To my right are large double doors and stairs.\",\n\"observation\": {\n    \"front view\": \"An open doorway straight ahead leading into a room with beige tiled walls. To the left of this opening is a closed wooden door.\",\n    \"left view\": \"A wall with a poster and a potted plant.\",\n    \"right view\": \"Large wooden double doors and a staircase going up.\",\n    \"map\": \"The map shows my current position near waypoint 5. The path leads forward towards the opening at the top of the map.\"\n},\n\"thought\": \"The instruction is 'Go through the single door on the right.' Based on the layout, I have walked down a hallway. The open doorway straight ahead leads into a tiled room (Turkish Bath). This seems to be the intended path. The wooden door is on my left, so it's not the target for P1. The double doors are on my right but they are double doors, not single. The opening ahead looks like a single entrance. I will proceed through this opening.\",\n\"stuck\": false,\n\"plan\": \"Move forward through the open doorway straight ahead into the tiled room.\",\n\"curr_step\": \"I am facing the target doorway. I need to move forward to go through it.\",\n\"action\": 1\n}\n```",
+      "end_position": [
+        -6.384,
+        1.046,
+        -2.714
+      ]
+    },
+    {
+      "step": 14,
+      "start_position": [
+        -6.384,
+        1.046,
+        -2.714
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.449
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.384,
+        1.046,
+        -2.714
+      ]
+    },
+    {
+      "step": 15,
+      "start_position": [
+        -6.384,
+        1.046,
+        -2.714
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.522,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.415,
+        1.046,
+        -2.193
+      ]
+    },
+    {
+      "step": 16,
+      "start_position": [
+        -6.415,
+        1.046,
+        -2.193
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.887
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.415,
+        1.046,
+        -2.193
+      ]
+    },
+    {
+      "step": 17,
+      "start_position": [
+        -6.415,
+        1.046,
+        -2.193
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.727,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -5.879,
+        1.046,
+        -1.701
+      ]
+    },
+    {
+      "step": 18,
+      "start_position": [
+        -5.879,
+        1.046,
+        -1.701
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -1.143
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -5.879,
+        1.046,
+        -1.701
+      ]
+    },
+    {
+      "step": 19,
+      "start_position": [
+        -5.879,
+        1.046,
+        -1.701
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.995,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.187,
+        1.046,
+        -0.755
+      ]
+    },
+    {
+      "step": 20,
+      "start_position": [
+        -6.187,
+        1.046,
+        -0.755
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        -6.187,
+        1.046,
+        -0.755
+      ]
+    },
+    {
+      "step": 21,
+      "start_position": [
+        -6.187,
+        1.046,
+        -0.755
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.182
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": null,
+      "end_position": [
+        -6.187,
+        1.046,
+        -0.755
+      ]
+    },
+    {
+      "step": 22,
+      "start_position": [
+        -6.187,
+        1.046,
+        -0.755
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "R",
+        "selected_action_type": "turn",
+        "parsed_json": {
+          "movement": "I have moved forward and turned slightly left, now facing a wall with 'ART' written on the floor. To my right is an open doorway leading into a room with a massage table.",
+          "observation": {
+            "front view": "A wall with 'ART' written on the floor in white powder/petals. To the right edge of the view is a wooden door frame leading into a room.",
+            "left view": "A hallway extending to the left with blue light visible at the end.",
+            "right view": "Looking through the doorway into a massage room with a massage table and tiled walls.",
+            "map": "The map shows my current position near waypoint 3. The path leads towards the top right area (massage room) where waypoints 6 and 7 are located."
+          },
+          "thought": "The instruction is to 'Go through the single door on the right.' I am currently facing a wall, and the doorway to the massage room is to my right. I need to turn right to face this door and then move forward to enter it.",
+          "stuck": 0,
+          "plan": "Turn right to face the doorway into the massage room. Then move forward through the door.",
+          "curr_step": "I am facing the wall. The target door is to my right. I need to turn right to align with it.",
+          "action": "R"
+        },
+        "valid": 1,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -1.571
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "turn",
+      "preprocess": {
+        "agent_position": [
+          0.962,
+          4.191,
+          -0.107
+        ],
+        "agent_yaw": -3.008,
+        "num_waypoints_raw": 12,
+        "num_waypoints_near": 12,
+        "num_waypoints_far": 0,
+        "num_projected": 12,
+        "num_actions": 10,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 1,
+          "no_path": 0,
+          "occlusion": 4
+        },
+        "pso_rank": {
+          "enabled": 1,
+          "num_candidates": 12,
+          "gbest_position_xy": [
+            2.504,
+            5.512
+          ],
+          "gbest_score": 0.751,
+          "order": [
+            2,
+            0,
+            10,
+            9,
+            4,
+            8,
+            11,
+            5,
+            1,
+            7,
+            3,
+            6
+          ],
+          "top_candidates": [
+            {
+              "rank": 0,
+              "source_index": 2,
+              "target_point_world": [
+                2.5,
+                5.509,
+                -1.254
+              ],
+              "heading_score": 0.772,
+              "distance_score": 1.0,
+              "novelty_score": 1.0,
+              "clearance_score": 0.156,
+              "base_score": 0.751,
+              "pso_affinity": 1.0,
+              "final_score": 0.814,
+              "visited": 0
+            },
+            {
+              "rank": 1,
+              "source_index": 0,
+              "target_point_world": [
+                1.506,
+                5.501,
+                -1.254
+              ],
+              "heading_score": 0.932,
+              "distance_score": 0.844,
+              "novelty_score": 0.709,
+              "clearance_score": 0.186,
+              "base_score": 0.716,
+              "pso_affinity": 0.883,
+              "final_score": 0.758,
+              "visited": 0
+            },
+            {
+              "rank": 2,
+              "source_index": 10,
+              "target_point_world": [
+                4.226,
+                6.77,
+                -1.196
+              ],
+              "heading_score": 0.755,
+              "distance_score": 0.097,
+              "novelty_score": 1.0,
+              "clearance_score": 0.899,
+              "base_score": 0.668,
+              "pso_affinity": 0.566,
+              "final_score": 0.643,
+              "visited": 0
+            },
+            {
+              "rank": 3,
+              "source_index": 9,
+              "target_point_world": [
+                3.621,
+                6.292,
+                -1.226
+              ],
+              "heading_score": 0.755,
+              "distance_score": 0.381,
+              "novelty_score": 1.0,
+              "clearance_score": 0.144,
+              "base_score": 0.588,
+              "pso_affinity": 0.793,
+              "final_score": 0.639,
+              "visited": 0
+            },
+            {
+              "rank": 4,
+              "source_index": 4,
+              "target_point_world": [
+                1.518,
+                4.528,
+                -1.347
+              ],
+              "heading_score": 0.7,
+              "distance_score": 0.402,
+              "novelty_score": 0.325,
+              "clearance_score": 0.66,
+              "base_score": 0.543,
+              "pso_affinity": 0.785,
+              "final_score": 0.603,
+              "visited": 0
+            },
+            {
+              "rank": 5,
+              "source_index": 8,
+              "target_point_world": [
+                4.709,
+                7.152,
+                -1.172
+              ],
+              "heading_score": 0.755,
+              "distance_score": 0.021,
+              "novelty_score": 1.0,
+              "clearance_score": 1.0,
+              "base_score": 0.67,
+              "pso_affinity": 0.389,
+              "final_score": 0.599,
+              "visited": 0
+            },
+            {
+              "rank": 6,
+              "source_index": 11,
+              "target_point_world": [
+                -0.817,
+                5.019,
+                -0.878
+              ],
+              "heading_score": 0.77,
+              "distance_score": 0.999,
+              "novelty_score": 0.981,
+              "clearance_score": 0.0,
+              "base_score": 0.715,
+              "pso_affinity": 0.244,
+              "final_score": 0.598,
+              "visited": 0
+            },
+            {
+              "rank": 7,
+              "source_index": 5,
+              "target_point_world": [
+                5.314,
+                7.63,
+                -1.142
+              ],
+              "heading_score": 0.755,
+              "distance_score": 0.002,
+              "novelty_score": 1.0,
+              "clearance_score": 1.0,
+              "base_score": 0.665,
+              "pso_affinity": 0.213,
+              "final_score": 0.552,
+              "visited": 0
+            },
+            {
+              "rank": 8,
+              "source_index": 1,
+              "target_point_world": [
+                -1.546,
+                5.372,
+                -1.304
+              ],
+              "heading_score": 0.771,
+              "distance_score": 0.742,
+              "novelty_score": 1.0,
+              "clearance_score": 0.163,
+              "base_score": 0.688,
+              "pso_affinity": 0.128,
+              "final_score": 0.548,
+              "visited": 0
+            },
+            {
+              "rank": 9,
+              "source_index": 7,
+              "target_point_world": [
+                -0.698,
+                4.469,
+                -0.938
+              ],
+              "heading_score": 0.648,
+              "distance_score": 0.951,
+              "novelty_score": 0.842,
+              "clearance_score": 0.0,
+              "base_score": 0.633,
+              "pso_affinity": 0.242,
+              "final_score": 0.535,
+              "visited": 0
+            },
+            {
+              "rank": 10,
+              "source_index": 3,
+              "target_point_world": [
+                -0.499,
+                4.444,
+                -1.302
+              ],
+              "heading_score": 0.65,
+              "distance_score": 0.875,
+              "novelty_score": 0.741,
+              "clearance_score": 0.039,
+              "base_score": 0.602,
+              "pso_affinity": 0.281,
+              "final_score": 0.522,
+              "visited": 0
+            },
+            {
+              "rank": 11,
+              "source_index": 6,
+              "target_point_world": [
+                -1.779,
+                5.462,
+                -0.954
+              ],
+              "heading_score": 0.769,
+              "distance_score": 0.593,
+              "novelty_score": 1.0,
+              "clearance_score": 0.066,
+              "base_score": 0.631,
+              "pso_affinity": 0.101,
+              "final_score": 0.498,
+              "visited": 0
+            }
+          ]
+        },
+        "path_rerank": {
+          "enabled": 1,
+          "num_candidates": 12,
+          "top_k": 12,
+          "weights": {
+            "prior": 0.35,
+            "path_length": 0.35,
+            "detour": 0.2,
+            "revisit": 0.1
+          },
+          "order": [
+            1,
+            0,
+            4,
+            10,
+            8,
+            6,
+            9,
+            11,
+            7,
+            5,
+            2,
+            3
+          ],
+          "candidates": [
+            {
+              "local_rank_before": 0,
+              "source_index": 0,
+              "target_point_world": [
+                2.5,
+                5.509,
+                -1.254
+              ],
+              "valid_path": 1,
+              "path_length": 2.035,
+              "detour_ratio": 1.004,
+              "revisit_ratio": 0.333,
+              "pso_prior": 1.0,
+              "path_norm": 0.495,
+              "detour_norm": 0.01,
+              "rerank_score": 0.141
+            },
+            {
+              "local_rank_before": 1,
+              "source_index": 1,
+              "target_point_world": [
+                1.506,
+                5.501,
+                -1.254
+              ],
+              "valid_path": 1,
+              "path_length": 1.423,
+              "detour_ratio": 1.003,
+              "revisit_ratio": 0.429,
+              "pso_prior": 0.909,
+              "path_norm": 0.346,
+              "detour_norm": 0.007,
+              "rerank_score": 0.153
+            },
+            {
+              "local_rank_before": 2,
+              "source_index": 2,
+              "target_point_world": [
+                4.226,
+                6.77,
+                -1.196
+              ],
+              "valid_path": 0,
+              "path_length": null,
+              "detour_ratio": null,
+              "revisit_ratio": 0.0,
+              "pso_prior": 0.818,
+              "path_norm": null,
+              "detour_norm": 1.0,
+              "rerank_score": null
+            },
+            {
+              "local_rank_before": 3,
+              "source_index": 3,
+              "target_point_world": [
+                3.621,
+                6.292,
+                -1.226
+              ],
+              "valid_path": 0,
+              "path_length": null,
+              "detour_ratio": null,
+              "revisit_ratio": 0.0,
+              "pso_prior": 0.727,
+              "path_norm": null,
+              "detour_norm": 1.0,
+              "rerank_score": null
+            },
+            {
+              "local_rank_before": 4,
+              "source_index": 4,
+              "target_point_world": [
+                1.518,
+                4.528,
+                -1.347
+              ],
+              "valid_path": 1,
+              "path_length": 0.65,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.636,
+              "path_norm": 0.158,
+              "detour_norm": 0.0,
+              "rerank_score": 0.067
+            },
+            {
+              "local_rank_before": 5,
+              "source_index": 5,
+              "target_point_world": [
+                4.709,
+                7.152,
+                -1.172
+              ],
+              "valid_path": 0,
+              "path_length": null,
+              "detour_ratio": null,
+              "revisit_ratio": 0.0,
+              "pso_prior": 0.545,
+              "path_norm": null,
+              "detour_norm": 1.0,
+              "rerank_score": null
+            },
+            {
+              "local_rank_before": 6,
+              "source_index": 6,
+              "target_point_world": [
+                -0.817,
+                5.019,
+                -0.878
+              ],
+              "valid_path": 1,
+              "path_length": 2.82,
+              "detour_ratio": 1.437,
+              "revisit_ratio": 0.231,
+              "pso_prior": 0.455,
+              "path_norm": 0.686,
+              "detour_norm": 1.0,
+              "rerank_score": -0.304
+            },
+            {
+              "local_rank_before": 7,
+              "source_index": 7,
+              "target_point_world": [
+                5.314,
+                7.63,
+                -1.142
+              ],
+              "valid_path": 0,
+              "path_length": null,
+              "detour_ratio": null,
+              "revisit_ratio": 0.0,
+              "pso_prior": 0.364,
+              "path_norm": null,
+              "detour_norm": 1.0,
+              "rerank_score": null
+            },
+            {
+              "local_rank_before": 8,
+              "source_index": 8,
+              "target_point_world": [
+                -1.546,
+                5.372,
+                -1.304
+              ],
+              "valid_path": 1,
+              "path_length": 2.903,
+              "detour_ratio": 1.047,
+              "revisit_ratio": 0.231,
+              "pso_prior": 0.273,
+              "path_norm": 0.707,
+              "detour_norm": 0.108,
+              "rerank_score": -0.197
+            },
+            {
+              "local_rank_before": 9,
+              "source_index": 9,
+              "target_point_world": [
+                -0.698,
+                4.469,
+                -0.938
+              ],
+              "valid_path": 1,
+              "path_length": 2.279,
+              "detour_ratio": 1.354,
+              "revisit_ratio": 0.3,
+              "pso_prior": 0.182,
+              "path_norm": 0.555,
+              "detour_norm": 0.81,
+              "rerank_score": -0.323
+            },
+            {
+              "local_rank_before": 10,
+              "source_index": 10,
+              "target_point_world": [
+                -0.499,
+                4.444,
+                -1.302
+              ],
+              "valid_path": 1,
+              "path_length": 1.485,
+              "detour_ratio": 1.001,
+              "revisit_ratio": 0.429,
+              "pso_prior": 0.091,
+              "path_norm": 0.361,
+              "detour_norm": 0.003,
+              "rerank_score": -0.138
+            },
+            {
+              "local_rank_before": 11,
+              "source_index": 11,
+              "target_point_world": [
+                -1.779,
+                5.462,
+                -0.954
+              ],
+              "valid_path": 1,
+              "path_length": 4.11,
+              "detour_ratio": 1.36,
+              "revisit_ratio": 0.211,
+              "pso_prior": 0.0,
+              "path_norm": 1.0,
+              "detour_norm": 0.824,
+              "rerank_score": -0.536
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "rank_after_rerank": 0,
+            "pixel": [
+              393,
+              316
+            ],
+            "camera_depth": 1.636,
+            "target_point_world": [
+              1.506,
+              5.501,
+              -1.254
+            ],
+            "target_point_relative": [
+              0.543,
+              -1.147,
+              1.31
+            ],
+            "distance": 1.419,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.423,
+            "path_waypoint_count": 3
+          },
+          {
+            "rank_after_rerank": 1,
+            "pixel": [
+              258,
+              327
+            ],
+            "camera_depth": 1.528,
+            "target_point_world": [
+              2.5,
+              5.509,
+              -1.254
+            ],
+            "target_point_relative": [
+              1.538,
+              -1.146,
+              1.319
+            ],
+            "distance": 2.027,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.035,
+            "path_waypoint_count": 4
+          },
+          {
+            "rank_after_rerank": 2,
+            "pixel": [
+              339,
+              491
+            ],
+            "camera_depth": 0.845,
+            "target_point_world": [
+              1.518,
+              4.528,
+              -1.347
+            ],
+            "target_point_relative": [
+              0.556,
+              -1.24,
+              0.337
+            ],
+            "distance": 0.652,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 0.65,
+            "path_waypoint_count": 2
+          },
+          {
+            "rank_after_rerank": 3,
+            "pixel": [
+              766,
+              434
+            ],
+            "camera_depth": 0.983,
+            "target_point_world": [
+              -0.499,
+              4.444,
+              -1.302
+            ],
+            "target_point_relative": [
+              -1.461,
+              -1.194,
+              0.253
+            ],
+            "distance": 1.483,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 1.485,
+            "path_waypoint_count": 3
+          },
+          {
+            "rank_after_rerank": 4,
+            "pixel": [
+              723,
+              299
+            ],
+            "camera_depth": 1.901,
+            "target_point_world": [
+              -1.546,
+              5.372,
+              -1.304
+            ],
+            "target_point_relative": [
+              -2.508,
+              -1.197,
+              1.182
+            ],
+            "distance": 2.772,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 2.903,
+            "path_waypoint_count": 5
+          },
+          {
+            "rank_after_rerank": 5,
+            "pixel": [
+              732,
+              291
+            ],
+            "camera_depth": 1.301,
+            "target_point_world": [
+              -0.817,
+              5.019,
+              -0.878
+            ],
+            "target_point_relative": [
+              -1.779,
+              -0.77,
+              0.829
+            ],
+            "distance": 2.009,
+            "visited": 0,
+            "selected_action_key": "6",
+            "skip_reason": null,
+            "path_length": 2.82,
+            "path_waypoint_count": 6
+          },
+          {
+            "rank_after_rerank": 6,
+            "pixel": [
+              858,
+              380
+            ],
+            "camera_depth": 0.846,
+            "target_point_world": [
+              -0.698,
+              4.469,
+              -0.938
+            ],
+            "target_point_relative": [
+              -1.66,
+              -0.831,
+              0.279
+            ],
+            "distance": 1.723,
+            "visited": 0,
+            "selected_action_key": "7",
+            "skip_reason": null,
+            "path_length": 2.279,
+            "path_waypoint_count": 5
+          },
+          {
+            "rank_after_rerank": 7,
+            "pixel": [
+              756,
+              261
+            ],
+            "camera_depth": 1.83,
+            "target_point_world": [
+              -1.779,
+              5.462,
+              -0.954
+            ],
+            "target_point_relative": [
+              -2.741,
+              -0.847,
+              1.271
+            ],
+            "distance": 3.042,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 8,
+            "pixel": [
+              160,
+              235
+            ],
+            "camera_depth": 2.969,
+            "target_point_world": [
+              5.314,
+              7.63,
+              -1.142
+            ],
+            "target_point_relative": [
+              4.351,
+              -1.035,
+              3.439
+            ],
+            "distance": 5.549,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.456
+          },
+          {
+            "rank_after_rerank": 9,
+            "pixel": [
+              171,
+              247
+            ],
+            "camera_depth": 2.643,
+            "target_point_world": [
+              4.709,
+              7.152,
+              -1.172
+            ],
+            "target_point_relative": [
+              3.747,
+              -1.065,
+              2.961
+            ],
+            "distance": 4.778,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.583
+          },
+          {
+            "rank_after_rerank": 10,
+            "pixel": [
+              181,
+              260
+            ],
+            "camera_depth": 2.383,
+            "target_point_world": [
+              4.226,
+              6.77,
+              -1.196
+            ],
+            "target_point_relative": [
+              3.264,
+              -1.089,
+              2.579
+            ],
+            "distance": 4.161,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.647
+          },
+          {
+            "rank_after_rerank": 11,
+            "pixel": [
+              198,
+              280
+            ],
+            "camera_depth": 2.057,
+            "target_point_world": [
+              3.621,
+              6.292,
+              -1.226
+            ],
+            "target_point_relative": [
+              2.659,
+              -1.118,
+              2.102
+            ],
+            "distance": 3.39,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.758
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I have moved forward and turned slightly left, now facing a wall with 'ART' written on the floor. To my right is an open doorway leading into a room with a massage table.\",\n\"observation\": {\n    \"front view\": \"A wall with 'ART' written on the floor in white powder/petals. To the right edge of the view is a wooden door frame leading into a room.\",\n    \"left view\": \"A hallway extending to the left with blue light visible at the end.\",\n    \"right view\": \"Looking through the doorway into a massage room with a massage table and tiled walls.\",\n    \"map\": \"The map shows my current position near waypoint 3. The path leads towards the top right area (massage room) where waypoints 6 and 7 are located.\"\n},\n\"thought\": \"The instruction is to 'Go through the single door on the right.' I am currently facing a wall, and the doorway to the massage room is to my right. I need to turn right to face this door and then move forward to enter it.\",\n\"stuck\": false,\n\"plan\": \"Turn right to face the doorway into the massage room. Then move forward through the door.\",\n\"curr_step\": \"I am facing the wall. The target door is to my right. I need to turn right to align with it.\",\n\"action\": \"R\"\n}\n```",
+      "end_position": [
+        -6.187,
+        1.046,
+        -0.755
+      ]
+    },
+    {
+      "step": 23,
+      "start_position": [
+        -6.187,
+        1.046,
+        -0.755
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "4",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I have moved from the hallway area and am now standing at the threshold of a room containing a large stone massage table. The wooden door frame is visible on both sides of my current view.",
+          "observation": {
+            "front view": "Looking directly into a hammam/turkish bath room. There is a large rectangular stone table covered with a white cloth in the center. To the right, there is a sink. The floor is tiled.",
+            "left view": "A wooden door frame and wall.",
+            "right view": "A wooden door frame and wall.",
+            "map": "The map shows my current position (red triangle) just outside the square room containing the table (labeled with waypoints 1, 3, 4, 5, 6). The path leads directly into this room."
+          },
+          "thought": "I am currently at the entrance of the massage room. The instruction 'Go through the single door on the right' corresponds to entering this room. To complete this subtask, I need to move forward into the room towards the massage table.",
+          "stuck": 0,
+          "plan": "Move forward into the massage room towards the stone table. This will complete the first subtask. After entering, I will look for a door on the left as per the next instruction.",
+          "curr_step": "I am at the doorway. Moving forward will take me through it. Waypoint 4 is inside the room near the table.",
+          "action": 4
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.251
+      },
+      "target_world_position": [
+        -0.698,
+        4.469,
+        -0.938
+      ],
+      "planned_path": [
+        [
+          0.962,
+          4.191,
+          -1.307
+        ],
+        [
+          0.263,
+          4.273,
+          -1.311
+        ],
+        [
+          -0.251,
+          3.759,
+          -1.274
+        ],
+        [
+          -0.464,
+          4.209,
+          -0.981
+        ],
+        [
+          -0.698,
+          4.469,
+          -0.938
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          0.962,
+          4.191,
+          -0.107
+        ],
+        "agent_yaw": -1.438,
+        "num_waypoints_raw": 9,
+        "num_waypoints_near": 9,
+        "num_waypoints_far": 0,
+        "num_projected": 9,
+        "num_actions": 9,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 1,
+          "no_path": 0,
+          "occlusion": 1
+        },
+        "pso_rank": {
+          "enabled": 1,
+          "num_candidates": 9,
+          "gbest_position_xy": [
+            -0.817,
+            5.019
+          ],
+          "gbest_score": 0.768,
+          "order": [
+            8,
+            3,
+            4,
+            1,
+            5,
+            0,
+            6,
+            7,
+            2
+          ],
+          "top_candidates": [
+            {
+              "rank": 0,
+              "source_index": 8,
+              "target_point_world": [
+                -0.817,
+                5.019,
+                -0.878
+              ],
+              "heading_score": 0.921,
+              "distance_score": 0.999,
+              "novelty_score": 0.981,
+              "clearance_score": 0.0,
+              "base_score": 0.768,
+              "pso_affinity": 1.0,
+              "final_score": 0.826,
+              "visited": 0
+            },
+            {
+              "rank": 1,
+              "source_index": 3,
+              "target_point_world": [
+                -0.698,
+                4.469,
+                -0.938
+              ],
+              "heading_score": 0.978,
+              "distance_score": 0.951,
+              "novelty_score": 0.842,
+              "clearance_score": 0.0,
+              "base_score": 0.748,
+              "pso_affinity": 0.961,
+              "final_score": 0.802,
+              "visited": 0
+            },
+            {
+              "rank": 2,
+              "source_index": 4,
+              "target_point_world": [
+                -1.546,
+                5.372,
+                -1.304
+              ],
+              "heading_score": 0.92,
+              "distance_score": 0.742,
+              "novelty_score": 1.0,
+              "clearance_score": 0.163,
+              "base_score": 0.74,
+              "pso_affinity": 0.921,
+              "final_score": 0.785,
+              "visited": 0
+            },
+            {
+              "rank": 3,
+              "source_index": 1,
+              "target_point_world": [
+                -0.499,
+                4.444,
+                -1.302
+              ],
+              "heading_score": 0.977,
+              "distance_score": 0.875,
+              "novelty_score": 0.741,
+              "clearance_score": 0.039,
+              "base_score": 0.717,
+              "pso_affinity": 0.947,
+              "final_score": 0.774,
+              "visited": 0
+            },
+            {
+              "rank": 4,
+              "source_index": 5,
+              "target_point_world": [
+                -0.591,
+                3.544,
+                -0.937
+              ],
+              "heading_score": 0.983,
+              "distance_score": 0.951,
+              "novelty_score": 0.772,
+              "clearance_score": 0.0,
+              "base_score": 0.736,
+              "pso_affinity": 0.757,
+              "final_score": 0.741,
+              "visited": 0
+            },
+            {
+              "rank": 5,
+              "source_index": 0,
+              "target_point_world": [
+                -0.509,
+                3.615,
+                -1.291
+              ],
+              "heading_score": 0.986,
+              "distance_score": 0.916,
+              "novelty_score": 0.757,
+              "clearance_score": 0.012,
+              "base_score": 0.728,
+              "pso_affinity": 0.772,
+              "final_score": 0.739,
+              "visited": 0
+            },
+            {
+              "rank": 6,
+              "source_index": 6,
+              "target_point_world": [
+                -1.779,
+                5.462,
+                -0.954
+              ],
+              "heading_score": 0.922,
+              "distance_score": 0.593,
+              "novelty_score": 1.0,
+              "clearance_score": 0.066,
+              "base_score": 0.684,
+              "pso_affinity": 0.869,
+              "final_score": 0.73,
+              "visited": 0
+            },
+            {
+              "rank": 7,
+              "source_index": 7,
+              "target_point_world": [
+                -0.92,
+                2.947,
+                -0.952
+              ],
+              "heading_score": 0.95,
+              "distance_score": 0.968,
+              "novelty_score": 0.833,
+              "clearance_score": 0.0,
+              "base_score": 0.741,
+              "pso_affinity": 0.584,
+              "final_score": 0.702,
+              "visited": 0
+            },
+            {
+              "rank": 8,
+              "source_index": 2,
+              "target_point_world": [
+                1.518,
+                4.528,
+                -1.347
+              ],
+              "heading_score": 0.042,
+              "distance_score": 0.402,
+              "novelty_score": 0.325,
+              "clearance_score": 0.66,
+              "base_score": 0.312,
+              "pso_affinity": 0.491,
+              "final_score": 0.357,
+              "visited": 0
+            }
+          ]
+        },
+        "path_rerank": {
+          "enabled": 1,
+          "num_candidates": 9,
+          "top_k": 9,
+          "weights": {
+            "prior": 0.35,
+            "path_length": 0.35,
+            "detour": 0.2,
+            "revisit": 0.1
+          },
+          "order": [
+            3,
+            2,
+            4,
+            1,
+            5,
+            0,
+            8,
+            6,
+            7
+          ],
+          "candidates": [
+            {
+              "local_rank_before": 0,
+              "source_index": 0,
+              "target_point_world": [
+                -0.817,
+                5.019,
+                -0.878
+              ],
+              "valid_path": 1,
+              "path_length": 2.82,
+              "detour_ratio": 1.437,
+              "revisit_ratio": 0.231,
+              "pso_prior": 1.0,
+              "path_norm": 0.686,
+              "detour_norm": 1.0,
+              "rerank_score": -0.113
+            },
+            {
+              "local_rank_before": 1,
+              "source_index": 1,
+              "target_point_world": [
+                -0.698,
+                4.469,
+                -0.938
+              ],
+              "valid_path": 1,
+              "path_length": 2.279,
+              "detour_ratio": 1.354,
+              "revisit_ratio": 0.3,
+              "pso_prior": 0.875,
+              "path_norm": 0.555,
+              "detour_norm": 0.81,
+              "rerank_score": -0.08
+            },
+            {
+              "local_rank_before": 2,
+              "source_index": 2,
+              "target_point_world": [
+                -1.546,
+                5.372,
+                -1.304
+              ],
+              "valid_path": 1,
+              "path_length": 2.903,
+              "detour_ratio": 1.047,
+              "revisit_ratio": 0.231,
+              "pso_prior": 0.75,
+              "path_norm": 0.707,
+              "detour_norm": 0.108,
+              "rerank_score": -0.03
+            },
+            {
+              "local_rank_before": 3,
+              "source_index": 3,
+              "target_point_world": [
+                -0.499,
+                4.444,
+                -1.302
+              ],
+              "valid_path": 1,
+              "path_length": 1.485,
+              "detour_ratio": 1.001,
+              "revisit_ratio": 0.429,
+              "pso_prior": 0.625,
+              "path_norm": 0.361,
+              "detour_norm": 0.003,
+              "rerank_score": 0.049
+            },
+            {
+              "local_rank_before": 4,
+              "source_index": 4,
+              "target_point_world": [
+                -0.591,
+                3.544,
+                -0.937
+              ],
+              "valid_path": 1,
+              "path_length": 1.855,
+              "detour_ratio": 1.103,
+              "revisit_ratio": 0.333,
+              "pso_prior": 0.5,
+              "path_norm": 0.451,
+              "detour_norm": 0.235,
+              "rerank_score": -0.063
+            },
+            {
+              "local_rank_before": 5,
+              "source_index": 5,
+              "target_point_world": [
+                -0.509,
+                3.615,
+                -1.291
+              ],
+              "valid_path": 1,
+              "path_length": 1.727,
+              "detour_ratio": 1.093,
+              "revisit_ratio": 0.375,
+              "pso_prior": 0.375,
+              "path_norm": 0.42,
+              "detour_norm": 0.213,
+              "rerank_score": -0.096
+            },
+            {
+              "local_rank_before": 6,
+              "source_index": 6,
+              "target_point_world": [
+                -1.779,
+                5.462,
+                -0.954
+              ],
+              "valid_path": 1,
+              "path_length": 4.109,
+              "detour_ratio": 1.36,
+              "revisit_ratio": 0.211,
+              "pso_prior": 0.25,
+              "path_norm": 1.0,
+              "detour_norm": 0.824,
+              "rerank_score": -0.448
+            },
+            {
+              "local_rank_before": 7,
+              "source_index": 7,
+              "target_point_world": [
+                -0.92,
+                2.947,
+                -0.952
+              ],
+              "valid_path": 0,
+              "path_length": null,
+              "detour_ratio": null,
+              "revisit_ratio": 0.0,
+              "pso_prior": 0.125,
+              "path_norm": null,
+              "detour_norm": 1.0,
+              "rerank_score": null
+            },
+            {
+              "local_rank_before": 8,
+              "source_index": 8,
+              "target_point_world": [
+                1.518,
+                4.528,
+                -1.347
+              ],
+              "valid_path": 1,
+              "path_length": 0.65,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.0,
+              "path_norm": 0.158,
+              "detour_norm": 0.0,
+              "rerank_score": -0.155
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "rank_after_rerank": 0,
+            "pixel": [
+              431,
+              305
+            ],
+            "camera_depth": 1.822,
+            "target_point_world": [
+              -0.499,
+              4.444,
+              -1.302
+            ],
+            "target_point_relative": [
+              -1.461,
+              -1.194,
+              0.253
+            ],
+            "distance": 1.483,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.485,
+            "path_waypoint_count": 3
+          },
+          {
+            "rank_after_rerank": 1,
+            "pixel": [
+              365,
+              260
+            ],
+            "camera_depth": 2.615,
+            "target_point_world": [
+              -1.546,
+              5.372,
+              -1.304
+            ],
+            "target_point_relative": [
+              -2.508,
+              -1.197,
+              1.182
+            ],
+            "distance": 2.772,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.903,
+            "path_waypoint_count": 5
+          },
+          {
+            "rank_after_rerank": 2,
+            "pixel": [
+              527,
+              259
+            ],
+            "camera_depth": 1.822,
+            "target_point_world": [
+              -0.591,
+              3.544,
+              -0.937
+            ],
+            "target_point_relative": [
+              -1.553,
+              -0.83,
+              -0.646
+            ],
+            "distance": 1.722,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 1.855,
+            "path_waypoint_count": 5
+          },
+          {
+            "rank_after_rerank": 3,
+            "pixel": [
+              425,
+              260
+            ],
+            "camera_depth": 1.808,
+            "target_point_world": [
+              -0.698,
+              4.469,
+              -0.938
+            ],
+            "target_point_relative": [
+              -1.66,
+              -0.831,
+              0.279
+            ],
+            "distance": 1.723,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 2.279,
+            "path_waypoint_count": 5
+          },
+          {
+            "rank_after_rerank": 4,
+            "pixel": [
+              518,
+              296
+            ],
+            "camera_depth": 1.921,
+            "target_point_world": [
+              -0.509,
+              3.615,
+              -1.291
+            ],
+            "target_point_relative": [
+              -1.472,
+              -1.183,
+              -0.576
+            ],
+            "distance": 1.58,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 1.727,
+            "path_waypoint_count": 4
+          },
+          {
+            "rank_after_rerank": 5,
+            "pixel": [
+              364,
+              252
+            ],
+            "camera_depth": 1.817,
+            "target_point_world": [
+              -0.817,
+              5.019,
+              -0.878
+            ],
+            "target_point_relative": [
+              -1.779,
+              -0.77,
+              0.829
+            ],
+            "distance": 2.009,
+            "visited": 0,
+            "selected_action_key": "6",
+            "skip_reason": null,
+            "path_length": 2.82,
+            "path_waypoint_count": 6
+          },
+          {
+            "rank_after_rerank": 6,
+            "pixel": [
+              -20,
+              2905
+            ],
+            "camera_depth": 0.103,
+            "target_point_world": [
+              1.518,
+              4.528,
+              -1.347
+            ],
+            "target_point_relative": [
+              0.556,
+              -1.24,
+              0.337
+            ],
+            "distance": 0.652,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 7,
+            "pixel": [
+              357,
+              229
+            ],
+            "camera_depth": 2.63,
+            "target_point_world": [
+              -1.779,
+              5.462,
+              -0.954
+            ],
+            "target_point_relative": [
+              -2.741,
+              -0.847,
+              1.271
+            ],
+            "distance": 3.042,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 8,
+            "pixel": [
+              569,
+              244
+            ],
+            "camera_depth": 2.181,
+            "target_point_world": [
+              -0.92,
+              2.947,
+              -0.952
+            ],
+            "target_point_relative": [
+              -1.883,
+              -0.845,
+              -1.243
+            ],
+            "distance": 2.284,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.348
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I have moved from the hallway area and am now standing at the threshold of a room containing a large stone massage table. The wooden door frame is visible on both sides of my current view.\",\n\"observation\": {\n    \"front view\": \"Looking directly into a hammam/turkish bath room. There is a large rectangular stone table covered with a white cloth in the center. To the right, there is a sink. The floor is tiled.\",\n    \"left view\": \"A wooden door frame and wall.\",\n    \"right view\": \"A wooden door frame and wall.\",\n    \"map\": \"The map shows my current position (red triangle) just outside the square room containing the table (labeled with waypoints 1, 3, 4, 5, 6). The path leads directly into this room.\"\n},\n\"thought\": \"I am currently at the entrance of the massage room. The instruction 'Go through the single door on the right' corresponds to entering this room. To complete this subtask, I need to move forward into the room towards the massage table.\",\n\"stuck\": false,\n\"plan\": \"Move forward into the massage room towards the stone table. This will complete the first subtask. After entering, I will look for a door on the left as per the next instruction.\",\n\"curr_step\": \"I am at the doorway. Moving forward will take me through it. Waypoint 4 is inside the room near the table.\",\n\"action\": 4\n}\n```",
+      "end_position": [
+        -6.187,
+        1.046,
+        -0.755
+      ]
+    },
+    {
+      "step": 24,
+      "start_position": [
+        -6.187,
+        1.046,
+        -0.755
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.704,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.886,
+        1.046,
+        -0.672
+      ]
+    },
+    {
+      "step": 25,
+      "start_position": [
+        -6.886,
+        1.046,
+        -0.672
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.904
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -6.886,
+        1.046,
+        -0.672
+      ]
+    },
+    {
+      "step": 26,
+      "start_position": [
+        -6.886,
+        1.046,
+        -0.672
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.728,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -7.4,
+        1.046,
+        -1.187
+      ]
+    },
+    {
+      "step": 27,
+      "start_position": [
+        -7.4,
+        1.046,
+        -1.187
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 1.915
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -7.4,
+        1.046,
+        -1.187
+      ]
+    },
+    {
+      "step": 28,
+      "start_position": [
+        -7.4,
+        1.046,
+        -1.187
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.498,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -7.613,
+        1.046,
+        -0.736
+      ]
+    },
+    {
+      "step": 29,
+      "start_position": [
+        -7.613,
+        1.046,
+        -0.736
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.291
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -7.613,
+        1.046,
+        -0.736
+      ]
+    },
+    {
+      "step": 30,
+      "start_position": [
+        -7.613,
+        1.046,
+        -0.736
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.35,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        -7.775,
+        1.046,
+        -0.478
+      ]
+    },
+    {
+      "step": 31,
+      "start_position": [
+        -7.775,
+        1.046,
+        -0.478
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        -7.775,
+        1.046,
+        -0.478
+      ]
+    },
+    {
+      "step": 32,
+      "start_position": [
+        -7.775,
+        1.046,
+        -0.478
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.448
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": null,
+      "end_position": [
+        -7.775,
+        1.046,
+        -0.478
+      ]
+    },
+    {
+      "step": 33,
+      "start_position": [
+        -7.775,
+        1.046,
+        -0.478
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": null,
+        "selected_action_type": null,
+        "parsed_json": null,
+        "valid": 0,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "stop",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "decision_none",
+      "preprocess": {
+        "agent_position": [
+          -0.625,
+          4.467,
+          -0.107
+        ],
+        "agent_yaw": -1.961,
+        "num_waypoints_raw": 4,
+        "num_waypoints_near": 4,
+        "num_waypoints_far": 0,
+        "num_projected": 4,
+        "num_actions": 6,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 0,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "pso_rank": {
+          "enabled": 1,
+          "num_candidates": 4,
+          "gbest_position_xy": [
+            -1.599,
+            5.747
+          ],
+          "gbest_score": 0.718,
+          "order": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "top_candidates": [
+            {
+              "rank": 0,
+              "source_index": 2,
+              "target_point_world": [
+                -1.599,
+                5.747,
+                -0.945
+              ],
+              "heading_score": 0.931,
+              "distance_score": 0.926,
+              "novelty_score": 0.804,
+              "clearance_score": 0.0,
+              "base_score": 0.718,
+              "pso_affinity": 1.0,
+              "final_score": 0.789,
+              "visited": 0
+            },
+            {
+              "rank": 1,
+              "source_index": 0,
+              "target_point_world": [
+                -1.49,
+                5.563,
+                -1.241
+              ],
+              "heading_score": 0.936,
+              "distance_score": 0.833,
+              "novelty_score": 0.698,
+              "clearance_score": 0.092,
+              "base_score": 0.694,
+              "pso_affinity": 0.994,
+              "final_score": 0.769,
+              "visited": 0
+            },
+            {
+              "rank": 2,
+              "source_index": 3,
+              "target_point_world": [
+                -0.821,
+                4.874,
+                -0.94
+              ],
+              "heading_score": 0.872,
+              "distance_score": 0.301,
+              "novelty_score": 0.079,
+              "clearance_score": 0.0,
+              "base_score": 0.396,
+              "pso_affinity": 0.843,
+              "final_score": 0.508,
+              "visited": 1
+            },
+            {
+              "rank": 3,
+              "source_index": 1,
+              "target_point_world": [
+                -0.44,
+                4.529,
+                -1.354
+              ],
+              "heading_score": 0.122,
+              "distance_score": 0.196,
+              "novelty_score": 0.034,
+              "clearance_score": 0.071,
+              "base_score": 0.113,
+              "pso_affinity": 0.702,
+              "final_score": 0.26,
+              "visited": 1
+            }
+          ]
+        },
+        "path_rerank": {
+          "enabled": 1,
+          "num_candidates": 4,
+          "top_k": 4,
+          "weights": {
+            "prior": 0.35,
+            "path_length": 0.35,
+            "detour": 0.2,
+            "revisit": 0.1
+          },
+          "order": [
+            0,
+            3,
+            1,
+            2
+          ],
+          "candidates": [
+            {
+              "local_rank_before": 0,
+              "source_index": 0,
+              "target_point_world": [
+                -1.599,
+                5.747,
+                -0.945
+              ],
+              "valid_path": 1,
+              "path_length": 2.252,
+              "detour_ratio": 1.401,
+              "revisit_ratio": 0.455,
+              "pso_prior": 1.0,
+              "path_norm": 1.0,
+              "detour_norm": 0.285,
+              "rerank_score": -0.102
+            },
+            {
+              "local_rank_before": 1,
+              "source_index": 1,
+              "target_point_world": [
+                -1.49,
+                5.563,
+                -1.241
+              ],
+              "valid_path": 1,
+              "path_length": 1.998,
+              "detour_ratio": 1.431,
+              "revisit_ratio": 0.556,
+              "pso_prior": 0.667,
+              "path_norm": 0.887,
+              "detour_norm": 0.306,
+              "rerank_score": -0.194
+            },
+            {
+              "local_rank_before": 2,
+              "source_index": 2,
+              "target_point_world": [
+                -0.821,
+                4.874,
+                -0.94
+              ],
+              "valid_path": 1,
+              "path_length": 1.086,
+              "detour_ratio": 2.407,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.333,
+              "path_norm": 0.482,
+              "detour_norm": 1.0,
+              "rerank_score": -0.352
+            },
+            {
+              "local_rank_before": 3,
+              "source_index": 3,
+              "target_point_world": [
+                -0.44,
+                4.529,
+                -1.354
+              ],
+              "valid_path": 1,
+              "path_length": 0.196,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.0,
+              "path_norm": 0.087,
+              "detour_norm": 0.0,
+              "rerank_score": -0.13
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "rank_after_rerank": 0,
+            "pixel": [
+              380,
+              273
+            ],
+            "camera_depth": 1.62,
+            "target_point_world": [
+              -1.599,
+              5.747,
+              -0.945
+            ],
+            "target_point_relative": [
+              -0.973,
+              -0.838,
+              1.28
+            ],
+            "distance": 1.648,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 2.252,
+            "path_waypoint_count": 5
+          },
+          {
+            "rank_after_rerank": 1,
+            "pixel": [
+              428,
+              733
+            ],
+            "camera_depth": 0.495,
+            "target_point_world": [
+              -0.44,
+              4.529,
+              -1.354
+            ],
+            "target_point_relative": [
+              0.186,
+              -1.246,
+              0.062
+            ],
+            "distance": 0.201,
+            "visited": 1,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 2,
+            "pixel": [
+              396,
+              315
+            ],
+            "camera_depth": 1.62,
+            "target_point_world": [
+              -1.49,
+              5.563,
+              -1.241
+            ],
+            "target_point_relative": [
+              -0.865,
+              -1.133,
+              1.096
+            ],
+            "distance": 1.398,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 1.998,
+            "path_waypoint_count": 4
+          },
+          {
+            "rank_after_rerank": 3,
+            "pixel": [
+              395,
+              425
+            ],
+            "camera_depth": 0.707,
+            "target_point_world": [
+              -0.821,
+              4.874,
+              -0.94
+            ],
+            "target_point_relative": [
+              -0.195,
+              -0.833,
+              0.407
+            ],
+            "distance": 0.582,
+            "visited": 1,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 1.086,
+            "path_waypoint_count": 4
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "None",
+      "end_position": [
+        -7.775,
+        1.046,
+        -0.478
+      ]
+    },
+    {
+      "step": 34,
+      "start_position": [
+        -7.775,
+        1.046,
+        -0.478
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": null,
+        "selected_action_type": null,
+        "parsed_json": null,
+        "valid": 0,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "stop",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "decision_none",
+      "preprocess": {
+        "agent_position": [
+          -0.625,
+          4.467,
+          -0.107
+        ],
+        "agent_yaw": -1.961,
+        "num_waypoints_raw": 4,
+        "num_waypoints_near": 4,
+        "num_waypoints_far": 0,
+        "num_projected": 4,
+        "num_actions": 6,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 0,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "pso_rank": {
+          "enabled": 1,
+          "num_candidates": 4,
+          "gbest_position_xy": [
+            -1.599,
+            5.747
+          ],
+          "gbest_score": 0.718,
+          "order": [
+            1,
+            0,
+            3,
+            2
+          ],
+          "top_candidates": [
+            {
+              "rank": 0,
+              "source_index": 1,
+              "target_point_world": [
+                -1.599,
+                5.747,
+                -0.945
+              ],
+              "heading_score": 0.931,
+              "distance_score": 0.926,
+              "novelty_score": 0.804,
+              "clearance_score": 0.0,
+              "base_score": 0.718,
+              "pso_affinity": 1.0,
+              "final_score": 0.789,
+              "visited": 0
+            },
+            {
+              "rank": 1,
+              "source_index": 0,
+              "target_point_world": [
+                -1.49,
+                5.563,
+                -1.241
+              ],
+              "heading_score": 0.936,
+              "distance_score": 0.833,
+              "novelty_score": 0.698,
+              "clearance_score": 0.091,
+              "base_score": 0.694,
+              "pso_affinity": 0.994,
+              "final_score": 0.769,
+              "visited": 0
+            },
+            {
+              "rank": 2,
+              "source_index": 3,
+              "target_point_world": [
+                -0.821,
+                4.874,
+                -0.94
+              ],
+              "heading_score": 0.872,
+              "distance_score": 0.301,
+              "novelty_score": 0.079,
+              "clearance_score": 0.0,
+              "base_score": 0.396,
+              "pso_affinity": 0.843,
+              "final_score": 0.508,
+              "visited": 1
+            },
+            {
+              "rank": 3,
+              "source_index": 2,
+              "target_point_world": [
+                -0.44,
+                4.529,
+                -1.354
+              ],
+              "heading_score": 0.122,
+              "distance_score": 0.196,
+              "novelty_score": 0.034,
+              "clearance_score": 0.072,
+              "base_score": 0.113,
+              "pso_affinity": 0.702,
+              "final_score": 0.26,
+              "visited": 1
+            }
+          ]
+        },
+        "path_rerank": {
+          "enabled": 1,
+          "num_candidates": 4,
+          "top_k": 4,
+          "weights": {
+            "prior": 0.35,
+            "path_length": 0.35,
+            "detour": 0.2,
+            "revisit": 0.1
+          },
+          "order": [
+            0,
+            3,
+            1,
+            2
+          ],
+          "candidates": [
+            {
+              "local_rank_before": 0,
+              "source_index": 0,
+              "target_point_world": [
+                -1.599,
+                5.747,
+                -0.945
+              ],
+              "valid_path": 1,
+              "path_length": 2.252,
+              "detour_ratio": 1.401,
+              "revisit_ratio": 0.455,
+              "pso_prior": 1.0,
+              "path_norm": 1.0,
+              "detour_norm": 0.285,
+              "rerank_score": -0.102
+            },
+            {
+              "local_rank_before": 1,
+              "source_index": 1,
+              "target_point_world": [
+                -1.49,
+                5.563,
+                -1.241
+              ],
+              "valid_path": 1,
+              "path_length": 1.998,
+              "detour_ratio": 1.431,
+              "revisit_ratio": 0.556,
+              "pso_prior": 0.667,
+              "path_norm": 0.887,
+              "detour_norm": 0.306,
+              "rerank_score": -0.194
+            },
+            {
+              "local_rank_before": 2,
+              "source_index": 2,
+              "target_point_world": [
+                -0.821,
+                4.874,
+                -0.94
+              ],
+              "valid_path": 1,
+              "path_length": 1.086,
+              "detour_ratio": 2.407,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.333,
+              "path_norm": 0.482,
+              "detour_norm": 1.0,
+              "rerank_score": -0.352
+            },
+            {
+              "local_rank_before": 3,
+              "source_index": 3,
+              "target_point_world": [
+                -0.44,
+                4.529,
+                -1.354
+              ],
+              "valid_path": 1,
+              "path_length": 0.196,
+              "detour_ratio": 1.0,
+              "revisit_ratio": 1.0,
+              "pso_prior": 0.0,
+              "path_norm": 0.087,
+              "detour_norm": 0.0,
+              "rerank_score": -0.13
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "rank_after_rerank": 0,
+            "pixel": [
+              380,
+              273
+            ],
+            "camera_depth": 1.62,
+            "target_point_world": [
+              -1.599,
+              5.747,
+              -0.945
+            ],
+            "target_point_relative": [
+              -0.973,
+              -0.838,
+              1.28
+            ],
+            "distance": 1.648,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 2.252,
+            "path_waypoint_count": 5
+          },
+          {
+            "rank_after_rerank": 1,
+            "pixel": [
+              428,
+              733
+            ],
+            "camera_depth": 0.495,
+            "target_point_world": [
+              -0.44,
+              4.529,
+              -1.354
+            ],
+            "target_point_relative": [
+              0.186,
+              -1.246,
+              0.062
+            ],
+            "distance": 0.201,
+            "visited": 1,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "rank_after_rerank": 2,
+            "pixel": [
+              396,
+              315
+            ],
+            "camera_depth": 1.62,
+            "target_point_world": [
+              -1.49,
+              5.563,
+              -1.241
+            ],
+            "target_point_relative": [
+              -0.865,
+              -1.133,
+              1.096
+            ],
+            "distance": 1.398,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 1.998,
+            "path_waypoint_count": 4
+          },
+          {
+            "rank_after_rerank": 3,
+            "pixel": [
+              395,
+              425
+            ],
+            "camera_depth": 0.707,
+            "target_point_world": [
+              -0.821,
+              4.874,
+              -0.94
+            ],
+            "target_point_relative": [
+              -0.195,
+              -0.833,
+              0.407
+            ],
+            "distance": 0.582,
+            "visited": 1,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 1.086,
+            "path_waypoint_count": 4
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "None",
+      "end_position": [
+        -7.775,
+        1.046,
+        -0.478
+      ]
+    }
+  ],
+  "subtask": {
+    "P1": {
+      "instruction": "Go through the single door on the right.",
+      "completed": 0,
+      "plan": "Move forward into the massage room towards the stone table. This will complete the first subtask. After entering, I will look for a door on the left as per the next instruction.",
+      "record": [
+        {
+          "movement": "I am currently standing at the bottom of a landing area facing a wall with a large poster. To my left are stairs going up. To my right is a hallway leading towards a wooden door frame."
+        },
+        {
+          "movement": "I moved forward slightly and turned left, which brought me closer to the wall with the poster but angled me away from the hallway on the right."
+        },
+        {
+          "movement": "I have moved from the start position near the poster and stairs towards the hallway area. I am currently facing a wall with a large poster on my left and a hallway leading to an open doorway straight ahead/slightly right."
+        },
+        {
+          "movement": "I have moved down the hallway and am now facing an open doorway leading into a room with tiled walls (likely the Turkish Bath area mentioned on the poster). To my left is a closed wooden door. To my right are large double doors and stairs."
+        },
+        {
+          "movement": "I have moved forward and turned slightly left, now facing a wall with 'ART' written on the floor. To my right is an open doorway leading into a room with a massage table."
+        },
+        {
+          "movement": "I have moved from the hallway area and am now standing at the threshold of a room containing a large stone massage table. The wooden door frame is visible on both sides of my current view."
+        }
+      ],
+      "final_coord": null
+    },
+    "P2": {
+      "instruction": "Turn left and go through the door on the left.",
+      "completed": 0,
+      "plan": "",
+      "record": [],
+      "final_coord": null
+    },
+    "P3": {
+      "instruction": "Stand by the bottom right side of the massage table.",
+      "completed": 0,
+      "plan": "",
+      "record": [],
+      "final_coord": null
+    }
+  }
+}

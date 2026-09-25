@@ -1,0 +1,42 @@
+agent:
+  radius: 0.1
+  initial_position: [7.40658, -0.53553, 0.92098]
+  initial_rotation: [0, 0.53996, 0, 0.84169]
+camera:
+  height: 1.2
+  fov: 135.0
+  pitch: -30.0
+  min_depth: 0.5
+  max_depth: 50.0
+  res_factor: 2
+env:
+  max_steps: 200
+  success_threshold: 3.0
+  name: 'r2r'
+pso_waypoint:
+  enabled: true
+  num_particles: 24
+  iterations: 15
+  preferred_distance: 2.0
+  distance_sigma: 1.0
+  novelty_radius: 2.0
+  min_clearance: 0.25
+  good_clearance: 1.25
+  pso_radius: 2.0
+  nearest_chunk_size: 4096
+  top_k: 0
+  seed: 17
+  path_rerank:
+    enabled: true
+    top_k: 12
+    prior_weight: 0.35
+    path_length_weight: 0.35
+    detour_weight: 0.20
+    revisit_weight: 0.10
+    revisit_radius: 0.8
+    path_sample_step: 0.25
+  weights:
+    heading: 0.35
+    distance: 0.25
+    novelty: 0.20
+    clearance: 0.20

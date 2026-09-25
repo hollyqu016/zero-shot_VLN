@@ -1,0 +1,5872 @@
+{
+  "metrics": {
+    "distance_to_goal": 12.532,
+    "spl": 0.0,
+    "goal_reached": 0,
+    "finish_status": "error",
+    "traveled_distance": 9.321,
+    "done": 1,
+    "oracle_navigation_error": 5.704,
+    "oracle_success": 0,
+    "oracle_spl": 0.0,
+    "ndtw": 0.05,
+    "sdtw": 0.0
+  },
+  "episode": {
+    "instruction": "Walk down the hallway past the vases, enter the bedroom, walk to the foot of the bed, walk toward the bathroom on the left, wait in the doorway to the bathroom. ",
+    "shortest_path": 5.704,
+    "goal_position": [
+      1.05,
+      3.624,
+      -10.431
+    ],
+    "reference_path": [
+      [
+        2.145,
+        3.56,
+        -5.004
+      ],
+      [
+        2.146,
+        3.54,
+        -6.302
+      ],
+      [
+        1.845,
+        3.601,
+        -7.446
+      ],
+      [
+        2.125,
+        3.494,
+        -9.707
+      ],
+      [
+        1.05,
+        3.624,
+        -10.431
+      ]
+    ]
+  },
+  "vlm_responses": [
+    "```json\n{\n\"movement\": \"I am currently at the top of the stairs/landing area. I have not moved yet.\",\n\"observation\": {\n    \"front view\": \"I see the landing with decorative plates on the wall (waypoint 3) and a hallway leading to the right (waypoint 1). To the left, there is an opening towards a room.\",\n    \"left view\": \"I see a black console table with a large green sculpture/vase on top. Beyond it, there is a bedroom with a white bed visible through a doorway.\",\n    \"right view\": \"I see a long hallway extending to the right with white closet doors.\",\n    \"map\": \"I am at the START point near the stairs. Waypoint 2 is to my left near the radiator/black table area. Waypoint 1 is down the hallway to the right.\"\n},\n\"thought\": \"The instruction is to 'Walk down the hallway past the vases, enter the bedroom'. Looking at the Left View, there is a black console table with a large object (likely a vase or sculpture) on it, and immediately beyond it is a bedroom. This matches the sequence 'past the vases, enter the bedroom' perfectly. The space to the left acts as a short hallway/landing leading to the bedroom. Therefore, I should move towards the left side of the landing, past the black table (vases), towards the bedroom.\",\n\"stuck\": false,\n\"plan\": \"Move towards the left side of the landing (towards waypoint 2) to pass the 'vases' on the black console table and then proceed into the bedroom visible in the Left View.\",\n\"curr_step\": \"I need to move towards the area with the black table and the bedroom entrance. Waypoint 2 is located near the radiator and the black table, which aligns with the path 'past the vases'.\",\n\"action\": 2\n}\n```",
+    "```json\n{\n\"movement\": \"I have moved from the top of the stairs onto the landing. I am currently facing the railing and the wall with decorative plates. To my left, there is an entrance to a bedroom with a bed visible.\",\n\"observation\": {\n    \"front view\": \"I see the top of the staircase railing and a wall with three leaf-shaped decorations. To the left, there is an opening into a bedroom.\",\n    \"left view\": \"I see the entrance to a bedroom with a large bed, glass doors leading to a balcony, and a black console table with decorative items (vases) against the wall.\",\n    \"right view\": \"I see the hallway extending to the right with white closet doors.\",\n    \"map\": \"I am at waypoint 5 on the landing. Waypoint 4 is located inside the bedroom to the left, near the bed.\"\n},\n\"thought\": \"The instruction is to 'Walk down the hallway past the vases, enter the bedroom'. I am currently on the landing near the top of the stairs. The black console table with items (likely the 'vases') is visible in the Left View, positioned near the bedroom entrance. To follow the instruction, I need to move towards and into the bedroom. Waypoint 4 is located inside the bedroom near the bed, which aligns with the goal of entering the bedroom.\",\n\"stuck\": false,\n\"plan\": \"Move from the landing (waypoint 5) into the bedroom towards the bed (waypoint 4). This will involve passing the black console table with the vases.\",\n\"curr_step\": \"I need to enter the bedroom. Waypoint 4 is inside the bedroom. I should move towards it.\",\n\"action\": 4\n}\n```",
+    "```json\n{\n\"movement\": \"I have entered the bedroom and walked past the foot of the bed towards the dresser with vases. I am now facing the dresser, with the bed to my left.\",\n\"observation\": {\n    \"front view\": \"I see a black dresser with decorative items (vases) on it. To the left is the foot of the bed. In the background are glass doors leading to a balcony.\",\n    \"left view\": \"I see the side of the bed and a white door, which is likely the bathroom or a closet.\",\n    \"right view\": \"I see the dresser and a mirror on the wall.\",\n    \"map\": \"I am near the foot of the bed (blue area). The target bathroom door is to the left of the bed, near the 'lamp' label.\"\n},\n\"thought\": \"I have completed P1 by entering the bedroom. Now I need to complete P2: 'walk to the foot of the bed, walk toward the bathroom on the left, wait in the doorway to the bathroom.' I am currently near the foot of the bed. The bathroom door is visible in the Left View, located to the left of the bed. Therefore, I need to turn left to face it and then move towards it.\",\n\"stuck\": false,\n\"plan\": \"Turn left to face the bathroom door seen in the left view, then move forward towards it to wait in the doorway.\",\n\"curr_step\": \"I am at the foot of the bed. The bathroom is on the left. I need to turn left to align with the bathroom door.\",\n\"action\": \"L\"\n}\n```",
+    "```json\n{\n\"movement\": \"I have entered the bedroom and am currently standing near the foot of the bed, facing the bed. The dresser with vases is to my right (visible in Right View). The open door to the bathroom is visible in the Front View on the left side of the bed.\",\n\"observation\": {\n    \"front view\": \"I see the bed directly ahead. To the left of the bed, there is an open white door leading to a hallway/bathroom area. A nightstand with a lamp is next to the bed.\",\n    \"left view\": \"I see the hallway leading away from the bedroom and another room further down.\",\n    \"right view\": \"I see a long black dresser with decorative items (vases) on top, and glass doors leading to a balcony.\",\n    \"map\": \"I am in the blue area (bedroom). The pink area is the bathroom. The door connecting them is visible in the Front View.\"\n},\n\"thought\": \"I have completed entering the bedroom (P1). Now I need to follow P2: 'walk to the foot of the bed, walk toward the bathroom on the left, wait in the doorway to the bathroom.' I am currently at the foot of the bed. The bathroom door is to my left/front-left. I need to move towards that doorway.\",\n\"stuck\": false,\n\"plan\": \"Move from my current position near the foot of the bed towards the open door on the left (waypoint 4) which leads to the bathroom.\",\n\"curr_step\": \"I am at the foot of the bed. The bathroom is through the door on the left. I need to move towards waypoint 4.\",\n\"action\": 4\n}\n```",
+    "None",
+    "```json\n{\n\"movement\": \"I have moved from the foot of the bed towards the hallway/closet area. I am now facing the closet doors and the bathroom entrance is visible to the left.\",\n\"observation\": {\n    \"front view\": \"I see a white closet/dresser unit straight ahead. To the left of it, there is an open doorway leading into a bathroom with a window and tub visible.\",\n    \"left view\": \"I see the side of the white dresser and the entrance to the bathroom more clearly.\",\n    \"right view\": \"I see the bed and the rest of the bedroom.\",\n    \"map\": \"I am near the foot of the bed. The pink area (bathroom) is to my left-front.\"\n},\n\"thought\": \"I have completed walking to the foot of the bed. Now I need to walk toward the bathroom on the left and wait in its doorway. The bathroom is visible through the opening to the left of the closet in the Front View. Waypoint 14 is located near this entrance.\",\n\"stuck\": false,\n\"plan\": \"Move towards the bathroom doorway which is to the left-front of my current position. I will aim for waypoint 14 which is near the threshold of that room.\",\n\"curr_step\": \"I am facing the closet. The bathroom is to the left. I need to move forward and slightly left to reach the bathroom doorway.\",\n\"action\": 14\n}\n```",
+    "None"
+  ],
+  "agent_trajectory": [
+    [
+      2.145,
+      3.56,
+      -5.004
+    ],
+    [
+      2.397,
+      3.52,
+      -4.256
+    ],
+    [
+      1.801,
+      3.496,
+      -3.507
+    ],
+    [
+      2.396,
+      3.424,
+      -2.744
+    ],
+    [
+      2.396,
+      3.424,
+      -2.258
+    ],
+    [
+      2.724,
+      3.424,
+      -1.508
+    ],
+    [
+      3.401,
+      3.424,
+      -1.897
+    ],
+    [
+      3.882,
+      3.424,
+      -2.243
+    ],
+    [
+      4.391,
+      3.621,
+      -2.711
+    ],
+    [
+      4.927,
+      3.549,
+      -3.204
+    ],
+    [
+      4.922,
+      3.574,
+      -3.736
+    ],
+    [
+      4.917,
+      3.58,
+      -4.251
+    ],
+    [
+      5.392,
+      3.624,
+      -4.773
+    ],
+    [
+      5.548,
+      3.624,
+      -5.475
+    ]
+  ],
+  "step_metrics": [
+    {
+      "step": 0,
+      "distance_to_goal": 5.704,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.0,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.393,
+      "sdtw": 0.0
+    },
+    {
+      "step": 1,
+      "distance_to_goal": 6.481,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.0,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.373,
+      "sdtw": 0.0
+    },
+    {
+      "step": 2,
+      "distance_to_goal": 6.481,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.79,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.373,
+      "sdtw": 0.0
+    },
+    {
+      "step": 3,
+      "distance_to_goal": 7.199,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.79,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.34,
+      "sdtw": 0.0
+    },
+    {
+      "step": 4,
+      "distance_to_goal": 7.199,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.748,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.34,
+      "sdtw": 0.0
+    },
+    {
+      "step": 5,
+      "distance_to_goal": 7.199,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.748,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.34,
+      "sdtw": 0.0
+    },
+    {
+      "step": 6,
+      "distance_to_goal": 7.975,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.748,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.29,
+      "sdtw": 0.0
+    },
+    {
+      "step": 7,
+      "distance_to_goal": 7.975,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.718,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.29,
+      "sdtw": 0.0
+    },
+    {
+      "step": 8,
+      "distance_to_goal": 8.458,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.718,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.242,
+      "sdtw": 0.0
+    },
+    {
+      "step": 9,
+      "distance_to_goal": 8.458,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 3.205,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.242,
+      "sdtw": 0.0
+    },
+    {
+      "step": 10,
+      "distance_to_goal": 9.245,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 3.205,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.19,
+      "sdtw": 0.0
+    },
+    {
+      "step": 11,
+      "distance_to_goal": 9.245,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 4.023,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.19,
+      "sdtw": 0.0
+    },
+    {
+      "step": 12,
+      "distance_to_goal": 9.245,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 4.023,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.19,
+      "sdtw": 0.0
+    },
+    {
+      "step": 13,
+      "distance_to_goal": 9.245,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 4.023,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.19,
+      "sdtw": 0.0
+    },
+    {
+      "step": 14,
+      "distance_to_goal": 9.245,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 4.023,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.19,
+      "sdtw": 0.0
+    },
+    {
+      "step": 15,
+      "distance_to_goal": 8.997,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 4.023,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.153,
+      "sdtw": 0.0
+    },
+    {
+      "step": 16,
+      "distance_to_goal": 8.997,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 4.804,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.153,
+      "sdtw": 0.0
+    },
+    {
+      "step": 17,
+      "distance_to_goal": 8.996,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 4.804,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.125,
+      "sdtw": 0.0
+    },
+    {
+      "step": 18,
+      "distance_to_goal": 8.996,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 5.396,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.125,
+      "sdtw": 0.0
+    },
+    {
+      "step": 19,
+      "distance_to_goal": 9.433,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 5.396,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.103,
+      "sdtw": 0.0
+    },
+    {
+      "step": 20,
+      "distance_to_goal": 10.155,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 6.115,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.087,
+      "sdtw": 0.0
+    },
+    {
+      "step": 21,
+      "distance_to_goal": 10.155,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 6.847,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.087,
+      "sdtw": 0.0
+    },
+    {
+      "step": 22,
+      "distance_to_goal": 10.155,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 6.847,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.087,
+      "sdtw": 0.0
+    },
+    {
+      "step": 23,
+      "distance_to_goal": 10.155,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "fp",
+      "traveled_distance": 6.847,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.087,
+      "sdtw": 0.0
+    },
+    {
+      "step": 24,
+      "distance_to_goal": 10.155,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 6.847,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.087,
+      "sdtw": 0.0
+    },
+    {
+      "step": 25,
+      "distance_to_goal": 10.569,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 6.847,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.075,
+      "sdtw": 0.0
+    },
+    {
+      "step": 26,
+      "distance_to_goal": 11.163,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 7.38,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.065,
+      "sdtw": 0.0
+    },
+    {
+      "step": 27,
+      "distance_to_goal": 11.163,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 7.895,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.065,
+      "sdtw": 0.0
+    },
+    {
+      "step": 28,
+      "distance_to_goal": 11.832,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 7.895,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.057,
+      "sdtw": 0.0
+    },
+    {
+      "step": 29,
+      "distance_to_goal": 11.832,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 8.602,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.057,
+      "sdtw": 0.0
+    },
+    {
+      "step": 30,
+      "distance_to_goal": 12.532,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 8.602,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.05,
+      "sdtw": 0.0
+    },
+    {
+      "step": 31,
+      "distance_to_goal": 12.532,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 9.321,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.05,
+      "sdtw": 0.0
+    },
+    {
+      "step": 32,
+      "distance_to_goal": 12.532,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 9.321,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.05,
+      "sdtw": 0.0
+    },
+    {
+      "step": 33,
+      "distance_to_goal": 12.532,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "fp",
+      "traveled_distance": 9.321,
+      "done": 1,
+      "oracle_navigation_error": 5.704,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.05,
+      "sdtw": 0.0
+    }
+  ],
+  "diagnostic_trace": [
+    {
+      "step": 0,
+      "start_position": [
+        2.145,
+        3.56,
+        -5.004
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "2",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I am currently at the top of the stairs/landing area. I have not moved yet.",
+          "observation": {
+            "front view": "I see the landing with decorative plates on the wall (waypoint 3) and a hallway leading to the right (waypoint 1). To the left, there is an opening towards a room.",
+            "left view": "I see a black console table with a large green sculpture/vase on top. Beyond it, there is a bedroom with a white bed visible through a doorway.",
+            "right view": "I see a long hallway extending to the right with white closet doors.",
+            "map": "I am at the START point near the stairs. Waypoint 2 is to my left near the radiator/black table area. Waypoint 1 is down the hallway to the right."
+          },
+          "thought": "The instruction is to 'Walk down the hallway past the vases, enter the bedroom'. Looking at the Left View, there is a black console table with a large object (likely a vase or sculpture) on it, and immediately beyond it is a bedroom. This matches the sequence 'past the vases, enter the bedroom' perfectly. The space to the left acts as a short hallway/landing leading to the bedroom. Therefore, I should move towards the left side of the landing, past the black table (vases), towards the bedroom.",
+          "stuck": 0,
+          "plan": "Move towards the left side of the landing (towards waypoint 2) to pass the 'vases' on the black console table and then proceed into the bedroom visible in the Left View.",
+          "curr_step": "I need to move towards the area with the black table and the bedroom entrance. Waypoint 2 is located near the radiator and the black table, which aligns with the path 'past the vases'.",
+          "action": 2
+        },
+        "valid": 1,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 1.499
+      },
+      "target_world_position": [
+        -0.345,
+        1.497,
+        -1.408
+      ],
+      "planned_path": [
+        [
+          0.0,
+          0.0,
+          -1.2
+        ],
+        [
+          0.252,
+          0.748,
+          -1.4
+        ],
+        [
+          -0.345,
+          1.497,
+          -1.408
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "agent_yaw": -1.967,
+        "num_waypoints_raw": 21,
+        "num_waypoints_near": 21,
+        "num_waypoints_far": 0,
+        "num_projected": 21,
+        "num_actions": 11,
+        "skip_counts": {
+          "edge": 3,
+          "distance": 7,
+          "no_path": 0,
+          "occlusion": 3
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              302,
+              221
+            ],
+            "camera_depth": 4.494,
+            "target_point_world": [
+              -2.555,
+              5.408,
+              -1.291
+            ],
+            "target_point_relative": [
+              -2.555,
+              -1.291,
+              5.408
+            ],
+            "distance": 5.982,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              697,
+              302
+            ],
+            "camera_depth": 2.076,
+            "target_point_world": [
+              -2.38,
+              -1.47,
+              -1.331
+            ],
+            "target_point_relative": [
+              -2.38,
+              -1.331,
+              -1.47
+            ],
+            "distance": 2.801,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 3.194,
+            "path_waypoint_count": 6
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              294,
+              242
+            ],
+            "camera_depth": 3.656,
+            "target_point_world": [
+              -1.838,
+              4.456,
+              -1.397
+            ],
+            "target_point_relative": [
+              -1.838,
+              -1.397,
+              4.456
+            ],
+            "distance": 4.825,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              334,
+              230
+            ],
+            "camera_depth": 4.281,
+            "target_point_world": [
+              -2.6,
+              4.481,
+              -1.413
+            ],
+            "target_point_relative": [
+              -2.6,
+              -1.413,
+              4.481
+            ],
+            "distance": 5.185,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              369,
+              238
+            ],
+            "camera_depth": 3.98,
+            "target_point_world": [
+              -2.615,
+              3.497,
+              -1.446
+            ],
+            "target_point_relative": [
+              -2.615,
+              -1.446,
+              3.497
+            ],
+            "distance": 4.374,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.076
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              408,
+              246
+            ],
+            "camera_depth": 3.636,
+            "target_point_world": [
+              -2.599,
+              2.5,
+              -1.449
+            ],
+            "target_point_relative": [
+              -2.599,
+              -1.449,
+              2.5
+            ],
+            "distance": 3.615,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              312,
+              373
+            ],
+            "camera_depth": 1.479,
+            "target_point_world": [
+              -0.345,
+              1.497,
+              -1.408
+            ],
+            "target_point_relative": [
+              -0.345,
+              -1.408,
+              1.497
+            ],
+            "distance": 1.55,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 1.746,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              525,
+              266
+            ],
+            "camera_depth": 2.882,
+            "target_point_world": [
+              -2.578,
+              0.37,
+              -1.397
+            ],
+            "target_point_relative": [
+              -2.578,
+              -1.397,
+              0.37
+            ],
+            "distance": 2.612,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 2.906,
+            "path_waypoint_count": 6
+          },
+          {
+            "source_index": 8,
+            "pixel": [
+              34,
+              374
+            ],
+            "camera_depth": 1.509,
+            "target_point_world": [
+              0.463,
+              3.47,
+              -1.44
+            ],
+            "target_point_relative": [
+              0.463,
+              -1.44,
+              3.47
+            ],
+            "distance": 3.509,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 9,
+            "pixel": [
+              37,
+              323
+            ],
+            "camera_depth": 1.91,
+            "target_point_world": [
+              0.352,
+              4.459,
+              -1.402
+            ],
+            "target_point_relative": [
+              0.352,
+              -1.402,
+              4.459
+            ],
+            "distance": 4.477,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 10,
+            "pixel": [
+              411,
+              316
+            ],
+            "camera_depth": 1.095,
+            "target_point_world": [
+              -0.612,
+              0.663,
+              -0.77
+            ],
+            "target_point_relative": [
+              -0.612,
+              -0.77,
+              0.663
+            ],
+            "distance": 0.999,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 0.908,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 11,
+            "pixel": [
+              456,
+              255
+            ],
+            "camera_depth": 3.303,
+            "target_point_world": [
+              -2.599,
+              1.501,
+              -1.449
+            ],
+            "target_point_relative": [
+              -2.599,
+              -1.449,
+              1.501
+            ],
+            "distance": 3.012,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 12,
+            "pixel": [
+              453,
+              292
+            ],
+            "camera_depth": 1.546,
+            "target_point_world": [
+              -1.074,
+              0.671,
+              -0.928
+            ],
+            "target_point_relative": [
+              -1.074,
+              -0.928,
+              0.671
+            ],
+            "distance": 1.296,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 1.3,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 13,
+            "pixel": [
+              30,
+              274
+            ],
+            "camera_depth": 2.591,
+            "target_point_world": [
+              0.216,
+              6.262,
+              -1.343
+            ],
+            "target_point_relative": [
+              0.216,
+              -1.343,
+              6.262
+            ],
+            "distance": 6.267,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 14,
+            "pixel": [
+              313,
+              268
+            ],
+            "camera_depth": 1.265,
+            "target_point_world": [
+              -0.608,
+              1.401,
+              -0.623
+            ],
+            "target_point_relative": [
+              -0.608,
+              -0.623,
+              1.401
+            ],
+            "distance": 1.633,
+            "visited": 0,
+            "selected_action_key": "6",
+            "skip_reason": null,
+            "path_length": 1.561,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 15,
+            "pixel": [
+              489,
+              314
+            ],
+            "camera_depth": 2.014,
+            "target_point_world": [
+              -1.438,
+              0.499,
+              -1.397
+            ],
+            "target_point_relative": [
+              -1.438,
+              -1.397,
+              0.499
+            ],
+            "distance": 1.535,
+            "visited": 0,
+            "selected_action_key": "7",
+            "skip_reason": null,
+            "path_length": 1.591,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 16,
+            "pixel": [
+              750,
+              385
+            ],
+            "camera_depth": 1.412,
+            "target_point_world": [
+              -1.489,
+              -1.458,
+              -1.418
+            ],
+            "target_point_relative": [
+              -1.489,
+              -1.418,
+              -1.458
+            ],
+            "distance": 2.096,
+            "visited": 0,
+            "selected_action_key": "8",
+            "skip_reason": null,
+            "path_length": 2.279,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 17,
+            "pixel": [
+              376,
+              272
+            ],
+            "camera_depth": 3.081,
+            "target_point_world": [
+              -1.825,
+              2.508,
+              -1.569
+            ],
+            "target_point_relative": [
+              -1.825,
+              -1.569,
+              2.508
+            ],
+            "distance": 3.124,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 0.801
+          },
+          {
+            "source_index": 18,
+            "pixel": [
+              431,
+              285
+            ],
+            "camera_depth": 2.764,
+            "target_point_world": [
+              -1.85,
+              1.5,
+              -1.569
+            ],
+            "target_point_relative": [
+              -1.85,
+              -1.569,
+              1.5
+            ],
+            "distance": 2.41,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.201
+          },
+          {
+            "source_index": 19,
+            "pixel": [
+              318,
+              261
+            ],
+            "camera_depth": 3.266,
+            "target_point_world": [
+              -1.651,
+              3.568,
+              -1.508
+            ],
+            "target_point_relative": [
+              -1.651,
+              -1.508,
+              3.568
+            ],
+            "distance": 3.944,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 20,
+            "pixel": [
+              279,
+              231
+            ],
+            "camera_depth": 3.931,
+            "target_point_world": [
+              -1.967,
+              5.111,
+              -1.304
+            ],
+            "target_point_relative": [
+              -1.967,
+              -1.304,
+              5.111
+            ],
+            "distance": 5.477,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I am currently at the top of the stairs/landing area. I have not moved yet.\",\n\"observation\": {\n    \"front view\": \"I see the landing with decorative plates on the wall (waypoint 3) and a hallway leading to the right (waypoint 1). To the left, there is an opening towards a room.\",\n    \"left view\": \"I see a black console table with a large green sculpture/vase on top. Beyond it, there is a bedroom with a white bed visible through a doorway.\",\n    \"right view\": \"I see a long hallway extending to the right with white closet doors.\",\n    \"map\": \"I am at the START point near the stairs. Waypoint 2 is to my left near the radiator/black table area. Waypoint 1 is down the hallway to the right.\"\n},\n\"thought\": \"The instruction is to 'Walk down the hallway past the vases, enter the bedroom'. Looking at the Left View, there is a black console table with a large object (likely a vase or sculpture) on it, and immediately beyond it is a bedroom. This matches the sequence 'past the vases, enter the bedroom' perfectly. The space to the left acts as a short hallway/landing leading to the bedroom. Therefore, I should move towards the left side of the landing, past the black table (vases), towards the bedroom.\",\n\"stuck\": false,\n\"plan\": \"Move towards the left side of the landing (towards waypoint 2) to pass the 'vases' on the black console table and then proceed into the bedroom visible in the Left View.\",\n\"curr_step\": \"I need to move towards the area with the black table and the bedroom entrance. Waypoint 2 is located near the radiator and the black table, which aligns with the path 'past the vases'.\",\n\"action\": 2\n}\n```",
+      "end_position": [
+        2.145,
+        3.56,
+        -5.004
+      ]
+    },
+    {
+      "step": 1,
+      "start_position": [
+        2.145,
+        3.56,
+        -5.004
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.789,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        2.397,
+        3.52,
+        -4.256
+      ]
+    },
+    {
+      "step": 2,
+      "start_position": [
+        2.397,
+        3.52,
+        -4.256
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.997
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        2.397,
+        3.52,
+        -4.256
+      ]
+    },
+    {
+      "step": 3,
+      "start_position": [
+        2.397,
+        3.52,
+        -4.256
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.957,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        1.801,
+        3.496,
+        -3.507
+      ]
+    },
+    {
+      "step": 4,
+      "start_position": [
+        1.801,
+        3.496,
+        -3.507
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        1.801,
+        3.496,
+        -3.507
+      ]
+    },
+    {
+      "step": 5,
+      "start_position": [
+        1.801,
+        3.496,
+        -3.507
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "4",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I have moved from the top of the stairs onto the landing. I am currently facing the railing and the wall with decorative plates. To my left, there is an entrance to a bedroom with a bed visible.",
+          "observation": {
+            "front view": "I see the top of the staircase railing and a wall with three leaf-shaped decorations. To the left, there is an opening into a bedroom.",
+            "left view": "I see the entrance to a bedroom with a large bed, glass doors leading to a balcony, and a black console table with decorative items (vases) against the wall.",
+            "right view": "I see the hallway extending to the right with white closet doors.",
+            "map": "I am at waypoint 5 on the landing. Waypoint 4 is located inside the bedroom to the left, near the bed."
+          },
+          "thought": "The instruction is to 'Walk down the hallway past the vases, enter the bedroom'. I am currently on the landing near the top of the stairs. The black console table with items (likely the 'vases') is visible in the Left View, positioned near the bedroom entrance. To follow the instruction, I need to move towards and into the bedroom. Waypoint 4 is located inside the bedroom near the bed, which aligns with the goal of entering the bedroom.",
+          "stuck": 0,
+          "plan": "Move from the landing (waypoint 5) into the bedroom towards the bed (waypoint 4). This will involve passing the black console table with the vases.",
+          "curr_step": "I need to enter the bedroom. Waypoint 4 is inside the bedroom. I should move towards it.",
+          "action": 4
+        },
+        "valid": 1,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 1.335
+      },
+      "target_world_position": [
+        0.579,
+        3.496,
+        -1.346
+      ],
+      "planned_path": [
+        [
+          -0.345,
+          1.497,
+          -1.264
+        ],
+        [
+          0.251,
+          2.259,
+          -1.412
+        ],
+        [
+          0.25,
+          2.746,
+          -1.41
+        ],
+        [
+          0.579,
+          3.496,
+          -1.346
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          -0.345,
+          1.497,
+          -0.064
+        ],
+        "agent_yaw": -2.469,
+        "num_waypoints_raw": 20,
+        "num_waypoints_near": 20,
+        "num_waypoints_far": 0,
+        "num_projected": 20,
+        "num_actions": 8,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 13,
+          "no_path": 1,
+          "occlusion": 0
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              501,
+              219
+            ],
+            "camera_depth": 4.186,
+            "target_point_world": [
+              -3.282,
+              4.47,
+              -1.238
+            ],
+            "target_point_relative": [
+              -2.938,
+              -1.174,
+              2.973
+            ],
+            "distance": 4.18,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              118,
+              322
+            ],
+            "camera_depth": 1.21,
+            "target_point_world": [
+              0.825,
+              3.564,
+              -0.946
+            ],
+            "target_point_relative": [
+              1.17,
+              -0.882,
+              2.067
+            ],
+            "distance": 2.396,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              538,
+              231
+            ],
+            "camera_depth": 3.522,
+            "target_point_world": [
+              -3.272,
+              3.501,
+              -1.234
+            ],
+            "target_point_relative": [
+              -2.928,
+              -1.171,
+              2.004
+            ],
+            "distance": 3.548,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              184,
+              271
+            ],
+            "camera_depth": 2.531,
+            "target_point_world": [
+              1.235,
+              5.547,
+              -1.343
+            ],
+            "target_point_relative": [
+              1.579,
+              -1.279,
+              4.05
+            ],
+            "distance": 4.348,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              252,
+              258
+            ],
+            "camera_depth": 2.822,
+            "target_point_world": [
+              0.604,
+              5.485,
+              -1.328
+            ],
+            "target_point_relative": [
+              0.948,
+              -1.264,
+              3.988
+            ],
+            "distance": 4.1,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              514,
+              246
+            ],
+            "camera_depth": 3.236,
+            "target_point_world": [
+              -2.648,
+              3.492,
+              -1.347
+            ],
+            "target_point_relative": [
+              -2.304,
+              -1.284,
+              1.995
+            ],
+            "distance": 3.049,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              489,
+              231
+            ],
+            "camera_depth": 3.779,
+            "target_point_world": [
+              -2.757,
+              4.225,
+              -1.324
+            ],
+            "target_point_relative": [
+              -2.412,
+              -1.26,
+              2.728
+            ],
+            "distance": 3.642,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              596,
+              249
+            ],
+            "camera_depth": 2.849,
+            "target_point_world": [
+              -3.282,
+              2.498,
+              -1.235
+            ],
+            "target_point_relative": [
+              -2.937,
+              -1.171,
+              1.002
+            ],
+            "distance": 3.103,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 8,
+            "pixel": [
+              240,
+              291
+            ],
+            "camera_depth": 2.155,
+            "target_point_world": [
+              0.599,
+              4.485,
+              -1.344
+            ],
+            "target_point_relative": [
+              0.944,
+              -1.28,
+              2.989
+            ],
+            "distance": 3.135,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 9,
+            "pixel": [
+              570,
+              270
+            ],
+            "camera_depth": 2.571,
+            "target_point_world": [
+              -2.65,
+              2.506,
+              -1.35
+            ],
+            "target_point_relative": [
+              -2.306,
+              -1.286,
+              1.01
+            ],
+            "distance": 2.519,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 4.75,
+            "path_waypoint_count": 8
+          },
+          {
+            "source_index": 10,
+            "pixel": [
+              669,
+              311
+            ],
+            "camera_depth": 1.887,
+            "target_point_world": [
+              -2.646,
+              1.499,
+              -1.351
+            ],
+            "target_point_relative": [
+              -2.301,
+              -1.287,
+              0.002
+            ],
+            "distance": 2.303,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 3.637,
+            "path_waypoint_count": 6
+          },
+          {
+            "source_index": 11,
+            "pixel": [
+              690,
+              278
+            ],
+            "camera_depth": 2.174,
+            "target_point_world": [
+              -3.284,
+              1.501,
+              -1.233
+            ],
+            "target_point_relative": [
+              -2.939,
+              -1.169,
+              0.005
+            ],
+            "distance": 2.939,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 4.078,
+            "path_waypoint_count": 7
+          },
+          {
+            "source_index": 12,
+            "pixel": [
+              488,
+              570
+            ],
+            "camera_depth": 0.719,
+            "target_point_world": [
+              -0.419,
+              1.539,
+              -1.365
+            ],
+            "target_point_relative": [
+              -0.074,
+              -1.301,
+              0.042
+            ],
+            "distance": 0.132,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 13,
+            "pixel": [
+              218,
+              351
+            ],
+            "camera_depth": 1.497,
+            "target_point_world": [
+              0.579,
+              3.496,
+              -1.346
+            ],
+            "target_point_relative": [
+              0.924,
+              -1.282,
+              1.999
+            ],
+            "distance": 2.204,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 2.273,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 14,
+            "pixel": [
+              249,
+              237
+            ],
+            "camera_depth": 3.326,
+            "target_point_world": [
+              0.705,
+              6.359,
+              -1.261
+            ],
+            "target_point_relative": [
+              1.05,
+              -1.197,
+              4.862
+            ],
+            "distance": 4.974,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 15,
+            "pixel": [
+              195,
+              243
+            ],
+            "camera_depth": 3.04,
+            "target_point_world": [
+              1.289,
+              6.423,
+              -1.233
+            ],
+            "target_point_relative": [
+              1.634,
+              -1.169,
+              4.927
+            ],
+            "distance": 5.191,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 16,
+            "pixel": [
+              257,
+              225
+            ],
+            "camera_depth": 2.857,
+            "target_point_world": [
+              0.421,
+              5.679,
+              -0.939
+            ],
+            "target_point_relative": [
+              0.766,
+              -0.875,
+              4.182
+            ],
+            "distance": 4.264,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 17,
+            "pixel": [
+              455,
+              379
+            ],
+            "camera_depth": 0.889,
+            "target_point_world": [
+              -0.585,
+              1.976,
+              -0.934
+            ],
+            "target_point_relative": [
+              -0.24,
+              -0.87,
+              0.479
+            ],
+            "distance": 0.629,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 0.835,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 18,
+            "pixel": [
+              168,
+              250
+            ],
+            "camera_depth": 2.094,
+            "target_point_world": [
+              1.028,
+              5.038,
+              -0.936
+            ],
+            "target_point_relative": [
+              1.373,
+              -0.872,
+              3.541
+            ],
+            "distance": 3.812,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 19,
+            "pixel": [
+              177,
+              257
+            ],
+            "camera_depth": 2.035,
+            "target_point_world": [
+              0.935,
+              4.853,
+              -0.968
+            ],
+            "target_point_relative": [
+              1.28,
+              -0.904,
+              3.356
+            ],
+            "distance": 3.604,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I have moved from the top of the stairs onto the landing. I am currently facing the railing and the wall with decorative plates. To my left, there is an entrance to a bedroom with a bed visible.\",\n\"observation\": {\n    \"front view\": \"I see the top of the staircase railing and a wall with three leaf-shaped decorations. To the left, there is an opening into a bedroom.\",\n    \"left view\": \"I see the entrance to a bedroom with a large bed, glass doors leading to a balcony, and a black console table with decorative items (vases) against the wall.\",\n    \"right view\": \"I see the hallway extending to the right with white closet doors.\",\n    \"map\": \"I am at waypoint 5 on the landing. Waypoint 4 is located inside the bedroom to the left, near the bed.\"\n},\n\"thought\": \"The instruction is to 'Walk down the hallway past the vases, enter the bedroom'. I am currently on the landing near the top of the stairs. The black console table with items (likely the 'vases') is visible in the Left View, positioned near the bedroom entrance. To follow the instruction, I need to move towards and into the bedroom. Waypoint 4 is located inside the bedroom near the bed, which aligns with the goal of entering the bedroom.\",\n\"stuck\": false,\n\"plan\": \"Move from the landing (waypoint 5) into the bedroom towards the bed (waypoint 4). This will involve passing the black console table with the vases.\",\n\"curr_step\": \"I need to enter the bedroom. Waypoint 4 is inside the bedroom. I should move towards it.\",\n\"action\": 4\n}\n```",
+      "end_position": [
+        1.801,
+        3.496,
+        -3.507
+      ]
+    },
+    {
+      "step": 6,
+      "start_position": [
+        1.801,
+        3.496,
+        -3.507
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.968,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        2.396,
+        3.424,
+        -2.744
+      ]
+    },
+    {
+      "step": 7,
+      "start_position": [
+        2.396,
+        3.424,
+        -2.744
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.664
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        2.396,
+        3.424,
+        -2.744
+      ]
+    },
+    {
+      "step": 8,
+      "start_position": [
+        2.396,
+        3.424,
+        -2.744
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.487,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        2.396,
+        3.424,
+        -2.258
+      ]
+    },
+    {
+      "step": 9,
+      "start_position": [
+        2.396,
+        3.424,
+        -2.258
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.414
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        2.396,
+        3.424,
+        -2.258
+      ]
+    },
+    {
+      "step": 10,
+      "start_position": [
+        2.396,
+        3.424,
+        -2.258
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.819,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        2.724,
+        3.424,
+        -1.508
+      ]
+    },
+    {
+      "step": 11,
+      "start_position": [
+        2.724,
+        3.424,
+        -1.508
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        2.724,
+        3.424,
+        -1.508
+      ]
+    },
+    {
+      "step": 12,
+      "start_position": [
+        2.724,
+        3.424,
+        -1.508
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.562
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": null,
+      "end_position": [
+        2.724,
+        3.424,
+        -1.508
+      ]
+    },
+    {
+      "step": 13,
+      "start_position": [
+        2.724,
+        3.424,
+        -1.508
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "L",
+        "selected_action_type": "turn",
+        "parsed_json": {
+          "movement": "I have entered the bedroom and walked past the foot of the bed towards the dresser with vases. I am now facing the dresser, with the bed to my left.",
+          "observation": {
+            "front view": "I see a black dresser with decorative items (vases) on it. To the left is the foot of the bed. In the background are glass doors leading to a balcony.",
+            "left view": "I see the side of the bed and a white door, which is likely the bathroom or a closet.",
+            "right view": "I see the dresser and a mirror on the wall.",
+            "map": "I am near the foot of the bed (blue area). The target bathroom door is to the left of the bed, near the 'lamp' label."
+          },
+          "thought": "I have completed P1 by entering the bedroom. Now I need to complete P2: 'walk to the foot of the bed, walk toward the bathroom on the left, wait in the doorway to the bathroom.' I am currently near the foot of the bed. The bathroom door is visible in the Left View, located to the left of the bed. Therefore, I need to turn left to face it and then move towards it.",
+          "stuck": 0,
+          "plan": "Turn left to face the bathroom door seen in the left view, then move forward towards it to wait in the doorway.",
+          "curr_step": "I am at the foot of the bed. The bathroom is on the left. I need to turn left to align with the bathroom door.",
+          "action": "L"
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 1.571
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "turn",
+      "preprocess": {
+        "agent_position": [
+          0.579,
+          3.496,
+          -0.136
+        ],
+        "agent_yaw": -2.993,
+        "num_waypoints_raw": 13,
+        "num_waypoints_near": 13,
+        "num_waypoints_far": 0,
+        "num_projected": 13,
+        "num_actions": 10,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 2,
+          "no_path": 0,
+          "occlusion": 3
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              386,
+              268
+            ],
+            "camera_depth": 2.181,
+            "target_point_world": [
+              1.307,
+              5.526,
+              -1.21
+            ],
+            "target_point_relative": [
+              0.728,
+              -1.074,
+              2.03
+            ],
+            "distance": 2.16,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.448
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              282,
+              257
+            ],
+            "camera_depth": 2.114,
+            "target_point_world": [
+              2.37,
+              5.682,
+              -1.081
+            ],
+            "target_point_relative": [
+              1.791,
+              -0.945,
+              2.186
+            ],
+            "distance": 2.837,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 0.879
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              506,
+              561
+            ],
+            "camera_depth": 0.63,
+            "target_point_world": [
+              0.483,
+              3.566,
+              -1.252
+            ],
+            "target_point_relative": [
+              -0.097,
+              -1.116,
+              0.07
+            ],
+            "distance": 0.146,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              396,
+              237
+            ],
+            "camera_depth": 2.93,
+            "target_point_world": [
+              1.39,
+              6.428,
+              -1.182
+            ],
+            "target_point_relative": [
+              0.81,
+              -1.046,
+              2.932
+            ],
+            "distance": 3.046,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              311,
+              232
+            ],
+            "camera_depth": 2.672,
+            "target_point_world": [
+              2.443,
+              6.368,
+              -1.04
+            ],
+            "target_point_relative": [
+              1.864,
+              -0.904,
+              2.872
+            ],
+            "distance": 3.437,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.169
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              400,
+              268
+            ],
+            "camera_depth": 1.679,
+            "target_point_world": [
+              1.03,
+              5.042,
+              -0.963
+            ],
+            "target_point_relative": [
+              0.451,
+              -0.827,
+              1.546
+            ],
+            "distance": 1.653,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 2.288,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              471,
+              334
+            ],
+            "camera_depth": 1.399,
+            "target_point_world": [
+              0.495,
+              4.477,
+              -1.231
+            ],
+            "target_point_relative": [
+              -0.084,
+              -1.095,
+              0.981
+            ],
+            "distance": 0.99,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 0.985,
+            "path_waypoint_count": 2
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              461,
+              267
+            ],
+            "camera_depth": 2.253,
+            "target_point_world": [
+              0.496,
+              5.47,
+              -1.239
+            ],
+            "target_point_relative": [
+              -0.083,
+              -1.103,
+              1.974
+            ],
+            "distance": 1.978,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 2.056,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 8,
+            "pixel": [
+              446,
+              237
+            ],
+            "camera_depth": 2.989,
+            "target_point_world": [
+              0.657,
+              6.369,
+              -1.214
+            ],
+            "target_point_relative": [
+              0.078,
+              -1.078,
+              2.873
+            ],
+            "distance": 2.877,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 2.909,
+            "path_waypoint_count": 6
+          },
+          {
+            "source_index": 9,
+            "pixel": [
+              521,
+              292
+            ],
+            "camera_depth": 1.389,
+            "target_point_world": [
+              0.122,
+              4.564,
+              -0.967
+            ],
+            "target_point_relative": [
+              -0.457,
+              -0.831,
+              1.067
+            ],
+            "distance": 1.218,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 2.94,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 10,
+            "pixel": [
+              480,
+              243
+            ],
+            "camera_depth": 2.154,
+            "target_point_world": [
+              0.275,
+              5.481,
+              -0.966
+            ],
+            "target_point_relative": [
+              -0.305,
+              -0.83,
+              1.985
+            ],
+            "distance": 2.042,
+            "visited": 0,
+            "selected_action_key": "6",
+            "skip_reason": null,
+            "path_length": 2.067,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 11,
+            "pixel": [
+              509,
+              245
+            ],
+            "camera_depth": 2.104,
+            "target_point_world": [
+              -0.018,
+              5.383,
+              -0.959
+            ],
+            "target_point_relative": [
+              -0.598,
+              -0.824,
+              1.887
+            ],
+            "distance": 2.015,
+            "visited": 0,
+            "selected_action_key": "7",
+            "skip_reason": null,
+            "path_length": 2.122,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 12,
+            "pixel": [
+              485,
+              503
+            ],
+            "camera_depth": 0.548,
+            "target_point_world": [
+              0.54,
+              3.644,
+              -0.968
+            ],
+            "target_point_relative": [
+              -0.039,
+              -0.832,
+              0.148
+            ],
+            "distance": 0.399,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_close",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I have entered the bedroom and walked past the foot of the bed towards the dresser with vases. I am now facing the dresser, with the bed to my left.\",\n\"observation\": {\n    \"front view\": \"I see a black dresser with decorative items (vases) on it. To the left is the foot of the bed. In the background are glass doors leading to a balcony.\",\n    \"left view\": \"I see the side of the bed and a white door, which is likely the bathroom or a closet.\",\n    \"right view\": \"I see the dresser and a mirror on the wall.\",\n    \"map\": \"I am near the foot of the bed (blue area). The target bathroom door is to the left of the bed, near the 'lamp' label.\"\n},\n\"thought\": \"I have completed P1 by entering the bedroom. Now I need to complete P2: 'walk to the foot of the bed, walk toward the bathroom on the left, wait in the doorway to the bathroom.' I am currently near the foot of the bed. The bathroom door is visible in the Left View, located to the left of the bed. Therefore, I need to turn left to face it and then move towards it.\",\n\"stuck\": false,\n\"plan\": \"Turn left to face the bathroom door seen in the left view, then move forward towards it to wait in the doorway.\",\n\"curr_step\": \"I am at the foot of the bed. The bathroom is on the left. I need to turn left to align with the bathroom door.\",\n\"action\": \"L\"\n}\n```",
+      "end_position": [
+        2.724,
+        3.424,
+        -1.508
+      ]
+    },
+    {
+      "step": 14,
+      "start_position": [
+        2.724,
+        3.424,
+        -1.508
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "4",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I have entered the bedroom and am currently standing near the foot of the bed, facing the bed. The dresser with vases is to my right (visible in Right View). The open door to the bathroom is visible in the Front View on the left side of the bed.",
+          "observation": {
+            "front view": "I see the bed directly ahead. To the left of the bed, there is an open white door leading to a hallway/bathroom area. A nightstand with a lamp is next to the bed.",
+            "left view": "I see the hallway leading away from the bedroom and another room further down.",
+            "right view": "I see a long black dresser with decorative items (vases) on top, and glass doors leading to a balcony.",
+            "map": "I am in the blue area (bedroom). The pink area is the bathroom. The door connecting them is visible in the Front View."
+          },
+          "thought": "I have completed entering the bedroom (P1). Now I need to follow P2: 'walk to the foot of the bed, walk toward the bathroom on the left, wait in the doorway to the bathroom.' I am currently at the foot of the bed. The bathroom door is to my left/front-left. I need to move towards that doorway.",
+          "stuck": 0,
+          "plan": "Move from my current position near the foot of the bed towards the open door on the left (waypoint 4) which leads to the bathroom.",
+          "curr_step": "I am at the foot of the bed. The bathroom is through the door on the left. I need to move towards waypoint 4.",
+          "action": 4
+        },
+        "valid": 1,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.671
+      },
+      "target_world_position": [
+        2.761,
+        1.779,
+        -1.252
+      ],
+      "planned_path": [
+        [
+          0.579,
+          3.496,
+          -1.336
+        ],
+        [
+          1.256,
+          3.107,
+          -1.532
+        ],
+        [
+          1.737,
+          2.761,
+          -1.319
+        ],
+        [
+          2.245,
+          2.293,
+          -1.262
+        ],
+        [
+          2.761,
+          1.779,
+          -1.252
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          0.579,
+          3.496,
+          -0.136
+        ],
+        "agent_yaw": 1.72,
+        "num_waypoints_raw": 17,
+        "num_waypoints_near": 17,
+        "num_waypoints_far": 0,
+        "num_projected": 17,
+        "num_actions": 10,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 4,
+          "no_path": 0,
+          "occlusion": 6
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              435,
+              242
+            ],
+            "camera_depth": 2.194,
+            "target_point_world": [
+              2.683,
+              3.31,
+              -0.968
+            ],
+            "target_point_relative": [
+              2.104,
+              -0.832,
+              -0.186
+            ],
+            "distance": 2.144,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 2.225,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              771,
+              345
+            ],
+            "camera_depth": 0.998,
+            "target_point_world": [
+              1.03,
+              5.042,
+              -0.963
+            ],
+            "target_point_relative": [
+              0.451,
+              -0.827,
+              1.546
+            ],
+            "distance": 1.653,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.288,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              364,
+              244
+            ],
+            "camera_depth": 2.133,
+            "target_point_world": [
+              2.724,
+              2.566,
+              -0.968
+            ],
+            "target_point_relative": [
+              2.145,
+              -0.832,
+              -0.93
+            ],
+            "distance": 2.367,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 2.379,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              424,
+              215
+            ],
+            "camera_depth": 4.487,
+            "target_point_world": [
+              5.218,
+              2.919,
+              -1.313
+            ],
+            "target_point_relative": [
+              4.639,
+              -1.177,
+              -0.577
+            ],
+            "distance": 4.675,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 2.261
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              266,
+              240
+            ],
+            "camera_depth": 2.927,
+            "target_point_world": [
+              3.765,
+              0.803,
+              -1.225
+            ],
+            "target_point_relative": [
+              3.186,
+              -1.089,
+              -2.693
+            ],
+            "distance": 4.173,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              690,
+              241
+            ],
+            "camera_depth": 2.417,
+            "target_point_world": [
+              2.443,
+              6.368,
+              -1.04
+            ],
+            "target_point_relative": [
+              1.864,
+              -0.904,
+              2.872
+            ],
+            "distance": 3.437,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 1.049
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              297,
+              271
+            ],
+            "camera_depth": 2.206,
+            "target_point_world": [
+              2.761,
+              1.779,
+              -1.252
+            ],
+            "target_point_relative": [
+              2.182,
+              -1.116,
+              -1.718
+            ],
+            "distance": 2.778,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 2.792,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              260,
+              222
+            ],
+            "camera_depth": 2.9,
+            "target_point_world": [
+              3.884,
+              0.751,
+              -0.981
+            ],
+            "target_point_relative": [
+              3.304,
+              -0.845,
+              -2.744
+            ],
+            "distance": 4.31,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 8,
+            "pixel": [
+              288,
+              373
+            ],
+            "camera_depth": 1.157,
+            "target_point_world": [
+              1.438,
+              2.496,
+              -1.238
+            ],
+            "target_point_relative": [
+              0.858,
+              -1.102,
+              -1.0
+            ],
+            "distance": 1.322,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 1.319,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 9,
+            "pixel": [
+              433,
+              269
+            ],
+            "camera_depth": 2.182,
+            "target_point_world": [
+              2.525,
+              3.273,
+              -1.224
+            ],
+            "target_point_relative": [
+              1.946,
+              -1.088,
+              -0.223
+            ],
+            "distance": 1.962,
+            "visited": 0,
+            "selected_action_key": "6",
+            "skip_reason": null,
+            "path_length": 2.066,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 10,
+            "pixel": [
+              644,
+              250
+            ],
+            "camera_depth": 2.288,
+            "target_point_world": [
+              2.37,
+              5.682,
+              -1.081
+            ],
+            "target_point_relative": [
+              1.791,
+              -0.945,
+              2.186
+            ],
+            "distance": 2.837,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 0.946
+          },
+          {
+            "source_index": 11,
+            "pixel": [
+              745,
+              328
+            ],
+            "camera_depth": 1.421,
+            "target_point_world": [
+              1.307,
+              5.526,
+              -1.21
+            ],
+            "target_point_relative": [
+              0.728,
+              -1.074,
+              2.03
+            ],
+            "distance": 2.16,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 0.948
+          },
+          {
+            "source_index": 12,
+            "pixel": [
+              299,
+              246
+            ],
+            "camera_depth": 2.72,
+            "target_point_world": [
+              3.435,
+              1.427,
+              -1.217
+            ],
+            "target_point_relative": [
+              2.856,
+              -1.081,
+              -2.069
+            ],
+            "distance": 3.529,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 13,
+            "pixel": [
+              826,
+              305
+            ],
+            "camera_depth": 1.594,
+            "target_point_world": [
+              1.39,
+              6.428,
+              -1.182
+            ],
+            "target_point_relative": [
+              0.81,
+              -1.046,
+              2.932
+            ],
+            "distance": 3.046,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 14,
+            "pixel": [
+              358,
+              276
+            ],
+            "camera_depth": 2.072,
+            "target_point_world": [
+              2.51,
+              2.505,
+              -1.226
+            ],
+            "target_point_relative": [
+              1.931,
+              -1.091,
+              -0.991
+            ],
+            "distance": 2.173,
+            "visited": 0,
+            "selected_action_key": "7",
+            "skip_reason": null,
+            "path_length": 2.188,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 15,
+            "pixel": [
+              425,
+              221
+            ],
+            "camera_depth": 4.067,
+            "target_point_world": [
+              4.716,
+              2.981,
+              -1.316
+            ],
+            "target_point_relative": [
+              4.137,
+              -1.18,
+              -0.515
+            ],
+            "distance": 4.169,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 2.291
+          },
+          {
+            "source_index": 16,
+            "pixel": [
+              426,
+              229
+            ],
+            "camera_depth": 3.647,
+            "target_point_world": [
+              4.215,
+              3.044,
+              -1.319
+            ],
+            "target_point_relative": [
+              3.636,
+              -1.183,
+              -0.452
+            ],
+            "distance": 3.664,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 2.323
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I have entered the bedroom and am currently standing near the foot of the bed, facing the bed. The dresser with vases is to my right (visible in Right View). The open door to the bathroom is visible in the Front View on the left side of the bed.\",\n\"observation\": {\n    \"front view\": \"I see the bed directly ahead. To the left of the bed, there is an open white door leading to a hallway/bathroom area. A nightstand with a lamp is next to the bed.\",\n    \"left view\": \"I see the hallway leading away from the bedroom and another room further down.\",\n    \"right view\": \"I see a long black dresser with decorative items (vases) on top, and glass doors leading to a balcony.\",\n    \"map\": \"I am in the blue area (bedroom). The pink area is the bathroom. The door connecting them is visible in the Front View.\"\n},\n\"thought\": \"I have completed entering the bedroom (P1). Now I need to follow P2: 'walk to the foot of the bed, walk toward the bathroom on the left, wait in the doorway to the bathroom.' I am currently at the foot of the bed. The bathroom door is to my left/front-left. I need to move towards that doorway.\",\n\"stuck\": false,\n\"plan\": \"Move from my current position near the foot of the bed towards the open door on the left (waypoint 4) which leads to the bathroom.\",\n\"curr_step\": \"I am at the foot of the bed. The bathroom is through the door on the left. I need to move towards waypoint 4.\",\n\"action\": 4\n}\n```",
+      "end_position": [
+        2.724,
+        3.424,
+        -1.508
+      ]
+    },
+    {
+      "step": 15,
+      "start_position": [
+        2.724,
+        3.424,
+        -1.508
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.78,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        3.401,
+        3.424,
+        -1.897
+      ]
+    },
+    {
+      "step": 16,
+      "start_position": [
+        3.401,
+        3.424,
+        -1.897
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.102
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        3.401,
+        3.424,
+        -1.897
+      ]
+    },
+    {
+      "step": 17,
+      "start_position": [
+        3.401,
+        3.424,
+        -1.897
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.593,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        3.882,
+        3.424,
+        -2.243
+      ]
+    },
+    {
+      "step": 18,
+      "start_position": [
+        3.882,
+        3.424,
+        -2.243
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.12
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        3.882,
+        3.424,
+        -2.243
+      ]
+    },
+    {
+      "step": 19,
+      "start_position": [
+        3.882,
+        3.424,
+        -2.243
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.691,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        4.391,
+        3.621,
+        -2.711
+      ]
+    },
+    {
+      "step": 20,
+      "start_position": [
+        4.391,
+        3.621,
+        -2.711
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.728,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        4.927,
+        3.549,
+        -3.204
+      ]
+    },
+    {
+      "step": 21,
+      "start_position": [
+        4.927,
+        3.549,
+        -3.204
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        4.927,
+        3.549,
+        -3.204
+      ]
+    },
+    {
+      "step": 22,
+      "start_position": [
+        4.927,
+        3.549,
+        -3.204
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.369
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": null,
+      "end_position": [
+        4.927,
+        3.549,
+        -3.204
+      ]
+    },
+    {
+      "step": 23,
+      "start_position": [
+        4.927,
+        3.549,
+        -3.204
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": null,
+        "selected_action_type": null,
+        "parsed_json": null,
+        "valid": 0,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "stop",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "decision_none",
+      "preprocess": {
+        "agent_position": [
+          2.782,
+          1.8,
+          -0.011
+        ],
+        "agent_yaw": 1.196,
+        "num_waypoints_raw": 32,
+        "num_waypoints_near": 32,
+        "num_waypoints_far": 0,
+        "num_projected": 32,
+        "num_actions": 17,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 16,
+          "no_path": 0,
+          "occlusion": 1
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              219,
+              225
+            ],
+            "camera_depth": 3.963,
+            "target_point_world": [
+              4.485,
+              -4.449,
+              -1.232
+            ],
+            "target_point_relative": [
+              1.703,
+              -1.22,
+              -6.249
+            ],
+            "distance": 6.477,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              377,
+              288
+            ],
+            "camera_depth": 1.651,
+            "target_point_world": [
+              3.732,
+              0.515,
+              -0.967
+            ],
+            "target_point_relative": [
+              0.951,
+              -0.955,
+              -1.285
+            ],
+            "distance": 1.617,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.605,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              58,
+              357
+            ],
+            "camera_depth": 1.043,
+            "target_point_world": [
+              2.6,
+              -0.501,
+              -0.931
+            ],
+            "target_point_relative": [
+              -0.182,
+              -0.92,
+              -2.302
+            ],
+            "distance": 2.326,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.319,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              258,
+              272
+            ],
+            "camera_depth": 2.407,
+            "target_point_world": [
+              3.727,
+              -1.457,
+              -1.237
+            ],
+            "target_point_relative": [
+              0.945,
+              -1.226,
+              -3.258
+            ],
+            "distance": 3.392,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              269,
+              221
+            ],
+            "camera_depth": 3.231,
+            "target_point_world": [
+              4.497,
+              -2.556,
+              -0.947
+            ],
+            "target_point_relative": [
+              1.716,
+              -0.935,
+              -4.357
+            ],
+            "distance": 4.69,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              464,
+              369
+            ],
+            "camera_depth": 1.277,
+            "target_point_world": [
+              3.477,
+              1.422,
+              -1.204
+            ],
+            "target_point_relative": [
+              0.696,
+              -1.193,
+              -0.378
+            ],
+            "distance": 0.792,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 0.792,
+            "path_waypoint_count": 2
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              199,
+              244
+            ],
+            "camera_depth": 3.165,
+            "target_point_world": [
+              3.892,
+              -3.433,
+              -1.236
+            ],
+            "target_point_relative": [
+              1.11,
+              -1.225,
+              -5.233
+            ],
+            "distance": 5.349,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              365,
+              327
+            ],
+            "camera_depth": 1.608,
+            "target_point_world": [
+              3.524,
+              0.513,
+              -1.214
+            ],
+            "target_point_relative": [
+              0.743,
+              -1.203,
+              -1.287
+            ],
+            "distance": 1.486,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 1.518,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 8,
+            "pixel": [
+              483,
+              334
+            ],
+            "camera_depth": 1.189,
+            "target_point_world": [
+              3.57,
+              1.514,
+              -0.937
+            ],
+            "target_point_relative": [
+              0.788,
+              -0.926,
+              -0.286
+            ],
+            "distance": 0.882,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 1.118,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 9,
+            "pixel": [
+              247,
+              202
+            ],
+            "camera_depth": 4.361,
+            "target_point_world": [
+              5.111,
+              -4.604,
+              -0.918
+            ],
+            "target_point_relative": [
+              2.33,
+              -0.907,
+              -6.404
+            ],
+            "distance": 6.821,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 10,
+            "pixel": [
+              254,
+              216
+            ],
+            "camera_depth": 4.523,
+            "target_point_world": [
+              5.113,
+              -4.624,
+              -1.228
+            ],
+            "target_point_relative": [
+              2.331,
+              -1.216,
+              -6.424
+            ],
+            "distance": 6.834,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 11,
+            "pixel": [
+              208,
+              209
+            ],
+            "camera_depth": 3.842,
+            "target_point_world": [
+              4.495,
+              -4.52,
+              -0.927
+            ],
+            "target_point_relative": [
+              1.713,
+              -0.916,
+              -6.32
+            ],
+            "distance": 6.554,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 12,
+            "pixel": [
+              185,
+              235
+            ],
+            "camera_depth": 3.461,
+            "target_point_world": [
+              3.973,
+              -4.183,
+              -1.22
+            ],
+            "target_point_relative": [
+              1.191,
+              -1.209,
+              -5.983
+            ],
+            "distance": 6.101,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 13,
+            "pixel": [
+              188,
+              205
+            ],
+            "camera_depth": 4.135,
+            "target_point_world": [
+              4.521,
+              -5.408,
+              -0.909
+            ],
+            "target_point_relative": [
+              1.739,
+              -0.898,
+              -7.208
+            ],
+            "distance": 7.421,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 14,
+            "pixel": [
+              484,
+              260
+            ],
+            "camera_depth": 2.021,
+            "target_point_world": [
+              4.473,
+              1.184,
+              -0.936
+            ],
+            "target_point_relative": [
+              1.691,
+              -0.925,
+              -0.616
+            ],
+            "distance": 1.821,
+            "visited": 0,
+            "selected_action_key": "6",
+            "skip_reason": null,
+            "path_length": 2.506,
+            "path_waypoint_count": 7
+          },
+          {
+            "source_index": 15,
+            "pixel": [
+              510,
+              230
+            ],
+            "camera_depth": 2.767,
+            "target_point_world": [
+              5.422,
+              1.223,
+              -0.922
+            ],
+            "target_point_relative": [
+              2.64,
+              -0.911,
+              -0.578
+            ],
+            "distance": 2.718,
+            "visited": 0,
+            "selected_action_key": "7",
+            "skip_reason": null,
+            "path_length": 2.891,
+            "path_waypoint_count": 7
+          },
+          {
+            "source_index": 16,
+            "pixel": [
+              98,
+              394
+            ],
+            "camera_depth": 1.144,
+            "target_point_world": [
+              2.566,
+              -0.476,
+              -1.205
+            ],
+            "target_point_relative": [
+              -0.216,
+              -1.194,
+              -2.276
+            ],
+            "distance": 2.286,
+            "visited": 0,
+            "selected_action_key": "8",
+            "skip_reason": null,
+            "path_length": 2.302,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 17,
+            "pixel": [
+              31,
+              349
+            ],
+            "camera_depth": 1.41,
+            "target_point_world": [
+              2.493,
+              -1.502,
+              -1.204
+            ],
+            "target_point_relative": [
+              -0.289,
+              -1.193,
+              -3.302
+            ],
+            "distance": 3.314,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 18,
+            "pixel": [
+              222,
+              256
+            ],
+            "camera_depth": 2.78,
+            "target_point_world": [
+              3.795,
+              -2.464,
+              -1.235
+            ],
+            "target_point_relative": [
+              1.013,
+              -1.224,
+              -4.264
+            ],
+            "distance": 4.383,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 19,
+            "pixel": [
+              290,
+              298
+            ],
+            "camera_depth": 1.929,
+            "target_point_world": [
+              3.533,
+              -0.47,
+              -1.219
+            ],
+            "target_point_relative": [
+              0.752,
+              -1.208,
+              -2.27
+            ],
+            "distance": 2.391,
+            "visited": 0,
+            "selected_action_key": "9",
+            "skip_reason": null,
+            "path_length": 2.508,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 20,
+            "pixel": [
+              511,
+              250
+            ],
+            "camera_depth": 2.862,
+            "target_point_world": [
+              5.383,
+              1.264,
+              -1.202
+            ],
+            "target_point_relative": [
+              2.601,
+              -1.191,
+              -0.536
+            ],
+            "distance": 2.656,
+            "visited": 0,
+            "selected_action_key": "10",
+            "skip_reason": null,
+            "path_length": 2.848,
+            "path_waypoint_count": 7
+          },
+          {
+            "source_index": 21,
+            "pixel": [
+              497,
+              284
+            ],
+            "camera_depth": 2.11,
+            "target_point_world": [
+              4.48,
+              1.33,
+              -1.196
+            ],
+            "target_point_relative": [
+              1.698,
+              -1.185,
+              -0.47
+            ],
+            "distance": 1.762,
+            "visited": 0,
+            "selected_action_key": "11",
+            "skip_reason": null,
+            "path_length": 1.989,
+            "path_waypoint_count": 6
+          },
+          {
+            "source_index": 22,
+            "pixel": [
+              268,
+              240
+            ],
+            "camera_depth": 3.233,
+            "target_point_world": [
+              4.351,
+              -2.521,
+              -1.208
+            ],
+            "target_point_relative": [
+              1.569,
+              -1.197,
+              -4.321
+            ],
+            "distance": 4.597,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 3.103
+          },
+          {
+            "source_index": 23,
+            "pixel": [
+              212,
+              236
+            ],
+            "camera_depth": 2.761,
+            "target_point_world": [
+              3.864,
+              -2.619,
+              -0.988
+            ],
+            "target_point_relative": [
+              1.083,
+              -0.977,
+              -4.419
+            ],
+            "distance": 4.556,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 24,
+            "pixel": [
+              240,
+              200
+            ],
+            "camera_depth": 4.574,
+            "target_point_world": [
+              5.199,
+              -5.077,
+              -0.905
+            ],
+            "target_point_relative": [
+              2.417,
+              -0.894,
+              -6.878
+            ],
+            "distance": 7.296,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 25,
+            "pixel": [
+              171,
+              218
+            ],
+            "camera_depth": 3.367,
+            "target_point_world": [
+              3.987,
+              -4.285,
+              -0.945
+            ],
+            "target_point_relative": [
+              1.205,
+              -0.934,
+              -6.086
+            ],
+            "distance": 6.21,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 26,
+            "pixel": [
+              343,
+              240
+            ],
+            "camera_depth": 2.437,
+            "target_point_world": [
+              4.301,
+              -0.6,
+              -0.914
+            ],
+            "target_point_relative": [
+              1.519,
+              -0.903,
+              -2.4
+            ],
+            "distance": 2.856,
+            "visited": 0,
+            "selected_action_key": "12",
+            "skip_reason": null,
+            "path_length": 3.045,
+            "path_waypoint_count": 6
+          },
+          {
+            "source_index": 27,
+            "pixel": [
+              242,
+              232
+            ],
+            "camera_depth": 3.625,
+            "target_point_world": [
+              4.443,
+              -3.498,
+              -1.225
+            ],
+            "target_point_relative": [
+              1.661,
+              -1.214,
+              -5.299
+            ],
+            "distance": 5.553,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 28,
+            "pixel": [
+              352,
+              263
+            ],
+            "camera_depth": 2.533,
+            "target_point_world": [
+              4.268,
+              -0.535,
+              -1.201
+            ],
+            "target_point_relative": [
+              1.487,
+              -1.19,
+              -2.336
+            ],
+            "distance": 2.769,
+            "visited": 0,
+            "selected_action_key": "13",
+            "skip_reason": null,
+            "path_length": 2.863,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 29,
+            "pixel": [
+              335,
+              233
+            ],
+            "camera_depth": 3.59,
+            "target_point_world": [
+              5.025,
+              -1.877,
+              -1.243
+            ],
+            "target_point_relative": [
+              2.244,
+              -1.232,
+              -3.678
+            ],
+            "distance": 4.308,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 30,
+            "pixel": [
+              185,
+              226
+            ],
+            "camera_depth": 3.065,
+            "target_point_world": [
+              3.904,
+              -3.513,
+              -0.964
+            ],
+            "target_point_relative": [
+              1.122,
+              -0.953,
+              -5.313
+            ],
+            "distance": 5.436,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 31,
+            "pixel": [
+              256,
+              280
+            ],
+            "camera_depth": 1.678,
+            "target_point_world": [
+              3.403,
+              -0.471,
+              -0.926
+            ],
+            "target_point_relative": [
+              0.622,
+              -0.915,
+              -2.271
+            ],
+            "distance": 2.372,
+            "visited": 0,
+            "selected_action_key": "14",
+            "skip_reason": null,
+            "path_length": 2.482,
+            "path_waypoint_count": 5
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "None",
+      "end_position": [
+        4.927,
+        3.549,
+        -3.204
+      ]
+    },
+    {
+      "step": 24,
+      "start_position": [
+        4.927,
+        3.549,
+        -3.204
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "14",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "I have moved from the foot of the bed towards the hallway/closet area. I am now facing the closet doors and the bathroom entrance is visible to the left.",
+          "observation": {
+            "front view": "I see a white closet/dresser unit straight ahead. To the left of it, there is an open doorway leading into a bathroom with a window and tub visible.",
+            "left view": "I see the side of the white dresser and the entrance to the bathroom more clearly.",
+            "right view": "I see the bed and the rest of the bedroom.",
+            "map": "I am near the foot of the bed. The pink area (bathroom) is to my left-front."
+          },
+          "thought": "I have completed walking to the foot of the bed. Now I need to walk toward the bathroom on the left and wait in its doorway. The bathroom is visible through the opening to the left of the closet in the Front View. Waypoint 14 is located near this entrance.",
+          "stuck": 0,
+          "plan": "Move towards the bathroom doorway which is to the left-front of my current position. I will aim for waypoint 14 which is near the threshold of that room.",
+          "curr_step": "I am facing the closet. The bathroom is to the left. I need to move forward and slightly left to reach the bathroom doorway.",
+          "action": 14
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 1.205
+      },
+      "target_world_position": [
+        3.403,
+        -0.471,
+        -0.926
+      ],
+      "planned_path": [
+        [
+          2.782,
+          1.8,
+          -1.211
+        ],
+        [
+          2.777,
+          1.268,
+          -1.254
+        ],
+        [
+          2.757,
+          0.753,
+          -1.22
+        ],
+        [
+          3.247,
+          0.23,
+          -0.964
+        ],
+        [
+          3.403,
+          -0.471,
+          -0.926
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          2.782,
+          1.8,
+          -0.011
+        ],
+        "agent_yaw": 1.196,
+        "num_waypoints_raw": 32,
+        "num_waypoints_near": 32,
+        "num_waypoints_far": 0,
+        "num_projected": 32,
+        "num_actions": 17,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 16,
+          "no_path": 0,
+          "occlusion": 1
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              464,
+              369
+            ],
+            "camera_depth": 1.277,
+            "target_point_world": [
+              3.477,
+              1.422,
+              -1.204
+            ],
+            "target_point_relative": [
+              0.696,
+              -1.193,
+              -0.378
+            ],
+            "distance": 0.792,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 0.792,
+            "path_waypoint_count": 2
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              510,
+              230
+            ],
+            "camera_depth": 2.767,
+            "target_point_world": [
+              5.422,
+              1.223,
+              -0.922
+            ],
+            "target_point_relative": [
+              2.64,
+              -0.911,
+              -0.578
+            ],
+            "distance": 2.718,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.891,
+            "path_waypoint_count": 7
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              268,
+              240
+            ],
+            "camera_depth": 3.233,
+            "target_point_world": [
+              4.351,
+              -2.521,
+              -1.208
+            ],
+            "target_point_relative": [
+              1.569,
+              -1.197,
+              -4.321
+            ],
+            "distance": 4.597,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 3.103
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              58,
+              357
+            ],
+            "camera_depth": 1.043,
+            "target_point_world": [
+              2.6,
+              -0.501,
+              -0.931
+            ],
+            "target_point_relative": [
+              -0.182,
+              -0.92,
+              -2.302
+            ],
+            "distance": 2.326,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 2.319,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              511,
+              250
+            ],
+            "camera_depth": 2.862,
+            "target_point_world": [
+              5.383,
+              1.264,
+              -1.202
+            ],
+            "target_point_relative": [
+              2.601,
+              -1.191,
+              -0.536
+            ],
+            "distance": 2.656,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 2.848,
+            "path_waypoint_count": 7
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              343,
+              240
+            ],
+            "camera_depth": 2.437,
+            "target_point_world": [
+              4.301,
+              -0.6,
+              -0.914
+            ],
+            "target_point_relative": [
+              1.519,
+              -0.903,
+              -2.4
+            ],
+            "distance": 2.856,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 3.045,
+            "path_waypoint_count": 6
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              352,
+              263
+            ],
+            "camera_depth": 2.533,
+            "target_point_world": [
+              4.268,
+              -0.535,
+              -1.201
+            ],
+            "target_point_relative": [
+              1.487,
+              -1.19,
+              -2.336
+            ],
+            "distance": 2.769,
+            "visited": 0,
+            "selected_action_key": "6",
+            "skip_reason": null,
+            "path_length": 2.863,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              219,
+              225
+            ],
+            "camera_depth": 3.963,
+            "target_point_world": [
+              4.485,
+              -4.449,
+              -1.232
+            ],
+            "target_point_relative": [
+              1.703,
+              -1.22,
+              -6.249
+            ],
+            "distance": 6.477,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 8,
+            "pixel": [
+              208,
+              209
+            ],
+            "camera_depth": 3.842,
+            "target_point_world": [
+              4.495,
+              -4.52,
+              -0.927
+            ],
+            "target_point_relative": [
+              1.713,
+              -0.916,
+              -6.32
+            ],
+            "distance": 6.554,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 9,
+            "pixel": [
+              222,
+              256
+            ],
+            "camera_depth": 2.78,
+            "target_point_world": [
+              3.795,
+              -2.464,
+              -1.235
+            ],
+            "target_point_relative": [
+              1.013,
+              -1.224,
+              -4.264
+            ],
+            "distance": 4.383,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 10,
+            "pixel": [
+              242,
+              232
+            ],
+            "camera_depth": 3.625,
+            "target_point_world": [
+              4.443,
+              -3.498,
+              -1.225
+            ],
+            "target_point_relative": [
+              1.661,
+              -1.214,
+              -5.299
+            ],
+            "distance": 5.553,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 11,
+            "pixel": [
+              290,
+              298
+            ],
+            "camera_depth": 1.929,
+            "target_point_world": [
+              3.533,
+              -0.47,
+              -1.219
+            ],
+            "target_point_relative": [
+              0.752,
+              -1.208,
+              -2.27
+            ],
+            "distance": 2.391,
+            "visited": 0,
+            "selected_action_key": "7",
+            "skip_reason": null,
+            "path_length": 2.508,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 12,
+            "pixel": [
+              98,
+              394
+            ],
+            "camera_depth": 1.144,
+            "target_point_world": [
+              2.566,
+              -0.476,
+              -1.205
+            ],
+            "target_point_relative": [
+              -0.216,
+              -1.194,
+              -2.276
+            ],
+            "distance": 2.286,
+            "visited": 0,
+            "selected_action_key": "8",
+            "skip_reason": null,
+            "path_length": 2.302,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 13,
+            "pixel": [
+              483,
+              334
+            ],
+            "camera_depth": 1.189,
+            "target_point_world": [
+              3.57,
+              1.514,
+              -0.937
+            ],
+            "target_point_relative": [
+              0.788,
+              -0.926,
+              -0.286
+            ],
+            "distance": 0.882,
+            "visited": 0,
+            "selected_action_key": "9",
+            "skip_reason": null,
+            "path_length": 1.118,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 14,
+            "pixel": [
+              365,
+              327
+            ],
+            "camera_depth": 1.608,
+            "target_point_world": [
+              3.524,
+              0.513,
+              -1.214
+            ],
+            "target_point_relative": [
+              0.743,
+              -1.203,
+              -1.287
+            ],
+            "distance": 1.486,
+            "visited": 0,
+            "selected_action_key": "10",
+            "skip_reason": null,
+            "path_length": 1.518,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 15,
+            "pixel": [
+              497,
+              284
+            ],
+            "camera_depth": 2.11,
+            "target_point_world": [
+              4.48,
+              1.33,
+              -1.196
+            ],
+            "target_point_relative": [
+              1.698,
+              -1.185,
+              -0.47
+            ],
+            "distance": 1.762,
+            "visited": 0,
+            "selected_action_key": "11",
+            "skip_reason": null,
+            "path_length": 1.989,
+            "path_waypoint_count": 6
+          },
+          {
+            "source_index": 16,
+            "pixel": [
+              199,
+              244
+            ],
+            "camera_depth": 3.165,
+            "target_point_world": [
+              3.892,
+              -3.433,
+              -1.236
+            ],
+            "target_point_relative": [
+              1.11,
+              -1.225,
+              -5.233
+            ],
+            "distance": 5.349,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 17,
+            "pixel": [
+              31,
+              349
+            ],
+            "camera_depth": 1.41,
+            "target_point_world": [
+              2.493,
+              -1.502,
+              -1.204
+            ],
+            "target_point_relative": [
+              -0.289,
+              -1.193,
+              -3.302
+            ],
+            "distance": 3.314,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 18,
+            "pixel": [
+              269,
+              221
+            ],
+            "camera_depth": 3.231,
+            "target_point_world": [
+              4.497,
+              -2.556,
+              -0.947
+            ],
+            "target_point_relative": [
+              1.716,
+              -0.935,
+              -4.357
+            ],
+            "distance": 4.69,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 19,
+            "pixel": [
+              212,
+              236
+            ],
+            "camera_depth": 2.761,
+            "target_point_world": [
+              3.864,
+              -2.619,
+              -0.988
+            ],
+            "target_point_relative": [
+              1.083,
+              -0.977,
+              -4.419
+            ],
+            "distance": 4.556,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 20,
+            "pixel": [
+              185,
+              226
+            ],
+            "camera_depth": 3.065,
+            "target_point_world": [
+              3.904,
+              -3.513,
+              -0.964
+            ],
+            "target_point_relative": [
+              1.122,
+              -0.953,
+              -5.313
+            ],
+            "distance": 5.436,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 21,
+            "pixel": [
+              377,
+              288
+            ],
+            "camera_depth": 1.651,
+            "target_point_world": [
+              3.732,
+              0.515,
+              -0.967
+            ],
+            "target_point_relative": [
+              0.951,
+              -0.955,
+              -1.285
+            ],
+            "distance": 1.617,
+            "visited": 0,
+            "selected_action_key": "12",
+            "skip_reason": null,
+            "path_length": 1.605,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 22,
+            "pixel": [
+              484,
+              260
+            ],
+            "camera_depth": 2.021,
+            "target_point_world": [
+              4.473,
+              1.184,
+              -0.936
+            ],
+            "target_point_relative": [
+              1.691,
+              -0.925,
+              -0.616
+            ],
+            "distance": 1.821,
+            "visited": 0,
+            "selected_action_key": "13",
+            "skip_reason": null,
+            "path_length": 2.506,
+            "path_waypoint_count": 7
+          },
+          {
+            "source_index": 23,
+            "pixel": [
+              258,
+              272
+            ],
+            "camera_depth": 2.407,
+            "target_point_world": [
+              3.727,
+              -1.457,
+              -1.237
+            ],
+            "target_point_relative": [
+              0.945,
+              -1.226,
+              -3.258
+            ],
+            "distance": 3.392,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 24,
+            "pixel": [
+              254,
+              216
+            ],
+            "camera_depth": 4.523,
+            "target_point_world": [
+              5.113,
+              -4.624,
+              -1.228
+            ],
+            "target_point_relative": [
+              2.331,
+              -1.216,
+              -6.424
+            ],
+            "distance": 6.834,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 25,
+            "pixel": [
+              188,
+              205
+            ],
+            "camera_depth": 4.135,
+            "target_point_world": [
+              4.521,
+              -5.408,
+              -0.909
+            ],
+            "target_point_relative": [
+              1.739,
+              -0.898,
+              -7.208
+            ],
+            "distance": 7.421,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 26,
+            "pixel": [
+              185,
+              235
+            ],
+            "camera_depth": 3.461,
+            "target_point_world": [
+              3.973,
+              -4.183,
+              -1.22
+            ],
+            "target_point_relative": [
+              1.191,
+              -1.209,
+              -5.983
+            ],
+            "distance": 6.101,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 27,
+            "pixel": [
+              240,
+              200
+            ],
+            "camera_depth": 4.574,
+            "target_point_world": [
+              5.199,
+              -5.077,
+              -0.905
+            ],
+            "target_point_relative": [
+              2.417,
+              -0.894,
+              -6.878
+            ],
+            "distance": 7.296,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 28,
+            "pixel": [
+              335,
+              233
+            ],
+            "camera_depth": 3.59,
+            "target_point_world": [
+              5.025,
+              -1.877,
+              -1.243
+            ],
+            "target_point_relative": [
+              2.244,
+              -1.232,
+              -3.678
+            ],
+            "distance": 4.308,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 29,
+            "pixel": [
+              247,
+              202
+            ],
+            "camera_depth": 4.361,
+            "target_point_world": [
+              5.111,
+              -4.604,
+              -0.918
+            ],
+            "target_point_relative": [
+              2.33,
+              -0.907,
+              -6.404
+            ],
+            "distance": 6.821,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 30,
+            "pixel": [
+              171,
+              218
+            ],
+            "camera_depth": 3.367,
+            "target_point_world": [
+              3.987,
+              -4.285,
+              -0.945
+            ],
+            "target_point_relative": [
+              1.205,
+              -0.934,
+              -6.086
+            ],
+            "distance": 6.21,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 31,
+            "pixel": [
+              256,
+              280
+            ],
+            "camera_depth": 1.678,
+            "target_point_world": [
+              3.403,
+              -0.471,
+              -0.926
+            ],
+            "target_point_relative": [
+              0.622,
+              -0.915,
+              -2.271
+            ],
+            "distance": 2.372,
+            "visited": 0,
+            "selected_action_key": "14",
+            "skip_reason": null,
+            "path_length": 2.482,
+            "path_waypoint_count": 5
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"I have moved from the foot of the bed towards the hallway/closet area. I am now facing the closet doors and the bathroom entrance is visible to the left.\",\n\"observation\": {\n    \"front view\": \"I see a white closet/dresser unit straight ahead. To the left of it, there is an open doorway leading into a bathroom with a window and tub visible.\",\n    \"left view\": \"I see the side of the white dresser and the entrance to the bathroom more clearly.\",\n    \"right view\": \"I see the bed and the rest of the bedroom.\",\n    \"map\": \"I am near the foot of the bed. The pink area (bathroom) is to my left-front.\"\n},\n\"thought\": \"I have completed walking to the foot of the bed. Now I need to walk toward the bathroom on the left and wait in its doorway. The bathroom is visible through the opening to the left of the closet in the Front View. Waypoint 14 is located near this entrance.\",\n\"stuck\": false,\n\"plan\": \"Move towards the bathroom doorway which is to the left-front of my current position. I will aim for waypoint 14 which is near the threshold of that room.\",\n\"curr_step\": \"I am facing the closet. The bathroom is to the left. I need to move forward and slightly left to reach the bathroom doorway.\",\n\"action\": 14\n}\n```",
+      "end_position": [
+        4.927,
+        3.549,
+        -3.204
+      ]
+    },
+    {
+      "step": 25,
+      "start_position": [
+        4.927,
+        3.549,
+        -3.204
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.533,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        4.922,
+        3.574,
+        -3.736
+      ]
+    },
+    {
+      "step": 26,
+      "start_position": [
+        4.922,
+        3.574,
+        -3.736
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.515,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        4.917,
+        3.58,
+        -4.251
+      ]
+    },
+    {
+      "step": 27,
+      "start_position": [
+        4.917,
+        3.58,
+        -4.251
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.747
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        4.917,
+        3.58,
+        -4.251
+      ]
+    },
+    {
+      "step": 28,
+      "start_position": [
+        4.917,
+        3.58,
+        -4.251
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.706,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        5.392,
+        3.624,
+        -4.774
+      ]
+    },
+    {
+      "step": 29,
+      "start_position": [
+        5.392,
+        3.624,
+        -4.774
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.518
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        5.392,
+        3.624,
+        -4.774
+      ]
+    },
+    {
+      "step": 30,
+      "start_position": [
+        5.392,
+        3.624,
+        -4.774
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.718,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        5.548,
+        3.624,
+        -5.475
+      ]
+    },
+    {
+      "step": 31,
+      "start_position": [
+        5.548,
+        3.624,
+        -5.475
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        5.548,
+        3.624,
+        -5.475
+      ]
+    },
+    {
+      "step": 32,
+      "start_position": [
+        5.548,
+        3.624,
+        -5.475
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.453
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": null,
+      "end_position": [
+        5.548,
+        3.624,
+        -5.475
+      ]
+    },
+    {
+      "step": 33,
+      "start_position": [
+        5.548,
+        3.624,
+        -5.475
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": null,
+        "selected_action_type": null,
+        "parsed_json": null,
+        "valid": 0,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "stop",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "decision_none",
+      "preprocess": {
+        "agent_position": [
+          3.403,
+          -0.471,
+          0.064
+        ],
+        "agent_yaw": 0.673,
+        "num_waypoints_raw": 26,
+        "num_waypoints_near": 26,
+        "num_waypoints_far": 0,
+        "num_projected": 26,
+        "num_actions": 14,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 14,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              377,
+              204
+            ],
+            "camera_depth": 4.391,
+            "target_point_world": [
+              4.457,
+              -5.424,
+              -0.87
+            ],
+            "target_point_relative": [
+              1.054,
+              -0.934,
+              -4.953
+            ],
+            "distance": 5.071,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              376,
+              293
+            ],
+            "camera_depth": 2.145,
+            "target_point_world": [
+              3.606,
+              -2.519,
+              -1.233
+            ],
+            "target_point_relative": [
+              0.203,
+              -1.297,
+              -2.048
+            ],
+            "distance": 2.06,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 2.152,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              353,
+              261
+            ],
+            "camera_depth": 2.796,
+            "target_point_world": [
+              3.559,
+              -3.522,
+              -1.226
+            ],
+            "target_point_relative": [
+              0.155,
+              -1.29,
+              -3.051
+            ],
+            "distance": 3.056,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              634,
+              366
+            ],
+            "camera_depth": 1.036,
+            "target_point_world": [
+              4.438,
+              -0.474,
+              -0.888
+            ],
+            "target_point_relative": [
+              1.035,
+              -0.952,
+              -0.003
+            ],
+            "distance": 1.064,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 1.113,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              339,
+              241
+            ],
+            "camera_depth": 3.43,
+            "target_point_world": [
+              3.505,
+              -4.498,
+              -1.229
+            ],
+            "target_point_relative": [
+              0.101,
+              -1.293,
+              -4.027
+            ],
+            "distance": 4.03,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              446,
+              267
+            ],
+            "camera_depth": 2.565,
+            "target_point_world": [
+              4.456,
+              -2.49,
+              -1.195
+            ],
+            "target_point_relative": [
+              1.053,
+              -1.259,
+              -2.019
+            ],
+            "distance": 2.277,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 2.301,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              414,
+              245
+            ],
+            "camera_depth": 3.251,
+            "target_point_world": [
+              4.45,
+              -3.497,
+              -1.209
+            ],
+            "target_point_relative": [
+              1.046,
+              -1.273,
+              -3.026
+            ],
+            "distance": 3.202,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              622,
+              401
+            ],
+            "camera_depth": 1.168,
+            "target_point_world": [
+              4.449,
+              -0.438,
+              -1.189
+            ],
+            "target_point_relative": [
+              1.045,
+              -1.253,
+              0.033
+            ],
+            "distance": 1.047,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 1.138,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 8,
+            "pixel": [
+              323,
+              225
+            ],
+            "camera_depth": 3.277,
+            "target_point_world": [
+              3.383,
+              -4.588,
+              -0.934
+            ],
+            "target_point_relative": [
+              -0.02,
+              -0.998,
+              -4.117
+            ],
+            "distance": 4.122,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 9,
+            "pixel": [
+              421,
+              358
+            ],
+            "camera_depth": 1.473,
+            "target_point_world": [
+              3.652,
+              -1.484,
+              -1.241
+            ],
+            "target_point_relative": [
+              0.249,
+              -1.305,
+              -1.013
+            ],
+            "distance": 1.048,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 1.127,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 10,
+            "pixel": [
+              666,
+              325
+            ],
+            "camera_depth": 1.71,
+            "target_point_world": [
+              5.435,
+              -0.44,
+              -1.207
+            ],
+            "target_point_relative": [
+              2.031,
+              -1.271,
+              0.031
+            ],
+            "distance": 2.033,
+            "visited": 0,
+            "selected_action_key": "6",
+            "skip_reason": null,
+            "path_length": 2.203,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 11,
+            "pixel": [
+              458,
+              486
+            ],
+            "camera_depth": 0.67,
+            "target_point_world": [
+              3.481,
+              -0.685,
+              -0.903
+            ],
+            "target_point_relative": [
+              0.078,
+              -0.968,
+              -0.214
+            ],
+            "distance": 0.325,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_close",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 12,
+            "pixel": [
+              512,
+              542
+            ],
+            "camera_depth": 0.754,
+            "target_point_world": [
+              3.585,
+              -0.5,
+              -1.209
+            ],
+            "target_point_relative": [
+              0.182,
+              -1.273,
+              -0.029
+            ],
+            "distance": 0.198,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 13,
+            "pixel": [
+              317,
+              211
+            ],
+            "camera_depth": 3.891,
+            "target_point_world": [
+              3.37,
+              -5.537,
+              -0.89
+            ],
+            "target_point_relative": [
+              -0.033,
+              -0.954,
+              -5.066
+            ],
+            "distance": 5.072,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 14,
+            "pixel": [
+              395,
+              230
+            ],
+            "camera_depth": 3.918,
+            "target_point_world": [
+              4.465,
+              -4.466,
+              -1.214
+            ],
+            "target_point_relative": [
+              1.062,
+              -1.278,
+              -3.995
+            ],
+            "distance": 4.134,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 15,
+            "pixel": [
+              424,
+              221
+            ],
+            "camera_depth": 4.382,
+            "target_point_world": [
+              5.152,
+              -4.613,
+              -1.2
+            ],
+            "target_point_relative": [
+              1.749,
+              -1.264,
+              -4.142
+            ],
+            "distance": 4.496,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 16,
+            "pixel": [
+              453,
+              242
+            ],
+            "camera_depth": 2.616,
+            "target_point_world": [
+              4.65,
+              -2.601,
+              -0.936
+            ],
+            "target_point_relative": [
+              1.247,
+              -1.0,
+              -2.13
+            ],
+            "distance": 2.476,
+            "visited": 0,
+            "selected_action_key": "7",
+            "skip_reason": null,
+            "path_length": 2.471,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 17,
+            "pixel": [
+              328,
+              227
+            ],
+            "camera_depth": 4.051,
+            "target_point_world": [
+              3.446,
+              -5.47,
+              -1.22
+            ],
+            "target_point_relative": [
+              0.043,
+              -1.284,
+              -4.999
+            ],
+            "distance": 4.999,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 18,
+            "pixel": [
+              392,
+              213
+            ],
+            "camera_depth": 3.843,
+            "target_point_world": [
+              4.503,
+              -4.554,
+              -0.904
+            ],
+            "target_point_relative": [
+              1.1,
+              -0.968,
+              -4.083
+            ],
+            "distance": 4.235,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 19,
+            "pixel": [
+              423,
+              207
+            ],
+            "camera_depth": 4.229,
+            "target_point_world": [
+              5.157,
+              -4.609,
+              -0.895
+            ],
+            "target_point_relative": [
+              1.753,
+              -0.959,
+              -4.138
+            ],
+            "distance": 4.5,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 20,
+            "pixel": [
+              480,
+              228
+            ],
+            "camera_depth": 3.042,
+            "target_point_world": [
+              5.247,
+              -2.776,
+              -0.908
+            ],
+            "target_point_relative": [
+              1.844,
+              -0.972,
+              -2.305
+            ],
+            "distance": 2.961,
+            "visited": 0,
+            "selected_action_key": "8",
+            "skip_reason": null,
+            "path_length": 2.983,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 21,
+            "pixel": [
+              760,
+              357
+            ],
+            "camera_depth": 1.443,
+            "target_point_world": [
+              5.577,
+              0.071,
+              -1.21
+            ],
+            "target_point_relative": [
+              2.174,
+              -1.274,
+              0.542
+            ],
+            "distance": 2.241,
+            "visited": 0,
+            "selected_action_key": "9",
+            "skip_reason": null,
+            "path_length": 2.47,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 22,
+            "pixel": [
+              686,
+              292
+            ],
+            "camera_depth": 1.593,
+            "target_point_world": [
+              5.504,
+              -0.447,
+              -0.887
+            ],
+            "target_point_relative": [
+              2.101,
+              -0.952,
+              0.024
+            ],
+            "distance": 2.116,
+            "visited": 0,
+            "selected_action_key": "10",
+            "skip_reason": null,
+            "path_length": 2.311,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 23,
+            "pixel": [
+              342,
+              241
+            ],
+            "camera_depth": 2.773,
+            "target_point_world": [
+              3.528,
+              -3.7,
+              -0.973
+            ],
+            "target_point_relative": [
+              0.124,
+              -1.037,
+              -3.229
+            ],
+            "distance": 3.236,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 24,
+            "pixel": [
+              480,
+              246
+            ],
+            "camera_depth": 3.104,
+            "target_point_world": [
+              5.202,
+              -2.71,
+              -1.17
+            ],
+            "target_point_relative": [
+              1.799,
+              -1.234,
+              -2.239
+            ],
+            "distance": 2.872,
+            "visited": 0,
+            "selected_action_key": "11",
+            "skip_reason": null,
+            "path_length": 2.909,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 25,
+            "pixel": [
+              418,
+              201
+            ],
+            "camera_depth": 4.574,
+            "target_point_world": [
+              5.248,
+              -5.07,
+              -0.862
+            ],
+            "target_point_relative": [
+              1.845,
+              -0.926,
+              -4.599
+            ],
+            "distance": 4.963,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "None",
+      "end_position": [
+        5.548,
+        3.624,
+        -5.475
+      ]
+    }
+  ],
+  "subtask": {
+    "P1": {
+      "instruction": "Walk down the hallway past the vases, enter the bedroom",
+      "completed": 0,
+      "plan": "Move towards the bathroom doorway which is to the left-front of my current position. I will aim for waypoint 14 which is near the threshold of that room.",
+      "record": [
+        {
+          "movement": "I am currently at the top of the stairs/landing area. I have not moved yet."
+        },
+        {
+          "movement": "I have moved from the top of the stairs onto the landing. I am currently facing the railing and the wall with decorative plates. To my left, there is an entrance to a bedroom with a bed visible."
+        },
+        {
+          "movement": "I have entered the bedroom and walked past the foot of the bed towards the dresser with vases. I am now facing the dresser, with the bed to my left."
+        },
+        {
+          "movement": "I have entered the bedroom and am currently standing near the foot of the bed, facing the bed. The dresser with vases is to my right (visible in Right View). The open door to the bathroom is visible in the Front View on the left side of the bed."
+        },
+        {
+          "movement": "I have moved from the foot of the bed towards the hallway/closet area. I am now facing the closet doors and the bathroom entrance is visible to the left."
+        }
+      ],
+      "final_coord": null
+    },
+    "P2": {
+      "instruction": "walk to the foot of the bed, walk toward the bathroom on the left, wait in the doorway to the bathroom.",
+      "completed": 0,
+      "plan": "",
+      "record": [],
+      "final_coord": null
+    }
+  }
+}

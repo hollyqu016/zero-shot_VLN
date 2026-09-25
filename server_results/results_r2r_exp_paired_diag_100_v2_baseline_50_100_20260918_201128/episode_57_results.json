@@ -1,0 +1,2845 @@
+{
+  "metrics": {
+    "distance_to_goal": 5.378,
+    "spl": 0.0,
+    "goal_reached": 0,
+    "finish_status": "error",
+    "traveled_distance": 3.045,
+    "done": 1,
+    "oracle_navigation_error": 5.378,
+    "oracle_success": 0,
+    "oracle_spl": 0.0,
+    "ndtw": 0.579,
+    "sdtw": 0.0
+  },
+  "episode": {
+    "instruction": "In the entry way go up the stairs and in the hallway at the top take a left and go past the dining room into the entry way with the stairs on the right side and stop right between the bottom of the first stair and the console table on the left. ",
+    "shortest_path": 8.338,
+    "goal_position": [
+      0.577,
+      0.024,
+      -1.526
+    ],
+    "reference_path": [
+      [
+        6.759,
+        -2.428,
+        -4.949
+      ],
+      [
+        6.007,
+        -1.886,
+        -4.926
+      ],
+      [
+        5.039,
+        -1.158,
+        -4.923
+      ],
+      [
+        3.976,
+        -0.409,
+        -4.967
+      ],
+      [
+        2.327,
+        0.024,
+        -3.76
+      ],
+      [
+        0.577,
+        0.024,
+        -1.526
+      ]
+    ]
+  },
+  "vlm_responses": [
+    "```json\n{\n\"movement\": \"Move forward towards the first step of the staircase located to the front-right.\",\n\"observation\": {\n    \"front view\": \"A tiled floor area with a white door ahead and slightly left. To the right, the base of a wooden staircase is visible with a handrail.\",\n    \"left view\": \"A hallway with a bench and a window at the end.\",\n    \"right view\": \"The staircase going up with wooden steps and dark handrails on both sides.\",\n    \"map\": \"Current position (START) is at the bottom of the stairs, which are to the right (black striped area).\"\n},\n\"thought\": \"I am currently at the bottom of the stairs in the entry way. The instruction requires me to go up the stairs. The stairs are visible to my right and front-right. Waypoint 7 is located on the first step of the staircase. Moving to this waypoint will place me on the stairs, initiating the ascent as required by the subtask.\",\n\"stuck\": false,\n\"plan\": \"Navigate onto the first step (waypoint 7) to begin climbing the stairs towards the top hallway.\",\n\"curr_step\": \"Move to waypoint 7.\",\n\"action\": 7\n}\n```",
+    "```json\n{\n\"movement\": \"Turn right to face the staircase.\",\n\"observation\": {\n    \"front view\": \"I am facing a wall and a white door to the left, with the side of the staircase railing visible on the right.\",\n    \"left view\": \"A hallway with a bench and a window at the end.\",\n    \"right view\": \"The staircase going up directly in front of me.\",\n    \"map\": \"I am at the bottom of the stairs (START), facing somewhat towards the door/wall area. The stairs are to my right.\"\n},\n\"thought\": \"I am currently at the bottom of the stairs but facing the wrong direction (towards the wall/door). To go up the stairs as instructed, I need to orient myself towards them. The 'Right View' shows the stairs directly ahead, indicating that turning right will align me with the staircase. Once aligned, I can proceed up the steps.\",\n\"stuck\": false,\n\"plan\": \"Turn right to face the stairs, then move forward onto the first step (waypoint 1) and continue up towards the top hallway.\",\n\"curr_step\": \"Turn Right to face the stairs.\",\n\"action\": \"R\"\n}\n```",
+    "```json\n{\n\"movement\": \"Move forward onto the first step of the staircase.\",\n\"observation\": {\n    \"front view\": \"The staircase is directly in front of me, leading upwards. Waypoint 1 is on the first step.\",\n    \"left view\": \"A wall and railing to the left of the stairs.\",\n    \"right view\": \"A wall and railing to the right of the stairs.\",\n    \"map\": \"I am at the START position at the bottom of the stairs. The stairs are represented by the striped area leading upwards.\"\n},\n\"thought\": \"I have turned to face the stairs. Now I need to climb them. Waypoint 1 is on the first step, which is the immediate next target to begin ascending.\",\n\"stuck\": false,\n\"plan\": \"Move forward onto the first step (waypoint 1) and continue up the stairs towards the top landing (waypoint B).\",\n\"curr_step\": \"Move to waypoint 1.\",\n\"action\": 1\n}\n```",
+    "```json\n{\n\"movement\": \"Move forward up the stairs towards the next landing.\",\n\"observation\": {\n    \"front view\": \"The staircase continues upwards. Waypoints 1 and 2 are visible on the steps/landing ahead. A white door is visible at the very top (waypoint B).\",\n    \"left view\": \"A wall and the railing overlooking the floor below.\",\n    \"right view\": \"A wall and the handrail.\",\n    \"map\": \"I am on the staircase, moving towards the top landing marked by waypoint B. Waypoints 1 and 2 are just ahead.\"\n},\n\"thought\": \"I am currently climbing the stairs. The instruction requires me to go up the stairs and reach the hallway at the top. I see waypoints 1 and 2 ahead on the stairs/landing. I need to continue moving forward to reach the top.\",\n\"stuck\": false,\n\"plan\": \"Move forward towards waypoint 1 to continue ascending the stairs towards the top landing (waypoint B).\",\n\"curr_step\": \"Move to waypoint 1.\",\n\"action\": 1\n}\n```",
+    "```json\n{\n\"movement\": \"Move forward onto the top landing and turn left into the hallway.\",\n\"observation\": {\n    \"front view\": \"I am at the top of the stairs on a wooden floor landing. There is a white door straight ahead (waypoint B) and an opening to the left leading further into the house.\",\n    \"left view\": \"A hallway extending to the left with dark wood flooring.\",\n    \"right view\": \"The staircase railing and the wall next to it.\",\n    \"map\": \"I am at the top of the stairs (START area on map). The path continues to the left into a new corridor.\"\n},\n\"thought\": \"I have successfully climbed the stairs. The instruction says 'in the hallway at the top take a left'. I am currently at the top landing. To follow the instruction, I need to move into the hallway that is to my left.\",\n\"stuck\": false,\n\"plan\": \"Move forward and turn left to enter the hallway at the top of the stairs.\",\n\"curr_step\": \"Move forward and turn left towards the hallway opening.\",\n\"action\": \"L\"\n}\n```",
+    "```json\n{\n\"movement\": \"Turn left to face the hallway extending from the top of the stairs.\",\n\"observation\": {\n    \"front view\": \"A wall with 'B' on it is directly ahead. To the left of this wall, there is an opening leading into a hallway area. The stairs are visible going down in the bottom left corner.\",\n    \"left view\": \"The hallway extending to the left, with dark wood flooring and white walls/doors.\",\n    \"right view\": \"The landing area and a white door straight ahead/slightly right.\",\n    \"map\": \"I am at the top of the stairs (red triangle). The path continues to the left into a long corridor.\"\n},\n\"thought\": \"I have reached the top of the stairs. The instruction says 'in the hallway at the top take a left'. I am currently facing a wall/corner. To follow the instruction, I need to turn towards the hallway that is to my left.\",\n\"stuck\": false,\n\"plan\": \"Turn left to face the hallway and proceed into it.\",\n\"curr_step\": \"Turn Left.\",\n\"action\": \"L\"\n}\n```",
+    "None",
+    "None"
+  ],
+  "agent_trajectory": [
+    [
+      6.759,
+      -2.428,
+      -4.949
+    ],
+    [
+      6.447,
+      -2.229,
+      -4.733
+    ],
+    [
+      6.049,
+      -1.929,
+      -4.696
+    ],
+    [
+      5.483,
+      -1.507,
+      -4.557
+    ],
+    [
+      5.04,
+      -1.165,
+      -4.702
+    ],
+    [
+      4.72,
+      -0.922,
+      -4.708
+    ],
+    [
+      4.388,
+      -0.672,
+      -4.664
+    ]
+  ],
+  "step_metrics": [
+    {
+      "step": 0,
+      "distance_to_goal": 8.338,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.0,
+      "done": 1,
+      "oracle_navigation_error": 8.338,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.344,
+      "sdtw": 0.0
+    },
+    {
+      "step": 1,
+      "distance_to_goal": 7.97,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.0,
+      "done": 1,
+      "oracle_navigation_error": 7.97,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.382,
+      "sdtw": 0.0
+    },
+    {
+      "step": 2,
+      "distance_to_goal": 7.97,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.429,
+      "done": 1,
+      "oracle_navigation_error": 7.97,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.382,
+      "sdtw": 0.0
+    },
+    {
+      "step": 3,
+      "distance_to_goal": 7.97,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.429,
+      "done": 1,
+      "oracle_navigation_error": 7.97,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.382,
+      "sdtw": 0.0
+    },
+    {
+      "step": 4,
+      "distance_to_goal": 7.97,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.429,
+      "done": 1,
+      "oracle_navigation_error": 7.97,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.382,
+      "sdtw": 0.0
+    },
+    {
+      "step": 5,
+      "distance_to_goal": 7.97,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.429,
+      "done": 1,
+      "oracle_navigation_error": 7.97,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.382,
+      "sdtw": 0.0
+    },
+    {
+      "step": 6,
+      "distance_to_goal": 7.471,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.429,
+      "done": 1,
+      "oracle_navigation_error": 7.471,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.425,
+      "sdtw": 0.0
+    },
+    {
+      "step": 7,
+      "distance_to_goal": 7.471,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.928,
+      "done": 1,
+      "oracle_navigation_error": 7.471,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.425,
+      "sdtw": 0.0
+    },
+    {
+      "step": 8,
+      "distance_to_goal": 6.764,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 0.928,
+      "done": 1,
+      "oracle_navigation_error": 6.764,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.491,
+      "sdtw": 0.0
+    },
+    {
+      "step": 9,
+      "distance_to_goal": 6.764,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.647,
+      "done": 1,
+      "oracle_navigation_error": 6.764,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.491,
+      "sdtw": 0.0
+    },
+    {
+      "step": 10,
+      "distance_to_goal": 6.764,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.647,
+      "done": 1,
+      "oracle_navigation_error": 6.764,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.491,
+      "sdtw": 0.0
+    },
+    {
+      "step": 11,
+      "distance_to_goal": 6.764,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.647,
+      "done": 1,
+      "oracle_navigation_error": 6.764,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.491,
+      "sdtw": 0.0
+    },
+    {
+      "step": 12,
+      "distance_to_goal": 6.207,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 1.647,
+      "done": 1,
+      "oracle_navigation_error": 6.207,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.531,
+      "sdtw": 0.0
+    },
+    {
+      "step": 13,
+      "distance_to_goal": 6.207,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.225,
+      "done": 1,
+      "oracle_navigation_error": 6.207,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.531,
+      "sdtw": 0.0
+    },
+    {
+      "step": 14,
+      "distance_to_goal": 5.794,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.225,
+      "done": 1,
+      "oracle_navigation_error": 5.794,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.556,
+      "sdtw": 0.0
+    },
+    {
+      "step": 15,
+      "distance_to_goal": 5.794,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.627,
+      "done": 1,
+      "oracle_navigation_error": 5.794,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.556,
+      "sdtw": 0.0
+    },
+    {
+      "step": 16,
+      "distance_to_goal": 5.378,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 2.627,
+      "done": 1,
+      "oracle_navigation_error": 5.378,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.579,
+      "sdtw": 0.0
+    },
+    {
+      "step": 17,
+      "distance_to_goal": 5.378,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 3.045,
+      "done": 1,
+      "oracle_navigation_error": 5.378,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.579,
+      "sdtw": 0.0
+    },
+    {
+      "step": 18,
+      "distance_to_goal": 5.378,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 3.045,
+      "done": 1,
+      "oracle_navigation_error": 5.378,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.579,
+      "sdtw": 0.0
+    },
+    {
+      "step": 19,
+      "distance_to_goal": 5.378,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "max_steps",
+      "traveled_distance": 3.045,
+      "done": 1,
+      "oracle_navigation_error": 5.378,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.579,
+      "sdtw": 0.0
+    },
+    {
+      "step": 20,
+      "distance_to_goal": 5.378,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "fp",
+      "traveled_distance": 3.045,
+      "done": 1,
+      "oracle_navigation_error": 5.378,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.579,
+      "sdtw": 0.0
+    },
+    {
+      "step": 21,
+      "distance_to_goal": 5.378,
+      "spl": 0.0,
+      "goal_reached": 0,
+      "finish_status": "fp",
+      "traveled_distance": 3.045,
+      "done": 1,
+      "oracle_navigation_error": 5.378,
+      "oracle_success": 0,
+      "oracle_spl": 0.0,
+      "ndtw": 0.579,
+      "sdtw": 0.0
+    }
+  ],
+  "diagnostic_trace": [
+    {
+      "step": 0,
+      "start_position": [
+        6.759,
+        -2.428,
+        -4.949
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "7",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "Move forward towards the first step of the staircase located to the front-right.",
+          "observation": {
+            "front view": "A tiled floor area with a white door ahead and slightly left. To the right, the base of a wooden staircase is visible with a handrail.",
+            "left view": "A hallway with a bench and a window at the end.",
+            "right view": "The staircase going up with wooden steps and dark handrails on both sides.",
+            "map": "Current position (START) is at the bottom of the stairs, which are to the right (black striped area)."
+          },
+          "thought": "I am currently at the bottom of the stairs in the entry way. The instruction requires me to go up the stairs. The stairs are visible to my right and front-right. Waypoint 7 is located on the first step of the staircase. Moving to this waypoint will place me on the stairs, initiating the ascent as required by the subtask.",
+          "stuck": 0,
+          "plan": "Navigate onto the first step (waypoint 7) to begin climbing the stairs towards the top hallway.",
+          "curr_step": "Move to waypoint 7.",
+          "action": 7
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.986
+      },
+      "target_world_position": [
+        -0.475,
+        0.324,
+        -0.814
+      ],
+      "planned_path": [
+        [
+          0.0,
+          0.0,
+          -1.2
+        ],
+        [
+          -0.312,
+          0.216,
+          -0.912
+        ],
+        [
+          -0.475,
+          0.324,
+          -0.814
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "agent_yaw": 3.121,
+        "num_waypoints_raw": 11,
+        "num_waypoints_near": 11,
+        "num_waypoints_far": 0,
+        "num_projected": 11,
+        "num_actions": 11,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 0,
+          "no_path": 1,
+          "occlusion": 2
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              627,
+              303
+            ],
+            "camera_depth": 1.964,
+            "target_point_world": [
+              -1.427,
+              1.567,
+              -1.266
+            ],
+            "target_point_relative": [
+              -1.427,
+              -1.266,
+              1.567
+            ],
+            "distance": 2.121,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 2.131,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              331,
+              309
+            ],
+            "camera_depth": 1.95,
+            "target_point_world": [
+              1.49,
+              1.466,
+              -1.308
+            ],
+            "target_point_relative": [
+              1.49,
+              -1.308,
+              1.466
+            ],
+            "distance": 2.093,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.091,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              256,
+              305
+            ],
+            "camera_depth": 1.996,
+            "target_point_world": [
+              2.276,
+              1.504,
+              -1.307
+            ],
+            "target_point_relative": [
+              2.276,
+              -1.307,
+              1.504
+            ],
+            "distance": 2.73,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 2.791,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              535,
+              313
+            ],
+            "camera_depth": 1.905,
+            "target_point_world": [
+              -0.505,
+              1.454,
+              -1.31
+            ],
+            "target_point_relative": [
+              -0.505,
+              -1.31,
+              1.454
+            ],
+            "distance": 1.543,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 1.54,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              427,
+              316
+            ],
+            "camera_depth": 1.897,
+            "target_point_world": [
+              0.533,
+              1.41,
+              -1.334
+            ],
+            "target_point_relative": [
+              0.533,
+              -1.334,
+              1.41
+            ],
+            "distance": 1.513,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 0.783
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              217,
+              426
+            ],
+            "camera_depth": 1.112,
+            "target_point_world": [
+              1.476,
+              0.496,
+              -1.313
+            ],
+            "target_point_relative": [
+              1.476,
+              -1.313,
+              0.496
+            ],
+            "distance": 1.561,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 1.557,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              386,
+              432
+            ],
+            "camera_depth": 1.078,
+            "target_point_world": [
+              0.516,
+              0.482,
+              -1.303
+            ],
+            "target_point_relative": [
+              0.516,
+              -1.303,
+              0.482
+            ],
+            "distance": 0.714,
+            "visited": 0,
+            "selected_action_key": "6",
+            "skip_reason": null,
+            "path_length": 0.707,
+            "path_waypoint_count": 2
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              621,
+              430
+            ],
+            "camera_depth": 0.679,
+            "target_point_world": [
+              -0.475,
+              0.324,
+              -0.814
+            ],
+            "target_point_relative": [
+              -0.475,
+              -0.814,
+              0.324
+            ],
+            "distance": 0.692,
+            "visited": 0,
+            "selected_action_key": "7",
+            "skip_reason": null,
+            "path_length": 0.575,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 8,
+            "pixel": [
+              541,
+              398
+            ],
+            "camera_depth": 1.128,
+            "target_point_world": [
+              -0.339,
+              0.619,
+              -1.196
+            ],
+            "target_point_relative": [
+              -0.339,
+              -1.196,
+              0.619
+            ],
+            "distance": 0.706,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 0.986
+          },
+          {
+            "source_index": 9,
+            "pixel": [
+              341,
+              478
+            ],
+            "camera_depth": 0.586,
+            "target_point_world": [
+              0.413,
+              0.192,
+              -0.825
+            ],
+            "target_point_relative": [
+              0.413,
+              -0.825,
+              0.192
+            ],
+            "distance": 0.59,
+            "visited": 0,
+            "selected_action_key": "8",
+            "skip_reason": null,
+            "path_length": 0.95,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 10,
+            "pixel": [
+              814,
+              60
+            ],
+            "camera_depth": 0.422,
+            "target_point_world": [
+              -0.698,
+              0.602,
+              0.173
+            ],
+            "target_point_relative": [
+              -0.698,
+              0.173,
+              0.602
+            ],
+            "distance": 1.654,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"Move forward towards the first step of the staircase located to the front-right.\",\n\"observation\": {\n    \"front view\": \"A tiled floor area with a white door ahead and slightly left. To the right, the base of a wooden staircase is visible with a handrail.\",\n    \"left view\": \"A hallway with a bench and a window at the end.\",\n    \"right view\": \"The staircase going up with wooden steps and dark handrails on both sides.\",\n    \"map\": \"Current position (START) is at the bottom of the stairs, which are to the right (black striped area).\"\n},\n\"thought\": \"I am currently at the bottom of the stairs in the entry way. The instruction requires me to go up the stairs. The stairs are visible to my right and front-right. Waypoint 7 is located on the first step of the staircase. Moving to this waypoint will place me on the stairs, initiating the ascent as required by the subtask.\",\n\"stuck\": false,\n\"plan\": \"Navigate onto the first step (waypoint 7) to begin climbing the stairs towards the top hallway.\",\n\"curr_step\": \"Move to waypoint 7.\",\n\"action\": 7\n}\n```",
+      "end_position": [
+        6.759,
+        -2.428,
+        -4.949
+      ]
+    },
+    {
+      "step": 1,
+      "start_position": [
+        6.759,
+        -2.428,
+        -4.949
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.38,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        6.447,
+        -2.229,
+        -4.733
+      ]
+    },
+    {
+      "step": 2,
+      "start_position": [
+        6.447,
+        -2.229,
+        -4.733
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        6.447,
+        -2.229,
+        -4.733
+      ]
+    },
+    {
+      "step": 3,
+      "start_position": [
+        6.447,
+        -2.229,
+        -4.733
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.463
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": null,
+      "end_position": [
+        6.447,
+        -2.229,
+        -4.733
+      ]
+    },
+    {
+      "step": 4,
+      "start_position": [
+        6.447,
+        -2.229,
+        -4.733
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "R",
+        "selected_action_type": "turn",
+        "parsed_json": {
+          "movement": "Turn right to face the staircase.",
+          "observation": {
+            "front view": "I am facing a wall and a white door to the left, with the side of the staircase railing visible on the right.",
+            "left view": "A hallway with a bench and a window at the end.",
+            "right view": "The staircase going up directly in front of me.",
+            "map": "I am at the bottom of the stairs (START), facing somewhat towards the door/wall area. The stairs are to my right."
+          },
+          "thought": "I am currently at the bottom of the stairs but facing the wrong direction (towards the wall/door). To go up the stairs as instructed, I need to orient myself towards them. The 'Right View' shows the stairs directly ahead, indicating that turning right will align me with the staircase. Once aligned, I can proceed up the steps.",
+          "stuck": 0,
+          "plan": "Turn right to face the stairs, then move forward onto the first step (waypoint 1) and continue up towards the top hallway.",
+          "curr_step": "Turn Right to face the stairs.",
+          "action": "R"
+        },
+        "valid": 1,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -1.571
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "turn",
+      "preprocess": {
+        "agent_position": [
+          -0.312,
+          0.216,
+          0.199
+        ],
+        "agent_yaw": -2.638,
+        "num_waypoints_raw": 10,
+        "num_waypoints_near": 10,
+        "num_waypoints_far": 0,
+        "num_projected": 10,
+        "num_actions": 11,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 0,
+          "no_path": 1,
+          "occlusion": 1
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              412,
+              311
+            ],
+            "camera_depth": 1.501,
+            "target_point_world": [
+              -0.416,
+              1.462,
+              -0.826
+            ],
+            "target_point_relative": [
+              -0.104,
+              -1.025,
+              1.246
+            ],
+            "distance": 1.262,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 0.453
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              626,
+              331
+            ],
+            "camera_depth": 0.979,
+            "target_point_world": [
+              -1.278,
+              0.479,
+              -0.552
+            ],
+            "target_point_relative": [
+              -0.966,
+              -0.751,
+              0.263
+            ],
+            "distance": 1.097,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.011,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              568,
+              271
+            ],
+            "camera_depth": 2.638,
+            "target_point_world": [
+              -2.437,
+              1.644,
+              -1.135
+            ],
+            "target_point_relative": [
+              -2.125,
+              -1.334,
+              1.428
+            ],
+            "distance": 2.564,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.572,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              575,
+              249
+            ],
+            "camera_depth": 2.469,
+            "target_point_world": [
+              -2.446,
+              1.625,
+              -0.82
+            ],
+            "target_point_relative": [
+              -2.134,
+              -1.019,
+              1.409
+            ],
+            "distance": 2.563,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 2.571,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              524,
+              274
+            ],
+            "camera_depth": 1.981,
+            "target_point_world": [
+              -1.513,
+              1.486,
+              -0.833
+            ],
+            "target_point_relative": [
+              -1.201,
+              -1.032,
+              1.27
+            ],
+            "distance": 1.756,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 1.822,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              249,
+              361
+            ],
+            "camera_depth": 1.148,
+            "target_point_world": [
+              0.504,
+              1.5,
+              -0.831
+            ],
+            "target_point_relative": [
+              0.816,
+              -1.03,
+              1.284
+            ],
+            "distance": 1.531,
+            "visited": 0,
+            "selected_action_key": "5",
+            "skip_reason": null,
+            "path_length": 1.567,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              443,
+              334
+            ],
+            "camera_depth": 1.717,
+            "target_point_world": [
+              -0.619,
+              1.426,
+              -1.144
+            ],
+            "target_point_relative": [
+              -0.307,
+              -1.343,
+              1.21
+            ],
+            "distance": 1.256,
+            "visited": 0,
+            "selected_action_key": "6",
+            "skip_reason": null,
+            "path_length": 1.327,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              275,
+              390
+            ],
+            "camera_depth": 1.3,
+            "target_point_world": [
+              0.507,
+              1.501,
+              -1.135
+            ],
+            "target_point_relative": [
+              0.82,
+              -1.334,
+              1.286
+            ],
+            "distance": 1.53,
+            "visited": 0,
+            "selected_action_key": "7",
+            "skip_reason": null,
+            "path_length": 1.569,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 8,
+            "pixel": [
+              558,
+              154
+            ],
+            "camera_depth": 0.467,
+            "target_point_world": [
+              -0.733,
+              0.601,
+              0.2
+            ],
+            "target_point_relative": [
+              -0.421,
+              0.001,
+              0.385
+            ],
+            "distance": 1.329,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 9,
+            "pixel": [
+              520,
+              298
+            ],
+            "camera_depth": 2.128,
+            "target_point_world": [
+              -1.507,
+              1.489,
+              -1.128
+            ],
+            "target_point_relative": [
+              -1.194,
+              -1.327,
+              1.273
+            ],
+            "distance": 1.75,
+            "visited": 0,
+            "selected_action_key": "8",
+            "skip_reason": null,
+            "path_length": 1.756,
+            "path_waypoint_count": 4
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"Turn right to face the staircase.\",\n\"observation\": {\n    \"front view\": \"I am facing a wall and a white door to the left, with the side of the staircase railing visible on the right.\",\n    \"left view\": \"A hallway with a bench and a window at the end.\",\n    \"right view\": \"The staircase going up directly in front of me.\",\n    \"map\": \"I am at the bottom of the stairs (START), facing somewhat towards the door/wall area. The stairs are to my right.\"\n},\n\"thought\": \"I am currently at the bottom of the stairs but facing the wrong direction (towards the wall/door). To go up the stairs as instructed, I need to orient myself towards them. The 'Right View' shows the stairs directly ahead, indicating that turning right will align me with the staircase. Once aligned, I can proceed up the steps.\",\n\"stuck\": false,\n\"plan\": \"Turn right to face the stairs, then move forward onto the first step (waypoint 1) and continue up towards the top hallway.\",\n\"curr_step\": \"Turn Right to face the stairs.\",\n\"action\": \"R\"\n}\n```",
+      "end_position": [
+        6.447,
+        -2.229,
+        -4.733
+      ]
+    },
+    {
+      "step": 5,
+      "start_position": [
+        6.447,
+        -2.229,
+        -4.733
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "1",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "Move forward onto the first step of the staircase.",
+          "observation": {
+            "front view": "The staircase is directly in front of me, leading upwards. Waypoint 1 is on the first step.",
+            "left view": "A wall and railing to the left of the stairs.",
+            "right view": "A wall and railing to the right of the stairs.",
+            "map": "I am at the START position at the bottom of the stairs. The stairs are represented by the striped area leading upwards."
+          },
+          "thought": "I have turned to face the stairs. Now I need to climb them. Waypoint 1 is on the first step, which is the immediate next target to begin ascending.",
+          "stuck": 0,
+          "plan": "Move forward onto the first step (waypoint 1) and continue up the stairs towards the top landing (waypoint B).",
+          "curr_step": "Move to waypoint 1.",
+          "action": 1
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.597
+      },
+      "target_world_position": [
+        -1.277,
+        0.48,
+        -0.553
+      ],
+      "planned_path": [
+        [
+          -0.312,
+          0.216,
+          -1.001
+        ],
+        [
+          -0.71,
+          0.253,
+          -0.743
+        ],
+        [
+          -1.277,
+          0.48,
+          -0.553
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          -0.312,
+          0.216,
+          0.199
+        ],
+        "agent_yaw": -1.068,
+        "num_waypoints_raw": 5,
+        "num_waypoints_near": 5,
+        "num_waypoints_far": 0,
+        "num_projected": 5,
+        "num_actions": 7,
+        "skip_counts": {
+          "edge": 1,
+          "distance": 0,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              341,
+              328
+            ],
+            "camera_depth": 0.998,
+            "target_point_world": [
+              -1.277,
+              0.48,
+              -0.553
+            ],
+            "target_point_relative": [
+              -0.965,
+              -0.752,
+              0.264
+            ],
+            "distance": 1.096,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.01,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              187,
+              306
+            ],
+            "camera_depth": 1.54,
+            "target_point_world": [
+              -2.447,
+              1.624,
+              -0.819
+            ],
+            "target_point_relative": [
+              -2.134,
+              -1.018,
+              1.408
+            ],
+            "distance": 2.563,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 2.57,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              210,
+              337
+            ],
+            "camera_depth": 1.684,
+            "target_point_world": [
+              -2.44,
+              1.646,
+              -1.135
+            ],
+            "target_point_relative": [
+              -2.127,
+              -1.334,
+              1.43
+            ],
+            "distance": 2.567,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 2.575,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              -197,
+              154
+            ],
+            "camera_depth": 0.158,
+            "target_point_world": [
+              -0.733,
+              0.6,
+              0.2
+            ],
+            "target_point_relative": [
+              -0.421,
+              0.001,
+              0.385
+            ],
+            "distance": 1.329,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "edge",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              471,
+              259
+            ],
+            "camera_depth": 1.254,
+            "target_point_world": [
+              -1.319,
+              -0.274,
+              -0.373
+            ],
+            "target_point_relative": [
+              -1.006,
+              -0.572,
+              -0.49
+            ],
+            "distance": 1.284,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 1.22,
+            "path_waypoint_count": 4
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"Move forward onto the first step of the staircase.\",\n\"observation\": {\n    \"front view\": \"The staircase is directly in front of me, leading upwards. Waypoint 1 is on the first step.\",\n    \"left view\": \"A wall and railing to the left of the stairs.\",\n    \"right view\": \"A wall and railing to the right of the stairs.\",\n    \"map\": \"I am at the START position at the bottom of the stairs. The stairs are represented by the striped area leading upwards.\"\n},\n\"thought\": \"I have turned to face the stairs. Now I need to climb them. Waypoint 1 is on the first step, which is the immediate next target to begin ascending.\",\n\"stuck\": false,\n\"plan\": \"Move forward onto the first step (waypoint 1) and continue up the stairs towards the top landing (waypoint B).\",\n\"curr_step\": \"Move to waypoint 1.\",\n\"action\": 1\n}\n```",
+      "end_position": [
+        6.447,
+        -2.229,
+        -4.733
+      ]
+    },
+    {
+      "step": 6,
+      "start_position": [
+        6.447,
+        -2.229,
+        -4.733
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.4,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        6.049,
+        -1.929,
+        -4.696
+      ]
+    },
+    {
+      "step": 7,
+      "start_position": [
+        6.049,
+        -1.929,
+        -4.696
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.287
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        6.049,
+        -1.929,
+        -4.696
+      ]
+    },
+    {
+      "step": 8,
+      "start_position": [
+        6.049,
+        -1.929,
+        -4.696
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.611,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        5.483,
+        -1.507,
+        -4.558
+      ]
+    },
+    {
+      "step": 9,
+      "start_position": [
+        5.483,
+        -1.507,
+        -4.558
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        5.483,
+        -1.507,
+        -4.558
+      ]
+    },
+    {
+      "step": 10,
+      "start_position": [
+        5.483,
+        -1.507,
+        -4.558
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.36
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": null,
+      "end_position": [
+        5.483,
+        -1.507,
+        -4.558
+      ]
+    },
+    {
+      "step": 11,
+      "start_position": [
+        5.483,
+        -1.507,
+        -4.558
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "1",
+        "selected_action_type": "waypoint",
+        "parsed_json": {
+          "movement": "Move forward up the stairs towards the next landing.",
+          "observation": {
+            "front view": "The staircase continues upwards. Waypoints 1 and 2 are visible on the steps/landing ahead. A white door is visible at the very top (waypoint B).",
+            "left view": "A wall and the railing overlooking the floor below.",
+            "right view": "A wall and the handrail.",
+            "map": "I am on the staircase, moving towards the top landing marked by waypoint B. Waypoints 1 and 2 are just ahead."
+          },
+          "thought": "I am currently climbing the stairs. The instruction requires me to go up the stairs and reach the hallway at the top. I see waypoints 1 and 2 ahead on the stairs/landing. I need to continue moving forward to reach the top.",
+          "stuck": 0,
+          "plan": "Move forward towards waypoint 1 to continue ascending the stairs towards the top landing (waypoint B).",
+          "curr_step": "Move to waypoint 1.",
+          "action": 1
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": -0.336
+      },
+      "target_world_position": [
+        -2.371,
+        0.285,
+        0.329
+      ],
+      "planned_path": [
+        [
+          -1.276,
+          0.391,
+          -0.28
+        ],
+        [
+          -1.719,
+          0.247,
+          -0.185
+        ],
+        [
+          -2.039,
+          0.241,
+          -0.033
+        ],
+        [
+          -2.241,
+          0.255,
+          0.215
+        ],
+        [
+          -2.371,
+          0.285,
+          0.329
+        ]
+      ],
+      "planner_status": "path_found",
+      "preprocess": {
+        "agent_position": [
+          -1.276,
+          0.391,
+          0.92
+        ],
+        "agent_yaw": -1.591,
+        "num_waypoints_raw": 8,
+        "num_waypoints_near": 8,
+        "num_waypoints_far": 0,
+        "num_projected": 8,
+        "num_actions": 5,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 1,
+          "no_path": 3,
+          "occlusion": 2
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              507,
+              348
+            ],
+            "camera_depth": 1.134,
+            "target_point_world": [
+              -2.038,
+              0.248,
+              -0.033
+            ],
+            "target_point_relative": [
+              -0.762,
+              -0.953,
+              -0.144
+            ],
+            "distance": 0.813,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 0.978
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              500,
+              264
+            ],
+            "camera_depth": 1.242,
+            "target_point_world": [
+              -2.371,
+              0.285,
+              0.329
+            ],
+            "target_point_relative": [
+              -1.095,
+              -0.591,
+              -0.107
+            ],
+            "distance": 1.257,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.122,
+            "path_waypoint_count": 5
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              589,
+              259
+            ],
+            "camera_depth": 1.237,
+            "target_point_world": [
+              -2.392,
+              -0.269,
+              0.357
+            ],
+            "target_point_relative": [
+              -1.116,
+              -0.563,
+              -0.66
+            ],
+            "distance": 1.445,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 1.304,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              504,
+              489
+            ],
+            "camera_depth": 0.792,
+            "target_point_world": [
+              -1.527,
+              0.297,
+              -0.233
+            ],
+            "target_point_relative": [
+              -0.251,
+              -1.153,
+              -0.094
+            ],
+            "distance": 0.272,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_close",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              497,
+              156
+            ],
+            "camera_depth": 1.645,
+            "target_point_world": [
+              -3.175,
+              0.283,
+              0.914
+            ],
+            "target_point_relative": [
+              -1.899,
+              -0.006,
+              -0.108
+            ],
+            "distance": 2.246,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              462,
+              123
+            ],
+            "camera_depth": 1.327,
+            "target_point_world": [
+              -2.911,
+              0.542,
+              1.104
+            ],
+            "target_point_relative": [
+              -1.635,
+              0.183,
+              0.151
+            ],
+            "distance": 2.147,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              571,
+              351
+            ],
+            "camera_depth": 1.115,
+            "target_point_world": [
+              -2.022,
+              -0.104,
+              -0.035
+            ],
+            "target_point_relative": [
+              -0.747,
+              -0.955,
+              -0.496
+            ],
+            "distance": 0.929,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 0.971
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              568,
+              154
+            ],
+            "camera_depth": 1.627,
+            "target_point_world": [
+              -3.172,
+              -0.294,
+              0.926
+            ],
+            "target_point_relative": [
+              -1.896,
+              0.005,
+              -0.686
+            ],
+            "distance": 2.349,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"Move forward up the stairs towards the next landing.\",\n\"observation\": {\n    \"front view\": \"The staircase continues upwards. Waypoints 1 and 2 are visible on the steps/landing ahead. A white door is visible at the very top (waypoint B).\",\n    \"left view\": \"A wall and the railing overlooking the floor below.\",\n    \"right view\": \"A wall and the handrail.\",\n    \"map\": \"I am on the staircase, moving towards the top landing marked by waypoint B. Waypoints 1 and 2 are just ahead.\"\n},\n\"thought\": \"I am currently climbing the stairs. The instruction requires me to go up the stairs and reach the hallway at the top. I see waypoints 1 and 2 ahead on the stairs/landing. I need to continue moving forward to reach the top.\",\n\"stuck\": false,\n\"plan\": \"Move forward towards waypoint 1 to continue ascending the stairs towards the top landing (waypoint B).\",\n\"curr_step\": \"Move to waypoint 1.\",\n\"action\": 1\n}\n```",
+      "end_position": [
+        5.483,
+        -1.507,
+        -4.558
+      ]
+    },
+    {
+      "step": 12,
+      "start_position": [
+        5.483,
+        -1.507,
+        -4.558
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.466,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        5.04,
+        -1.165,
+        -4.702
+      ]
+    },
+    {
+      "step": 13,
+      "start_position": [
+        5.04,
+        -1.165,
+        -4.702
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.297
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        5.04,
+        -1.165,
+        -4.702
+      ]
+    },
+    {
+      "step": 14,
+      "start_position": [
+        5.04,
+        -1.165,
+        -4.702
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.32,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        4.72,
+        -0.922,
+        -4.708
+      ]
+    },
+    {
+      "step": 15,
+      "start_position": [
+        4.72,
+        -0.922,
+        -4.708
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 0.15
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        4.72,
+        -0.922,
+        -4.708
+      ]
+    },
+    {
+      "step": 16,
+      "start_position": [
+        4.72,
+        -0.922,
+        -4.708
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "move_forward",
+        "r": 0.335,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "continue_path",
+      "end_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ]
+    },
+    {
+      "step": 17,
+      "start_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ],
+      "is_stuck": 0,
+      "decision": null,
+      "executed_action": {
+        "type": "null",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "null_action",
+      "end_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ]
+    },
+    {
+      "step": 18,
+      "start_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "L",
+        "selected_action_type": "turn",
+        "parsed_json": {
+          "movement": "Move forward onto the top landing and turn left into the hallway.",
+          "observation": {
+            "front view": "I am at the top of the stairs on a wooden floor landing. There is a white door straight ahead (waypoint B) and an opening to the left leading further into the house.",
+            "left view": "A hallway extending to the left with dark wood flooring.",
+            "right view": "The staircase railing and the wall next to it.",
+            "map": "I am at the top of the stairs (START area on map). The path continues to the left into a new corridor."
+          },
+          "thought": "I have successfully climbed the stairs. The instruction says 'in the hallway at the top take a left'. I am currently at the top landing. To follow the instruction, I need to move into the hallway that is to my left.",
+          "stuck": 0,
+          "plan": "Move forward and turn left to enter the hallway at the top of the stairs.",
+          "curr_step": "Move forward and turn left towards the hallway opening.",
+          "action": "L"
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 1.571
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "turn",
+      "preprocess": {
+        "agent_position": [
+          -2.371,
+          0.285,
+          1.755
+        ],
+        "agent_yaw": -1.702,
+        "num_waypoints_raw": 5,
+        "num_waypoints_near": 5,
+        "num_waypoints_far": 0,
+        "num_projected": 5,
+        "num_actions": 7,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 1,
+          "no_path": 0,
+          "occlusion": 0
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              658,
+              272
+            ],
+            "camera_depth": 0.913,
+            "target_point_world": [
+              -3.257,
+              -0.425,
+              1.29
+            ],
+            "target_point_relative": [
+              -0.886,
+              -0.465,
+              -0.71
+            ],
+            "distance": 1.353,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.282,
+            "path_waypoint_count": 4
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              488,
+              285
+            ],
+            "camera_depth": 1.158,
+            "target_point_world": [
+              -3.325,
+              0.362,
+              1.097
+            ],
+            "target_point_relative": [
+              -0.954,
+              -0.659,
+              0.077
+            ],
+            "distance": 1.1,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 0.982,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              473,
+              505
+            ],
+            "camera_depth": 0.785,
+            "target_point_world": [
+              -2.58,
+              0.339,
+              0.557
+            ],
+            "target_point_relative": [
+              -0.209,
+              -1.198,
+              0.055
+            ],
+            "distance": 0.216,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_close",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              499,
+              346
+            ],
+            "camera_depth": 1.134,
+            "target_point_world": [
+              -3.141,
+              0.275,
+              0.808
+            ],
+            "target_point_relative": [
+              -0.77,
+              -0.947,
+              -0.01
+            ],
+            "distance": 0.811,
+            "visited": 0,
+            "selected_action_key": "3",
+            "skip_reason": null,
+            "path_length": 0.77,
+            "path_waypoint_count": 2
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              601,
+              356
+            ],
+            "camera_depth": 1.061,
+            "target_point_world": [
+              -3.138,
+              -0.266,
+              0.826
+            ],
+            "target_point_relative": [
+              -0.767,
+              -0.93,
+              -0.551
+            ],
+            "distance": 0.982,
+            "visited": 0,
+            "selected_action_key": "4",
+            "skip_reason": null,
+            "path_length": 0.944,
+            "path_waypoint_count": 2
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"Move forward onto the top landing and turn left into the hallway.\",\n\"observation\": {\n    \"front view\": \"I am at the top of the stairs on a wooden floor landing. There is a white door straight ahead (waypoint B) and an opening to the left leading further into the house.\",\n    \"left view\": \"A hallway extending to the left with dark wood flooring.\",\n    \"right view\": \"The staircase railing and the wall next to it.\",\n    \"map\": \"I am at the top of the stairs (START area on map). The path continues to the left into a new corridor.\"\n},\n\"thought\": \"I have successfully climbed the stairs. The instruction says 'in the hallway at the top take a left'. I am currently at the top landing. To follow the instruction, I need to move into the hallway that is to my left.\",\n\"stuck\": false,\n\"plan\": \"Move forward and turn left to enter the hallway at the top of the stairs.\",\n\"curr_step\": \"Move forward and turn left towards the hallway opening.\",\n\"action\": \"L\"\n}\n```",
+      "end_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ]
+    },
+    {
+      "step": 19,
+      "start_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": "L",
+        "selected_action_type": "turn",
+        "parsed_json": {
+          "movement": "Turn left to face the hallway extending from the top of the stairs.",
+          "observation": {
+            "front view": "A wall with 'B' on it is directly ahead. To the left of this wall, there is an opening leading into a hallway area. The stairs are visible going down in the bottom left corner.",
+            "left view": "The hallway extending to the left, with dark wood flooring and white walls/doors.",
+            "right view": "The landing area and a white door straight ahead/slightly right.",
+            "map": "I am at the top of the stairs (red triangle). The path continues to the left into a long corridor."
+          },
+          "thought": "I have reached the top of the stairs. The instruction says 'in the hallway at the top take a left'. I am currently facing a wall/corner. To follow the instruction, I need to turn towards the hallway that is to my left.",
+          "stuck": 0,
+          "plan": "Turn left to face the hallway and proceed into it.",
+          "curr_step": "Turn Left.",
+          "action": "L"
+        },
+        "valid": 1,
+        "reason": null
+      },
+      "executed_action": {
+        "type": "turn",
+        "r": 0.0,
+        "theta": 1.571
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "turn",
+      "preprocess": {
+        "agent_position": [
+          -2.371,
+          0.285,
+          1.755
+        ],
+        "agent_yaw": 3.01,
+        "num_waypoints_raw": 2,
+        "num_waypoints_near": 2,
+        "num_waypoints_far": 0,
+        "num_projected": 2,
+        "num_actions": 4,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 0,
+          "no_path": 1,
+          "occlusion": 0
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              333,
+              473
+            ],
+            "camera_depth": 0.875,
+            "target_point_world": [
+              -1.692,
+              0.507,
+              0.541
+            ],
+            "target_point_relative": [
+              0.679,
+              -1.215,
+              0.222
+            ],
+            "distance": 0.715,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 0.714,
+            "path_waypoint_count": 2
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              365,
+              507
+            ],
+            "camera_depth": 1.236,
+            "target_point_world": [
+              -1.619,
+              0.52,
+              -0.142
+            ],
+            "target_point_relative": [
+              0.752,
+              -1.898,
+              0.235
+            ],
+            "distance": 1.052,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "```json\n{\n\"movement\": \"Turn left to face the hallway extending from the top of the stairs.\",\n\"observation\": {\n    \"front view\": \"A wall with 'B' on it is directly ahead. To the left of this wall, there is an opening leading into a hallway area. The stairs are visible going down in the bottom left corner.\",\n    \"left view\": \"The hallway extending to the left, with dark wood flooring and white walls/doors.\",\n    \"right view\": \"The landing area and a white door straight ahead/slightly right.\",\n    \"map\": \"I am at the top of the stairs (red triangle). The path continues to the left into a long corridor.\"\n},\n\"thought\": \"I have reached the top of the stairs. The instruction says 'in the hallway at the top take a left'. I am currently facing a wall/corner. To follow the instruction, I need to turn towards the hallway that is to my left.\",\n\"stuck\": false,\n\"plan\": \"Turn left to face the hallway and proceed into it.\",\n\"curr_step\": \"Turn Left.\",\n\"action\": \"L\"\n}\n```",
+      "end_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ]
+    },
+    {
+      "step": 20,
+      "start_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": null,
+        "selected_action_type": null,
+        "parsed_json": null,
+        "valid": 0,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "stop",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "decision_none",
+      "preprocess": {
+        "agent_position": [
+          -2.371,
+          0.285,
+          1.755
+        ],
+        "agent_yaw": 1.439,
+        "num_waypoints_raw": 8,
+        "num_waypoints_near": 8,
+        "num_waypoints_far": 0,
+        "num_projected": 8,
+        "num_actions": 5,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 1,
+          "no_path": 4,
+          "occlusion": 1
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              395,
+              355
+            ],
+            "camera_depth": 1.397,
+            "target_point_world": [
+              -1.546,
+              -0.425,
+              0.538
+            ],
+            "target_point_relative": [
+              0.825,
+              -1.217,
+              -0.71
+            ],
+            "distance": 1.088,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.287,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              460,
+              239
+            ],
+            "camera_depth": 3.763,
+            "target_point_world": [
+              1.101,
+              -0.549,
+              0.38
+            ],
+            "target_point_relative": [
+              3.472,
+              -1.375,
+              -0.833
+            ],
+            "distance": 3.575,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              451,
+              251
+            ],
+            "camera_depth": 3.059,
+            "target_point_world": [
+              0.343,
+              -0.509,
+              0.477
+            ],
+            "target_point_relative": [
+              2.714,
+              -1.278,
+              -0.793
+            ],
+            "distance": 2.828,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              447,
+              302
+            ],
+            "camera_depth": 3.166,
+            "target_point_world": [
+              0.021,
+              -0.558,
+              -0.278
+            ],
+            "target_point_relative": [
+              2.392,
+              -2.034,
+              -0.843
+            ],
+            "distance": 2.67,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              442,
+              308
+            ],
+            "camera_depth": 2.836,
+            "target_point_world": [
+              -0.281,
+              -0.526,
+              -0.144
+            ],
+            "target_point_relative": [
+              2.09,
+              -1.899,
+              -0.811
+            ],
+            "distance": 2.348,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 2.625
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              532,
+              394
+            ],
+            "camera_depth": 1.165,
+            "target_point_world": [
+              -1.692,
+              0.507,
+              0.541
+            ],
+            "target_point_relative": [
+              0.679,
+              -1.215,
+              0.222
+            ],
+            "distance": 0.715,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 0.714,
+            "path_waypoint_count": 2
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              393,
+              413
+            ],
+            "camera_depth": 1.673,
+            "target_point_world": [
+              -1.63,
+              -0.544,
+              -0.13
+            ],
+            "target_point_relative": [
+              0.741,
+              -1.885,
+              -0.829
+            ],
+            "distance": 1.306,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              522,
+              433
+            ],
+            "camera_depth": 1.568,
+            "target_point_world": [
+              -1.619,
+              0.52,
+              -0.142
+            ],
+            "target_point_relative": [
+              0.752,
+              -1.898,
+              0.235
+            ],
+            "distance": 1.052,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "None",
+      "end_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ]
+    },
+    {
+      "step": 21,
+      "start_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ],
+      "is_stuck": 0,
+      "decision": {
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ],
+        "selected_action_key": null,
+        "selected_action_type": null,
+        "parsed_json": null,
+        "valid": 0,
+        "reason": "invalid_json"
+      },
+      "executed_action": {
+        "type": "stop",
+        "r": 0.0,
+        "theta": 0.0
+      },
+      "target_world_position": null,
+      "planned_path": null,
+      "planner_status": "decision_none",
+      "preprocess": {
+        "agent_position": [
+          -2.371,
+          0.285,
+          1.755
+        ],
+        "agent_yaw": 1.439,
+        "num_waypoints_raw": 8,
+        "num_waypoints_near": 8,
+        "num_waypoints_far": 0,
+        "num_projected": 8,
+        "num_actions": 5,
+        "skip_counts": {
+          "edge": 0,
+          "distance": 1,
+          "no_path": 4,
+          "occlusion": 1
+        },
+        "candidates": [
+          {
+            "source_index": 0,
+            "pixel": [
+              442,
+              308
+            ],
+            "camera_depth": 2.836,
+            "target_point_world": [
+              -0.281,
+              -0.526,
+              -0.144
+            ],
+            "target_point_relative": [
+              2.09,
+              -1.899,
+              -0.811
+            ],
+            "distance": 2.348,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "occlusion",
+            "path_length": null,
+            "path_waypoint_count": null,
+            "observed_depth": 2.625
+          },
+          {
+            "source_index": 1,
+            "pixel": [
+              395,
+              355
+            ],
+            "camera_depth": 1.397,
+            "target_point_world": [
+              -1.546,
+              -0.425,
+              0.538
+            ],
+            "target_point_relative": [
+              0.825,
+              -1.217,
+              -0.71
+            ],
+            "distance": 1.088,
+            "visited": 0,
+            "selected_action_key": "1",
+            "skip_reason": null,
+            "path_length": 1.287,
+            "path_waypoint_count": 3
+          },
+          {
+            "source_index": 2,
+            "pixel": [
+              532,
+              394
+            ],
+            "camera_depth": 1.165,
+            "target_point_world": [
+              -1.692,
+              0.507,
+              0.541
+            ],
+            "target_point_relative": [
+              0.679,
+              -1.215,
+              0.222
+            ],
+            "distance": 0.715,
+            "visited": 0,
+            "selected_action_key": "2",
+            "skip_reason": null,
+            "path_length": 0.714,
+            "path_waypoint_count": 2
+          },
+          {
+            "source_index": 3,
+            "pixel": [
+              451,
+              251
+            ],
+            "camera_depth": 3.059,
+            "target_point_world": [
+              0.343,
+              -0.509,
+              0.477
+            ],
+            "target_point_relative": [
+              2.714,
+              -1.278,
+              -0.793
+            ],
+            "distance": 2.828,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 4,
+            "pixel": [
+              447,
+              302
+            ],
+            "camera_depth": 3.166,
+            "target_point_world": [
+              0.021,
+              -0.558,
+              -0.278
+            ],
+            "target_point_relative": [
+              2.392,
+              -2.034,
+              -0.843
+            ],
+            "distance": 2.67,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 5,
+            "pixel": [
+              393,
+              413
+            ],
+            "camera_depth": 1.673,
+            "target_point_world": [
+              -1.63,
+              -0.544,
+              -0.13
+            ],
+            "target_point_relative": [
+              0.741,
+              -1.885,
+              -0.829
+            ],
+            "distance": 1.306,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 6,
+            "pixel": [
+              460,
+              239
+            ],
+            "camera_depth": 3.763,
+            "target_point_world": [
+              1.101,
+              -0.549,
+              0.38
+            ],
+            "target_point_relative": [
+              3.472,
+              -1.375,
+              -0.833
+            ],
+            "distance": 3.575,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "too_far",
+            "path_length": null,
+            "path_waypoint_count": null
+          },
+          {
+            "source_index": 7,
+            "pixel": [
+              522,
+              433
+            ],
+            "camera_depth": 1.568,
+            "target_point_world": [
+              -1.619,
+              0.52,
+              -0.142
+            ],
+            "target_point_relative": [
+              0.752,
+              -1.898,
+              0.235
+            ],
+            "distance": 1.052,
+            "visited": 0,
+            "selected_action_key": null,
+            "skip_reason": "no_path",
+            "path_length": null,
+            "path_waypoint_count": null
+          }
+        ],
+        "available_action_keys": [
+          "1",
+          "2",
+          "L",
+          "R",
+          "B"
+        ]
+      },
+      "vlm_response": "None",
+      "end_position": [
+        4.388,
+        -0.672,
+        -4.664
+      ]
+    }
+  ],
+  "subtask": {
+    "P1": {
+      "instruction": "In the entry way go up the stairs and in the hallway at the top take a left",
+      "completed": 0,
+      "plan": "Turn left to face the hallway and proceed into it.",
+      "record": [
+        {
+          "movement": "Move forward towards the first step of the staircase located to the front-right."
+        },
+        {
+          "movement": "Turn right to face the staircase."
+        },
+        {
+          "movement": "Move forward onto the first step of the staircase."
+        },
+        {
+          "movement": "Move forward up the stairs towards the next landing."
+        },
+        {
+          "movement": "Move forward onto the top landing and turn left into the hallway."
+        },
+        {
+          "movement": "Turn left to face the hallway extending from the top of the stairs."
+        }
+      ],
+      "final_coord": null
+    },
+    "P2": {
+      "instruction": "and go past the dining room into the entry way with the stairs on the right side and stop right between the bottom of the first stair and the console table on the left.",
+      "completed": 0,
+      "plan": "",
+      "record": [],
+      "final_coord": null
+    }
+  }
+}
