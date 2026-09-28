@@ -18,6 +18,7 @@
 # Additional controls:
 #   MAX_STEPS    — max agent steps per episode (default: 100)
 #   COMMENT      — run comment tag (default: batch_test)
+#   EPISODE_IDS  — optional comma-separated episode ids, e.g. 66 or 0,30,32
 #
 # Examples:
 #   export OPENAI_BASE_URL=http://localhost:8000/v1
@@ -39,6 +40,7 @@ END="${3:--1}"
 MODEL_NAME="${4:-${OPENAI_MODEL:-gpt-4o}}"
 MAX_STEPS="${MAX_STEPS:-100}"
 COMMENT="${COMMENT:-batch_test}"
+EPISODE_IDS="${EPISODE_IDS:-}"
 
 case "${TASK}" in
     r2r)       CONFIG="../config/vlnce_test.yaml" ;;
@@ -54,17 +56,24 @@ echo "   episodes    : [${BEGIN}, ${END})"
 echo "   model       : ${MODEL_NAME}"
 echo "   max steps   : ${MAX_STEPS}"
 echo "   comment     : ${COMMENT}"
+echo "   episode ids : ${EPISODE_IDS:-not set}"
 echo "   config      : ${CONFIG}"
 echo "   base_url    : ${OPENAI_BASE_URL:-not set}"
 echo "============================================================"
 
 cd "${SRC_DIR}"
 
-python run_experiments.py \
+CMD=(python run_experiments.py \
     --task "${TASK}" \
     --config "${CONFIG}" \
     --model_name "${MODEL_NAME}" \
     --begin_idx "${BEGIN}" \
     --end_idx "${END}" \
     --max_steps "${MAX_STEPS}" \
-    --comment "${COMMENT}"
+    --comment "${COMMENT}")
+
+if [[ -n "${EPISODE_IDS}" ]]; then
+    CMD+=(--episode-ids "${EPISODE_IDS}")
+fi
+
+"${CMD[@]}"

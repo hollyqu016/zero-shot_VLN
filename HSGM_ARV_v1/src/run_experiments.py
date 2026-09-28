@@ -1348,6 +1348,7 @@ if __name__ == "__main__":
                         help="VLM model name (default: $OPENAI_MODEL or gpt-5).")
     parser.add_argument(
         "--episode_ids",
+        "--episode-ids",
         type=_parse_episode_ids,
         default=None,
         help="Only run specific episode ids. Accepts `1,2,3` or a file path with one id per line."

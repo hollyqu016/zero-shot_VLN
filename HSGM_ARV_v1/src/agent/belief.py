@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
 
-ERROR_TYPES = {"LANDMARK_BINDING", "PROGRESS_STAGE", "ROUTE_TRANSITION", "COMPLETION"}
+ERROR_TYPES = {"LANDMARK_BINDING", "PROGRESS_STAGE", "ROUTE_TRANSITION", "COMPLETION", "CONTROL"}
 VALIDATION_TARGET_SOURCES = {"current_subtask", "next_subtask", "full_instruction"}
 
 
@@ -80,6 +80,7 @@ class ARVState:
         self.invalid_decision_count = 0
         self.rollback_count = 0
         self.rollback_events: List[Dict[str, Any]] = []
+        self.control_failure_events: List[Dict[str, Any]] = []
         self.num_attributions = 0
         self.num_repairs = 0
         self.num_verified_repairs = 0
@@ -112,6 +113,7 @@ class ARVState:
             "completion_validation_source": self.completion_validation_source,
             "completion_validation_instruction_span": self.completion_validation_instruction_span,
             "rollback_events": list(self.rollback_events),
+            "control_failure_events": list(self.control_failure_events),
         }
 
     def summary(self) -> Dict[str, Any]:
@@ -131,7 +133,16 @@ class ARVState:
             "final_verified_stage": max(verified_stages) if verified_stages else None,
             "repair_status": self.repair_status,
             "completion_status": self.completion_status,
+            "control_failure_count": len(self.control_failure_events),
         }
+
+    def record_control_failure(self, event: Dict[str, Any]) -> None:
+        if not isinstance(event, dict):
+            return
+        normalized = dict(event)
+        normalized.setdefault("belief_type", "CONTROL")
+        normalized.setdefault("failure_type", "TURN_OSCILLATION")
+        self.control_failure_events.append(normalized)
 
     def observe_decision(self, parsed_json: Dict[str, Any], step: int,
                          subtask_index: Optional[int], selected_action: Any) -> Dict[str, Any]:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Seven non-Habitat checks for ARV state and controller wiring."""
+"""Non-Habitat checks for ARV state/controller wiring and v2.1 control stability."""
 
 import json
 from pathlib import Path
@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from agent.belief import ARVState, resolve_controller_decision  # noqa: E402
+from agent.control_stability import ControlStabilityConfig, RepairCooldown, TurnOscillationDetector  # noqa: E402
 
 
 class MockController:
@@ -207,6 +208,88 @@ def test_completion_index():
     assert state.summary()["final_verified_stage"] == 1
 
 
+class DummyAction:
+    def __init__(self, theta, action_type="turn"):
+        self.theta = theta
+        self.r = 0
+        self.type = action_type
+
+
+def test_v21_turn_oscillation_detector():
+    cfg = ControlStabilityConfig(
+        oscillation_window=4,
+        oscillation_min_reversals=2,
+        oscillation_displacement_threshold=0.2,
+    )
+    detector = TurnOscillationDetector(cfg)
+    headings = [0.0, 3.14159, 0.0, 3.14159]
+    last = None
+    for step, heading in enumerate(headings):
+        theta = 3.14159 if step % 2 == 0 else -3.14159
+        last = detector.add_record(
+            step=step,
+            action=DummyAction(theta),
+            heading_before=headings[step - 1] if step else 0.0,
+            heading_after=heading,
+            position_before=[0.0, 0.0],
+            position_after=[0.02 * step, 0.0],
+            repair_operator="VERIFY_COMPLETION_OBSERVE",
+        )
+    assert last is not None
+    assert last["failure_type"] == "TURN_OSCILLATION"
+
+    same_direction_detector = TurnOscillationDetector(cfg)
+    same_direction_last = None
+    for step, heading in enumerate(headings):
+        same_direction_last = same_direction_detector.add_record(
+            step=step,
+            action=DummyAction(3.14159),
+            heading_before=headings[step - 1] if step else 0.0,
+            heading_after=heading,
+            position_before=[0.0, 0.0],
+            position_after=[0.01 * step, 0.0],
+            repair_operator="VERIFY_COMPLETION_OBSERVE",
+        )
+    assert same_direction_last is not None
+    assert same_direction_last["failure_type"] == "TURN_OSCILLATION"
+
+
+def test_v21_normal_turn_forward_no_oscillation():
+    cfg = ControlStabilityConfig(
+        oscillation_window=4,
+        oscillation_min_reversals=2,
+        oscillation_displacement_threshold=0.2,
+    )
+    detector = TurnOscillationDetector(cfg)
+    sequence = [
+        (DummyAction(1.5708), 0.0, 1.5708, [0.0, 0.0], [0.0, 0.0]),
+        (DummyAction(0.0, "move_forward"), 1.5708, 1.5708, [0.0, 0.0], [0.0, 0.8]),
+        (DummyAction(-1.5708), 1.5708, 0.0, [0.0, 0.8], [0.0, 0.8]),
+        (DummyAction(0.0, "move_forward"), 0.0, 0.0, [0.0, 0.8], [0.8, 0.8]),
+    ]
+    detections = [
+        detector.add_record(i, action, hb, ha, pb, pa)
+        for i, (action, hb, ha, pb, pa) in enumerate(sequence)
+    ]
+    assert all(item is None for item in detections)
+
+
+def test_v21_repair_cooldown_blocks_reverse_large_turn():
+    cfg = ControlStabilityConfig(cooldown_steps=3)
+    cooldown = RepairCooldown(cfg)
+    cooldown.record("VERIFY_COMPLETION_OBSERVE", 10, DummyAction(3.14159))
+    assert cooldown.blocks(11, DummyAction(-3.14159))
+    assert not cooldown.blocks(14, DummyAction(-3.14159))
+
+
+def test_v21_global_disable_legacy_path():
+    cfg = ControlStabilityConfig(enable_arv_v21_control_stability=False)
+    detector = TurnOscillationDetector(cfg)
+    cooldown = RepairCooldown(cfg)
+    assert detector.add_record(0, DummyAction(3.14159), 0.0, 3.14159, [0, 0], [0, 0]) is None
+    assert cooldown.blocks(1, DummyAction(-3.14159)) is False
+
+
 def main():
     tests = [
         test_attribution,
@@ -216,6 +299,10 @@ def main():
         test_invalid_json_recovery,
         test_rollback,
         test_completion_index,
+        test_v21_turn_oscillation_detector,
+        test_v21_normal_turn_forward_no_oscillation,
+        test_v21_repair_cooldown_blocks_reverse_large_turn,
+        test_v21_global_disable_legacy_path,
     ]
     for test in tests:
         test()

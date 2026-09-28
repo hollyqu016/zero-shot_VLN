@@ -8,6 +8,7 @@ import PIL.Image
 from simWrapper import SimWrapper, PolarAction
 from mapper import Instruct_Mapper
 from agent.belief import ARVState, resolve_controller_decision
+from agent.control_stability import ControlStabilityConfig, RepairCooldown, TurnOscillationDetector
 import time
 from typing import Optional, List
 from PIL.Image import Image
@@ -1030,6 +1031,13 @@ class PathPlannerAgent(ABC):
         self.vlm_responses = []
         self.diagnostic_trace = []
         self.arv_state = ARVState()
+        self.control_cfg = ControlStabilityConfig.from_config(config)
+        self.turn_oscillation_detector = TurnOscillationDetector(self.control_cfg)
+        self.repair_cooldown = RepairCooldown(self.control_cfg)
+        self._last_control_failure = None
+        self._last_recorded_control_failure_step = None
+        self._last_control_repair_operator = None
+        self._last_verification_turn_direction = None
         self._current_step_trace = None
         self._last_preprocess_trace = {}
         self._last_decision_trace = {}
@@ -1136,6 +1144,55 @@ class PathPlannerAgent(ABC):
     def _record_step_trace(self, trace):
         if trace is not None:
             self.diagnostic_trace.append(trace)
+
+    def _control_trace_defaults(self, step: int, requested_action=None):
+        recent_failure = self._last_control_failure if self.control_cfg.enabled() else None
+        return {
+            "control_failure_detected": False,
+            "failure_type": None,
+            "failure_reason": None,
+            "repair_operator": None,
+            "repair_reason": None,
+            "requested_action": self._summarize_action(requested_action),
+            "executed_action": None,
+            "heading_before": None,
+            "heading_after": None,
+            "recent_heading_reversals": self.turn_oscillation_detector.recent_reversal_count(),
+            "recent_displacement": self._safe_float(self.turn_oscillation_detector.recent_displacement()),
+            "cooldown_active": self.repair_cooldown.to_dict(step, requested_action),
+            "verification_action_source": None,
+            "oscillation_window": None,
+            "oscillation_reversal_count": None,
+            "oscillation_net_displacement": None,
+            "oscillation_broken": None,
+            "last_control_failure": recent_failure,
+        }
+
+    def _small_reorientation_action(self, direction: int = -1):
+        return PolarAction(r=0, theta=float(direction) * float(self.control_cfg.small_turn_rad), type='turn')
+
+    def _legacy_large_turn_action(self, direction: int = -1):
+        return PolarAction(r=0, theta=float(direction) * self.turn_angle_rad * 2, type='turn')
+
+    def _choose_repair_action(self, operator: str, reason: str, step: int, preferred_direction: int = -1):
+        if not self.control_cfg.enabled() or not self.control_cfg.enable_safe_fallback_recovery:
+            return self._legacy_large_turn_action(preferred_direction), "legacy_large_turn"
+        if self._last_control_failure and self._last_control_failure.get("failure_type") == "TURN_OSCILLATION":
+            return self._small_reorientation_action(preferred_direction), "BREAK_OSCILLATION"
+        candidate = self._small_reorientation_action(preferred_direction)
+        if self.repair_cooldown.blocks(step, candidate):
+            candidate = self._small_reorientation_action(preferred_direction)
+        return candidate, operator
+
+    def choose_verification_action(self, step: int):
+        if not self.control_cfg.enabled() or not self.control_cfg.enable_safe_verification_turn:
+            return self._legacy_large_turn_action(-1), "legacy_verify_completion"
+        if self._last_control_failure and self._last_control_failure.get("failure_type") == "TURN_OSCILLATION":
+            return self._small_reorientation_action(-1), "BREAK_OSCILLATION"
+        direction = -1 if self._last_verification_turn_direction is None else self._last_verification_turn_direction
+        action = self._small_reorientation_action(direction)
+        self._last_verification_turn_direction = direction
+        return action, "safe_verification_small_turn"
 
     def _stop(self):
         """Execute stop action and update sub-goal state."""
@@ -1814,6 +1871,7 @@ class PathPlannerAgent(ABC):
         step_trace = {
             "step": int(step),
             "start_position": self._safe_list(agent_state.position),
+            "start_heading": self._safe_float(self._get_agent_yaw()),
             "is_stuck": False,
             "decision": None,
             "executed_action": None,
@@ -1822,6 +1880,7 @@ class PathPlannerAgent(ABC):
             "planner_status": None,
             "arv_state": self.arv_state.to_dict(),
         }
+        step_trace["control_stability"] = self._control_trace_defaults(int(step))
         self._active_step_index = int(step)
 
         if len(self._position_history) > self._stuck_check_window + 1:
@@ -1909,15 +1968,32 @@ class PathPlannerAgent(ABC):
                 assert resolve_controller_decision(
                     None, self.arv_state, self._current_subtask_index()
                 ) == "invalid_fallback"
-                action_to_execute = PolarAction(r=0, theta=-self.turn_angle_rad*2, type='turn')
+                action_to_execute, repair_operator = self._choose_repair_action(
+                    "INVALID_DECISION_RECOVERY",
+                    "VLM decision was invalid after retries",
+                    int(step),
+                    preferred_direction=-1,
+                )
                 self.semantic_completion = False
                 step_trace["planner_status"] = "invalid_decision_look_around"
+                step_trace["control_stability"].update({
+                    "control_failure_detected": True,
+                    "failure_type": "INVALID_DECISION",
+                    "failure_reason": "VLM decision was invalid after retries",
+                    "repair_operator": repair_operator,
+                    "repair_reason": "safe fallback recovery" if self.control_cfg.enabled() else "legacy fallback",
+                })
 
             elif decision['type'] == 'verify_completion':
-                turn_right_action = PolarAction(r=0, theta=-self.turn_angle_rad*2, type='turn')
-                self.action_sequence = [turn_right_action]
+                verify_action, verify_source = self.choose_verification_action(int(step))
+                self.action_sequence = [verify_action]
                 action_to_execute = self.action_sequence.pop(0)
                 step_trace["planner_status"] = "completion_verification"
+                step_trace["control_stability"].update({
+                    "repair_operator": "BREAK_OSCILLATION" if verify_source == "BREAK_OSCILLATION" else "VERIFY_COMPLETION_OBSERVE",
+                    "repair_reason": "completion requires independent observation before stop",
+                    "verification_action_source": verify_source,
+                })
 
             elif decision['type'] == 'stop':
                 completed_idx = self._current_subtask_index()
@@ -1947,11 +2023,20 @@ class PathPlannerAgent(ABC):
 
             elif decision['type'] == 'look_around':
                 pass
-                turn_right_action = PolarAction(r=0, theta=-self.turn_angle_rad*2, type='turn')
-                self.action_sequence = [turn_right_action] * 2
+                turn_right_action, repair_operator = self._choose_repair_action(
+                    "LOOK_AROUND_RECOVERY",
+                    "need additional observation",
+                    int(step),
+                    preferred_direction=-1,
+                )
+                self.action_sequence = [turn_right_action] if self.control_cfg.enabled() else [turn_right_action] * 2
                 action_to_execute = self.action_sequence.pop(0)
                 self._need_restore_heading = False
                 step_trace["planner_status"] = "look_around"
+                step_trace["control_stability"].update({
+                    "repair_operator": repair_operator,
+                    "repair_reason": "bounded observation turn" if self.control_cfg.enabled() else "legacy look around",
+                })
 
             elif decision['type'] == 'waypoint':
                 target_world = decision['target_point_world']
@@ -1972,8 +2057,20 @@ class PathPlannerAgent(ABC):
                     pass
                     self.current_path = []
                     self._need_restore_heading = False
-                    action_to_execute = PolarAction(r=0, theta=np.pi, type='turn')
+                    action_to_execute, repair_operator = self._choose_repair_action(
+                        "PATH_MISSING_RECOVERY",
+                        "selected waypoint had no valid path",
+                        int(step),
+                        preferred_direction=1,
+                    )
                     step_trace["planner_status"] = "path_missing"
+                    step_trace["control_stability"].update({
+                        "control_failure_detected": True,
+                        "failure_type": "PATH_MISSING",
+                        "failure_reason": "selected waypoint had no valid path",
+                        "repair_operator": repair_operator,
+                        "repair_reason": "bounded reorientation instead of unconditional 180 turn",
+                    })
             elif decision['type'] == 'rollback':
 
                 subtask_key = decision.get('subtask_key', None)
@@ -1996,9 +2093,21 @@ class PathPlannerAgent(ABC):
                     pass
                     self.current_path = []
                     self._need_restore_heading = False
-                    action_to_execute = PolarAction(r=0, theta=np.pi, type='turn')
+                    action_to_execute, repair_operator = self._choose_repair_action(
+                        "ROLLBACK_PATH_MISSING_RECOVERY",
+                        "rollback target had no valid path",
+                        int(step),
+                        preferred_direction=1,
+                    )
                     self.instruction_obj.current_step_count = 0
                     step_trace["planner_status"] = "rollback_path_missing"
+                    step_trace["control_stability"].update({
+                        "control_failure_detected": True,
+                        "failure_type": "PATH_MISSING",
+                        "failure_reason": "rollback target had no valid path",
+                        "repair_operator": repair_operator,
+                        "repair_reason": "bounded rollback recovery instead of unconditional 180 turn",
+                    })
 
         elif action_to_execute is None and self.action_sequence:
             action_to_execute = self.action_sequence.pop(0)
@@ -2016,6 +2125,11 @@ class PathPlannerAgent(ABC):
             step_trace["planner_status"] = "null_action"
 
         step_trace["executed_action"] = self._summarize_action(action_to_execute)
+        step_trace["control_stability"]["requested_action"] = self._summarize_action(action_to_execute)
+        step_trace["control_stability"]["executed_action"] = self._summarize_action(action_to_execute)
+        heading_before = self._get_agent_yaw()
+        position_before = np.array(self.curr_obs["agent_state"].position, dtype=float)
+        step_trace["control_stability"]["heading_before"] = self._safe_float(heading_before)
         step_trace["semantic_completion"] = self.semantic_completion
         step_trace["termination_reason"] = self.termination_reason
         step_trace["arv"] = (
@@ -2025,6 +2139,54 @@ class PathPlannerAgent(ABC):
         step_trace["arv_state"] = self.arv_state.to_dict()
         self.execute_action(action_to_execute)
         step_trace["end_position"] = self._safe_list(self.curr_obs["agent_state"].position)
+        heading_after = self._get_agent_yaw()
+        position_after = np.array(self.curr_obs["agent_state"].position, dtype=float)
+        step_trace["end_heading"] = self._safe_float(heading_after)
+        step_trace["control_stability"]["heading_after"] = self._safe_float(heading_after)
+        operator_for_record = step_trace["control_stability"].get("repair_operator")
+        detection = self.turn_oscillation_detector.add_record(
+            step=int(step),
+            action=action_to_execute,
+            heading_before=heading_before,
+            heading_after=heading_after,
+            position_before=position_before,
+            position_after=position_after,
+            repair_operator=operator_for_record,
+        )
+        if operator_for_record:
+            self.repair_cooldown.record(operator_for_record, int(step), action_to_execute)
+            self._last_control_repair_operator = operator_for_record
+        if detection:
+            self._last_control_failure = detection
+            if self._last_recorded_control_failure_step != detection.get("step"):
+                self.arv_state.record_control_failure(detection)
+                self._last_recorded_control_failure_step = detection.get("step")
+            step_trace["control_stability"].update({
+                "control_failure_detected": True,
+                "failure_type": "TURN_OSCILLATION",
+                "detector_source": detection.get("detector_source"),
+                "failure_reason": detection.get("reason"),
+                "recent_actions": detection.get("recent_actions"),
+                "recent_headings": detection.get("recent_headings"),
+                "recent_positions": detection.get("recent_positions"),
+                "recent_displacement": self._safe_float(detection.get("net_displacement")),
+                "oscillation_window": detection.get("oscillation_window"),
+                "oscillation_reversal_count": detection.get("oscillation_reversal_count"),
+                "oscillation_net_displacement": self._safe_float(detection.get("oscillation_net_displacement")),
+                "oscillation_broken": False,
+            })
+        elif self._last_control_failure and self._last_control_failure.get("failure_type") == "TURN_OSCILLATION":
+            recent_positions = self._last_control_failure.get("recent_positions") or []
+            anchor = recent_positions[-1] if recent_positions else position_before[:2]
+            displacement = np.linalg.norm(position_after[:2] - np.array(anchor, dtype=float))
+            step_trace["control_stability"]["oscillation_broken"] = bool(
+                displacement >= self.control_cfg.oscillation_displacement_threshold
+            )
+            if step_trace["control_stability"]["oscillation_broken"]:
+                self._last_control_failure = None
+        step_trace["control_stability"]["recent_heading_reversals"] = self.turn_oscillation_detector.recent_reversal_count()
+        step_trace["control_stability"]["recent_displacement"] = self._safe_float(self.turn_oscillation_detector.recent_displacement())
+        step_trace["control_stability"]["cooldown_active"] = self.repair_cooldown.to_dict(int(step), action_to_execute)
         self._record_step_trace(step_trace)
 
         if self.prev_agent_position is not None:
