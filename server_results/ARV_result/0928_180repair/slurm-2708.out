@@ -1,0 +1,2144 @@
+============================================================
+ HSGM ARV_v1 diagnostic pilot
+   episodes     : 0 30 32 65 66 80
+   model        : qwen3.6:35b
+   max steps    : 100
+   conda env    : hsgm_slurm
+   project      : /home/lixiaohai/qjx_code/HSGM_ARV_v1
+   job token    : 2708
+   log dir      : /home/lixiaohai/qjx_code/paired_diagnostic/logs/arv_v1_diag24_job2708_20260927_064129
+============================================================
+[INFO] Python: Python 3.9.23
+[INFO] Running ARV smoke test...
+{
+  "ok": true,
+  "tests": [
+    "test_attribution",
+    "test_localized_revision",
+    "test_evidence_leakage",
+    "test_stop_gating",
+    "test_invalid_json_recovery",
+    "test_rollback",
+    "test_completion_index",
+    "test_v21_turn_oscillation_detector",
+    "test_v21_normal_turn_forward_no_oscillation",
+    "test_v21_repair_cooldown_blocks_reverse_large_turn",
+    "test_v21_global_disable_legacy_path"
+  ]
+}
+[INFO] Compiling changed Python files...
+[INFO] Starting Ollama at 127.0.0.1:22708
+[INFO] Ollama inference preflight passed
+
+============================================================
+[INFO] Episode 0 starting at Sun Sep 27 06:41:43 CST 2026
+[INFO] Episode log: /home/lixiaohai/qjx_code/paired_diagnostic/logs/arv_v1_diag24_job2708_20260927_064129/episode_0.log
+============================================================
+============================================================
+ HSGM Batch Test
+   task        : r2r
+   episodes    : [0, 1)
+   model       : qwen3.6:35b
+   max steps   : 100
+   comment     : arv_v1_diag24_ep0
+   episode ids : not set
+   config      : ../config/vlnce_test.yaml
+   base_url    : http://127.0.0.1:22708/v1
+============================================================
+  0%|          | 0/1 [00:00<?, ?it/s]Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2 by NVIDIA Corporation
+OpenGL version: 4.6.0 NVIDIA 590.48.01
+Using optional features:
+    GL_ARB_vertex_array_object
+    GL_ARB_separate_shader_objects
+    GL_ARB_robustness
+    GL_ARB_texture_storage
+    GL_ARB_texture_view
+    GL_ARB_framebuffer_no_attachments
+    GL_ARB_invalidate_subdata
+    GL_ARB_texture_storage_multisample
+    GL_ARB_multi_bind
+    GL_ARB_direct_state_access
+    GL_ARB_get_texture_sub_image
+    GL_ARB_texture_filter_anisotropic
+    GL_KHR_debug
+    GL_KHR_parallel_shader_compile
+    GL_NV_depth_buffer_float
+Using driver workarounds:
+    no-forward-compatible-core-context
+    nv-egl-incorrect-gl11-function-pointers
+    no-layout-qualifiers-on-old-glsl
+    nv-zero-context-profile-mask
+    nv-implementation-color-read-format-dsa-broken
+    nv-cubemap-inconsistent-compressed-image-size
+    nv-cubemap-broken-full-compressed-image-query
+    nv-compressed-block-size-in-bits
+[06:42:05:811346]:[Warning]:[Metadata] SceneDatasetAttributes.cpp(107)::addNewSceneInstanceToDataset : Dataset : 'default' : Lighting Layout Attributes 'no_lights' specified in Scene Attributes but does not exist in dataset, so creating default.
+2026-09-27 06:42:11,846 - INFO - Simulator initialized!
+2026-09-27 06:43:05,164 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 06:43:19,973 - INFO - --- Episode 0, Step 1/100 ---
+2026-09-27 06:48:19,581 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 06:52:39,143 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 06:56:25,730 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 06:56:44,800 - INFO - --- Episode 0, Step 2/100 ---
+2026-09-27 06:59:59,183 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:02:40,399 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:04:46,268 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:04:49,460 - INFO - --- Episode 0, Step 3/100 ---
+2026-09-27 07:06:19,348 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:07:14,022 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:07:51,332 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:07:54,257 - INFO - --- Episode 0, Step 4/100 ---
+2026-09-27 07:08:20,188 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:08:33,979 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:08:35,097 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:36,902 - INFO - --- Episode 0, Step 5/100 ---
+2026-09-27 07:08:38,000 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:38,568 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:39,137 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:40,730 - INFO - --- Episode 0, Step 6/100 ---
+2026-09-27 07:08:41,678 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:42,259 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:42,840 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:45,096 - INFO - --- Episode 0, Step 7/100 ---
+2026-09-27 07:08:45,973 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:46,566 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:47,153 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:48,316 - INFO - --- Episode 0, Step 8/100 ---
+2026-09-27 07:08:49,330 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:49,904 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:08:50,490 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:04,834 - INFO - --- Episode 0, Step 9/100 ---
+2026-09-27 07:09:05,816 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:06,395 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:06,982 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:10,618 - INFO - --- Episode 0, Step 10/100 ---
+2026-09-27 07:09:11,522 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:12,111 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:12,702 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:14,045 - INFO - --- Episode 0, Step 11/100 ---
+2026-09-27 07:09:14,948 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:15,534 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:16,122 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:17,330 - INFO - --- Episode 0, Step 12/100 ---
+2026-09-27 07:09:18,205 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:18,796 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:19,387 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:19,921 - INFO - --- Episode 0, Step 13/100 ---
+2026-09-27 07:09:20,855 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:21,451 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:22,035 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:23,515 - INFO - --- Episode 0, Step 14/100 ---
+2026-09-27 07:09:24,470 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:25,053 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:25,645 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:45,231 - INFO - --- Episode 0, Step 15/100 ---
+2026-09-27 07:09:46,113 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:46,695 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:47,268 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:49,253 - INFO - --- Episode 0, Step 16/100 ---
+2026-09-27 07:09:50,268 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:50,846 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:09:51,415 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:09,864 - INFO - --- Episode 0, Step 17/100 ---
+2026-09-27 07:10:10,840 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:11,411 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:11,983 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:13,700 - INFO - --- Episode 0, Step 18/100 ---
+2026-09-27 07:10:14,602 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:15,175 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:15,748 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:19,051 - INFO - --- Episode 0, Step 19/100 ---
+2026-09-27 07:10:19,920 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:20,488 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:21,061 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:25,175 - INFO - --- Episode 0, Step 20/100 ---
+2026-09-27 07:10:26,044 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:26,611 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:27,178 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:10:34,360 - INFO - --- Episode 0, Step 21/100 ---
+100%|██████████| 1/1 [28:32<00:00, 1712.62s/it]100%|██████████| 1/1 [28:32<00:00, 1712.63s/it]
+2026-09-27 07:10:38,031 - INFO - distance_to_goal: 7.9608
+2026-09-27 07:10:38,031 - INFO - spl: 0.0000
+2026-09-27 07:10:38,031 - INFO - goal_reached: 0.0000
+2026-09-27 07:10:38,031 - INFO - traveled_distance: 0.0000
+2026-09-27 07:10:38,031 - INFO - done: 1.0000
+2026-09-27 07:10:38,031 - INFO - semantic_completion: 0.0000
+2026-09-27 07:10:38,031 - INFO - oracle_navigation_error: 7.9608
+2026-09-27 07:10:38,031 - INFO - oracle_success: 0.0000
+2026-09-27 07:10:38,031 - INFO - oracle_spl: 0.0000
+2026-09-27 07:10:38,031 - INFO - ndtw: 0.3500
+2026-09-27 07:10:38,031 - INFO - sdtw: 0.0000
+['Exit the bedroom and turn left.', 'Walk straight passing the gray couch and stop near the rug.']
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+[StairDetect] normals=0.2605s, cpu=0.0009s, cluster=0.0322s, loop=0.1466s, total=0.4473s
+waypoints: 15
+skipped waypoints: edge 0,  distance 6,  no_path 2,  occlusion 0
+
+
+
+Calculated floor height difference: 2.66m
+Action: turn
+waypoints: 9
+skipped waypoints: edge 0,  distance 4,  no_path 0,  occlusion 0
+
+
+
+Action: turn
+waypoints: 5
+skipped waypoints: edge 0,  distance 1,  no_path 0,  occlusion 0
+
+
+
+Action: turn
+waypoints: 7
+skipped waypoints: edge 0,  distance 3,  no_path 0,  occlusion 0
+
+
+Action: turn
+waypoints: 8
+skipped waypoints: edge 0,  distance 3,  no_path 1,  occlusion 0
+Action: turn
+waypoints: 9
+skipped waypoints: edge 0,  distance 3,  no_path 2,  occlusion 1
+Action: turn
+waypoints: 4
+skipped waypoints: edge 0,  distance 0,  no_path 2,  occlusion 1
+Action: turn
+waypoints: 10
+skipped waypoints: edge 0,  distance 4,  no_path 3,  occlusion 0
+Action: turn
+detected agent stuck, last8 steps position changes: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+waypoints: 10
+skipped waypoints: edge 0,  distance 4,  no_path 1,  occlusion 0
+Action: turn
+waypoints: 9
+skipped waypoints: edge 0,  distance 4,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 5
+skipped waypoints: edge 0,  distance 1,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 7
+skipped waypoints: edge 0,  distance 3,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 8
+skipped waypoints: edge 0,  distance 3,  no_path 1,  occlusion 0
+Action: turn
+waypoints: 9
+skipped waypoints: edge 0,  distance 3,  no_path 2,  occlusion 1
+Action: turn
+waypoints: 4
+skipped waypoints: edge 0,  distance 0,  no_path 2,  occlusion 1
+Action: turn
+waypoints: 10
+skipped waypoints: edge 0,  distance 4,  no_path 3,  occlusion 0
+Action: turn
+detected agent stuck, last8 steps position changes: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+waypoints: 10
+skipped waypoints: edge 0,  distance 4,  no_path 1,  occlusion 0
+Action: turn
+waypoints: 9
+skipped waypoints: edge 0,  distance 4,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 5
+skipped waypoints: edge 0,  distance 1,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 7
+skipped waypoints: edge 0,  distance 3,  no_path 0,  occlusion 0
+Action: turn
+Action: stop
+[INFO] Episode 0 completed successfully at Sun Sep 27 07:10:40 CST 2026
+
+============================================================
+[INFO] Episode 30 starting at Sun Sep 27 07:10:40 CST 2026
+[INFO] Episode log: /home/lixiaohai/qjx_code/paired_diagnostic/logs/arv_v1_diag24_job2708_20260927_064129/episode_30.log
+============================================================
+============================================================
+ HSGM Batch Test
+   task        : r2r
+   episodes    : [30, 31)
+   model       : qwen3.6:35b
+   max steps   : 100
+   comment     : arv_v1_diag24_ep30
+   episode ids : not set
+   config      : ../config/vlnce_test.yaml
+   base_url    : http://127.0.0.1:22708/v1
+============================================================
+  0%|          | 0/1 [00:00<?, ?it/s]Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2 by NVIDIA Corporation
+OpenGL version: 4.6.0 NVIDIA 590.48.01
+Using optional features:
+    GL_ARB_vertex_array_object
+    GL_ARB_separate_shader_objects
+    GL_ARB_robustness
+    GL_ARB_texture_storage
+    GL_ARB_texture_view
+    GL_ARB_framebuffer_no_attachments
+    GL_ARB_invalidate_subdata
+    GL_ARB_texture_storage_multisample
+    GL_ARB_multi_bind
+    GL_ARB_direct_state_access
+    GL_ARB_get_texture_sub_image
+    GL_ARB_texture_filter_anisotropic
+    GL_KHR_debug
+    GL_KHR_parallel_shader_compile
+    GL_NV_depth_buffer_float
+Using driver workarounds:
+    no-forward-compatible-core-context
+    nv-egl-incorrect-gl11-function-pointers
+    no-layout-qualifiers-on-old-glsl
+    nv-zero-context-profile-mask
+    nv-implementation-color-read-format-dsa-broken
+    nv-cubemap-inconsistent-compressed-image-size
+    nv-cubemap-broken-full-compressed-image-query
+    nv-compressed-block-size-in-bits
+[07:11:02:505875]:[Warning]:[Metadata] SceneDatasetAttributes.cpp(107)::addNewSceneInstanceToDataset : Dataset : 'default' : Lighting Layout Attributes 'no_lights' specified in Scene Attributes but does not exist in dataset, so creating default.
+2026-09-27 07:11:05,609 - INFO - Simulator initialized!
+2026-09-27 07:11:38,797 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:11:44,572 - INFO - --- Episode 30, Step 1/100 ---
+2026-09-27 07:12:17,897 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:12:35,881 - INFO - --- Episode 30, Step 2/100 ---
+2026-09-27 07:12:37,681 - INFO - --- Episode 30, Step 3/100 ---
+2026-09-27 07:12:38,938 - INFO - --- Episode 30, Step 4/100 ---
+2026-09-27 07:12:45,017 - INFO - --- Episode 30, Step 5/100 ---
+2026-09-27 07:13:00,381 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:13:01,348 - INFO - --- Episode 30, Step 6/100 ---
+2026-09-27 07:13:09,558 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:13:12,507 - INFO - --- Episode 30, Step 7/100 ---
+2026-09-27 07:13:15,850 - INFO - --- Episode 30, Step 8/100 ---
+2026-09-27 07:13:17,679 - INFO - --- Episode 30, Step 9/100 ---
+2026-09-27 07:13:24,754 - INFO - --- Episode 30, Step 10/100 ---
+2026-09-27 07:13:27,400 - INFO - --- Episode 30, Step 11/100 ---
+2026-09-27 07:13:29,429 - INFO - --- Episode 30, Step 12/100 ---
+2026-09-27 07:13:31,057 - INFO - --- Episode 30, Step 13/100 ---
+2026-09-27 07:13:45,394 - INFO - --- Episode 30, Step 14/100 ---
+2026-09-27 07:13:48,197 - INFO - --- Episode 30, Step 15/100 ---
+2026-09-27 07:13:49,859 - INFO - --- Episode 30, Step 16/100 ---
+2026-09-27 07:14:40,871 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:14:42,938 - INFO - --- Episode 30, Step 17/100 ---
+2026-09-27 07:15:11,407 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:15:15,148 - INFO - --- Episode 30, Step 18/100 ---
+2026-09-27 07:15:16,178 - INFO - --- Episode 30, Step 19/100 ---
+2026-09-27 07:15:18,106 - INFO - --- Episode 30, Step 20/100 ---
+2026-09-27 07:15:19,223 - INFO - --- Episode 30, Step 21/100 ---
+2026-09-27 07:15:20,870 - INFO - --- Episode 30, Step 22/100 ---
+2026-09-27 07:15:25,626 - INFO - --- Episode 30, Step 23/100 ---
+2026-09-27 07:15:27,781 - INFO - --- Episode 30, Step 24/100 ---
+2026-09-27 07:15:30,016 - INFO - --- Episode 30, Step 25/100 ---
+2026-09-27 07:15:32,990 - INFO - --- Episode 30, Step 26/100 ---
+2026-09-27 07:15:35,520 - INFO - --- Episode 30, Step 27/100 ---
+2026-09-27 07:15:37,732 - INFO - --- Episode 30, Step 28/100 ---
+2026-09-27 07:15:54,878 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+['Go to the plant', 'Go to the rope', 'Go to the steamroom door', 'Go to the table.']
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+[StairDetect] normals=0.0110s, cpu=0.0007s, cluster=0.0283s, loop=0.0481s, total=0.0944s
+waypoints: 2
+skipped waypoints: edge 0,  distance 0,  no_path 0,  occlusion 0
+```json
+{
+    "movement": "I am standing at the start position near the top of a staircase and a wall. I have not moved yet.",
+    "observation": {
+        "front view": "A beige wall with shadows of tripods/stands. To the right, the edge of a large vertical poster is visible. On the floor, there are two numbered waypoints, 1 and 2. Waypoint 1 is near the poster.",
+        "left view": "A wooden door and a staircase going upwards.",
+        "right view": "The full 'Turkish Bath' poster stand is visible. Next to it, in the corner, is a small potted plant (looks like a small tree). Further right is a doorway.",
+        "map": "My current position is marked as 'START' near the top of the stairs/corridor area. Waypoint 1 is located slightly forward and to the right, near the poster stand."
+    },
+    "thought": "The current task is to go to the plant. Looking at the right view, there is a potted plant in the corner next to the large poster. The front view shows waypoint 1 positioned near this poster. Therefore, moving towards waypoint 1 will bring me closer to the plant.",
+    "stuck": false,
+    "plan": "Navigate towards the plant located in the corner by moving towards waypoint 1, which is situated near the poster stand adjacent to the plant.",
+    "curr_step": "Move to waypoint 1.",
+    "action": 1
+}
+```
+Calculated floor height difference: 2.39m
+Action: turn
+--- Height change stabilized. Height diff: -0.06, On platform: True, Metrics: {'inlier_count': 1740, 'local_count': 20028, 'support_ratio': 0.0868783702772679, 'vertical_score': 1.0, 'plane_height_mean': -1.2382903099060059, 'agent_z': -1.2605075359344482, 'vertical_diff': 0.02221722602844234, 'area_xy': 0.8351999999999999, 'radius_est': 0.5156087828389873, 'z_std': 0.04018527641892433, 'occupied_cells': 58, 'bottom_height_tolerance': 0.1}
+--- No significant floor change. Height diff: -0.06, On platform: True, Metrics: {'inlier_count': 1740, 'local_count': 20028, 'support_ratio': 0.0868783702772679, 'vertical_score': 1.0, 'plane_height_mean': -1.2382903099060059, 'agent_z': -1.2605075359344482, 'vertical_diff': 0.02221722602844234, 'area_xy': 0.8351999999999999, 'radius_est': 0.5156087828389873, 'z_std': 0.04018527641892433, 'occupied_cells': 58, 'bottom_height_tolerance': 0.1}
+Updated floor height: -1.06, ceiling height: 0.74
+Action: move_forward
+Action: null
+Action: turn
+waypoints: 1
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 0
+```json
+{
+    "movement": "I moved forward slightly and turned left, but I am still facing the wall/poster area near the top of the stairs.",
+    "observation": {
+        "front view": "A beige wall with a black switch/outlet. To the right is the edge of a large 'Turkish Bath' poster stand.",
+        "left view": "The staircase going up is visible to the left.",
+        "right view": "The hallway extends forward. The 'Turkish Bath' poster is on the left wall of this hallway. Further down the hallway, near a corner or doorway, there is a small potted plant (tree-like).",
+        "map": "I am at the START position. The stairs are to my left. The hallway with the plant is to my right."
+    },
+    "thought": "The current task is to go to the plant. The plant is visible in the right view, located further down the hallway. I am currently facing a wall/poster. To reach the plant, I need to orient myself towards the hallway.",
+    "stuck": false,
+    "plan": "Turn right to face down the hallway where the plant is located, then move forward towards it.",
+    "curr_step": "Turn Right to align with the hallway.",
+    "action": "R"
+}
+```
+Action: turn
+waypoints: 18
+skipped waypoints: edge 0,  distance 11,  no_path 0,  occlusion 2
+```json
+{
+    "movement": "I turned right to face down the hallway and am now looking towards a potted plant in the corner.",
+    "observation": {
+        "front view": "A hallway extending forward. On the left wall is a large 'Turkish Bath' poster. Further ahead on the left, near a doorway/corner, is a small potted plant (tree). There are waypoints 1, 2, 3, 4, 5 on the floor.",
+        "left view": "The 'Turkish Bath' poster stand is very close on the left.",
+        "right view": "A staircase going up is visible to the right.",
+        "map": "I am at START. Waypoint 2 is located further down the hallway, near the plant."
+    },
+    "thought": "The current task is to go to the plant. The plant is visible in the front view, located in the corner ahead. Waypoint 2 is positioned directly next to the plant. I need to move towards it.",
+    "stuck": false,
+    "plan": "Navigate down the hallway towards the potted plant by moving to waypoint 2.",
+    "curr_step": "Move to waypoint 2.",
+    "action": 2
+}
+```
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: move_forward
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: null
+Action: turn
+waypoints: 13
+skipped waypoints: edge 1,  distance 7,  no_path 0,  occlusion 0
+```json
+{
+    "movement": "I moved forward down the hallway and turned slightly left, bringing a potted plant located next to a large poster stand into view on my left side.",
+    "observation": {
+        "front view": "An opening/doorway leading to another room is visible ahead. To the left, there is a large wooden door and a potted plant against the wall.",
+        "left view": "A potted plant with green leaves is clearly visible in a black pot, positioned against the wall next to a large 'Turkish Bath' poster stand.",
+        "right view": "A wooden door is visible on the right side.",
+        "map": "I am located near waypoint 4, close to the start of the hallway section with the poster stand."
+    },
+    "thought": "I have reached the potted plant which is located next to the poster stand on the left side of the hallway. This matches the target for the first subtask 'Go to the plant'. I am now at the destination.",
+    "stuck": false,
+    "plan": "Complete the current subtask P1 ('Go to the plant') as I have reached the plant. The next subtask is 'Go to the rope'.",
+    "curr_step": "The plant is right next to me in the left view and front-left view. I have reached the target.",
+    "action": -1
+}
+```
+Action: turn
+waypoints: 18
+skipped waypoints: edge 1,  distance 7,  no_path 0,  occlusion 5
+```json
+{
+    "movement": "I moved forward down the hallway and am now standing at the entrance of a room on my left which contains a potted plant.",
+    "observation": {
+        "front view": "A wall corner directly ahead. To the left is an open doorway leading into a room with textured walls where a plant is visible. To the right is a wooden door.",
+        "left view": "The doorway into the room with the plant is clearly visible on the left.",
+        "right view": "A large wooden double door is visible to the right.",
+        "map": "I am near waypoints 4 and 5. Waypoint 2 is located inside the room on the left, near the plant icon."
+    },
+    "thought": "The current task P1 is 'Go to the plant'. I can see a plant inside the room through the doorway on my left. I am currently just outside this room. To complete the task, I need to enter the room and approach the plant. Waypoint 2 is positioned near the plant inside the room.",
+    "stuck": false,
+    "plan": "Enter the room on the left by moving towards waypoint 2 to reach the plant.",
+    "curr_step": "Move to waypoint 2.",
+    "action": 2
+}
+```
+Action: turn
+Action: move_forward
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: null
+Action: turn
+waypoints: 4
+skipped waypoints: edge 0,  distance 0,  no_path 0,  occlusion 1
+2026-09-27 07:15:55,693 - INFO - --- Episode 30, Step 29/100 ---
+2026-09-27 07:16:30,917 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:16:32,776 - INFO - --- Episode 30, Step 30/100 ---
+2026-09-27 07:16:35,568 - INFO - --- Episode 30, Step 31/100 ---
+2026-09-27 07:16:39,866 - INFO - --- Episode 30, Step 32/100 ---
+2026-09-27 07:16:40,996 - INFO - --- Episode 30, Step 33/100 ---
+2026-09-27 07:16:41,926 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:16:42,532 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:16:43,150 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:16:44,294 - INFO - --- Episode 30, Step 34/100 ---
+2026-09-27 07:16:57,243 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:16:59,364 - INFO - --- Episode 30, Step 35/100 ---
+2026-09-27 07:17:01,300 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:01,866 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:02,435 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:09,127 - INFO - --- Episode 30, Step 36/100 ---
+2026-09-27 07:17:11,544 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:12,114 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:12,681 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:24,619 - INFO - --- Episode 30, Step 37/100 ---
+2026-09-27 07:17:27,320 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:27,892 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:28,465 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:30,099 - INFO - --- Episode 30, Step 38/100 ---
+2026-09-27 07:17:32,266 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:32,840 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:33,406 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:36,386 - INFO - --- Episode 30, Step 39/100 ---
+2026-09-27 07:17:37,813 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:38,381 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:38,951 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:40,305 - INFO - --- Episode 30, Step 40/100 ---
+2026-09-27 07:17:41,193 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:41,762 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:42,332 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:43,576 - INFO - --- Episode 30, Step 41/100 ---
+2026-09-27 07:17:44,491 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:45,062 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:45,635 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:46,666 - INFO - --- Episode 30, Step 42/100 ---
+2026-09-27 07:17:47,555 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:48,127 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:48,694 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:57,902 - INFO - --- Episode 30, Step 43/100 ---
+2026-09-27 07:17:59,343 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:17:59,923 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:00,497 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:01,577 - INFO - --- Episode 30, Step 44/100 ---
+2026-09-27 07:18:04,014 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:04,578 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:05,144 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:09,172 - INFO - --- Episode 30, Step 45/100 ---
+2026-09-27 07:18:11,805 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:12,376 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:12,950 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:14,333 - INFO - --- Episode 30, Step 46/100 ---
+2026-09-27 07:18:16,538 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:17,107 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:17,677 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:19,728 - INFO - --- Episode 30, Step 47/100 ---
+2026-09-27 07:18:21,154 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:21,728 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:22,299 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:23,563 - INFO - --- Episode 30, Step 48/100 ---
+2026-09-27 07:18:24,455 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:25,027 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:25,600 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:27,319 - INFO - --- Episode 30, Step 49/100 ---
+2026-09-27 07:18:28,221 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:28,796 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:29,359 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:30,592 - INFO - --- Episode 30, Step 50/100 ---
+2026-09-27 07:18:31,507 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:32,067 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:32,632 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:33,889 - INFO - --- Episode 30, Step 51/100 ---
+2026-09-27 07:18:35,282 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:35,851 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:36,421 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:18:38,755 - INFO - --- Episode 30, Step 52/100 ---
+100%|██████████| 1/1 [07:40<00:00, 460.43s/it]100%|██████████| 1/1 [07:40<00:00, 460.43s/it]
+2026-09-27 07:18:42,811 - INFO - distance_to_goal: 3.5025
+2026-09-27 07:18:42,811 - INFO - spl: 0.0000
+2026-09-27 07:18:42,811 - INFO - goal_reached: 0.0000
+2026-09-27 07:18:42,811 - INFO - traveled_distance: 7.8799
+2026-09-27 07:18:42,811 - INFO - done: 1.0000
+2026-09-27 07:18:42,811 - INFO - semantic_completion: 0.0000
+2026-09-27 07:18:42,811 - INFO - oracle_navigation_error: 2.2955
+2026-09-27 07:18:42,811 - INFO - oracle_success: 1.0000
+2026-09-27 07:18:42,811 - INFO - oracle_spl: 1.0000
+2026-09-27 07:18:42,811 - INFO - ndtw: 0.4281
+2026-09-27 07:18:42,811 - INFO - sdtw: 0.0000
+```json
+{
+    "movement": "I moved forward into the room with textured walls and approached the corner where two potted plants are located.",
+    "observation": {
+        "front view": "Two potted plants are visible against the wall. One is a tall, leafy plant in the corner (near waypoint 3), and another is a lower, spikier plant to the right (near waypoint 2). There is a doorway to the left leading to a blue-lit room.",
+        "left view": "A doorway leading to a room with blue lighting and a massage table is visible.",
+        "right view": "Another doorway is visible to the right, leading to a room with a sink.",
+        "map": "I am located near waypoint 3, which is directly in front of the tall potted plant."
+    },
+    "thought": "I have successfully reached the plants as instructed in subtask P1. I am standing right next to them. Therefore, I can complete this subtask.",
+    "stuck": false,
+    "plan": "Complete subtask P1 ('Go to the plant'). The next subtask is 'Go to the rope'.",
+    "curr_step": "I am at the target location for P1.",
+    "action": -1
+}
+```
+Action: turn
+waypoints: 7
+skipped waypoints: edge 1,  distance 2,  no_path 0,  occlusion 0
+```json
+{
+    "movement": "I moved forward towards the potted plant located in the corner against the textured wall.",
+    "observation": {
+        "front view": "Two potted plants are visible against a textured beige wall. One is closer to the left, and one is further back in the corner near waypoint 2. There is a doorway to the right leading to a tiled room.",
+        "left view": "A doorway leading to a blue-lit room is visible on the left.",
+        "right view": "Doorways to other rooms are visible on the right, including one with a sink and another with a massage table.",
+        "map": "I am near waypoint 3. Waypoint 2 is located directly next to the plant icon in the corner."
+    },
+    "thought": "The current task P1 ('Go to the plant') is still marked as ongoing. I am standing near the plants but need to get closer to the specific target, which appears to be the one in the corner near waypoint 2. Moving to waypoint 2 will place me directly at the plant.",
+    "stuck": false,
+    "plan": "Move to waypoint 2 to reach the plant and complete subtask P1. Afterward, I will look for the rope (P2).",
+    "curr_step": "Move to waypoint 2.",
+    "action": 2
+}
+```
+Action: turn
+Action: move_forward
+Action: move_forward
+Action: null
+waypoints: 1
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 2
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 1
+```json
+{
+    "movement": "I moved forward into the room with textured walls and approached the corner where two potted plants are located. I am now standing directly in front of one of the plants.",
+    "observation": {
+        "front view": "A potted plant is visible in the corner against a textured beige wall. To the right, there is an opening to another room with a sink.",
+        "left view": "Another potted plant is visible to the left, also against the textured wall.",
+        "right view": "Two doorways are visible. One leads to a room with a massage table (likely the steamroom or treatment room), and another leads to a hallway.",
+        "map": "I am located near the center of the room with the textured walls, close to the plant icon."
+    },
+    "thought": "I have reached the plant as instructed in subtask P1. I am standing right next to it. Therefore, I can complete this subtask.",
+    "stuck": false,
+    "plan": "Complete subtask P1 ('Go to the plant'). The next subtask is 'Go to the rope'.",
+    "curr_step": "I am at the target location for P1.",
+    "action": -1
+}
+```
+Action: turn
+waypoints: 20
+skipped waypoints: edge 1,  distance 16,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 21
+skipped waypoints: edge 2,  distance 11,  no_path 0,  occlusion 2
+Action: turn
+waypoints: 36
+skipped waypoints: edge 1,  distance 25,  no_path 0,  occlusion 3
+Action: turn
+waypoints: 17
+skipped waypoints: edge 3,  distance 8,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 13
+skipped waypoints: edge 2,  distance 7,  no_path 0,  occlusion 2
+Action: turn
+detected agent stuck, last8 steps position changes: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+waypoints: 1
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 1
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 2
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 20
+skipped waypoints: edge 1,  distance 16,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 21
+skipped waypoints: edge 2,  distance 11,  no_path 0,  occlusion 2
+Action: turn
+waypoints: 36
+skipped waypoints: edge 1,  distance 25,  no_path 0,  occlusion 3
+Action: turn
+waypoints: 17
+skipped waypoints: edge 3,  distance 8,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 13
+skipped waypoints: edge 2,  distance 7,  no_path 0,  occlusion 2
+Action: turn
+detected agent stuck, last8 steps position changes: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+waypoints: 1
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 1
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 2
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 20
+skipped waypoints: edge 1,  distance 16,  no_path 0,  occlusion 1
+Action: turn
+Action: stop
+[INFO] Episode 30 completed successfully at Sun Sep 27 07:18:44 CST 2026
+
+============================================================
+[INFO] Episode 32 starting at Sun Sep 27 07:18:44 CST 2026
+[INFO] Episode log: /home/lixiaohai/qjx_code/paired_diagnostic/logs/arv_v1_diag24_job2708_20260927_064129/episode_32.log
+============================================================
+============================================================
+ HSGM Batch Test
+   task        : r2r
+   episodes    : [32, 33)
+   model       : qwen3.6:35b
+   max steps   : 100
+   comment     : arv_v1_diag24_ep32
+   episode ids : not set
+   config      : ../config/vlnce_test.yaml
+   base_url    : http://127.0.0.1:22708/v1
+============================================================
+  0%|          | 0/1 [00:00<?, ?it/s]Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2 by NVIDIA Corporation
+OpenGL version: 4.6.0 NVIDIA 590.48.01
+Using optional features:
+    GL_ARB_vertex_array_object
+    GL_ARB_separate_shader_objects
+    GL_ARB_robustness
+    GL_ARB_texture_storage
+    GL_ARB_texture_view
+    GL_ARB_framebuffer_no_attachments
+    GL_ARB_invalidate_subdata
+    GL_ARB_texture_storage_multisample
+    GL_ARB_multi_bind
+    GL_ARB_direct_state_access
+    GL_ARB_get_texture_sub_image
+    GL_ARB_texture_filter_anisotropic
+    GL_KHR_debug
+    GL_KHR_parallel_shader_compile
+    GL_NV_depth_buffer_float
+Using driver workarounds:
+    no-forward-compatible-core-context
+    nv-egl-incorrect-gl11-function-pointers
+    no-layout-qualifiers-on-old-glsl
+    nv-zero-context-profile-mask
+    nv-implementation-color-read-format-dsa-broken
+    nv-cubemap-inconsistent-compressed-image-size
+    nv-cubemap-broken-full-compressed-image-query
+    nv-compressed-block-size-in-bits
+[07:19:06:231132]:[Warning]:[Metadata] SceneDatasetAttributes.cpp(107)::addNewSceneInstanceToDataset : Dataset : 'default' : Lighting Layout Attributes 'no_lights' specified in Scene Attributes but does not exist in dataset, so creating default.
+2026-09-27 07:19:08,989 - INFO - Simulator initialized!
+2026-09-27 07:19:35,685 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:19:42,147 - INFO - --- Episode 32, Step 1/100 ---
+2026-09-27 07:24:33,501 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:25:07,291 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:25:27,735 - INFO - --- Episode 32, Step 2/100 ---
+2026-09-27 07:25:29,591 - INFO - --- Episode 32, Step 3/100 ---
+2026-09-27 07:25:31,997 - INFO - --- Episode 32, Step 4/100 ---
+2026-09-27 07:25:33,376 - INFO - --- Episode 32, Step 5/100 ---
+2026-09-27 07:25:45,335 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:25:46,398 - INFO - --- Episode 32, Step 6/100 ---
+2026-09-27 07:25:58,441 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:26:01,569 - INFO - --- Episode 32, Step 7/100 ---
+2026-09-27 07:26:02,763 - INFO - --- Episode 32, Step 8/100 ---
+2026-09-27 07:26:03,688 - INFO - --- Episode 32, Step 9/100 ---
+2026-09-27 07:26:06,336 - INFO - --- Episode 32, Step 10/100 ---
+2026-09-27 07:26:44,039 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:26:47,968 - INFO - --- Episode 32, Step 11/100 ---
+2026-09-27 07:26:49,950 - INFO - --- Episode 32, Step 12/100 ---
+2026-09-27 07:26:52,190 - INFO - --- Episode 32, Step 13/100 ---
+2026-09-27 07:26:53,776 - INFO - --- Episode 32, Step 14/100 ---
+2026-09-27 07:26:57,586 - INFO - --- Episode 32, Step 15/100 ---
+2026-09-27 07:27:01,373 - INFO - --- Episode 32, Step 16/100 ---
+2026-09-27 07:27:03,236 - INFO - --- Episode 32, Step 17/100 ---
+2026-09-27 07:28:03,093 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+['Exit the room into the hallway.', 'Go into the room on the left and wait next to the massage table.']
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+[StairDetect] normals=0.0108s, cpu=0.0007s, cluster=0.0281s, loop=0.0474s, total=0.0934s
+waypoints: 2
+skipped waypoints: edge 0,  distance 0,  no_path 0,  occlusion 0
+
+```json
+{
+    "movement": "Moving forward from the starting position towards the wall with the poster and the hallway entrance visible to the right.",
+    "observation": {
+        "front view": "A wall with a large poster advertising 'Turkish Bath, Sauna, Jacuzzi Pool, Massage'. Stairs are visible on the left side going up.",
+        "left view": "Stairs leading upwards. A wooden door is visible at the bottom of the stairs.",
+        "right view": "An open doorway leading to a hallway with tiled flooring. A small plant is in the corner near the doorway.",
+        "map": "The map shows the current position (START) near the stairs and poster. A path extends to the right, towards the hallway area."
+    },
+    "thought": "I am currently facing a wall with a poster. The instruction is to exit the room into the hallway. The Right View clearly shows the hallway entrance to my right. Waypoint 1 is located near the poster on the floor, which is in the direction of the hallway entrance. Moving to waypoint 1 will bring me closer to the exit of the current room.",
+    "stuck": false,
+    "plan": "Move towards waypoint 1 to get closer to the hallway entrance. Once there, I will turn right and proceed down the hallway as per the instruction 'Exit the room into the hallway'.",
+    "curr_step": "I need to move towards the hallway which is to the right. Waypoint 1 is in that general direction, near the poster wall. This is the correct next step to exit the room.",
+    "action": "1"
+}
+```
+Calculated floor height difference: 2.39m
+Action: turn
+--- Height change stabilized. Height diff: -0.06, On platform: True, Metrics: {'inlier_count': 1740, 'local_count': 20028, 'support_ratio': 0.0868783702772679, 'vertical_score': 1.0, 'plane_height_mean': -1.2382903099060059, 'agent_z': -1.2605075359344482, 'vertical_diff': 0.02221722602844234, 'area_xy': 0.8351999999999999, 'radius_est': 0.5156087828389873, 'z_std': 0.04018310829997063, 'occupied_cells': 58, 'bottom_height_tolerance': 0.1}
+--- No significant floor change. Height diff: -0.06, On platform: True, Metrics: {'inlier_count': 1740, 'local_count': 20028, 'support_ratio': 0.0868783702772679, 'vertical_score': 1.0, 'plane_height_mean': -1.2382903099060059, 'agent_z': -1.2605075359344482, 'vertical_diff': 0.02221722602844234, 'area_xy': 0.8351999999999999, 'radius_est': 0.5156087828389873, 'z_std': 0.04018310829997063, 'occupied_cells': 58, 'bottom_height_tolerance': 0.1}
+Updated floor height: -1.06, ceiling height: 0.74
+Action: move_forward
+Action: null
+Action: turn
+waypoints: 1
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 0
+```json
+{
+    "movement": "I have moved slightly forward and turned left, but I am still facing a wall with a poster. The exit to the hallway is clearly visible to my right in the previous 'Right View' image.",
+    "observation": {
+        "front view": "A wall with a light switch and a large poster advertising 'Turkish Bath, Sauna, Jacuzzi Pool, Massage'.",
+        "left view": "Stairs leading upwards and a doorway at the bottom left.",
+        "right view": "An opening leading to a hallway with tiled floors. A small plant is visible near the entrance.",
+        "map": "The map shows the current position (START) near the stairs. The hallway extends to the right of the current room."
+    },
+    "thought": "I am currently facing a wall inside the room. The instruction is to 'Exit the room into the hallway'. The Right View clearly shows the hallway entrance to my right. To proceed with P1, I need to turn towards that opening.",
+    "stuck": false,
+    "plan": "Turn right to face the hallway entrance and then move forward into the hallway. After exiting, I will look for a room on the left as per P2.",
+    "curr_step": "I need to orient myself towards the hallway exit which is to my right. Turning right will allow me to see the path clearly.",
+    "action": "R"
+}
+```
+Action: turn
+waypoints: 18
+skipped waypoints: edge 0,  distance 11,  no_path 0,  occlusion 2
+```json
+{
+    "movement": "I have turned right and am now facing the hallway entrance. The poster is to my left. I am moving forward into the hallway area.",
+    "observation": {
+        "front view": "I see the hallway floor with marble tiles. There are waypoints 3, 4, 5 ahead. To the left is a wall with a large poster. Straight ahead/slightly right is the path down the hallway.",
+        "left view": "A large poster advertising 'Turkish Bath, Sauna...' is on the wall to my left.",
+        "right view": "Stairs going up and a wooden door are visible to the right.",
+        "map": "The map shows the hallway extending forward. Waypoints 3, 4, 5 are in the hallway. My current position is near the entrance."
+    },
+    "thought": "I have successfully oriented myself towards the hallway. The instruction is to 'Exit the room into the hallway'. I am currently at the threshold. Moving forward towards waypoint 3 will take me fully into the hallway, completing subtask P1.",
+    "stuck": false,
+    "plan": "Move forward into the hallway towards waypoint 3. After reaching the hallway, I will look for a room on the left as per the next instruction (P2).",
+    "curr_step": "I am facing the hallway. Waypoint 3 is directly ahead in the open space of the hallway. Moving to it completes the 'exit' action.",
+    "action": "3"
+}
+```
+Action: turn
+Action: move_forward
+Action: null
+Action: turn
+waypoints: 13
+skipped waypoints: edge 0,  distance 6,  no_path 0,  occlusion 2
+```json
+{
+    "movement": "I have moved from the starting room into the hallway and am now proceeding down the hallway towards the end.",
+    "observation": {
+        "front view": "The hallway continues straight ahead with marble tiled floors. There is an open doorway at the far end. To the right, there are large wooden double doors. To the left, there is a wall with a plant and then the continuation of the hall.",
+        "left view": "A wall with a potted plant and the edge of the poster seen earlier. The hallway continues forward.",
+        "right view": "Large wooden double doors and stairs leading up are visible to the right.",
+        "map": "The map shows the hallway extending forward. Waypoints 3 and 4 are ahead in the hallway. Waypoint 2 is near the end opening."
+    },
+    "thought": "I have successfully exited the initial room and am now in the hallway (P1 complete). The next task is to 'Go into the room on the left'. Looking at the current view, there is no immediate room on the left, but the hallway continues forward. I need to proceed down the hallway to find the room on the left or reach the end where a room might be located. Waypoint 3 is directly ahead in the hallway.",
+    "stuck": false,
+    "plan": "Move forward down the hallway towards waypoint 3 to get closer to the end of the hall and locate the room on the left as per the next instruction.",
+    "curr_step": "I am in the hallway. I need to continue moving forward to find the target room. Waypoint 3 is the next logical step down the path.",
+    "action": "3"
+}
+```
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: null
+waypoints: 17
+skipped waypoints: edge 1,  distance 7,  no_path 0,  occlusion 5
+2026-09-27 07:28:04,839 - INFO - --- Episode 32, Step 18/100 ---
+2026-09-27 07:28:05,446 - INFO - --- Episode 32, Step 19/100 ---
+2026-09-27 07:28:08,045 - INFO - --- Episode 32, Step 20/100 ---
+2026-09-27 07:28:09,134 - INFO - --- Episode 32, Step 21/100 ---
+2026-09-27 07:28:10,755 - INFO - --- Episode 32, Step 22/100 ---
+2026-09-27 07:28:12,326 - INFO - --- Episode 32, Step 23/100 ---
+2026-09-27 07:28:14,197 - INFO - --- Episode 32, Step 24/100 ---
+2026-09-27 07:28:15,397 - INFO - --- Episode 32, Step 25/100 ---
+2026-09-27 07:28:17,899 - INFO - --- Episode 32, Step 26/100 ---
+2026-09-27 07:28:18,962 - INFO - --- Episode 32, Step 27/100 ---
+2026-09-27 07:28:22,759 - INFO - --- Episode 32, Step 28/100 ---
+2026-09-27 07:28:42,270 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:28:43,118 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:28:43,861 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:28:44,974 - INFO - --- Episode 32, Step 29/100 ---
+2026-09-27 07:29:19,345 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:29:39,794 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:29:40,843 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:29:44,384 - INFO - --- Episode 32, Step 30/100 ---
+2026-09-27 07:29:46,165 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:29:46,749 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:29:47,325 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:29:48,641 - INFO - --- Episode 32, Step 31/100 ---
+2026-09-27 07:29:50,730 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:29:51,303 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:29:51,877 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:29:52,973 - INFO - --- Episode 32, Step 32/100 ---
+2026-09-27 07:29:55,510 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:29:56,090 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:29:56,677 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:29:58,591 - INFO - --- Episode 32, Step 33/100 ---
+2026-09-27 07:30:01,169 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:01,752 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:02,330 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:04,087 - INFO - --- Episode 32, Step 34/100 ---
+2026-09-27 07:30:06,848 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:07,427 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:08,001 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:08,851 - INFO - --- Episode 32, Step 35/100 ---
+2026-09-27 07:30:10,878 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:11,470 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:12,046 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:13,961 - INFO - --- Episode 32, Step 36/100 ---
+2026-09-27 07:30:15,960 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:16,527 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:17,110 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:18,278 - INFO - --- Episode 32, Step 37/100 ---
+2026-09-27 07:30:19,843 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:20,417 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:20,994 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:23,353 - INFO - --- Episode 32, Step 38/100 ---
+2026-09-27 07:30:25,142 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:25,709 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:26,294 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:28,524 - INFO - --- Episode 32, Step 39/100 ---
+2026-09-27 07:30:30,634 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:31,209 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:31,787 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:33,070 - INFO - --- Episode 32, Step 40/100 ---
+2026-09-27 07:30:35,629 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:36,204 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:36,782 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:38,026 - INFO - --- Episode 32, Step 41/100 ---
+2026-09-27 07:30:40,598 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:41,171 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:41,749 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:43,554 - INFO - --- Episode 32, Step 42/100 ---
+2026-09-27 07:30:46,312 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:46,891 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:47,471 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:48,055 - INFO - --- Episode 32, Step 43/100 ---
+2026-09-27 07:30:50,063 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:50,646 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:51,219 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:30:52,397 - INFO - --- Episode 32, Step 44/100 ---
+2026-09-27 07:30:56,875 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2026-09-27 07:30:56,876 - INFO - Retrying request to /chat/completions in 0.413552 seconds
+2026-09-27 07:31:08,436 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:31:09,041 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:31:09,637 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:31:13,200 - INFO - --- Episode 32, Step 45/100 ---
+2026-09-27 07:31:14,799 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:31:15,385 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:31:15,977 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:31:19,513 - INFO - --- Episode 32, Step 46/100 ---
+100%|██████████| 1/1 [12:17<00:00, 737.70s/it]100%|██████████| 1/1 [12:17<00:00, 737.70s/it]
+2026-09-27 07:31:23,808 - INFO - distance_to_goal: 2.2903
+2026-09-27 07:31:23,808 - INFO - spl: 0.9518
+2026-09-27 07:31:23,808 - INFO - goal_reached: 1.0000
+2026-09-27 07:31:23,808 - INFO - traveled_distance: 6.6839
+2026-09-27 07:31:23,808 - INFO - done: 1.0000
+2026-09-27 07:31:23,808 - INFO - semantic_completion: 0.0000
+2026-09-27 07:31:23,808 - INFO - oracle_navigation_error: 2.2903
+2026-09-27 07:31:23,808 - INFO - oracle_success: 1.0000
+2026-09-27 07:31:23,808 - INFO - oracle_spl: 1.0000
+2026-09-27 07:31:23,808 - INFO - ndtw: 0.5658
+2026-09-27 07:31:23,808 - INFO - sdtw: 0.5658
+```json
+{
+    "movement": "Moving forward through the open wooden doorway into the adjacent tiled room/hallway area where a plant is visible.",
+    "observation": {
+        "front view": "An opening leading into a room with light-colored tiled walls and a potted plant. Waypoints 1, 2, 3, 4 are located in this new space. A large wooden door is visible on the left edge of the frame.",
+        "left view": "A wall with a large poster advertising 'Turkish Bath...' and a potted plant near the corner. This confirms I am just exiting the room/foyer with the poster.",
+        "right view": "A plain peach-colored wall and the edge of a wooden door frame.",
+        "map": "The map shows the path leading from the current position through the doorway into the area marked with waypoints 1, 2, 3, 4."
+    },
+    "thought": "I am currently exiting the room/foyer with the poster (P1: Exit the room into the hallway). The space ahead appears to be a hallway or another room with tiled walls. Moving towards waypoint 3 will take me fully into this new area, completing P1. Once there, I will look for the 'room on the left' as per P2.",
+    "stuck": false,
+    "plan": "Move forward into the tiled area (hallway) through the doorway. After entering, I will scan for a room on the left to find the massage table.",
+    "curr_step": "I am at the threshold of the current room. Moving towards waypoint 3 will complete the exit from the current room into the hallway/next area.",
+    "action": "3"
+}
+```
+Action: turn
+Action: move_forward
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: null
+Action: turn
+waypoints: 8
+skipped waypoints: edge 0,  distance 2,  no_path 0,  occlusion 1
+
+Action: turn
+waypoints: 4
+skipped waypoints: edge 0,  distance 0,  no_path 0,  occlusion 1
+
+
+Action: turn
+waypoints: 7
+skipped waypoints: edge 0,  distance 3,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 14
+skipped waypoints: edge 0,  distance 8,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 15
+skipped waypoints: edge 0,  distance 8,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 18
+skipped waypoints: edge 2,  distance 8,  no_path 0,  occlusion 1
+Action: turn
+detected agent stuck, last8 steps position changes: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+waypoints: 13
+skipped waypoints: edge 0,  distance 4,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 10
+skipped waypoints: edge 1,  distance 3,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 8
+skipped waypoints: edge 0,  distance 2,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 4
+skipped waypoints: edge 0,  distance 0,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 7
+skipped waypoints: edge 0,  distance 3,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 14
+skipped waypoints: edge 0,  distance 8,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 15
+skipped waypoints: edge 0,  distance 8,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 18
+skipped waypoints: edge 2,  distance 8,  no_path 0,  occlusion 1
+Action: turn
+detected agent stuck, last8 steps position changes: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+waypoints: 13
+skipped waypoints: edge 0,  distance 4,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 10
+skipped waypoints: edge 1,  distance 3,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 8
+skipped waypoints: edge 0,  distance 2,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 4
+skipped waypoints: edge 0,  distance 0,  no_path 0,  occlusion 1
+Action: turn
+Action: stop
+[INFO] Episode 32 completed successfully at Sun Sep 27 07:31:24 CST 2026
+
+============================================================
+[INFO] Episode 65 starting at Sun Sep 27 07:31:24 CST 2026
+[INFO] Episode log: /home/lixiaohai/qjx_code/paired_diagnostic/logs/arv_v1_diag24_job2708_20260927_064129/episode_65.log
+============================================================
+============================================================
+ HSGM Batch Test
+   task        : r2r
+   episodes    : [65, 66)
+   model       : qwen3.6:35b
+   max steps   : 100
+   comment     : arv_v1_diag24_ep65
+   episode ids : not set
+   config      : ../config/vlnce_test.yaml
+   base_url    : http://127.0.0.1:22708/v1
+============================================================
+  0%|          | 0/1 [00:00<?, ?it/s]Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2 by NVIDIA Corporation
+OpenGL version: 4.6.0 NVIDIA 590.48.01
+Using optional features:
+    GL_ARB_vertex_array_object
+    GL_ARB_separate_shader_objects
+    GL_ARB_robustness
+    GL_ARB_texture_storage
+    GL_ARB_texture_view
+    GL_ARB_framebuffer_no_attachments
+    GL_ARB_invalidate_subdata
+    GL_ARB_texture_storage_multisample
+    GL_ARB_multi_bind
+    GL_ARB_direct_state_access
+    GL_ARB_get_texture_sub_image
+    GL_ARB_texture_filter_anisotropic
+    GL_KHR_debug
+    GL_KHR_parallel_shader_compile
+    GL_NV_depth_buffer_float
+Using driver workarounds:
+    no-forward-compatible-core-context
+    nv-egl-incorrect-gl11-function-pointers
+    no-layout-qualifiers-on-old-glsl
+    nv-zero-context-profile-mask
+    nv-implementation-color-read-format-dsa-broken
+    nv-cubemap-inconsistent-compressed-image-size
+    nv-cubemap-broken-full-compressed-image-query
+    nv-compressed-block-size-in-bits
+[07:31:47:807088]:[Warning]:[Metadata] SceneDatasetAttributes.cpp(107)::addNewSceneInstanceToDataset : Dataset : 'default' : Lighting Layout Attributes 'no_lights' specified in Scene Attributes but does not exist in dataset, so creating default.
+2026-09-27 07:31:59,145 - INFO - Simulator initialized!
+2026-09-27 07:32:40,267 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:32:50,068 - INFO - --- Episode 65, Step 1/100 ---
+2026-09-27 07:38:06,748 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:38:46,689 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:38:55,641 - INFO - --- Episode 65, Step 2/100 ---
+2026-09-27 07:38:59,383 - INFO - --- Episode 65, Step 3/100 ---
+2026-09-27 07:39:00,724 - INFO - --- Episode 65, Step 4/100 ---
+2026-09-27 07:39:03,515 - INFO - --- Episode 65, Step 5/100 ---
+2026-09-27 07:39:05,836 - INFO - --- Episode 65, Step 6/100 ---
+2026-09-27 07:39:07,637 - INFO - --- Episode 65, Step 7/100 ---
+2026-09-27 07:39:20,485 - INFO - --- Episode 65, Step 8/100 ---
+2026-09-27 07:39:22,131 - INFO - --- Episode 65, Step 9/100 ---
+2026-09-27 07:39:23,717 - INFO - --- Episode 65, Step 10/100 ---
+2026-09-27 07:39:25,370 - INFO - --- Episode 65, Step 11/100 ---
+2026-09-27 07:39:27,034 - INFO - --- Episode 65, Step 12/100 ---
+2026-09-27 07:39:29,419 - INFO - --- Episode 65, Step 13/100 ---
+2026-09-27 07:42:24,908 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:43:16,797 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:43:45,809 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:44:00,984 - INFO - --- Episode 65, Step 14/100 ---
+2026-09-27 07:44:05,072 - INFO - --- Episode 65, Step 15/100 ---
+2026-09-27 07:44:06,738 - INFO - --- Episode 65, Step 16/100 ---
+2026-09-27 07:44:11,086 - INFO - --- Episode 65, Step 17/100 ---
+2026-09-27 07:44:12,729 - INFO - --- Episode 65, Step 18/100 ---
+2026-09-27 07:44:15,075 - INFO - --- Episode 65, Step 19/100 ---
+2026-09-27 07:44:16,967 - INFO - --- Episode 65, Step 20/100 ---
+2026-09-27 07:44:23,808 - INFO - --- Episode 65, Step 21/100 ---
+2026-09-27 07:45:46,048 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:46:31,715 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:46:32,645 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 07:46:34,525 - INFO - --- Episode 65, Step 22/100 ---
+2026-09-27 07:47:20,633 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+['Walk up the stairs. Go up a few stairs across from the open door.']
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+[StairDetect] normals=0.0128s, cpu=0.0006s, cluster=0.0356s, loop=0.0210s, total=0.0749s
+waypoints: 2
+skipped waypoints: edge 0,  distance 0,  no_path 0,  occlusion 0
+
+```json
+{
+    "movement": "I am currently at the bottom of a staircase with hieroglyphics on the left wall. I need to walk up these stairs towards the open doorway visible in the front view.",
+    "observation": {
+        "front view": "I see a flight of stairs leading up to a landing with an open doorway. There are two numbered markers, 1 and 2, near the doorway on the ground level.",
+        "left view": "A wall covered in Egyptian-style hieroglyphics is visible on the left.",
+        "right view": "A plain wall and the side of the stairwell structure are visible.",
+        "map": "The map shows my current position at the bottom of the stairs (blue triangle) with a path leading upwards towards the doorway area."
+    },
+    "thought": "The instruction is to 'Walk up the stairs'. I am facing the stairs directly. The phrase 'Go up a few stairs across from the open door' likely describes the location of these stairs or is a continuation of the climbing action. Since I am at the bottom and the stairs are in front of me, I should proceed forward up the stairs towards the top landing where markers 1 and 2 are located.",
+    "stuck": false,
+    "plan": "I will move forward up the stairs towards the open doorway at the top. I aim for the area near marker 1.",
+    "curr_step": "Move forward up the stairs towards waypoint 1.",
+    "action": 1
+}
+```
+Calculated floor height difference: 3.36m
+[StairDetect] normals=0.0031s, cpu=0.0003s, cluster=0.0367s, loop=0.0239s, total=0.0692s
+Action: turn
+--- Height change stabilized. Height diff: -0.51, On platform: True, Metrics: {'inlier_count': 3552, 'local_count': 26712, 'support_ratio': 0.13297394428972095, 'vertical_score': 1.0, 'plane_height_mean': -1.765045166015625, 'agent_z': -1.7077098608016967, 'vertical_diff': 0.05733530521392827, 'area_xy': 1.9007999999999998, 'radius_est': 0.7778453777314288, 'z_std': 0.034313637763261795, 'occupied_cells': 132, 'bottom_height_tolerance': 0.1}
+---!Floor change detected. From level 0 to -1.
+Saving data for floor level: 0
+Initialized data for new floor level: -1
+Switching pcds to floor level: -1
+!Switched to floor level: -1
+Updated floor height: -1.57, ceiling height: 0.23, height diff: -0.51
+[StairDetect] normals=0.0032s, cpu=0.0003s, cluster=0.0356s, loop=0.0030s, total=0.0452s
+Action: move_forward
+[StairDetect] normals=0.0033s, cpu=0.0002s, cluster=0.0356s, loop=0.0030s, total=0.0455s
+Action: turn
+[StairDetect] normals=0.0036s, cpu=0.0003s, cluster=0.0374s, loop=0.0019s, total=0.0466s
+Action: move_forward
+[StairDetect] normals=0.0038s, cpu=0.0003s, cluster=0.0377s, loop=0.0020s, total=0.0472s
+Action: move_forward
+[StairDetect] normals=0.0037s, cpu=0.0002s, cluster=0.0378s, loop=0.0019s, total=0.0470s
+Action: turn
+[StairDetect] normals=0.0038s, cpu=0.0003s, cluster=0.0383s, loop=0.0018s, total=0.0476s
+Action: move_forward
+[StairDetect] normals=0.0040s, cpu=0.0002s, cluster=0.0381s, loop=0.0018s, total=0.0475s
+Action: move_forward
+[StairDetect] normals=0.0037s, cpu=0.0003s, cluster=0.0425s, loop=0.0020s, total=0.0526s
+Action: turn
+[StairDetect] normals=0.0039s, cpu=0.0003s, cluster=0.0383s, loop=0.0018s, total=0.0478s
+Action: move_forward
+[StairDetect] normals=0.0037s, cpu=0.0003s, cluster=0.0390s, loop=0.0019s, total=0.0483s
+Action: move_forward
+[StairDetect] normals=0.0038s, cpu=0.0003s, cluster=0.0386s, loop=0.0018s, total=0.0478s
+Action: turn
+detected agent stuck, last8 steps position changes: [0.03741324, 0.0, 0.04847306, 0.048357844, 0.0, 0.048357546, 0.048243105, 0.0]
+waypoints: 2
+skipped waypoints: edge 0,  distance 0,  no_path 0,  occlusion 0
+
+```json
+{
+    "movement": "I have reached the top of the stairs and am standing at the threshold of the open doorway. I am looking out onto a path with a metal grate.",
+    "observation": {
+        "front view": "An open doorway leading to an outdoor area with greenery and a concrete path with a metal grate.",
+        "left view": "The side of the stairwell with hieroglyphics on the wall, showing stairs going down.",
+        "right view": "A plain wall next to the doorway.",
+        "map": "The map shows my position at the top of the stairs near the doorway, with a path continuing straight ahead (F) into the outdoor area."
+    },
+    "thought": "I have completed the first part of the instruction 'Walk up the stairs'. The next part is 'Go up a few stairs across from the open door'. This implies I need to go through the open door and find stairs or an upward path outside. The path ahead (Front View) leads out of the doorway, so I should proceed forward.",
+    "stuck": false,
+    "plan": "Move forward through the open doorway and continue along the outdoor path, looking for the stairs mentioned in the instruction.",
+    "curr_step": "Move forward towards the metal grate and the path beyond.",
+    "action": "F"
+}
+```
+```json
+{
+    "movement": "I have reached the top of the first staircase and am standing at the threshold of an open doorway. I see a path leading forward with a metal grate on the ground.",
+    "observation": {
+        "front view": "An open doorway leads to an outdoor area with greenery. There is a concrete path with a metal grate directly ahead, which seems to lead slightly uphill.",
+        "left view": "The side of the stairwell with hieroglyphics on the wall, showing stairs going down.",
+        "right view": "A plain wall next to the doorway and a glimpse of stairs going down into a darker area.",
+        "map": "The map shows my position at the top of the stairs near the doorway. Waypoints 1 and 2 are just outside on the path."
+    },
+    "thought": "I have completed 'Walk up the stairs'. The next part is 'Go up a few stairs across from the open door'. I am currently at the open door. The path ahead (Front View) leads out of the doorway and appears to go uphill, which likely corresponds to the 'few stairs' mentioned. I need to proceed through the door.",
+    "stuck": false,
+    "plan": "Move forward through the open doorway towards the path outside, aiming for the area near waypoint 1 to find the next set of stairs.",
+    "curr_step": "Move forward towards waypoint 1.",
+    "action": 1
+}
+```
+[StairDetect] normals=0.0039s, cpu=0.0003s, cluster=0.0388s, loop=0.0019s, total=0.0483s
+Action: move_forward
+[StairDetect] normals=0.0038s, cpu=0.0003s, cluster=0.0379s, loop=0.0019s, total=0.0472s
+Action: turn
+[StairDetect] normals=0.0038s, cpu=0.0002s, cluster=0.0382s, loop=0.0017s, total=0.0474s
+Action: move_forward
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: move_forward
+Action: turn
+detected agent stuck, last8 steps position changes: [0.06602615, 0.0, 0.04290253, 0.04286003, 0.0, 0.04285997, 0.042817265, 0.0]
+waypoints: 2
+skipped waypoints: edge 0,  distance 0,  no_path 0,  occlusion 0
+
+
+Action: turn
+waypoints: 2
+skipped waypoints: edge 1,  distance 0,  no_path 0,  occlusion 0
+2026-09-27 07:47:22,519 - INFO - --- Episode 65, Step 23/100 ---
+2026-09-27 07:47:23,162 - INFO - --- Episode 65, Step 24/100 ---
+2026-09-27 07:47:25,140 - INFO - --- Episode 65, Step 25/100 ---
+100%|██████████| 1/1 [15:41<00:00, 941.49s/it]100%|██████████| 1/1 [15:41<00:00, 941.49s/it]
+2026-09-27 07:47:29,175 - INFO - distance_to_goal: 7.5252
+2026-09-27 07:47:29,175 - INFO - spl: 0.0000
+2026-09-27 07:47:29,175 - INFO - goal_reached: 0.0000
+2026-09-27 07:47:29,175 - INFO - traveled_distance: 2.3155
+2026-09-27 07:47:29,175 - INFO - done: 1.0000
+2026-09-27 07:47:29,175 - INFO - semantic_completion: 0.0000
+2026-09-27 07:47:29,175 - INFO - oracle_navigation_error: 5.8909
+2026-09-27 07:47:29,175 - INFO - oracle_success: 0.0000
+2026-09-27 07:47:29,175 - INFO - oracle_spl: 0.0000
+2026-09-27 07:47:29,175 - INFO - ndtw: 0.5495
+2026-09-27 07:47:29,176 - INFO - sdtw: 0.0000
+```json
+{
+    "movement": "I have reached the top of the first staircase and am standing at the threshold of an open doorway. I see a path leading forward with a metal grate on the ground.",
+    "observation": {
+        "front view": "An open doorway leads to an outdoor area with greenery. There is a concrete path with a metal grate directly ahead, which seems to lead slightly uphill.",
+        "left view": "The side of the stairwell with hieroglyphics on the wall, showing stairs going down.",
+        "right view": "A plain wall next to the doorway and a glimpse of stairs going down into a darker area.",
+        "map": "The map shows my position at the top of the stairs near the doorway. Waypoints 1 and 2 are just outside on the path."
+    },
+    "thought": "I have completed 'Walk up the stairs'. The next part is 'Go up a few stairs across from the open door'. I am currently at the open door. The path ahead (Front View) leads out of the doorway and appears to go uphill, which likely corresponds to the 'few stairs' mentioned. I need to proceed through the door.",
+    "stuck": false,
+    "plan": "Move forward through the open doorway towards the path outside, aiming for the area near waypoint 1 to find the next set of stairs.",
+    "curr_step": "Move forward towards waypoint 1.",
+    "action": 1
+}
+```
+Action: turn
+Action: move_forward
+Action: move_forward
+Action: stop
+[INFO] Episode 65 completed successfully at Sun Sep 27 07:47:30 CST 2026
+
+============================================================
+[INFO] Episode 66 starting at Sun Sep 27 07:47:30 CST 2026
+[INFO] Episode log: /home/lixiaohai/qjx_code/paired_diagnostic/logs/arv_v1_diag24_job2708_20260927_064129/episode_66.log
+============================================================
+============================================================
+ HSGM Batch Test
+   task        : r2r
+   episodes    : [66, 67)
+   model       : qwen3.6:35b
+   max steps   : 100
+   comment     : arv_v1_diag24_ep66
+   episode ids : not set
+   config      : ../config/vlnce_test.yaml
+   base_url    : http://127.0.0.1:22708/v1
+============================================================
+  0%|          | 0/1 [00:00<?, ?it/s]Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2 by NVIDIA Corporation
+OpenGL version: 4.6.0 NVIDIA 590.48.01
+Using optional features:
+    GL_ARB_vertex_array_object
+    GL_ARB_separate_shader_objects
+    GL_ARB_robustness
+    GL_ARB_texture_storage
+    GL_ARB_texture_view
+    GL_ARB_framebuffer_no_attachments
+    GL_ARB_invalidate_subdata
+    GL_ARB_texture_storage_multisample
+    GL_ARB_multi_bind
+    GL_ARB_direct_state_access
+    GL_ARB_get_texture_sub_image
+    GL_ARB_texture_filter_anisotropic
+    GL_KHR_debug
+    GL_KHR_parallel_shader_compile
+    GL_NV_depth_buffer_float
+Using driver workarounds:
+    no-forward-compatible-core-context
+    nv-egl-incorrect-gl11-function-pointers
+    no-layout-qualifiers-on-old-glsl
+    nv-zero-context-profile-mask
+    nv-implementation-color-read-format-dsa-broken
+    nv-cubemap-inconsistent-compressed-image-size
+    nv-cubemap-broken-full-compressed-image-query
+    nv-compressed-block-size-in-bits
+[07:47:52:905565]:[Warning]:[Metadata] SceneDatasetAttributes.cpp(107)::addNewSceneInstanceToDataset : Dataset : 'default' : Lighting Layout Attributes 'no_lights' specified in Scene Attributes but does not exist in dataset, so creating default.
+2026-09-27 07:48:05,853 - INFO - Simulator initialized!
+2026-09-27 07:49:13,230 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:49:23,091 - INFO - --- Episode 66, Step 1/100 ---
+2026-09-27 07:54:26,014 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:55:24,939 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:55:27,440 - INFO - --- Episode 66, Step 2/100 ---
+2026-09-27 07:55:52,290 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:55:56,410 - INFO - --- Episode 66, Step 3/100 ---
+2026-09-27 07:56:20,680 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:56:25,472 - INFO - --- Episode 66, Step 4/100 ---
+2026-09-27 07:58:51,334 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:59:35,837 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 07:59:38,490 - INFO - --- Episode 66, Step 5/100 ---
+2026-09-27 08:00:05,082 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 08:00:07,418 - INFO - --- Episode 66, Step 6/100 ---
+2026-09-27 08:00:30,214 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+['Face the walkway with a kitchen counter with bar stools on the right and large windows on the other side', 'walk past them towards a large dining table Turn to the sitting area and stop.']
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+[StairDetect] normals=0.0079s, cpu=0.0009s, cluster=0.0394s, loop=0.0191s, total=0.0807s
+waypoints: 65
+skipped waypoints: edge 3,  distance 40,  no_path 0,  occlusion 5
+
+```json
+{
+"movement": "No movement yet, currently standing at the junction near the start point.",
+"observation": {
+    "front view": "A wall corner with a sconce and a painting to the left. A hallway extends to the left (Left View). To the right of the corner, there is an opening towards another area.",
+    "left view": "A long hallway leading to a bedroom/bathroom area with an arched doorway.",
+    "right view": "A long walkway with large glass doors/windows on the left side and a kitchen counter with bar stools visible further down on the right side.",
+    "map": "The map shows the current position (START) at a junction. To the left is a hallway. To the right is a large open area leading to the kitchen/dining space."
+},
+"thought": "The current subtask P1 is to 'Face the walkway with a kitchen counter with bar stools on the right and large windows on the other side'. The Right View clearly shows this specific walkway: windows are on the left (the 'other side' relative to the counter) and the counter/stools are on the right. Currently, I am facing somewhat towards the junction/wall corner. To face this walkway directly as instructed, I need to turn my view towards the Right View direction.",
+"stuck": false,
+"plan": "Turn right to align my view with the walkway described in P1. Once faced correctly, I will be ready for the next subtask P2 which involves walking past them towards the dining table.",
+"curr_step": "The target walkway is visible in the Right View. I need to turn right to face it directly.",
+"action": "R"
+}
+```
+Calculated floor height difference: 3.03m
+Action: turn
+waypoints: 32
+skipped waypoints: edge 0,  distance 24,  no_path 0,  occlusion 2
+```json
+{
+"movement": "I have turned right from my previous position to face the walkway described in the instruction.",
+"observation": {
+    "front view": "A long walkway extends forward. On the left are large glass doors/windows. On the right, further down, is a kitchen counter with bar stools.",
+    "left view": "The start of the walkway and the windows are visible to the left.",
+    "right view": "A hallway leading to an office/study area with a desk is visible to the right.",
+    "map": "I am at the junction (START). The walkway is straight ahead relative to my current orientation."
+},
+"thought": "The current subtask P1 is to 'Face the walkway with a kitchen counter with bar stools on the right and large windows on the other side'. My current Front View shows exactly this scene: the walkway, windows on the left (other side), and the kitchen counter/stools on the right. Therefore, I have successfully faced the target area. Subtask P1 is complete.",
+"stuck": false,
+"plan": "Since P1 is complete, I will complete it. The next subtask P2 is to 'walk past them towards a large dining table'. I will need to move forward down this walkway in the next step.",
+"curr_step": "Subtask P1 is completed as I am facing the correct direction. I should now complete this subtask.",
+"action": -1
+}
+```
+Action: turn
+waypoints: 20
+skipped waypoints: edge 10,  distance 4,  no_path 0,  occlusion 2
+```json
+{
+"observation": {
+    "front view": "A hallway leading towards an archway. To the left is a kitchen area with bar stools. To the right is a wall and a doorway.",
+    "left view": "A walkway running alongside a kitchen counter with bar stools on the right side of the path. Large glass doors/windows are visible on the left side of the path.",
+    "right view": "A hallway leading to a bedroom/bathroom area with an arched doorway at the end.",
+    "map": "I am at the START junction. The kitchen area is to my left. The hallway I am currently facing leads towards an archway."
+},
+"thought": "The instruction asks me to 'Face the walkway with a kitchen counter with bar stools on the right and large windows on the other side'. Looking at my current views, the Left View shows exactly this: a walkway where the kitchen counter/stools are on the right and large windows are on the left. Currently, I am facing somewhat towards the archway (Front View). To face the correct walkway described in P1, I need to turn towards the Left View direction.",
+"stuck": false,
+"plan": "Turn left to face the walkway with the kitchen counter and windows. This will complete subtask P1. Then I will proceed down this walkway for P2.",
+"curr_step": "I need to turn left to align with the walkway described in P1.",
+"action": "L"
+}
+```
+Action: turn
+waypoints: 44
+skipped waypoints: edge 9,  distance 25,  no_path 0,  occlusion 2
+
+```json
+{
+"movement": "I have turned left from my previous position to face the long hallway/walkway.",
+"observation": {
+    "front view": "A long walkway extends straight ahead towards an archway. On the left side of this walkway are large glass doors/windows. On the right side, further down, is a kitchen counter with bar stools.",
+    "left view": "A hallway extending to the left with windows on the right side of that path.",
+    "right view": "The kitchen area is visible to the right, with the counter and stools clearly seen.",
+    "map": "I am at the START junction. The walkway I am facing corresponds to the path going 'North' on the map, flanked by windows on the West (left) and the kitchen area on the East (right)."
+},
+"thought": "The current subtask P1 is to 'Face the walkway with a kitchen counter with bar stools on the right and large windows on the other side'. My current Front View shows exactly this: a walkway where the kitchen counter/stools are on the right and large windows are on the left (the 'other side'). Therefore, I have successfully faced the target area. Subtask P1 is complete.",
+"stuck": false,
+"plan": "Since P1 is complete, I will complete it. The next subtask P2 is to 'walk past them towards a large dining table'. I will need to move forward down this walkway in the next step.",
+"curr_step": "Subtask P1 is completed as I am facing the correct direction described in the instruction.",
+"action": -1
+}
+```
+Action: turn
+waypoints: 32
+skipped waypoints: edge 0,  distance 24,  no_path 0,  occlusion 2
+```json
+{
+"movement": "I have turned left from my previous position to face the long hallway/walkway.",
+"observation": {
+    "front view": "A long walkway extends straight ahead towards an archway. On the left side of this walkway are large glass doors/windows. On the right side, further down, is a kitchen counter with bar stools.",
+    "left view": "A hallway extending to the left with windows on the right side of that path.",
+    "right view": "The kitchen area is visible to the right, with the counter and stools clearly seen.",
+    "map": "I am at the START junction. The walkway I am facing corresponds to the path going 'North' on the map, flanked by windows on the West (left) and the kitchen area on the East (right)."
+},
+"thought": "The current subtask P1 is to 'Face the walkway with a kitchen counter with bar stools on the right and large windows on the other side'. My current Front View shows exactly this: a walkway where the kitchen counter/stools are on the right and large windows are on the left (the 'other side'). Therefore, I have successfully faced the target area. Subtask P1 is complete.",
+"stuck": false,
+"plan": "Since P1 is complete, I will complete it. The next subtask P2 is to 'walk past them towards a large dining table'. I will need to move forward down this walkway in the next step.",
+"curr_step": "Subtask P1 is completed as I am facing the correct direction described in the instruction.",
+"action": -1
+}
+```
+Action: turn
+waypoints: 20
+skipped waypoints: edge 10,  distance 4,  no_path 0,  occlusion 2
+2026-09-27 08:00:32,629 - INFO - --- Episode 66, Step 7/100 ---
+2026-09-27 08:00:46,362 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 08:00:47,871 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:00:48,710 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:00:50,783 - INFO - --- Episode 66, Step 8/100 ---
+2026-09-27 08:00:52,135 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:00:52,740 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:00:53,346 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:00:55,806 - INFO - --- Episode 66, Step 9/100 ---
+2026-09-27 08:00:57,271 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:00:57,872 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:00:58,473 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:01,176 - INFO - --- Episode 66, Step 10/100 ---
+2026-09-27 08:01:03,251 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:03,853 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:04,461 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:18,734 - INFO - --- Episode 66, Step 11/100 ---
+2026-09-27 08:01:20,622 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:21,230 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:22,161 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:24,673 - INFO - --- Episode 66, Step 12/100 ---
+2026-09-27 08:01:26,321 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:26,928 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:27,523 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:29,101 - INFO - --- Episode 66, Step 13/100 ---
+2026-09-27 08:01:30,576 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:31,191 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:31,792 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:33,140 - INFO - --- Episode 66, Step 14/100 ---
+2026-09-27 08:01:34,412 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:35,011 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:35,632 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:37,629 - INFO - --- Episode 66, Step 15/100 ---
+2026-09-27 08:01:38,842 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:39,435 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:40,040 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:44,251 - INFO - --- Episode 66, Step 16/100 ---
+2026-09-27 08:01:45,606 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:46,204 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:46,802 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:49,298 - INFO - --- Episode 66, Step 17/100 ---
+2026-09-27 08:01:50,767 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:51,369 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:51,974 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:53,240 - INFO - --- Episode 66, Step 18/100 ---
+2026-09-27 08:01:54,870 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:55,468 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:56,073 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:01:58,509 - INFO - --- Episode 66, Step 19/100 ---
+2026-09-27 08:02:00,347 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:02:00,955 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:02:01,563 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:02:13,298 - INFO - --- Episode 66, Step 20/100 ---
+2026-09-27 08:02:14,931 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:02:15,538 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:02:16,141 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:02:17,426 - INFO - --- Episode 66, Step 21/100 ---
+100%|██████████| 1/1 [14:40<00:00, 880.55s/it]100%|██████████| 1/1 [14:40<00:00, 880.55s/it]
+2026-09-27 08:02:33,362 - INFO - distance_to_goal: 12.7376
+2026-09-27 08:02:33,362 - INFO - spl: 0.0000
+2026-09-27 08:02:33,362 - INFO - goal_reached: 0.0000
+2026-09-27 08:02:33,362 - INFO - traveled_distance: 0.0000
+2026-09-27 08:02:33,362 - INFO - done: 1.0000
+2026-09-27 08:02:33,362 - INFO - semantic_completion: 0.0000
+2026-09-27 08:02:33,363 - INFO - oracle_navigation_error: 12.7376
+2026-09-27 08:02:33,363 - INFO - oracle_success: 0.0000
+2026-09-27 08:02:33,363 - INFO - oracle_spl: 0.0000
+2026-09-27 08:02:33,363 - INFO - ndtw: 0.1129
+2026-09-27 08:02:33,363 - INFO - sdtw: 0.0000
+```json
+{
+"movement": "I have turned left from my previous position to face the long hallway/walkway.",
+"observation": {
+    "front view": "A long walkway extends straight ahead towards an archway. On the left side of this walkway are large glass doors/windows. On the right side, further down, is a kitchen counter with bar stools.",
+    "left view": "A hallway extending to the left with windows on the right side of that path.",
+    "right view": "The kitchen area is visible to the right, with the counter and stools clearly seen.",
+    "map": "I am at the START junction. The walkway I am facing corresponds to the path going 'North' on the map, flanked by windows on the West (left) and the kitchen area on the East (right)."
+},
+"thought": "The current subtask P1 is to 'Face the walkway with a kitchen counter with bar stools on the right and large windows on the other side'. My current Front View shows exactly this: a walkway where the kitchen counter/stools are on the right and large windows are on the left (the 'other side'). Therefore, I have successfully faced the target area. Subtask P1 is complete.",
+"stuck": false,
+"plan": "Since P1 is complete, I will complete it. The next subtask P2 is to 'walk past them towards a large dining table'. I will need to move forward down this walkway in the next step.",
+"curr_step": "Subtask P1 is completed as I am facing the correct direction described in the instruction.",
+"action": -1
+}
+```
+Action: turn
+waypoints: 18
+skipped waypoints: edge 2,  distance 13,  no_path 0,  occlusion 0
+
+Action: turn
+waypoints: 22
+skipped waypoints: edge 1,  distance 14,  no_path 0,  occlusion 2
+Action: turn
+detected agent stuck, last8 steps position changes: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+waypoints: 42
+skipped waypoints: edge 7,  distance 25,  no_path 0,  occlusion 4
+Action: turn
+waypoints: 39
+skipped waypoints: edge 5,  distance 24,  no_path 0,  occlusion 2
+Action: turn
+waypoints: 58
+skipped waypoints: edge 3,  distance 40,  no_path 0,  occlusion 5
+Action: turn
+waypoints: 44
+skipped waypoints: edge 9,  distance 25,  no_path 0,  occlusion 2
+Action: turn
+waypoints: 32
+skipped waypoints: edge 0,  distance 24,  no_path 0,  occlusion 2
+Action: turn
+waypoints: 20
+skipped waypoints: edge 10,  distance 4,  no_path 0,  occlusion 2
+Action: turn
+waypoints: 18
+skipped waypoints: edge 2,  distance 13,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 22
+skipped waypoints: edge 1,  distance 14,  no_path 0,  occlusion 2
+Action: turn
+detected agent stuck, last8 steps position changes: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+waypoints: 42
+skipped waypoints: edge 7,  distance 25,  no_path 0,  occlusion 4
+Action: turn
+waypoints: 39
+skipped waypoints: edge 5,  distance 24,  no_path 0,  occlusion 2
+Action: turn
+waypoints: 58
+skipped waypoints: edge 3,  distance 40,  no_path 0,  occlusion 5
+Action: turn
+waypoints: 44
+skipped waypoints: edge 9,  distance 25,  no_path 0,  occlusion 2
+Action: turn
+Action: stop
+[INFO] Episode 66 completed successfully at Sun Sep 27 08:02:34 CST 2026
+
+============================================================
+[INFO] Episode 80 starting at Sun Sep 27 08:02:34 CST 2026
+[INFO] Episode log: /home/lixiaohai/qjx_code/paired_diagnostic/logs/arv_v1_diag24_job2708_20260927_064129/episode_80.log
+============================================================
+============================================================
+ HSGM Batch Test
+   task        : r2r
+   episodes    : [80, 81)
+   model       : qwen3.6:35b
+   max steps   : 100
+   comment     : arv_v1_diag24_ep80
+   episode ids : not set
+   config      : ../config/vlnce_test.yaml
+   base_url    : http://127.0.0.1:22708/v1
+============================================================
+  0%|          | 0/1 [00:00<?, ?it/s]Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2 by NVIDIA Corporation
+OpenGL version: 4.6.0 NVIDIA 590.48.01
+Using optional features:
+    GL_ARB_vertex_array_object
+    GL_ARB_separate_shader_objects
+    GL_ARB_robustness
+    GL_ARB_texture_storage
+    GL_ARB_texture_view
+    GL_ARB_framebuffer_no_attachments
+    GL_ARB_invalidate_subdata
+    GL_ARB_texture_storage_multisample
+    GL_ARB_multi_bind
+    GL_ARB_direct_state_access
+    GL_ARB_get_texture_sub_image
+    GL_ARB_texture_filter_anisotropic
+    GL_KHR_debug
+    GL_KHR_parallel_shader_compile
+    GL_NV_depth_buffer_float
+Using driver workarounds:
+    no-forward-compatible-core-context
+    nv-egl-incorrect-gl11-function-pointers
+    no-layout-qualifiers-on-old-glsl
+    nv-zero-context-profile-mask
+    nv-implementation-color-read-format-dsa-broken
+    nv-cubemap-inconsistent-compressed-image-size
+    nv-cubemap-broken-full-compressed-image-query
+    nv-compressed-block-size-in-bits
+[08:02:57:703660]:[Warning]:[Metadata] SceneDatasetAttributes.cpp(107)::addNewSceneInstanceToDataset : Dataset : 'default' : Lighting Layout Attributes 'no_lights' specified in Scene Attributes but does not exist in dataset, so creating default.
+2026-09-27 08:03:09,649 - INFO - Simulator initialized!
+2026-09-27 08:03:42,895 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 08:03:50,190 - INFO - --- Episode 80, Step 1/100 ---
+2026-09-27 08:04:06,913 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 08:04:08,458 - INFO - --- Episode 80, Step 2/100 ---
+2026-09-27 08:04:10,100 - INFO - --- Episode 80, Step 3/100 ---
+2026-09-27 08:04:14,262 - INFO - --- Episode 80, Step 4/100 ---
+2026-09-27 08:04:15,596 - INFO - --- Episode 80, Step 5/100 ---
+2026-09-27 08:04:17,647 - INFO - --- Episode 80, Step 6/100 ---
+2026-09-27 08:04:20,458 - INFO - --- Episode 80, Step 7/100 ---
+2026-09-27 08:04:31,634 - INFO - --- Episode 80, Step 8/100 ---
+2026-09-27 08:04:32,381 - INFO - --- Episode 80, Step 9/100 ---
+2026-09-27 08:04:34,156 - INFO - --- Episode 80, Step 10/100 ---
+2026-09-27 08:05:02,521 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 08:05:07,014 - INFO - --- Episode 80, Step 11/100 ---
+2026-09-27 08:05:07,974 - INFO - --- Episode 80, Step 12/100 ---
+2026-09-27 08:05:09,278 - INFO - --- Episode 80, Step 13/100 ---
+2026-09-27 08:05:10,546 - INFO - --- Episode 80, Step 14/100 ---
+2026-09-27 08:05:12,069 - INFO - --- Episode 80, Step 15/100 ---
+2026-09-27 08:05:13,512 - INFO - --- Episode 80, Step 16/100 ---
+2026-09-27 08:05:15,801 - INFO - --- Episode 80, Step 17/100 ---
+2026-09-27 08:05:21,558 - INFO - --- Episode 80, Step 18/100 ---
+2026-09-27 08:05:46,064 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+['Leave the bathroom and walk straight into the hallway.', 'Go straight and enter the office in the second door on your left.']
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+Initialized data for new floor level: 0
+Switching pcds to floor level: 0
+waypoints: 16
+skipped waypoints: edge 0,  distance 5,  no_path 0,  occlusion 6
+```json
+{
+    "movement": "I am currently standing in the middle of the bathroom near a rug. I need to move towards the open doorway visible in the front view to exit the room.",
+    "observation": {
+        "front view": "I see an open doorway leading out of the bathroom into a hallway. There is a wooden door swung open to the right. Waypoints 3 and 5 are visible just outside the door in the hallway area.",
+        "left view": "I see a long vanity with sinks, mirrors, and cabinets.",
+        "right view": "I see a large bathtub and a window.",
+        "map": "The map shows my current position (START) inside the bathroom. The exit is directly ahead, marked by waypoints 3 and 5 leading into the hallway."
+    },
+    "thought": "My current subtask is to leave the bathroom and enter the hallway. The doorway is straight ahead of me. Waypoint 3 is located just outside the door frame in the hallway. Moving towards waypoint 3 will take me out of the bathroom as required.",
+    "stuck": false,
+    "plan": "Move forward through the doorway to exit the bathroom and enter the hallway. I will aim for waypoint 3 which is just outside the door.",
+    "curr_step": "I need to move towards the exit. Waypoint 3 is the closest point in the hallway accessible from my current position.",
+    "action": 3,
+    "evidence": {
+        "observed": [
+            "Open doorway leading to a hallway",
+            "Waypoint 3 located just outside the door"
+        ],
+        "missing_expected": [],
+        "contradictions": []
+    },
+    "belief": {
+        "belief_type": "ROUTE_TRANSITION",
+        "current_stage": 1,
+        "active_claim": "I am in the bathroom and need to exit through the door ahead.",
+        "confidence": 0.95
+    },
+    "diagnosis": {
+        "error_detected": false,
+        "failed_belief_type": null,
+        "failed_belief": null,
+        "instruction_stage": "Leave the bathroom",
+        "contradicting_evidence": []
+    },
+    "repair": {
+        "required": false,
+        "replacement_belief": null,
+        "replacement_belief_type": null,
+        "preserve_belief_ids": [],
+        "invalidate_belief_ids": [],
+        "repair_evidence": [],
+        "validation_target": null,
+        "validation_target_stage": null,
+        "validation_target_source": null,
+        "validation_target_instruction_span": null
+    },
+    "validation": {
+        "target": null,
+        "target_stage": null,
+        "target_source": null,
+        "target_instruction_span": null,
+        "observed_support": [],
+        "validated": false
+    }
+}
+```
+Calculated floor height difference: 2.38m
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: null
+waypoints: 11
+skipped waypoints: edge 0,  distance 7,  no_path 0,  occlusion 0
+```json
+{
+    "movement": "I have exited the bathroom area and am standing at the threshold looking into the hallway. I see a rug on the floor ahead of me.",
+    "observation": {
+        "front view": "I see a hallway with a large rug on the floor. To the left is a wall with a framed picture. Straight ahead, there is a dark wooden door and an opening to its left. To the right, there is a vanity area further back.",
+        "left view": "A wall with a light switch and a framed picture. Further down, there appears to be a doorway or opening.",
+        "right view": "The edge of the bathroom door frame and the bathtub area inside the bathroom I just left.",
+        "map": "The map shows my position near the 'START' point in the hallway. Waypoint 2 is on the rug ahead. Waypoint 3 is further up near a vanity."
+    },
+    "thought": "I have successfully left the bathroom and am now at the entrance of the hallway. To complete subtask P1 ('Leave the bathroom and walk straight into the hallway'), I need to move further into the hallway space. Waypoint 2 is located on the rug in the middle of the hallway, which is a good position to be 'in' the hallway. From there, I can proceed with P2 to find the second door on the left.",
+    "stuck": false,
+    "plan": "Move forward onto the rug (waypoint 2) to fully enter the hallway. Then, continue straight down the hallway to identify the doors on the left for the next subtask.",
+    "curr_step": "I am currently at the threshold. Moving to waypoint 2 will place me in the hallway, completing P1.",
+    "action": 2,
+    "evidence": {
+        "observed": [
+            "Hallway with a rug",
+            "Dark wooden door ahead",
+            "Wall with picture on the left"
+        ],
+        "missing_expected": [],
+        "contradictions": []
+    },
+    "belief": {
+        "belief_type": "ROUTE_TRANSITION",
+        "current_stage": 2,
+        "active_claim": "I am in the hallway and need to proceed straight to find the office.",
+        "confidence": 0.9
+    },
+    "diagnosis": {
+        "error_detected": false,
+        "failed_belief_type": null,
+        "failed_belief": null,
+        "instruction_stage": "Leave the bathroom and walk straight into the hallway",
+        "contradicting_evidence": []
+    },
+    "repair": {
+        "required": false,
+        "replacement_belief": null,
+        "replacement_belief_type": null,
+        "preserve_belief_ids": [],
+        "invalidate_belief_ids": [],
+        "repair_evidence": [],
+        "validation_target": null,
+        "validation_target_stage": null,
+        "validation_target_source": null,
+        "validation_target_instruction_span": null
+    },
+    "validation": {
+        "target": "hallway",
+        "target_stage": 1,
+        "target_source": "current_subtask",
+        "target_instruction_span": "Leave the bathroom and walk straight into the hallway",
+        "observed_support": [
+            "Rug in front of me",
+            "Hallway walls visible"
+        ],
+        "validated": false
+    }
+}
+```
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: null
+Action: turn
+waypoints: 9
+skipped waypoints: edge 0,  distance 3,  no_path 1,  occlusion 0
+2026-09-27 08:05:47,300 - INFO - --- Episode 80, Step 19/100 ---
+2026-09-27 08:05:51,254 - INFO - --- Episode 80, Step 20/100 ---
+2026-09-27 08:05:56,510 - INFO - --- Episode 80, Step 21/100 ---
+2026-09-27 08:06:07,658 - INFO - --- Episode 80, Step 22/100 ---
+2026-09-27 08:06:08,760 - INFO - --- Episode 80, Step 23/100 ---
+2026-09-27 08:06:09,980 - INFO - --- Episode 80, Step 24/100 ---
+2026-09-27 08:06:11,606 - INFO - --- Episode 80, Step 25/100 ---
+2026-09-27 08:08:34,730 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 08:10:21,398 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 08:11:08,443 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 08:11:10,475 - INFO - --- Episode 80, Step 26/100 ---
+2026-09-27 08:11:46,543 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+```json
+{
+    "movement": "I have moved out of the bathroom and onto the rug in the hallway. I am currently facing down the hallway with a vanity on my right and a door/painting on my left.",
+    "observation": {
+        "front view": "I see the hallway continuing straight ahead. There is an opening further down (labeled B in previous views) and a wooden door to the immediate left. To the right is a large wooden vanity/cabinet.",
+        "left view": "A wall with a framed picture and a wooden door next to it.",
+        "right view": "A large wooden vanity with drawers and a mirror above it.",
+        "map": "The map shows my position on the 'carpet'. The path continues straight ahead (upwards on the map). There are walls on both sides."
+    },
+    "thought": "I have completed the first part of leaving the bathroom. I am now in the hallway. The instruction says to 'walk straight into the hallway' and then find the 'second door on your left'. I am currently near the start of this hallway section. I need to proceed further down to identify the doors correctly. Waypoint 2 is directly ahead on the path.",
+    "stuck": false,
+    "plan": "Move forward down the hallway towards the opening at the end. This will allow me to pass the first door (if there is one) and find the second door on the left as instructed.",
+    "curr_step": "I need to continue moving straight into the hallway. Waypoint 2 is the next logical step forward.",
+    "action": 2,
+    "evidence": {
+        "observed": [
+            "Hallway extending forward",
+            "Vanity on the right",
+            "Door/painting on the left"
+        ],
+        "missing_expected": [],
+        "contradictions": []
+    },
+    "belief": {
+        "belief_type": "ROUTE_TRANSITION",
+        "current_stage": 2,
+        "active_claim": "I am in the hallway and need to proceed straight to find the office.",
+        "confidence": 0.9
+    },
+    "diagnosis": {
+        "error_detected": false,
+        "failed_belief_type": null,
+        "failed_belief": null,
+        "instruction_stage": "Leave the bathroom and walk straight into the hallway",
+        "contradicting_evidence": []
+    },
+    "repair": {
+        "required": false,
+        "replacement_belief": null,
+        "replacement_belief_type": null,
+        "preserve_belief_ids": [],
+        "invalidate_belief_ids": [],
+        "repair_evidence": [],
+        "validation_target": null,
+        "validation_target_stage": null,
+        "validation_target_source": null,
+        "validation_target_instruction_span": null
+    },
+    "validation": {
+        "target": "hallway",
+        "target_stage": 1,
+        "target_source": "current_subtask",
+        "target_instruction_span": "Leave the bathroom and walk straight into the hallway",
+        "observed_support": [
+            "Rug in front of me",
+            "Hallway walls visible"
+        ],
+        "validated": false
+    }
+}
+```
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: turn
+Action: move_forward
+Action: null
+waypoints: 6
+skipped waypoints: edge 1,  distance 0,  no_path 5,  occlusion 0
+
+
+```json
+{
+    "movement": "I have moved from the bathroom area into a small dressing room or closet with wooden cabinets. I am currently facing an exit that leads into a room with a window (labeled B). To my left, I can see the hallway with the rug.",
+    "observation": {
+        "front view": "I see a doorway leading into a room with a window and a tall cabinet. There is a rug on the floor just ahead.",
+        "left view": "I see the hallway with a large rug and a wall with a picture.",
+        "right view": "I see a wooden dresser and a mirror, confirming I am in a dressing area.",
+        "map": "The map shows my position near the 'carpet' and 'door'. The path forward leads out of this small area."
+    },
+    "thought": "I am currently in a dressing room/closet off the hallway. To complete the instruction 'walk straight into the hallway', I need to exit this small room. The path forward leads directly into the next space, which appears to be the hallway or the continuation of it (indicated by the rug and window). Therefore, I should move forward.",
+    "stuck": false,
+    "plan": "Move forward out of the dressing room/closet and into the hallway. Once in the hallway, I will look for the second door on the left as per the next subtask.",
+    "curr_step": "I need to exit the current small room. Moving forward through the doorway ahead will take me into the hallway.",
+    "action": "F",
+    "evidence": {
+        "observed": [
+            "Dressing room with wooden cabinets",
+            "Exit leading to a room with a window",
+            "Rug visible in front and left"
+        ],
+        "missing_expected": [],
+        "contradictions": []
+    },
+    "belief": {
+        "belief_type": "ROUTE_TRANSITION",
+        "current_stage": 3,
+        "active_claim": "I am in a dressing room and need to exit into the hallway.",
+        "confidence": 0.9
+    },
+    "diagnosis": {
+        "error_detected": false,
+        "failed_belief_type": null,
+        "failed_belief": null,
+        "instruction_stage": "Leave the bathroom and walk straight into the hallway",
+        "contradicting_evidence": []
+    },
+    "repair": {
+        "required": false,
+        "replacement_belief": null,
+        "replacement_belief_type": null,
+        "preserve_belief_ids": [],
+        "invalidate_belief_ids": [],
+        "repair_evidence": [],
+        "validation_target": null,
+        "validation_target_stage": null,
+        "validation_target_source": null,
+        "validation_target_instruction_span": null
+    },
+    "validation": {
+        "target": "hallway",
+        "target_stage": 1,
+        "target_source": "current_subtask",
+        "target_instruction_span": "Leave the bathroom and walk straight into the hallway",
+        "observed_support": [
+            "Exit visible ahead",
+            "Rug on floor indicating hallway"
+        ],
+        "validated": false
+    }
+}
+```
+Action: turn
+waypoints: 6
+skipped waypoints: edge 0,  distance 0,  no_path 5,  occlusion 0
+2026-09-27 08:11:59,380 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-27 08:12:00,592 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:02,422 - INFO - --- Episode 80, Step 27/100 ---
+2026-09-27 08:12:04,322 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:04,932 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:05,543 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:08,421 - INFO - --- Episode 80, Step 28/100 ---
+2026-09-27 08:12:10,467 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:11,080 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:11,690 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:16,060 - INFO - --- Episode 80, Step 29/100 ---
+2026-09-27 08:12:18,414 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:19,031 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:19,643 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:21,434 - INFO - --- Episode 80, Step 30/100 ---
+2026-09-27 08:12:23,471 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:24,084 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:24,695 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:25,469 - INFO - --- Episode 80, Step 31/100 ---
+2026-09-27 08:12:27,297 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:27,907 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:28,518 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:32,501 - INFO - --- Episode 80, Step 32/100 ---
+2026-09-27 08:12:34,815 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:35,420 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:36,030 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:37,287 - INFO - --- Episode 80, Step 33/100 ---
+2026-09-27 08:12:39,732 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:40,369 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:41,013 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:42,504 - INFO - --- Episode 80, Step 34/100 ---
+2026-09-27 08:12:45,133 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:45,770 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:46,391 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:47,810 - INFO - --- Episode 80, Step 35/100 ---
+2026-09-27 08:12:49,711 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:50,320 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:50,937 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:52,228 - INFO - --- Episode 80, Step 36/100 ---
+2026-09-27 08:12:54,230 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:54,839 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:55,453 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:56,894 - INFO - --- Episode 80, Step 37/100 ---
+2026-09-27 08:12:59,258 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:12:59,869 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:00,484 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:07,208 - INFO - --- Episode 80, Step 38/100 ---
+2026-09-27 08:13:09,230 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:09,833 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:10,448 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:11,072 - INFO - --- Episode 80, Step 39/100 ---
+2026-09-27 08:13:12,888 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:13,495 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:14,106 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:16,424 - INFO - --- Episode 80, Step 40/100 ---
+2026-09-27 08:13:18,719 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:19,322 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:19,935 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:21,007 - INFO - --- Episode 80, Step 41/100 ---
+2026-09-27 08:13:23,464 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:24,077 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:24,686 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:25,969 - INFO - --- Episode 80, Step 42/100 ---
+2026-09-27 08:13:28,588 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:29,195 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:29,804 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:30,673 - INFO - --- Episode 80, Step 43/100 ---
+2026-09-27 08:13:32,569 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:33,179 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:33,782 - INFO - HTTP Request: POST http://127.0.0.1:22708/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-09-27 08:13:36,015 - INFO - --- Episode 80, Step 44/100 ---
+100%|██████████| 1/1 [10:46<00:00, 646.23s/it]100%|██████████| 1/1 [10:46<00:00, 646.23s/it]
+2026-09-27 08:13:43,817 - INFO - distance_to_goal: 2.3929
+2026-09-27 08:13:43,817 - INFO - spl: 0.9252
+2026-09-27 08:13:43,817 - INFO - goal_reached: 1.0000
+2026-09-27 08:13:43,817 - INFO - traveled_distance: 7.1753
+2026-09-27 08:13:43,817 - INFO - done: 1.0000
+2026-09-27 08:13:43,817 - INFO - semantic_completion: 0.0000
+2026-09-27 08:13:43,817 - INFO - oracle_navigation_error: 2.1514
+2026-09-27 08:13:43,817 - INFO - oracle_success: 1.0000
+2026-09-27 08:13:43,817 - INFO - oracle_spl: 1.0000
+2026-09-27 08:13:43,817 - INFO - ndtw: 0.5353
+2026-09-27 08:13:43,817 - INFO - sdtw: 0.5353
+```json
+{
+    "movement": "I have moved from the bathroom area into a small dressing room or closet with wooden cabinets. I am currently facing an exit that leads into a room with a window (labeled B). To my left, I can see the hallway with the rug.",
+    "observation": {
+        "front view": "I see a doorway leading into a room with a window and a tall cabinet. There is a rug on the floor just ahead.",
+        "left view": "I see the hallway with a large rug and a wall with a picture.",
+        "right view": "I see a wooden dresser and a mirror, confirming I am in a dressing area.",
+        "map": "The map shows my position near the 'carpet' and 'door'. The path forward leads out of this small area."
+    },
+    "thought": "I am currently in a dressing room/closet off the hallway. To complete the instruction 'walk straight into the hallway', I need to exit this small room. The path forward leads directly into the next space, which appears to be the hallway or the continuation of it (indicated by the rug and window). Therefore, I should move forward.",
+    "stuck": false,
+    "plan": "Move forward out of the dressing room/closet and into the hallway. Once in the hallway, I will look for the second door on the left as per the next subtask.",
+    "curr_step": "I need to exit the current small room. Moving forward through the doorway ahead will take me into the hallway.",
+    "action": "F",
+    "evidence": {
+        "observed": [
+            "Dressing room with wooden cabinets",
+            "Exit leading to a room with a window",
+            "Rug visible in front and left"
+        ],
+        "missing_expected": [],
+        "contradictions": []
+    },
+    "belief": {
+        "belief_type": "ROUTE_TRANSITION",
+        "current_stage": 3,
+        "active_claim": "I am in a dressing room and need to exit into the hallway.",
+        "confidence": 0.9
+    },
+    "diagnosis": {
+        "error_detected": false,
+        "failed_belief_type": null,
+        "failed_belief": null,
+        "instruction_stage": "Leave the bathroom and walk straight into the hallway",
+        "contradicting_evidence": []
+    },
+    "repair": {
+        "required": false,
+        "replacement_belief": null,
+        "replacement_belief_type": null,
+        "preserve_belief_ids": [],
+        "invalidate_belief_ids": [],
+        "repair_evidence": [],
+        "validation_target": null,
+        "validation_target_stage": null,
+        "validation_target_source": null,
+        "validation_target_instruction_span": null
+    },
+    "validation": {
+        "target": "hallway",
+        "target_stage": 1,
+        "target_source": "current_subtask",
+        "target_instruction_span": "Leave the bathroom and walk straight into the hallway",
+        "observed_support": [
+            "Exit visible ahead",
+            "Rug on floor indicating hallway"
+        ],
+        "validated": false
+    }
+}
+```
+
+Action: turn
+waypoints: 4
+skipped waypoints: edge 0,  distance 0,  no_path 2,  occlusion 0
+Action: turn
+waypoints: 15
+skipped waypoints: edge 1,  distance 7,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 17
+skipped waypoints: edge 0,  distance 9,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 17
+skipped waypoints: edge 0,  distance 10,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 14
+skipped waypoints: edge 5,  distance 3,  no_path 0,  occlusion 1
+Action: turn
+detected agent stuck, last8 steps position changes: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+waypoints: 8
+skipped waypoints: edge 1,  distance 2,  no_path 4,  occlusion 0
+Action: turn
+waypoints: 7
+skipped waypoints: edge 1,  distance 0,  no_path 5,  occlusion 1
+Action: turn
+waypoints: 6
+skipped waypoints: edge 0,  distance 0,  no_path 5,  occlusion 0
+Action: turn
+waypoints: 4
+skipped waypoints: edge 0,  distance 0,  no_path 2,  occlusion 0
+Action: turn
+waypoints: 15
+skipped waypoints: edge 1,  distance 7,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 17
+skipped waypoints: edge 0,  distance 9,  no_path 0,  occlusion 0
+Action: turn
+waypoints: 17
+skipped waypoints: edge 0,  distance 10,  no_path 0,  occlusion 1
+Action: turn
+waypoints: 14
+skipped waypoints: edge 5,  distance 3,  no_path 0,  occlusion 1
+Action: turn
+detected agent stuck, last8 steps position changes: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+waypoints: 8
+skipped waypoints: edge 1,  distance 2,  no_path 4,  occlusion 0
+Action: turn
+waypoints: 7
+skipped waypoints: edge 1,  distance 0,  no_path 5,  occlusion 1
+Action: turn
+waypoints: 6
+skipped waypoints: edge 0,  distance 0,  no_path 5,  occlusion 0
+Action: turn
+waypoints: 4
+skipped waypoints: edge 0,  distance 0,  no_path 2,  occlusion 0
+Action: turn
+Action: stop
+[INFO] Episode 80 completed successfully at Sun Sep 27 08:13:45 CST 2026
+============================================================
+HSGM ARV_v1 diagnostic pilot summary
+Finished: Sun Sep 27 08:13:45 CST 2026
+Job token: 2708
+Model: qwen3.6:35b
+Max steps: 100
+
+Requested episodes (6):
+0 30 32 65 66 80
+
+Passed (6):
+0 30 32 65 66 80
+
+Failed (0):
+none
+
+Logs:
+/home/lixiaohai/qjx_code/paired_diagnostic/logs/arv_v1_diag24_job2708_20260927_064129
+============================================================
+[INFO] Diagnostic pilot finished.
+[INFO] Cleanup at Sun Sep 27 08:13:45 CST 2026
+[2026-09-27T08:13:46.894] error: Detected 1 oom_kill event in StepId=2708.batch. Some of the step tasks have been OOM Killed.

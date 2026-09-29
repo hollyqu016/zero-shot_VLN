@@ -10,7 +10,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from agent.belief import ARVState, resolve_controller_decision  # noqa: E402
-from agent.control_stability import ControlStabilityConfig, RepairCooldown, TurnOscillationDetector  # noqa: E402
+from agent.control_stability import (  # noqa: E402
+    ControlStabilityConfig,
+    DirectionCommitment,
+    ObservationSweep,
+    RepairCooldown,
+    RotationStallDetector,
+    TurnOscillationDetector,
+)
 
 
 class MockController:
@@ -282,6 +289,129 @@ def test_v21_repair_cooldown_blocks_reverse_large_turn():
     assert not cooldown.blocks(14, DummyAction(-3.14159))
 
 
+def test_v211_rotation_stall_same_direction_full_turn():
+    cfg = ControlStabilityConfig(
+        rotation_stall_window=8,
+        rotation_stall_angle_rad=6.283,
+        rotation_stall_displacement_threshold=0.2,
+    )
+    detector = RotationStallDetector(cfg)
+    last = None
+    heading = 0.0
+    for step in range(8):
+        before = heading
+        heading -= 0.7854
+        last = detector.add_record(
+            step,
+            DummyAction(-0.7854),
+            before,
+            heading,
+            [0.0, 0.0, 0.0],
+            [0.01, 0.0, 0.01],
+        )
+    assert last is not None
+    assert last["failure_type"] == "ROTATION_STALL"
+
+
+def test_v211_turn_forward_no_rotation_stall():
+    cfg = ControlStabilityConfig(
+        rotation_stall_window=4,
+        rotation_stall_angle_rad=6.283,
+        rotation_stall_displacement_threshold=0.2,
+    )
+    detector = RotationStallDetector(cfg)
+    sequence = [
+        (DummyAction(0.7854), 0.0, 0.7854, [0, 0, 0], [0, 0, 0]),
+        (DummyAction(0.0, "move_forward"), 0.7854, 0.7854, [0, 0, 0], [0, 0, 0.6]),
+        (DummyAction(0.7854), 0.7854, 1.5708, [0, 0, 0.6], [0, 0, 0.6]),
+        (DummyAction(0.0, "move_forward"), 1.5708, 1.5708, [0, 0, 0.6], [0.6, 0, 0.6]),
+    ]
+    detections = [detector.add_record(i, *item) for i, item in enumerate(sequence)]
+    assert all(item is None for item in detections)
+
+
+def test_v211_observation_sweep_forced_decision_after_360():
+    cfg = ControlStabilityConfig(observation_sweep_step_rad=1.5708, observation_sweep_max_angle_rad=6.2832)
+    sweep = ObservationSweep(cfg)
+    sweep.start(5, "ROTATION_STALL")
+    actions = []
+    while True:
+        action = sweep.next_action(lambda theta: DummyAction(theta), {"view": len(actions)})
+        if action is None:
+            break
+        actions.append(action)
+    assert len(actions) == 4
+    assert sweep.completed
+    assert sweep.forced_decision_required
+    assert sweep.next_action(lambda theta: DummyAction(theta)) is None
+
+
+def test_v211_commitment_blocks_immediate_reverse():
+    cfg = ControlStabilityConfig(commitment_horizon=4)
+    commitment = DirectionCommitment(cfg)
+    commitment.activate("L", [{"direction": "L"}], 10, [0, 0, 0])
+    assert commitment.blocks_reverse("R")
+    assert not commitment.blocks_reverse("R", strong_contradiction=True)
+
+
+def test_v211_api_400_retry_payload_shrinks():
+    class MiniRequestBuilder:
+        def _pil_to_base64(self, _):
+            return "stub"
+
+        def _compact_text_state(self):
+            return "\n\nCOMPACT_TEXT_STATE:{}"
+
+    from types import MethodType
+
+    def build_vlm_request(self, retry_level, prompt, front_rgb_image, left_rgb_image=None,
+                          right_rgb_image=None, back_rgb_image=None, map_image=None, img_buffer=None):
+        if img_buffer is None:
+            img_buffer = []
+        content_for_request = [{"type": "text", "text": prompt}]
+
+        def add_image(image):
+            if image is not None:
+                content_for_request.append({"type": "image_url", "image_url": {"url": "stub"}})
+
+        if retry_level <= 0:
+            for img in img_buffer[-20:]:
+                add_image(img)
+            add_image(left_rgb_image)
+            add_image(right_rgb_image)
+            add_image(front_rgb_image)
+            add_image(map_image)
+        elif retry_level == 1:
+            add_image(front_rgb_image)
+            add_image(left_rgb_image)
+            add_image(right_rgb_image)
+            add_image(map_image)
+        elif retry_level == 2:
+            add_image(front_rgb_image)
+            add_image(map_image)
+        else:
+            add_image(front_rgb_image)
+        return None, None, sum(1 for item in content_for_request if item.get("type") == "image_url")
+
+    agent = MiniRequestBuilder()
+    agent.build_vlm_request = MethodType(build_vlm_request, agent)
+    image = object()
+    counts = []
+    for retry in range(4):
+        _, _, image_count = agent.build_vlm_request(
+            retry,
+            "prompt",
+            image,
+            left_rgb_image=image,
+            right_rgb_image=image,
+            back_rgb_image=image,
+            map_image=image,
+            img_buffer=[image, image],
+        )
+        counts.append(image_count)
+    assert counts[0] > counts[1] > counts[2] > counts[3]
+
+
 def test_v21_global_disable_legacy_path():
     cfg = ControlStabilityConfig(enable_arv_v21_control_stability=False)
     detector = TurnOscillationDetector(cfg)
@@ -302,6 +432,11 @@ def main():
         test_v21_turn_oscillation_detector,
         test_v21_normal_turn_forward_no_oscillation,
         test_v21_repair_cooldown_blocks_reverse_large_turn,
+        test_v211_rotation_stall_same_direction_full_turn,
+        test_v211_turn_forward_no_rotation_stall,
+        test_v211_observation_sweep_forced_decision_after_360,
+        test_v211_commitment_blocks_immediate_reverse,
+        test_v211_api_400_retry_payload_shrinks,
         test_v21_global_disable_legacy_path,
     ]
     for test in tests:

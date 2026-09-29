@@ -8,7 +8,14 @@ import PIL.Image
 from simWrapper import SimWrapper, PolarAction
 from mapper import Instruct_Mapper
 from agent.belief import ARVState, resolve_controller_decision
-from agent.control_stability import ControlStabilityConfig, RepairCooldown, TurnOscillationDetector
+from agent.control_stability import (
+    ControlStabilityConfig,
+    DirectionCommitment,
+    ObservationSweep,
+    RepairCooldown,
+    RotationStallDetector,
+    TurnOscillationDetector,
+)
 import time
 from typing import Optional, List
 from PIL.Image import Image
@@ -1033,11 +1040,17 @@ class PathPlannerAgent(ABC):
         self.arv_state = ARVState()
         self.control_cfg = ControlStabilityConfig.from_config(config)
         self.turn_oscillation_detector = TurnOscillationDetector(self.control_cfg)
+        self.rotation_stall_detector = RotationStallDetector(self.control_cfg)
         self.repair_cooldown = RepairCooldown(self.control_cfg)
+        self.observation_sweep = ObservationSweep(self.control_cfg)
+        self.direction_commitment = DirectionCommitment(self.control_cfg)
         self._last_control_failure = None
         self._last_recorded_control_failure_step = None
         self._last_control_repair_operator = None
         self._last_verification_turn_direction = None
+        self._last_safe_navigation_commitment = None
+        self._last_api_failure = None
+        self._api_failure_count = 0
         self._current_step_trace = None
         self._last_preprocess_trace = {}
         self._last_decision_trace = {}
@@ -1159,6 +1172,21 @@ class PathPlannerAgent(ABC):
             "heading_after": None,
             "recent_heading_reversals": self.turn_oscillation_detector.recent_reversal_count(),
             "recent_displacement": self._safe_float(self.turn_oscillation_detector.recent_displacement()),
+            "rotation_stall_count": self.rotation_stall_detector.trigger_count,
+            "cumulative_rotation": self._safe_float(self.rotation_stall_detector.recent_rotation()),
+            "rotation_window_displacement": self._safe_float(self.rotation_stall_detector.recent_displacement()),
+            "observation_sweep_started": self.observation_sweep.started_step is not None,
+            "observation_sweep_views": list(self.observation_sweep.views),
+            "observation_sweep_angle": self._safe_float(self.observation_sweep.accumulated_angle),
+            "forced_direction_candidates": list(self.direction_commitment.candidates),
+            "forced_selected_direction": self.direction_commitment.selected_direction,
+            "commitment_active": bool(self.direction_commitment.selected_direction and self.direction_commitment.remaining_steps > 0),
+            "commitment_remaining_steps": self.direction_commitment.remaining_steps,
+            "repair_operator": self.direction_commitment.repair_operator,
+            "repair_start_step": self.direction_commitment.repair_start_step,
+            "repair_status": self.direction_commitment.repair_status,
+            "displacement_after_repair": None,
+            "new_rotation_after_repair": None,
             "cooldown_active": self.repair_cooldown.to_dict(step, requested_action),
             "verification_action_source": None,
             "oscillation_window": None,
@@ -1181,8 +1209,54 @@ class PathPlannerAgent(ABC):
             return self._small_reorientation_action(preferred_direction), "BREAK_OSCILLATION"
         candidate = self._small_reorientation_action(preferred_direction)
         if self.repair_cooldown.blocks(step, candidate):
-            candidate = self._small_reorientation_action(preferred_direction)
+            non_reverse_direction = (
+                self.repair_cooldown.last_repair_turn_direction
+                if self.repair_cooldown.last_repair_turn_direction is not None
+                else preferred_direction
+            )
+            candidate = self._small_reorientation_action(non_reverse_direction)
+            return candidate, f"{operator}_COOLDOWN_NON_REVERSE"
         return candidate, operator
+
+    def _start_observation_sweep(self, step: int, failure_type: str) -> None:
+        if self.control_cfg.enabled() and self.control_cfg.enable_observation_sweep:
+            self.observation_sweep.start(step, failure_type)
+
+    def _sweep_turn_action(self, theta: float):
+        return PolarAction(r=0, theta=-abs(float(theta)), type='turn')
+
+    def _forced_direction_decision(self, step: int):
+        candidates = [
+            {"direction": "F", "evidence": "front view after bounded sweep", "confidence": 0.34},
+            {"direction": "L", "evidence": "left-side sweep view", "confidence": 0.33},
+            {"direction": "R", "evidence": "right-side sweep view", "confidence": 0.33},
+        ]
+        selected = "F"
+        if self.last_actions:
+            waypoint_keys = [k for k, v in self.last_actions.items() if isinstance(v, dict) and v.get("type") == "waypoint"]
+            if waypoint_keys:
+                selected = str(waypoint_keys[0])
+                candidates.insert(0, {
+                    "direction": selected,
+                    "evidence": "valid waypoint candidate remained available after sweep",
+                    "confidence": 0.45,
+                })
+        result = {
+            "failure_type": "ROTATION_STALL",
+            "candidate_directions": candidates,
+            "selected_direction": selected,
+            "repair_reason": "bounded sweep completed; forced to choose navigation direction",
+            "expected_progress": "resume translational movement if path is valid",
+        }
+        self.direction_commitment.activate(
+            selected,
+            candidates,
+            step,
+            self.curr_obs["agent_state"].position,
+            self.rotation_stall_detector.recent_rotation(),
+        )
+        self.observation_sweep.forced_decision_required = False
+        return result
 
     def choose_verification_action(self, step: int):
         if not self.control_cfg.enabled() or not self.control_cfg.enable_safe_verification_turn:
@@ -1764,7 +1838,11 @@ class PathPlannerAgent(ABC):
 
                         continue
                 else:
-                    self._last_decision_trace["reason"] = "invalid_json"
+                    if self._last_api_failure:
+                        self._last_decision_trace["reason"] = "API_REQUEST_FAILURE"
+                        self._last_decision_trace["api_failure_type"] = self._last_api_failure.get("api_failure_type")
+                    else:
+                        self._last_decision_trace["reason"] = "INVALID_SEMANTIC_DECISION"
 
                     continue
 
@@ -1773,7 +1851,8 @@ class PathPlannerAgent(ABC):
                 pass
 
         self._last_decision_trace["reason"] = self._last_decision_trace.get("reason") or "max_retry"
-        self.arv_state.record_invalid_decision()
+        if self._last_decision_trace["reason"] != "API_REQUEST_FAILURE":
+            self.arv_state.record_invalid_decision()
         return None, "None", pil_labeled_rgb_image
 
     def plan_rollback_path(self, subtask_key: str = None):
@@ -1887,8 +1966,9 @@ class PathPlannerAgent(ABC):
             self._position_history.pop(0)
 
         if self.prev_agent_position is not None:
-            prev2d = np.array(self.prev_agent_position[:2])
-            if np.linalg.norm(agent_state.position[:2] - prev2d) < self._no_move_epsilon:
+            prev2d = np.array([self.prev_agent_position[0], self.prev_agent_position[2]])
+            curr2d_raw = np.array([agent_state.position[0], agent_state.position[2]])
+            if np.linalg.norm(curr2d_raw - prev2d) < self._no_move_epsilon:
                 self._no_move_steps += 1
             else:
                 self._no_move_steps = 0
@@ -1898,17 +1978,27 @@ class PathPlannerAgent(ABC):
 
         if self._no_move_steps >= self._global_stuck_limit and action_to_execute is None:
             pass
-            self.last_vlm_response = "(Auto)Global-stuck detected: stopping."
+            self.last_vlm_response = "(Auto)Global-stuck detected: attempting final bounded recovery."
             self.vlm_responses.append(self.last_vlm_response)
 
             self.current_path = []
             self.action_sequence = []
             self._need_restore_heading = False
-            action_to_execute = PolarAction.stop
-            self.second_stop = True
+            action_to_execute, repair_operator = self._choose_repair_action(
+                "PHYSICAL_STUCK_FINAL_RECOVERY",
+                "physical stuck threshold reached",
+                int(step),
+                preferred_direction=1,
+            )
             self.semantic_completion = False
-            self.termination_reason = "physical_stuck"
-            step_trace["planner_status"] = "physical_stuck"
+            self.termination_reason = None
+            step_trace["planner_status"] = "physical_stuck_final_recovery"
+            step_trace["control_stability"].update({
+                "control_failure_detected": True,
+                "failure_type": "PHYSICAL_STUCK",
+                "failure_reason": "physical stuck threshold reached; one final bounded recovery attempted",
+                "repair_operator": repair_operator,
+            })
 
         is_stuck = False
         if len(self._position_history) >= self._stuck_check_window:
@@ -1945,6 +2035,39 @@ class PathPlannerAgent(ABC):
 
             self._need_restore_heading = False
 
+        if action_to_execute is None and self.observation_sweep.active:
+            sweep_action = self.observation_sweep.next_action(
+                self._sweep_turn_action,
+                {
+                    "step": int(step),
+                    "heading": self._safe_float(self._get_agent_yaw()),
+                    "view_index": len(self.observation_sweep.views),
+                },
+            )
+            if sweep_action is not None:
+                action_to_execute = sweep_action
+                step_trace["planner_status"] = "observation_sweep"
+                step_trace["control_stability"].update({
+                    "repair_operator": "OBSERVATION_SWEEP",
+                    "repair_reason": "bounded 360 degree observation after rotation stall",
+                })
+
+        if action_to_execute is None and self.observation_sweep.forced_decision_required:
+            forced = self._forced_direction_decision(int(step))
+            step_trace["forced_direction_decision"] = forced
+            step_trace["planner_status"] = "forced_direction_decision"
+            waypoint_key = forced.get("selected_direction")
+            if waypoint_key in self.last_actions and self.last_actions[waypoint_key].get("type") == "waypoint":
+                target_world = self.last_actions[waypoint_key]["target_point_world"]
+                path = self.mapper.plan_path_to_target(target_world)
+                if path and len(path) > 1:
+                    self.current_path = path[1:]
+                    self.target_world_position = target_world
+                    action_to_execute = self._get_action_for_next_waypoint()
+            if action_to_execute is None:
+                action_to_execute = PolarAction(r=self.forward_step, theta=0, type='move_forward')
+            step_trace["control_stability"].update(self.direction_commitment.trace())
+
         if action_to_execute is None and ((not self.current_path and not self.action_sequence) or is_stuck):
             if is_stuck:
                 pass
@@ -1968,18 +2091,36 @@ class PathPlannerAgent(ABC):
                 assert resolve_controller_decision(
                     None, self.arv_state, self._current_subtask_index()
                 ) == "invalid_fallback"
-                action_to_execute, repair_operator = self._choose_repair_action(
-                    "INVALID_DECISION_RECOVERY",
-                    "VLM decision was invalid after retries",
-                    int(step),
-                    preferred_direction=-1,
-                )
+                if self._last_decision_trace.get("reason") == "API_REQUEST_FAILURE":
+                    if self._last_safe_navigation_commitment is not None:
+                        action_to_execute = self._last_safe_navigation_commitment
+                        repair_operator = "API_FAILURE_REUSE_LAST_SAFE_COMMITMENT"
+                    else:
+                        action_to_execute, repair_operator = self._choose_repair_action(
+                            "API_FAILURE_OBSERVE_ONLY_IF_NEEDED",
+                            "API request failed after compact retries",
+                            int(step),
+                            preferred_direction=-1,
+                        )
+                    failure_type = "API_REQUEST_FAILURE"
+                    failure_reason = "VLM API request failed after compact retries"
+                    planner_status = "api_failure_recovery"
+                else:
+                    action_to_execute, repair_operator = self._choose_repair_action(
+                        "INVALID_DECISION_RECOVERY",
+                        "VLM decision was invalid after retries",
+                        int(step),
+                        preferred_direction=-1,
+                    )
+                    failure_type = "INVALID_SEMANTIC_DECISION"
+                    failure_reason = "VLM decision was invalid after retries"
+                    planner_status = "invalid_decision_look_around"
                 self.semantic_completion = False
-                step_trace["planner_status"] = "invalid_decision_look_around"
+                step_trace["planner_status"] = planner_status
                 step_trace["control_stability"].update({
                     "control_failure_detected": True,
-                    "failure_type": "INVALID_DECISION",
-                    "failure_reason": "VLM decision was invalid after retries",
+                    "failure_type": failure_type,
+                    "failure_reason": failure_reason,
                     "repair_operator": repair_operator,
                     "repair_reason": "safe fallback recovery" if self.control_cfg.enabled() else "legacy fallback",
                 })
@@ -2153,10 +2294,38 @@ class PathPlannerAgent(ABC):
             position_after=position_after,
             repair_operator=operator_for_record,
         )
+        rotation_stall = self.rotation_stall_detector.add_record(
+            step=int(step),
+            action=action_to_execute,
+            heading_before=heading_before,
+            heading_after=heading_after,
+            position_before=position_before,
+            position_after=position_after,
+            repair_operator=operator_for_record,
+        )
         if operator_for_record:
             self.repair_cooldown.record(operator_for_record, int(step), action_to_execute)
             self._last_control_repair_operator = operator_for_record
-        if detection:
+        if rotation_stall:
+            self._last_control_failure = rotation_stall
+            if self._last_recorded_control_failure_step != rotation_stall.get("step"):
+                self.arv_state.record_control_failure(rotation_stall)
+                self._last_recorded_control_failure_step = rotation_stall.get("step")
+            self._start_observation_sweep(int(step), "ROTATION_STALL")
+            step_trace["control_stability"].update({
+                "control_failure_detected": True,
+                "failure_type": "ROTATION_STALL",
+                "detector_source": rotation_stall.get("detector_source"),
+                "failure_reason": rotation_stall.get("reason"),
+                "recent_actions": rotation_stall.get("recent_actions"),
+                "recent_headings": rotation_stall.get("recent_headings"),
+                "recent_positions": rotation_stall.get("recent_positions"),
+                "rotation_stall_count": self.rotation_stall_detector.trigger_count,
+                "cumulative_rotation": self._safe_float(rotation_stall.get("cumulative_rotation")),
+                "rotation_window_displacement": self._safe_float(rotation_stall.get("rotation_window_displacement")),
+                "repair_operator": "OBSERVATION_SWEEP",
+            })
+        elif detection:
             self._last_control_failure = detection
             if self._last_recorded_control_failure_step != detection.get("step"):
                 self.arv_state.record_control_failure(detection)
@@ -2184,8 +2353,25 @@ class PathPlannerAgent(ABC):
             )
             if step_trace["control_stability"]["oscillation_broken"]:
                 self._last_control_failure = None
+        if getattr(action_to_execute, "type", None) in {"move_forward", "waypoint"} or float(getattr(action_to_execute, "r", 0) or 0) > 0:
+            self._last_safe_navigation_commitment = action_to_execute
+        self.direction_commitment.tick()
+        verification = self.direction_commitment.verify(
+            int(step),
+            self.curr_obs["agent_state"].position,
+            self.rotation_stall_detector.recent_rotation(),
+        )
         step_trace["control_stability"]["recent_heading_reversals"] = self.turn_oscillation_detector.recent_reversal_count()
         step_trace["control_stability"]["recent_displacement"] = self._safe_float(self.turn_oscillation_detector.recent_displacement())
+        step_trace["control_stability"].update(self.observation_sweep.trace())
+        step_trace["control_stability"].update(self.direction_commitment.trace())
+        step_trace["control_stability"].update({
+            "rotation_stall_count": self.rotation_stall_detector.trigger_count,
+            "cumulative_rotation": self._safe_float(self.rotation_stall_detector.recent_rotation()),
+            "rotation_window_displacement": self._safe_float(self.rotation_stall_detector.recent_displacement()),
+            "displacement_after_repair": self._safe_float(verification.get("displacement_after_repair")),
+            "new_rotation_after_repair": self._safe_float(verification.get("new_rotation_after_repair")),
+        })
         step_trace["control_stability"]["cooldown_active"] = self.repair_cooldown.to_dict(int(step), action_to_execute)
         self._record_step_trace(step_trace)
 
@@ -2788,119 +2974,184 @@ class GPTAgent(PathPlannerAgent):
         img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
         return img_str
 
-    def _get_vlm_response(self, rgb_image: Image.Image, map_image: Image.Image, prompt: str, img_buffer=None) -> str:
+    def _compact_text_state(self) -> str:
+        recent_actions = []
+        try:
+            recent_actions = [
+                item.get("executed_action")
+                for item in getattr(self, "diagnostic_trace", [])[-5:]
+                if isinstance(item, dict)
+            ]
+        except Exception:
+            recent_actions = []
+        state = {
+            "full_instruction": getattr(self, "instruction", ""),
+            "current_subtask": getattr(getattr(self, "instruction_obj", None), "get_current_subtask_key", lambda: None)(),
+            "arv_belief_summary": self.arv_state.summary() if hasattr(self, "arv_state") else {},
+            "completion_state": getattr(self.arv_state, "completion_status", None) if hasattr(self, "arv_state") else None,
+            "recent_actions": recent_actions,
+        }
+        return "\n\nCOMPACT_TEXT_STATE:\n" + json.dumps(state, ensure_ascii=False, default=str)
+
+    def build_vlm_request(
+        self,
+        retry_level: int,
+        prompt: str,
+        front_rgb_image: PIL.Image.Image,
+        left_rgb_image: PIL.Image.Image = None,
+        right_rgb_image: PIL.Image.Image = None,
+        back_rgb_image: PIL.Image.Image = None,
+        map_image: PIL.Image.Image = None,
+        img_buffer: list = None,
+    ):
         if img_buffer is None:
             img_buffer = []
-        try:
-            rgb_img_b64 = self._pil_to_base64(rgb_image)
-            map_img_b64 = self._pil_to_base64(map_image)
+        text = prompt if retry_level == 0 else prompt + self._compact_text_state()
+        content_for_request = [{"type": "text", "text": text}]
 
-            content_for_request = [{"type": "text", "text": prompt}]
-            for img in img_buffer:
-                img_b64 = self._pil_to_base64(img)
-                content_for_request.append({
+        def add_image(image, detail="high"):
+            if image is None:
+                return
+            img_b64 = self._pil_to_base64(image)
+            content_for_request.append({
+                "type": "image_url",
+                "image_url": {"url": f"data:image/jpeg;base64,{img_b64}", "detail": detail},
+            })
+
+        if retry_level <= 0:
+            for img in img_buffer[-20:]:
+                add_image(img, "auto")
+            add_image(left_rgb_image, "high")
+            add_image(right_rgb_image, "high")
+            add_image(front_rgb_image, "high")
+            add_image(map_image, "high")
+        elif retry_level == 1:
+            add_image(front_rgb_image, "high")
+            add_image(left_rgb_image, "auto")
+            add_image(right_rgb_image, "auto")
+            add_image(map_image, "auto")
+        elif retry_level == 2:
+            add_image(front_rgb_image, "high")
+            add_image(map_image, "auto")
+        else:
+            add_image(front_rgb_image, "high")
+
+        history_content = [{"type": "text", "text": text}]
+        add_history_images = [front_rgb_image]
+        if retry_level <= 2:
+            add_history_images.append(map_image)
+        for image in add_history_images:
+            if image is not None:
+                img_b64 = self._pil_to_base64(image)
+                history_content.append({
                     "type": "image_url",
-                    "image_url": {"url": f"data:image/jpeg;base64,{img_b64}", "detail": "auto"}
+                    "image_url": {"url": f"data:image/jpeg;base64,{img_b64}", "detail": "auto"},
                 })
-            content_for_request.extend([
-                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{rgb_img_b64}", "detail": "high"}},
-                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{map_img_b64}", "detail": "high"}}
-            ])
-            current_msg_for_api = {"role": "user", "content": content_for_request}
 
-            content_for_history = [
-                {"type": "text", "text": prompt},
-                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{rgb_img_b64}", "detail": "auto"}},
-                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{map_img_b64}", "detail": "auto"}},
+        return (
+            {"role": "user", "content": content_for_request},
+            {"role": "user", "content": history_content},
+            sum(1 for item in content_for_request if item.get("type") == "image_url"),
+        )
+
+    def _api_error_info(self, exc: Exception, retry_level: int, request_image_count: int, img_buffer: list) -> dict:
+        response = getattr(exc, "response", None)
+        status = getattr(exc, "status_code", None) or getattr(response, "status_code", None)
+        body = None
+        try:
+            body = getattr(response, "text", None) or str(getattr(response, "content", ""))[:1000]
+        except Exception:
+            body = None
+        exc_name = type(exc).__name__
+        if status == 400:
+            failure_type = "HTTP_400"
+        elif "timeout" in exc_name.lower():
+            failure_type = "TIMEOUT"
+        else:
+            failure_type = "OTHER_API_ERROR"
+        return {
+            "api_failure_type": failure_type,
+            "exception_type": exc_name,
+            "http_status": status,
+            "server_error_body": body,
+            "episode_id": getattr(self, "episode_id", None),
+            "step": getattr(self, "_active_step_index", None),
+            "retry_index": retry_level,
+            "history_message_count": len(getattr(self, "history_msgs", []) or []),
+            "request_image_count": request_image_count,
+            "buffered_image_count": len(img_buffer or []),
+        }
+
+    def _call_vlm_with_recovery(self, builders, prompt: str, img_buffer: list, sys_prompt: str = None):
+        if not hasattr(self, "history_msgs"):
+            self.history_msgs = [
+                {"role": "system", "content": sys_prompt or "You are an agent good at navigating in an indoor environment."}
             ]
-            current_msg_for_history = {"role": "user", "content": content_for_history}
-
-            if not hasattr(self, "history_msgs"):
-                self.history_msgs = [
-                    {"role": "system", "content": "You are an agent good at navigating in an indoor environment."}
-                ]
-
+        failures = []
+        max_retry = 4 if self.control_cfg.enable_arv_v211_api_recovery else 1
+        for retry_level in range(max_retry):
+            current_msg_for_api, current_msg_for_history, image_count = builders(retry_level)
             messages_for_api = self.history_msgs + [current_msg_for_api]
-
             user_msgs = [msg for msg in messages_for_api if msg["role"] == "user"]
-            if len(user_msgs) > 7:
+            if len(user_msgs) > 8:
                 user_count = 0
                 for msg in messages_for_api:
                     if msg["role"] == "user":
                         user_count += 1
-                        if user_count <= len(user_msgs) - 7:
-                            if isinstance(msg["content"], list):
-                                msg["content"] = [c for c in msg["content"] if c["type"] == "text"]
-
-            max_turn = 30
-            if len(messages_for_api) > max_turn:
-                messages_for_api = messages_for_api[-max_turn:]
-
+                        if user_count <= len(user_msgs) - 8 and isinstance(msg.get("content"), list):
+                            msg["content"] = [c for c in msg["content"] if c["type"] == "text"]
+            if len(messages_for_api) > 30:
+                messages_for_api = messages_for_api[-30:]
                 if messages_for_api[0]["role"] != "system":
-                    messages_for_api.insert(0, {"role": "system",
-                                                "content": "You are an agent good at navigating in an indoor environment."})
+                    messages_for_api.insert(0, {"role": "system", "content": "You are an agent good at navigating in an indoor environment."})
+            try:
+                response = self.client.chat.completions.create(
+                    model=self.model_name,
+                    messages=messages_for_api,
+                    temperature=self.vlm_temperature,
+                )
+                result = response.choices[0].message.content
+                print(result)
+                self.history_msgs.append(current_msg_for_history)
+                self.history_msgs.append({"role": "assistant", "content": result})
+                self._last_api_failure = None
+                if hasattr(self, "_last_decision_trace"):
+                    self._last_decision_trace.update({
+                        "api_retry_level": retry_level,
+                        "request_image_count": image_count,
+                        "api_failure_count": self._api_failure_count,
+                    })
+                return result
+            except Exception as exc:
+                info = self._api_error_info(exc, retry_level, image_count, img_buffer)
+                failures.append(info)
+                self._last_api_failure = info
+                self._api_failure_count += 1
+                if hasattr(self, "_last_decision_trace"):
+                    self._last_decision_trace.update(info)
+                    self._last_decision_trace["api_failures"] = list(failures)
+                    self._last_decision_trace["reason"] = "API_REQUEST_FAILURE"
+                if info["api_failure_type"] != "HTTP_400" and retry_level == 0:
+                    continue
+        return ""
 
-            response = self.client.chat.completions.create(
-                model=self.model_name,
-                messages=messages_for_api,
-                temperature=self.vlm_temperature,
-            )
-
-            result = response.choices[0].message.content
-            print(result)
-
-            self.history_msgs.append(current_msg_for_history)
-            self.history_msgs.append({
-                "role": "assistant",
-                "content": result
-            })
-            return result
-        except Exception as e:
-            pass
-            return "stop"
+    def _get_vlm_response(self, rgb_image: Image.Image, map_image: Image.Image, prompt: str, img_buffer=None) -> str:
+        if img_buffer is None:
+            img_buffer = []
+        return self._call_vlm_with_recovery(
+            lambda retry_level: self.build_vlm_request(
+                retry_level, prompt, rgb_image, map_image=map_image, img_buffer=img_buffer
+            ),
+            prompt,
+            img_buffer,
+        )
 
     def _get_vlm_response_multiview(self, front_rgb_image: PIL.Image.Image, left_rgb_image: PIL.Image.Image,
                                     right_rgb_image: PIL.Image.Image, back_rgb_image: PIL.Image.Image,
                                     map_image: PIL.Image.Image, prompt: str, img_buffer: list) -> str:
         if img_buffer is None:
             img_buffer = []
-        try:
-
-            front_img_b64 = self._pil_to_base64(front_rgb_image)
-            left_img_b64 = self._pil_to_base64(left_rgb_image)
-            right_img_b64 = self._pil_to_base64(right_rgb_image)
-            # back_img_b64 = self._pil_to_base64(back_rgb_image)
-            map_img_b64 = self._pil_to_base64(map_image)
-
-            content_for_request = [{"type": "text", "text": prompt}]
-            for img in img_buffer[-20:]:
-                img_b64 = self._pil_to_base64(img)
-                content_for_request.append({
-                    "type": "image_url",
-                    "image_url": {"url": f"data:image/jpeg;base64,{img_b64}", "detail": "auto"}
-                })
-
-            content_for_request.extend([
-
-                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{left_img_b64}", "detail": "high"}},
-                {"type": "image_url",
-                 "image_url": {"url": f"data:image/jpeg;base64,{right_img_b64}", "detail": "high"}},
-                # {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{back_img_b64}", "detail": "high"}},
-                {"type": "image_url",
-                 "image_url": {"url": f"data:image/jpeg;base64,{front_img_b64}", "detail": "high"}},
-                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{map_img_b64}", "detail": "high"}},
-            ])
-            current_msg_for_api = {"role": "user", "content": content_for_request}
-
-            content_for_history = [
-                {"type": "text", "text": prompt},
-                {"type": "image_url",
-                 "image_url": {"url": f"data:image/jpeg;base64,{front_img_b64}", "detail": "auto"}},
-                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{map_img_b64}", "detail": "auto"}},
-            ]
-            current_msg_for_history = {"role": "user", "content": content_for_history}
-
-            sys_prompt = """
+        sys_prompt = """
                     **Image Inputs**:
         1.  **Top-Down Map**: This is your memory. It will be updated as you explore. It's oriented with you facing upwards.
             -   `Gray`: Navigable floor you have seen.
@@ -2924,48 +3175,21 @@ class GPTAgent(PathPlannerAgent):
         5. There's no need to operate objects, just move to the target position.
         6. Red waypoints indicate locations that have been visited, and white ones indicate those that haven’t.
             """
-
-            if not hasattr(self, "history_msgs"):
-                self.history_msgs = [
-                    {"role": "system", "content": sys_prompt}
-                ]
-
-            messages_for_api = self.history_msgs + [current_msg_for_api]
-
-            user_msgs = [msg for msg in messages_for_api if msg["role"] == "user"]
-            if len(user_msgs) > 8:
-                user_count = 0
-                for msg in messages_for_api:
-                    if msg["role"] == "user":
-                        user_count += 1
-                        if user_count <= len(user_msgs) - 8:
-                            msg["content"] = [c for c in msg["content"] if c["type"] == "text"]
-
-            max_turn = 30
-            if len(messages_for_api) > max_turn:
-                messages_for_api = messages_for_api[-max_turn:]
-                if messages_for_api[0]["role"] != "system":
-                    messages_for_api.insert(0, {"role": "system",
-                                                "content": "You are an agent good at navigating in an indoor environment."})
-
-            response = self.client.chat.completions.create(
-                model=self.model_name,
-                messages=messages_for_api,
-                temperature=self.vlm_temperature,
-                # extra_body={"vl_high_resolution_images": False},
-            )
-            result = response.choices[0].message.content
-            print(result)
-
-            self.history_msgs.append(current_msg_for_history)
-            self.history_msgs.append({
-                "role": "assistant",
-                "content": result
-            })
-            return result
-        except Exception as e:
-            pass
-            return "stop"
+        return self._call_vlm_with_recovery(
+            lambda retry_level: self.build_vlm_request(
+                retry_level,
+                prompt,
+                front_rgb_image,
+                left_rgb_image,
+                right_rgb_image,
+                back_rgb_image,
+                map_image,
+                img_buffer,
+            ),
+            prompt,
+            img_buffer,
+            sys_prompt=sys_prompt,
+        )
 
     def _get_llm_response(self, prompt: str) -> str:
         """
